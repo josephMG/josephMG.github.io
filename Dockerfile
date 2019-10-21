@@ -10,4 +10,4 @@ RUN npm config set unsafe-perm true \
 
 EXPOSE 4000
 
-ENTRYPOINT ["hexo", "server", "--debug"]
+ENTRYPOINT ["hexo", "server"]
