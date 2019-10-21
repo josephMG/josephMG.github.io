@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  hexo:
+    container_name: hexo-blog
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/blog'
+    ports:
+      - '4000:4000'
