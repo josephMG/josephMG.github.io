@@ -4,6 +4,7 @@ title: "認識Shopee關鍵字廣告及設定"
 date: 2019-09-25 07:32:56
 tags: ["Shopee", "Marketing"]
 author: Sandy
+categories: ["Sandy", "Marketing"]
 ---
 
 在shopee關鍵字廣告進行一段時間了，成效沒有預期的好而且費用也越來越貴，我們就來改變行銷策略做關鍵字的優化吧～優化對網站流量增加很重要，可以讓大家在搜尋的第一頁看到你的廣告，進而讓你的網站獲得大量流量。

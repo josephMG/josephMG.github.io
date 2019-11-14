@@ -4,6 +4,7 @@ title: "認識Shopee關鍵字廣告及設定"
 date: 2019-09-19 07:33:20
 tags: ["Shopee", "Marketing"]
 author: Sandy
+categories: ["Sandy", "Marketing"]
 ---
 
 無論是新創店家或舊店家宣傳促銷活動，想在商品及店家數多到數不清的shopee大海脫穎而出被消費者看見完成購買，最有效率的方式就是用Shopee關鍵字廣告增加商品曝光度，也許很多賣家會好奇廣告是否有用？Sandy建議可以多嘗試，畢竟比其他賣家多懂一項工具可以擁有更多優勢，Shopee關鍵字廣告比facebook 、ig廣告受眾更明確精準、介面比google 搜尋廣告簡單，用過會回不去阿～

@@ -4,6 +4,7 @@ title: "[Day 27] Google AutoML Table - 2"
 date: 2019-10-05 07:30:18
 tags: ["Google AI", "AutoML Table", "鐵人賽"]
 author: Joseph
+categories: ["Joseph", "AI & Machine Learning"]
 ---
 今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。
 ![deployed](deployed.jpg)

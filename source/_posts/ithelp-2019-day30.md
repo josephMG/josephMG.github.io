@@ -4,6 +4,7 @@ title: "[Day 30] Google AI & ML Products 系列總結"
 date: 2019-10-08 07:30:26
 tags: ["Google AI", "Speech-to-Text", "鐵人賽"]
 author: Joseph
+categories: ["Joseph", "AI & Machine Learning"]
 ---
 這系列文章出自於一個無窮無盡的bug的解題時間，想不到如何解bug、又想不出要寫什麼主題，參考完大家的方向以後，我發現這類型的文章很少、又很實用，才下定決心透過鐵人賽推廣 **Google AI & ML Products**。
 

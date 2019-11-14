@@ -4,6 +4,7 @@ title: "[Day 25] Google Dialogflow - 2"
 date: 2019-10-03 07:30:12
 tags: ["Google AI", "Dialogflow", "鐵人賽"]
 author: Joseph
+categories: ["Joseph", "AI & Machine Learning"]
 ---
 每個系列的第二篇，就是踏入API的世界。今天要入門的是Dialogflow的API，不囉嗦先丟上[文件](https://cloud.google.com/dialogflow/docs/)。
 

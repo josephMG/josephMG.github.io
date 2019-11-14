@@ -4,6 +4,7 @@ title: "[Day 28] Google AI Hub - 1"
 date: 2019-10-06 07:30:21
 tags: ["Google AI", "AI Hub", "鐵人賽"]
 author: Joseph
+categories: ["Joseph", "AI & Machine Learning"]
 ---
 > 話說照{% post_link ithelp-2019-day1 第一天 %}的規劃，今天本來要寫[Recommendation AI](https://cloud.google.com/recommendations)，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。
 

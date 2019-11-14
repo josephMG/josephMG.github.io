@@ -4,6 +4,7 @@ title: "[Day 14] Google Translation - 1"
 date: 2019-09-22 07:29:45
 tags: ["Google AI", "Translate", "鐵人賽"]
 author: Joseph
+categories: ["Joseph", "AI & Machine Learning"]
 ---
 OK，今天要講一個大家常用，卻不一定知道他是Google AI & ML products之一的服務，[Google Translation API](https://cloud.google.com/translate/)。
 

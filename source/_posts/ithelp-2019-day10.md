@@ -4,6 +4,7 @@ title: "[Day 10] Google Natural Language - 1"
 date: 2019-09-18 07:29:36
 tags: ["Google AI", "Natural Language", "鐵人賽"]
 author: Joseph
+categories: ["Joseph", "AI & Machine Learning"]
 ---
 今天是[Natural Language](https://cloud.google.com/natural-language/)的第一篇，這是一個可以用來分析語意並萃取出你要的資訊的工具。跟前面的服務一樣，也分成AutoML Natural Language跟Natural Language API。
 - [AutoML Natural Language](https://cloud.google.com/natural-language/docs/quickstart)：提供一個UI介面訓練自己的Model，並用自己的Model做語意分析、詞彙分類之類的工作。

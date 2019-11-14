@@ -2,8 +2,9 @@
 layout: blog
 title: "[Day 1] 說說哪裡來的靈感"
 date: 2019-09-09 07:29:15
-tags: ["AI & ML products", "Google AI", "鐵人賽"]
+tags: ["Google AI", "AI & ML products", "鐵人賽"]
 author: Joseph
+categories: ["Joseph", "AI & Machine Learning"]
 ---
 這系列的第一篇文章，來自於再解一個無窮無盡SSR的bug的時間。
 去年的鐵人賽文章[跟著Google學ML](https://ithelp.ithome.com.tw/users/20103835/ironman/1806) 生不逢時，晚一年出生就可以趕上這波主題賽，今年看到這主題後，努力思考到底可以產出些什麼？上網找了各式各樣的靈感，後來決定介紹一系列的[Google AI & Machine learning products](https://cloud.google.com/products/#ai-and-machine-learning)。獻醜了，這些都是我沒用過的服務，但這也是我參加鐵人賽最主要的目的：練功+卯起來學新知識。
