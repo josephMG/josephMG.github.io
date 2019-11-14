@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 3] Google Vision AI - 2"
 date: 2019-09-11 07:29:20
 tags: ["Google AI", "Vision AI", "鐵人賽"]
+author: Joseph
 ---
 今天來入門Google Vision AI的API，文件部分可以看[這裡](https://cloud.google.com/vision/docs/quickstarts)。練功嘛！語言部分我就來順便玩一下一直想入門的Golang。
 

@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 7] Google Video Intelligence AI - 2"
 date: 2019-09-15 07:29:30
 tags: ["Google AI", "Video Intelligence AI", "鐵人賽"]
+author: Joseph
 ---
 今天又是美好的開始，大家吃中秋烤肉了嗎？
 這是這系列的第二篇文章，要來入門[Video Intelligence API](https://cloud.google.com/video-intelligence/docs/quickstarts?authuser=1)，這隻可以透過上傳影片，但實際上可以幹嘛呢？實際上包含下列幾個項目的偵測：

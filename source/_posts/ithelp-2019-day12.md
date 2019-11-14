@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 12] Google Natural Language - 3"
 date: 2019-09-20 07:29:41
 tags: ["Google AI", "Natural Language", "鐵人賽"]
+author: Joseph
 ---
 今天來Google Natural Language第三篇，我本來想按照Natural Language裡[分析情緒](https://cloud.google.com/natural-language/docs/analyzing-sentiment)這個部分實作，可是看完以後發現它code有點短，只有下面這樣：
 ```golang

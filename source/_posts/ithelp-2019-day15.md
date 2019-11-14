@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 15] Google Translation - 2"
 date: 2019-09-23 07:29:48
 tags: ["Google AI", "Translate", "鐵人賽"]
+author: Joseph
 ---
 昨天玩完了Demo，按照步調今天就用Code來實踐吧。在下筆的時候Client Library有`v2`、`v3beta1`兩個版本，但Golang只有`v2`的Example，需要的話就只能用Golang執行`CURL POST`去呼叫`v3beta1`版API，所以我這邊就先使用v2來試試看。
 

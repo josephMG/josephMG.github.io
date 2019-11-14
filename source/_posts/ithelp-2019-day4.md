@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 4] Google Vision AI - 3"
 date: 2019-09-12 07:29:23
 tags: ["Google AI", "Vision AI", "鐵人賽"]
+author: Joseph
 ---
 今天還是繼續多玩幾個Vision AI API好了，初步教學可以看{% post_link ithelp-2019-day3 前一篇 %}
 

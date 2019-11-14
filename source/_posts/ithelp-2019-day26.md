@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 26] Google AutoML Table - 1"
 date: 2019-10-04 07:30:15
 tags: ["Google AI", "AutoML Table", "鐵人賽"]
+author: Joseph
 ---
 因為篇幅關係，昨天的{% post_link ithelp-2019-day25 Dialogflow %}沒有寫到最終章，就要先跳來AutoML Table了。
 

@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 6] Google Video Intelligence AI - 1"
 date: 2019-09-14 07:29:27
 tags: ["Google AI", "Video Intelligence AI", "鐵人賽"]
+author: Joseph
 ---
 今天的文章開始第二個AI產品[Google Video AI](https://cloud.google.com/video-intelligence/)。這是一套影片辨析的AI工具，跟Vision AI一樣你可以用[AutoML Video Intelligence](https://cloud.google.com/video-intelligence/automl/docs/quickstart-console)圖形化介面工具訓練，也可以使用[Video Intelligence API](https://cloud.google.com/video-intelligence/docs/quickstart)幫助我們解析影片。
 

@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 5] Google Vision AI - 子系列最終章"
 date: 2019-09-13 07:29:25
 tags: ["Google AI", "Vision AI", "鐵人賽"]
+author: Joseph
 ---
 
 今天是Google Vision AI這子系列最後一章節，我們今天要來講Vision AI的[Auto ML Vision](https://cloud.google.com/vision/automl/docs/)。我玩的是GCP上面的UI介面，側邊欄打開找到**Vision**點進去就可以看到了:

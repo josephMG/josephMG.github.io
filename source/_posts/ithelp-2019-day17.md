@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 17] Google Translation - 子系列最終章"
 date: 2019-09-25 07:29:52
 tags: ["Google AI", "Translate", "鐵人賽"]
+author: Joseph
 ---
 今天要講[AutoML translation](https://cloud.google.com/translate/automl/docs/)的部分，這部分在官網上一直沒找到對應的範例，很有可能範例要自己生。我只好自己在網路上找些翻譯的dataset，幸好在[這邊](http://www.statmt.org/wmt19/translation-task.html#download)有找到很多很多的資料集，只需要做一些資料處理的動作，現在就來先處理一下。
 

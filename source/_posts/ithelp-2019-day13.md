@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 13] Google Natural Language - 子系列最終章"
 date: 2019-09-21 07:29:43
 tags: ["Google AI", "Natural Language", "鐵人賽"]
+author: Joseph
 ---
 
 我們今天玩的是AutoML Natural Language，可以透過GCP左邊的sidebar，找到Natural Language打開，或直接點[這個連結](https://console.cloud.google.com/natural-language)

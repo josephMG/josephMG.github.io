@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 9] Google Video Intelligence AI - 子系列最終章"
 date: 2019-09-17 07:29:34
 tags: ["Google AI", "Video Intelligence AI", "鐵人賽"]
+author: Joseph
 ---
 這系列的最後，也是要來AutoML一下。[AutoML Video Intelligence](https://cloud.google.com/video-intelligence/automl)，簡單的理解它就是Video Intelligence AI的UI版本，可以在這邊啟用：[Video Intelligence](https://console.cloud.google.com/video-intelligence/dashboard)
 

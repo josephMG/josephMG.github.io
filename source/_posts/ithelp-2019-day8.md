@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 8] Google Video Intelligence AI - 3"
 date: 2019-09-16 07:29:32
 tags: ["Google AI", "Video Intelligence AI", "鐵人賽"]
+author: Joseph
 ---
 Google Video Intelligence AI API還有眾多的範例可以學習，今天再講兩個就結束這回合：[Detecting shot changes](https://cloud.google.com/video-intelligence/docs/analyze-shots?authuser=1)、[Recognizing text](https://cloud.google.com/video-intelligence/docs/text-detection?authuser=1)。
 

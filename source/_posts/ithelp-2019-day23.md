@@ -3,6 +3,7 @@ layout: blog
 title: "[Day 23] Google Cloud Speech-to-Text - 子系列最終章"
 date: 2019-10-01 07:30:07
 tags: ["Google AI", "Speech-to-Text", "鐵人賽"]
+author: Joseph
 ---
 因為這邊沒有AutoML的關係，所以今天是Speech-to-Text的最後一篇。
 
