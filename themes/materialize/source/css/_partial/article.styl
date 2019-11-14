@@ -39,6 +39,8 @@
   @extend $block-caption
   float: left
 
+.article-author
+  float: right
 
 .article-entry
   @extend $base-style
@@ -149,18 +151,24 @@
 
 .article-footer
   clearfix()
+  display: flex
+  justify-content: space-between
+  flex-direction: row-reverse
   font-size: 0.85em
   line-height: line-height
   border-top: 1px solid color-border
   padding-top: line-height
   margin: 0 article-padding article-padding
-
+  &:before, &:after
+    content: none
   a
     color: color-grey
     text-decoration: none
 
     &:hover
       color: color-default
+.article-tag-list
+  margin-top: 0px
 
 .article-tag-list-item
   float: left
