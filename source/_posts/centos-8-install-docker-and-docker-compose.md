@@ -98,3 +98,6 @@ $ sudo firewall-cmd --reload.
 
 到這邊就結束了。最後可以跑個隨便的服務，然後透過VM ip & port 連進去(記得要port mapping)。
 剛接到案子本來想說沒這麼複雜，沒想到複雜到我要開一台VM實驗，不過也是學了很多centos的東西。
+
+---
+1. firewall-cmd 指令參考: [https://kirby86a.pixnet.net/blog/post/118276362-centos-7-%E4%BD%BF%E7%94%A8firewall-cmd%E6%8C%87%E4%BB%A4](https://kirby86a.pixnet.net/blog/post/118276362-centos-7-%E4%BD%BF%E7%94%A8firewall-cmd%E6%8C%87%E4%BB%A4)
