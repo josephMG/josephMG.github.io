@@ -33,7 +33,7 @@ Okay, system requirements are prepared.
 
 We can use `hugo new site SITE_NAME` to initialize a site, `hugo server -D` to see you page.
 
-### Secondly, Gitlab pages
+### Gitlab pages
 
 Open a `public` repository. (You will have `earth` icon.)
 ![gitlab setting](gitlab-setting-1.jpg)
@@ -76,7 +76,13 @@ But the setting is tricky. Let's see my Godaddy.
 
 ![godaddy](godaddy.jpg)
 
-I set two `A` records point to `35.185.44.232`, two `TXT` records corresponding to `A` and its `TXT` value. I've tried many settings, and only these settings are workable. Alternatively, you can use [Cloudflare](https://www.cloudflare.com/) with the whole value gitlab provided.
+I set two `A` records point to `35.185.44.232`, two `TXT` records corresponding to `A` and its `TXT` value. Note that `TXT` keys are only `@` and `www`. I've tried many settings, and only these settings are workable. Alternatively, you can use [Cloudflare](https://www.cloudflare.com/) with the whole keys and values that gitlab provided.
+
+That's all. Go back to Gitlab pages setting to verify your domain, and then open your website in the browser.
+
+### Summary
+
+I use `A` record instead of `CNAME`, and set `@` and `www` as `TXT` records' key. Otherwise, I can't verify my domain. There are many setting tutorial on the Internet. Just find and try it!
 
 --------
 1. [Gitlab doc](https://docs.gitlab.com/ce/user/project/pages/custom_domains_ssl_tls_certification/index.html)
