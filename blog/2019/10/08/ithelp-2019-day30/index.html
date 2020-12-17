@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 30] Google AI &amp; ML Products 系列總結 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="這系列文章出自於一個無窮無盡的bug的解題時間，想不到如何解bug、又想不出要寫什麼主題，參考完大家的方向以後，我發現這類型的文章很少、又很實用，才下定決心透過鐵人賽推廣 Google AI &amp; ML Products。 在這次的挑戰裡，給了自己三個目標：  更熟悉docker 開始玩Golang 入門大部分的Google AI &amp; ML Products 但也因為Google A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 30] Google AI &amp; ML Products 系列總結">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/10/08/ithelp-2019-day30/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="這系列文章出自於一個無窮無盡的bug的解題時間，想不到如何解bug、又想不出要寫什麼主題，參考完大家的方向以後，我發現這類型的文章很少、又很實用，才下定決心透過鐵人賽推廣 Google AI &amp; ML Products。 在這次的挑戰裡，給了自己三個目標：  更熟悉docker 開始玩Golang 入門大部分的Google AI &amp; ML Products 但也因為Google A">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-10-08T07:30:26.000Z">
+<meta property="article:modified_time" content="2020-12-08T06:33:31.000Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Speech-to-Text">
+<meta name="twitter:card" content="summary">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/css/vendors.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46261454-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  
+<script src="/js/vendors.js"></script>
+
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12 m9">
+
+
+      <article id="blog-ithelp-2019-day30" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 30] Google AI &amp; ML Products 系列總結
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-08T07:30:26.000Z" itemprop="datePublished">Oct 08, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>這系列文章出自於一個無窮無盡的bug的解題時間，想不到如何解bug、又想不出要寫什麼主題，參考完大家的方向以後，我發現這類型的文章很少、又很實用，才下定決心透過鐵人賽推廣 <strong>Google AI &amp; ML Products</strong>。</p>
+<p>在這次的挑戰裡，給了自己三個目標：</p>
+<ol>
+<li>更熟悉docker</li>
+<li>開始玩Golang</li>
+<li>入門大部分的Google AI &amp; ML Products<br>
+但也因為Google AI &amp; ML Products太多了，所以把它分了很多子系列進行，現在再來回顧一下這次的內容。</li>
+</ol>
+<blockquote>
+<p>前面先來個提醒，如果過程中你們有Deploy model做Online predict的，如果測完一定要記得刪掉，不然你deploy的model就會一直被收費喔。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="靈感的噴發-給大家的預告"><a class="header-anchor" href="#靈感的噴發-給大家的預告"></a>靈感的噴發、給大家的預告</h3>
+<ul>
+<li>
+<a href="/blog/2019/09/09/ithelp-2019-day1/" title="[Day 1] 說說哪裡來的靈感">[Day 1] 說說哪裡來的靈感</a>
+</li>
+</ul>
+<p>去年就寫了很淺的Google MLCC，今年再次來推廣Google的AI &amp; ML Products，先做了一下功課到底有那些一定要做，然後每天每天慢慢寫。</p>
+<h3 id="google-vision-ai"><a class="header-anchor" href="#google-vision-ai"></a>Google Vision AI</h3>
+<ul>
+<li>
+<a href="/blog/2019/09/10/ithelp-2019-day2/" title="[Day 2] Google Vision AI - 1">[Day 2] Google Vision AI - 1</a>
+</li>
+<li>
+<a href="/blog/2019/09/11/ithelp-2019-day3/" title="[Day 3] Google Vision AI - 2">[Day 3] Google Vision AI - 2</a>
+</li>
+<li>
+<a href="/blog/2019/09/12/ithelp-2019-day4/" title="[Day 4] Google Vision AI - 3">[Day 4] Google Vision AI - 3</a>
+</li>
+<li>
+<a href="/blog/2019/09/13/ithelp-2019-day5/" title="[Day 5] Google Vision AI - 子系列最終章">[Day 5] Google Vision AI - 子系列最終章</a>
+</li>
+</ul>
+<p>這系列是講Google Vision AI，這隻API可以掃描圖片，並萃取出我們需要的資訊，像是文字、物件、色系之類的，以前要用電腦視覺寫各式各樣的演算法處理，現在透過一個API搞定。</p>
+<blockquote>
+<p>從這邊開始幾乎奠定了以後的文章架構：第一天動手玩了TRY，第二天、第三天則用Golang玩Vision AI，最後一天如果這個AI也有AutoML的話，就是操作AutoML的UI介面。</p>
+</blockquote>
+<h3 id="google-video-intelligence-ai"><a class="header-anchor" href="#google-video-intelligence-ai"></a>Google Video Intelligence AI</h3>
+<ul>
+<li>
+<a href="/blog/2019/09/14/ithelp-2019-day6/" title="[Day 6] Google Video Intelligence AI - 1">[Day 6] Google Video Intelligence AI - 1</a>
+</li>
+<li>
+<a href="/blog/2019/09/15/ithelp-2019-day7/" title="[Day 7] Google Video Intelligence AI - 2">[Day 7] Google Video Intelligence AI - 2</a>
+</li>
+<li>
+<a href="/blog/2019/09/16/ithelp-2019-day8/" title="[Day 8] Google Video Intelligence AI - 3">[Day 8] Google Video Intelligence AI - 3</a>
+</li>
+<li>
+<a href="/blog/2019/09/17/ithelp-2019-day9/" title="[Day 9] Google Video Intelligence AI - 子系列最終章">[Day 9] Google Video Intelligence AI - 子系列最終章</a>
+</li>
+</ul>
+<p>影片分析的AI產品，這個真的很好玩，把一部影片丟進去就能依照影格分析資訊，有點像是一直呼叫一直呼叫Vision AI，但速度又很快很順，實在讓人難以理解。</p>
+<h3 id="google-natural-language"><a class="header-anchor" href="#google-natural-language"></a>Google Natural Language</h3>
+<ul>
+<li>
+<a href="/blog/2019/09/18/ithelp-2019-day10/" title="[Day 10] Google Natural Language - 1">[Day 10] Google Natural Language - 1</a>
+</li>
+<li>
+<a href="/blog/2019/09/19/ithelp-2019-day11/" title="[Day 11] Google Natural Language - 2">[Day 11] Google Natural Language - 2</a>
+</li>
+<li>
+<a href="/blog/2019/09/20/ithelp-2019-day12/" title="[Day 12] Google Natural Language - 3">[Day 12] Google Natural Language - 3</a>
+</li>
+<li>
+<a href="/blog/2019/09/21/ithelp-2019-day13/" title="[Day 13] Google Natural Language - 子系列最終章">[Day 13] Google Natural Language - 子系列最終章</a>
+</li>
+</ul>
+<p>這系列是介紹自然語言的分析AI，一段文字進去會分析語意、結構、情緒。而且除了整段文字分析，還能分小段落解析，是一個很方便的工具。</p>
+<h3 id="google-translation"><a class="header-anchor" href="#google-translation"></a>Google Translation</h3>
+<ul>
+<li>
+<a href="/blog/2019/09/22/ithelp-2019-day14/" title="[Day 14] Google Translation - 1">[Day 14] Google Translation - 1</a>
+</li>
+<li>
+<a href="/blog/2019/09/23/ithelp-2019-day15/" title="[Day 15] Google Translation - 2">[Day 15] Google Translation - 2</a>
+</li>
+<li>
+<a href="/blog/2019/09/24/ithelp-2019-day16/" title="[Day 16] Google Translation - 3">[Day 16] Google Translation - 3</a>
+</li>
+<li>
+<a href="/blog/2019/09/25/ithelp-2019-day17/" title="[Day 17] Google Translation - 子系列最終章">[Day 17] Google Translation - 子系列最終章</a>
+</li>
+</ul>
+<p>我們很常用的Google翻譯，在這邊也是一個AI產品，除了分析是哪一國語言、還可以選擇要翻譯成哪種語言。這邊更有趣的是用<code>Go</code>串了<code>REST API</code>，去解決<code>v3beta1</code>沒有提供Go Library的問題。</p>
+<h3 id="text-to-speech"><a class="header-anchor" href="#text-to-speech"></a>Text to Speech</h3>
+<ul>
+<li>
+<a href="/blog/2019/09/26/ithelp-2019-day18/" title="[Day 18] Google Cloud Text-to-Speech - 1">[Day 18] Google Cloud Text-to-Speech - 1</a>
+</li>
+<li>
+<a href="/blog/2019/09/27/ithelp-2019-day19/" title="[Day 19] Google Cloud Text-to-Speech - 2">[Day 19] Google Cloud Text-to-Speech - 2</a>
+</li>
+<li>
+<a href="/blog/2019/09/28/ithelp-2019-day20/" title="[Day 20] Google Cloud Text-to-Speech - 子系列最終章">[Day 20] Google Cloud Text-to-Speech - 子系列最終章</a>
+</li>
+</ul>
+<p>文字轉語音的服務，這服務在各種案子想解決視覺不便者問題都很常見，現在有API可以串接是很方便的一件事情。</p>
+<blockquote>
+<p>這邊沒有AutoML可以玩</p>
+</blockquote>
+<h3 id="speech-to-text"><a class="header-anchor" href="#speech-to-text"></a>Speech to Text</h3>
+<ul>
+<li>
+<a href="/blog/2019/09/29/ithelp-2019-day21/" title="[Day 21] Google Cloud Speech-to-Text - 1">[Day 21] Google Cloud Speech-to-Text - 1</a>
+</li>
+<li>
+<a href="/blog/2019/09/30/ithelp-2019-day22/" title="[Day 22] Google Cloud Speech-to-Text - 2">[Day 22] Google Cloud Speech-to-Text - 2</a>
+</li>
+<li>
+<a href="/blog/2019/10/01/ithelp-2019-day23/" title="[Day 23] Google Cloud Speech-to-Text - 子系列最終章">[Day 23] Google Cloud Speech-to-Text - 子系列最終章</a>
+</li>
+</ul>
+<p>這跟上面相反，是把語音轉文字，甚至可以設定多位講者分別轉換成對應的文字，我覺得這類服務也可以有很多應用，除了可以人double check機器聽的正確與否，對一些聽力不佳的使用者也很實用。</p>
+<h3 id="dialogflow"><a class="header-anchor" href="#dialogflow"></a>Dialogflow</h3>
+<ul>
+<li>
+<a href="/blog/2019/10/02/ithelp-2019-day24/" title="[Day 24] Google Dialogflow - 1">[Day 24] Google Dialogflow - 1</a>
+</li>
+<li>
+<a href="/blog/2019/10/03/ithelp-2019-day25/" title="[Day 25] Google Dialogflow - 2">[Day 25] Google Dialogflow - 2</a>
+</li>
+</ul>
+<p>Dialogflow讓客服的工作可以輕鬆一點，先用一些flow去導引User到它想要去的地方，真的不行的再最後給客服，玩了以後更能體會Google助理到底在幹嘛了。</p>
+<blockquote>
+<p>這系列開始趕了進度，怕後面的文章不夠塞，所以把內容縮減成兩篇</p>
+</blockquote>
+<h3 id="automl-table"><a class="header-anchor" href="#automl-table"></a>AutoML Table</h3>
+<ul>
+<li>
+<a href="/blog/2019/10/04/ithelp-2019-day26/" title="[Day 26] Google AutoML Table - 1">[Day 26] Google AutoML Table - 1</a>
+</li>
+<li>
+<a href="/blog/2019/10/05/ithelp-2019-day27/" title="[Day 27] Google AutoML Table - 2">[Day 27] Google AutoML Table - 2</a>
+</li>
+</ul>
+<p>你有大筆的資料想分析可是不知道該怎麼分析嗎？這個服務可以讓你匯入資料，簡簡單單看一下AI的train、evaluate、跟predict，要改善也有一些參數讓你設定，真的要優化可以再做後續處AI處理。</p>
+<h3 id="ai-hub"><a class="header-anchor" href="#ai-hub"></a>AI Hub</h3>
+<ul>
+<li>
+<a href="/blog/2019/10/06/ithelp-2019-day28/" title="[Day 28] Google AI Hub - 1">[Day 28] Google AI Hub - 1</a>
+</li>
+<li>
+<a href="/blog/2019/10/07/ithelp-2019-day29/" title="[Day 29] Google AI Hub - 2">[Day 29] Google AI Hub - 2</a>
+</li>
+</ul>
+<p>上面說要優化再後續處理，就是這邊。這個平台集結了很多AI &amp; ML服務，可以讓我們很快的部屬、測試，甚至還有colab可以給我們做優化，並做出自己的AI。除此之外，也可以分享我們的AI給其他人使用，是個很好的平台。</p>
+<p>OK 以上就是這次的總結，希望大家看完這系列以後也能很快了解自己的需求要怎麼用AI解決、以及要用哪些AI服務解決。</p>
+<blockquote>
+<p>每個系列的Code可以在我的Github找到：<a target="_blank" rel="noopener" href="https://github.com/josephMG/ithelp-2019">https://github.com/josephMG/ithelp-2019</a><br>
+我分成了各個tag方便大家尋找。</p>
+</blockquote>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/08/ithelp-2019-day30/" data-id="ckisbvadl002b01pcavmg3wi0" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Speech-to-Text/" rel="tag">Speech-to-Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/blog/2019/11/13/tianmu-halloween/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">天母搞什麼鬼-萬聖節活動</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/blog/2019/10/07/ithelp-2019-day29/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">[Day 29] Google AI Hub - 2</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+    <div class="col s12 m3">
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Authors</h5>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Tag Cloud</h5>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12.5px;">AI Hub</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12.5px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12.5px;">Dialogflow</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 17.5px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 17.5px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Shopee/" style="font-size: 12.5px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 17.5px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 15px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 17.5px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 17.5px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 17.5px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Archives</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Recents</h5>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/">[Side project] KinectV2 applications migrates to OpenPose</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/">[TIL] New service sharing: Hex.tech</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/09/14/Take-a-break-and-review-this-year/">Take a break and review this year</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/">Set godaddy domain and build hugo on gitlab pages</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/">品牌instagram成為人氣王的經營方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  
+  
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2020 Joseph Chou
+        <span class="social-network">
+        
+          
+            <a target="_blank"  href="mailto:joseph780116@msn.com">
+              <i class="white-text fa fa-envelope"></i>
+            </a>
+            
+        
+          
+            <a target="_blank"  href="https://github.com/josephMG">
+              <i class="white-text fa fa-github"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
+              <i class="white-text fa fa-linkedin"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
+              <i class="white-text fa fa-facebook"></i>
+            </a>
+          
+        
+        </span>
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>

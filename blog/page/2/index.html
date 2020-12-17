@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Blog page 2 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Engineer &#x2F; Marketing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Joseph &amp; Sandy">
+<meta property="og:url" content="https://josephmg.github.io/blog/page/2/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Engineer &#x2F; Marketing">
+<meta property="og:locale">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Fullstack">
+<meta property="article:tag" content="ruby">
+<meta property="article:tag" content="rails">
+<meta property="article:tag" content="reactjs">
+<meta property="article:tag" content="laravel">
+<meta property="article:tag" content="nodejs">
+<meta name="twitter:card" content="summary">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/css/vendors.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46261454-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  
+<script src="/js/vendors.js"></script>
+
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    <div class="container">
+  <div class="row">
+    <div class="col s12 m9">
+
+      
+
+      
+        
+
+      <article id="blog-ithelp-2019-day28" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/10/06/ithelp-2019-day28/">[Day 28] Google AI Hub - 1</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-06T07:30:21.000Z" itemprop="datePublished">Oct 06, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <blockquote>
+<p>話說照<a href="/blog/2019/09/09/ithelp-2019-day1/" title="第一天">第一天</a>的規劃，今天本來要寫<a target="_blank" rel="noopener" href="https://cloud.google.com/recommendations">Recommendation AI</a>，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。</p>
+</blockquote>
+<h3 id="ai-hub"><a class="header-anchor" href="#ai-hub"></a>AI Hub</h3>
+<p>今天找其他的玩具來玩，翻到了<strong>AI Hub</strong>，Hub會讓人直接連想到集線器，<strong>AI Hub</strong>就是把很多AI、ML集中在一起的平台，你可以在上面使用大家的AI model，也可以分享自己的AI上去給大家用。</p>
+<p>我今天會來介紹其中幾個內容：<strong>service</strong>、<strong>notebook</strong>、<strong>tensorflow module</strong>，入門一下AI Hub。</p>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/10/06/ithelp-2019-day28/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/" data-id="ckisbvadf002401pc9kp89xfj" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AI-Hub/" rel="tag">AI Hub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day27" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/10/05/ithelp-2019-day27/">[Day 27] Google AutoML Table - 2</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-05T07:30:18.000Z" itemprop="datePublished">Oct 05, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。<br>
+<img src="/blog/2019/10/05/ithelp-2019-day27/deployed.jpg" alt="deployed"></p>
+<blockquote>
+<p>大家可以先拿<a href="/blog/2019/10/04/ithelp-2019-day26/" title="昨天">昨天</a>的資料在UI介面上online predict一下。</p>
+</blockquote>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/10/05/ithelp-2019-day27/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/" data-id="ckisbvade002101pc5sfehhvh" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AutoML-Table/" rel="tag">AutoML Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day26" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/10/04/ithelp-2019-day26/">[Day 26] Google AutoML Table - 1</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-04T07:30:15.000Z" itemprop="datePublished">Oct 04, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>因為篇幅關係，昨天的<a href="/blog/2019/10/03/ithelp-2019-day25/" title="Dialogflow">Dialogflow</a>沒有寫到最終章，就要先跳來AutoML Table了。</p>
+<h3 id="來點簡介再開始"><a class="header-anchor" href="#來點簡介再開始"></a>來點簡介再開始</h3>
+<p>AutoML Table是一種<strong>supervised learning</strong>，並透過表格資料訓練模型。用表格中的<code>target</code>欄位進行預測，還有一些用來學習的<code>features</code>特徵欄位。而在訓練之前我們該做的是：蒐集、準備資料、訓練、評估、測試、最後是預測。</p>
+<blockquote>
+<p>當然還有更詳細的介紹都在這裡：<a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/docs/beginners-guide?authuser=1">https://cloud.google.com/automl-tables/docs/beginners-guide?authuser=1</a></p>
+</blockquote>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/10/04/ithelp-2019-day26/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/" data-id="ckisbvad7001r01pcf7hc9qmj" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AutoML-Table/" rel="tag">AutoML Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day25" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/10/03/ithelp-2019-day25/">[Day 25] Google Dialogflow - 2</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-03T07:30:12.000Z" itemprop="datePublished">Oct 03, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>每個系列的第二篇，就是踏入API的世界。今天要入門的是Dialogflow的API，不囉嗦先丟上<a target="_blank" rel="noopener" href="https://cloud.google.com/dialogflow/docs/">文件</a>。</p>
+<blockquote>
+<p>忘了前置動作的可以參考<a href="/blog/2019/09/11/ithelp-2019-day3/" title="第三天">第三天</a>的文章。</p>
+</blockquote>
+<a href="/blog/2019/10/02/ithelp-2019-day24/" title="昨天">昨天</a>有了`Intent`、`Response`的相關認知，還知道了有兩個預設的`Default fallback intent`、`Default welcome intent`，今天的進度可以快一些。
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/10/03/ithelp-2019-day25/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/03/ithelp-2019-day25/" data-id="ckisbvada001u01pcam4sdsf9" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Dialogflow/" rel="tag">Dialogflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day24" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/10/02/ithelp-2019-day24/">[Day 24] Google Dialogflow - 1</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-02T07:30:09.000Z" itemprop="datePublished">Oct 02, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天要介紹新的服務：<a target="_blank" rel="noopener" href="https://cloud.google.com/dialogflow/">Dialogflow</a>。這部分說明文件繞來繞去，最後導到新的網址：<a target="_blank" rel="noopener" href="https://cloud.google.com/dialogflow/docs/how">https://cloud.google.com/dialogflow/docs/how</a></p>
+<p>這邊比較可惜是沒有簡易的測試可以玩，我們就先透過UI建立一個agent，建立一個簡單的Dialogflow流程體驗一下。</p>
+<blockquote>
+<p>快來這邊體驗Dialogflow的UI吧：<a target="_blank" rel="noopener" href="https://dialogflow.cloud.google.com/#/getStarted">https://dialogflow.cloud.google.com/#/getStarted</a></p>
+</blockquote>
+<h4 id="建立agent：https-dialogflow-cloud-google-com-newagent"><a class="header-anchor" href="#建立agent：https-dialogflow-cloud-google-com-newagent"></a>建立Agent：<a target="_blank" rel="noopener" href="https://dialogflow.cloud.google.com/#/newAgent">https://dialogflow.cloud.google.com/#/newAgent</a></h4>
+<p>選擇中文並選擇project以後，按下建立就可以建立一個新的dialogflow。<br>
+<img src="/blog/2019/10/02/ithelp-2019-day24/create-agent.jpg" alt="create agent"></p>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/10/02/ithelp-2019-day24/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/02/ithelp-2019-day24/" data-id="ckisbvad3001m01pc4cebb6xp" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Dialogflow/" rel="tag">Dialogflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day23" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/10/01/ithelp-2019-day23/">[Day 23] Google Cloud Speech-to-Text - 子系列最終章</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-01T07:30:07.000Z" itemprop="datePublished">Oct 01, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>因為這邊沒有AutoML的關係，所以今天是Speech-to-Text的最後一篇。</p>
+<p>在doc文件裡的<a target="_blank" rel="noopener" href="https://cloud.google.com/speech-to-text/docs/streaming-recognize?authuser=1">這篇</a>是介紹如何使用Mic直接stream翻譯成文字，但我docker環境沒特別access host的mic，所以沒有測試這段。</p>
+<h4 id="中文speech-to-text"><a class="header-anchor" href="#中文speech-to-text"></a>中文Speech-to-Text</h4>
+<p>仔細測了一下，<a href="/blog/2019/09/30/ithelp-2019-day22/" title="昨天">昨天</a>的範例無法直接串接中文語音轉文字，原來是因為昨天使用的版本是<code>v1</code>，但中文相關的分析必須使用<code>v1p1beta1</code>，另一個原因是之前的檔案<code>try.m4a</code>一直測試都無法讀取，我把他轉為<code>try.mp3</code>以後，才可以順利解析。</p>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/10/01/ithelp-2019-day23/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/01/ithelp-2019-day23/" data-id="ckisbvacz001g01pc030n57v8" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Speech-to-Text/" rel="tag">Speech-to-Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day22" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/09/30/ithelp-2019-day22/">[Day 22] Google Cloud Speech-to-Text - 2</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-09-30T07:30:04.000Z" itemprop="datePublished">Sep 30, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>這個步調而言，今天就是Cloud Speech-to-Text API串接，前情提要一樣是要先建立project、Enable API、下載credential json之類的。忘了的人記得看<a href="/blog/2019/09/11/ithelp-2019-day3/" title="這系列第三天">這系列第三天</a>的文章。</p>
+<p>好，現在要先來把test data抓下來，我們可以在google的<a target="_blank" rel="noopener" href="https://github.com/GoogleCloudPlatform/golang-samples/tree/master/speech/testdata">github</a>上找到很多檔案可以測試，我這邊抓的是<code>audio.raw</code>，並把它放到testdata/speech_to_text資料夾下。</p>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/09/30/ithelp-2019-day22/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/30/ithelp-2019-day22/" data-id="ckisbvacu001901pcdkzybz1w" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Speech-to-Text/" rel="tag">Speech-to-Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day21" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/09/29/ithelp-2019-day21/">[Day 21] Google Cloud Speech-to-Text - 1</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-09-29T07:30:02.000Z" itemprop="datePublished">Sep 29, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天來講第六個服務，寫到第21天終於第六個了。這個服務跟前幾天的<a href="/blog/tags/Text-to-Speech/">Text-to-Speech</a>剛好相反，是把聲音轉成文字。這服務號稱可以辨識120種語言跟其變化，更開心的是它可以辨識<strong>中文</strong>，還有廣東話、日文之類的語言也都可以。</p>
+<p>當然每個系列的第一天都是玩一下他提供的demo，不過這很像是最後一個有提供demo的服務，接下來還得要調整步調。<br>
+大家可以先透過錄音程式錄一段話，然後再將檔案上傳：<br>
+<img src="/blog/2019/09/29/ithelp-2019-day21/voice-recorder.jpg" alt="voice recorder"></p>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/09/29/ithelp-2019-day21/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/29/ithelp-2019-day21/" data-id="ckisbvad1001k01pcfen9f9hj" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Speech-to-Text/" rel="tag">Speech-to-Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day20" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/09/28/ithelp-2019-day20/">[Day 20] Google Cloud Text-to-Speech - 子系列最終章</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-09-28T07:29:59.000Z" itemprop="datePublished">Sep 28, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天是這子系列的最後一篇，因為Text-to-Speech沒有AutoML UI介面可以操作，無奈只好讓這邊結束這回合。</p>
+<p>按照進度，這篇必須更深入介紹Text-to-Speech API，來看看今天的兩個主題吧。</p>
+<h3 id="列出voice清單"><a class="header-anchor" href="#列出voice清單"></a><a target="_blank" rel="noopener" href="https://cloud.google.com/text-to-speech/docs/list-voices">列出Voice清單</a></h3>
+<p>下面這段code可以列出支援的語言，並提供不同種的發聲方式。</p>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/09/28/ithelp-2019-day20/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/28/ithelp-2019-day20/" data-id="ckisbvacx001d01pc273mduap" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Text-to-Speech/" rel="tag">Text-to-Speech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="blog-ithelp-2019-day19" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/09/27/ithelp-2019-day19/">[Day 19] Google Cloud Text-to-Speech - 2</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-09-27T07:29:57.000Z" itemprop="datePublished">Sep 27, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門<a target="_blank" rel="noopener" href="https://cloud.google.com/text-to-speech/docs/?hl=zh-tw">Cloud Text-to-Speech API</a>吧。</p>
+<blockquote>
+<p>前情提要：記得先<a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/library">Enable API</a>，放置環境變數的教學可以看<a href="/blog/2019/09/11/ithelp-2019-day3/" title="這系列第三天">這系列第三天</a>的文章<br>
+語言一樣使用Golang，然後跑在docker裡，之後也會放上github</p>
+</blockquote>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/09/27/ithelp-2019-day19/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/27/ithelp-2019-day19/" data-id="ckisbvacq001501pc4fp69hz5" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Text-to-Speech/" rel="tag">Text-to-Speech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+
+
+      
+        <nav id="page-nav">
+          <a class="extend prev" rel="prev" href="/blog/">&amp;laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Next &amp;raquo;</a>
+        </nav>
+      
+
+
+
+    </div>
+    <div class="col s12 m3">
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Authors</h5>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Tag Cloud</h5>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12.5px;">AI Hub</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12.5px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12.5px;">Dialogflow</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 17.5px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 17.5px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Shopee/" style="font-size: 12.5px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 17.5px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 15px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 17.5px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 17.5px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 17.5px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Archives</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Recents</h5>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/">[Side project] KinectV2 applications migrates to OpenPose</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/">[TIL] New service sharing: Hex.tech</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/09/14/Take-a-break-and-review-this-year/">Take a break and review this year</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/">Set godaddy domain and build hugo on gitlab pages</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/">品牌instagram成為人氣王的經營方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  
+  
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2020 Joseph Chou
+        <span class="social-network">
+        
+          
+            <a target="_blank"  href="mailto:joseph780116@msn.com">
+              <i class="white-text fa fa-envelope"></i>
+            </a>
+            
+        
+          
+            <a target="_blank"  href="https://github.com/josephMG">
+              <i class="white-text fa fa-github"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
+              <i class="white-text fa fa-linkedin"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
+              <i class="white-text fa fa-facebook"></i>
+            </a>
+          
+        
+        </span>
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>

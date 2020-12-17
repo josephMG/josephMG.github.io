@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 26] Google AutoML Table - 1 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="因為篇幅關係，昨天的Dialogflow沒有寫到最終章，就要先跳來AutoML Table了。 來點簡介再開始 AutoML Table是一種supervised learning，並透過表格資料訓練模型。用表格中的target欄位進行預測，還有一些用來學習的features特徵欄位。而在訓練之前我們該做的是：蒐集、準備資料、訓練、評估、測試、最後是預測。  當然還有更詳細的介紹都在這裡：http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 26] Google AutoML Table - 1">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="因為篇幅關係，昨天的Dialogflow沒有寫到最終章，就要先跳來AutoML Table了。 來點簡介再開始 AutoML Table是一種supervised learning，並透過表格資料訓練模型。用表格中的target欄位進行預測，還有一些用來學習的features特徵欄位。而在訓練之前我們該做的是：蒐集、準備資料、訓練、評估、測試、最後是預測。  當然還有更詳細的介紹都在這裡：http">
+<meta property="og:locale">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/create-dataset.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/import-data.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/csv-file.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/select-target.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/analyze.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/train.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/finish-training.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/evaluate.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/feature-importance.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/online-prediction.jpg">
+<meta property="article:published_time" content="2019-10-04T07:30:15.000Z">
+<meta property="article:modified_time" content="2020-12-08T06:33:31.000Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="AutoML Table">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/create-dataset.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/css/vendors.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46261454-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  
+<script src="/js/vendors.js"></script>
+
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12 m9">
+
+
+      <article id="blog-ithelp-2019-day26" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 26] Google AutoML Table - 1
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-10-04T07:30:15.000Z" itemprop="datePublished">Oct 04, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>因為篇幅關係，昨天的<a href="/blog/2019/10/03/ithelp-2019-day25/" title="Dialogflow">Dialogflow</a>沒有寫到最終章，就要先跳來AutoML Table了。</p>
+<h3 id="來點簡介再開始"><a class="header-anchor" href="#來點簡介再開始"></a>來點簡介再開始</h3>
+<p>AutoML Table是一種<strong>supervised learning</strong>，並透過表格資料訓練模型。用表格中的<code>target</code>欄位進行預測，還有一些用來學習的<code>features</code>特徵欄位。而在訓練之前我們該做的是：蒐集、準備資料、訓練、評估、測試、最後是預測。</p>
+<blockquote>
+<p>當然還有更詳細的介紹都在這裡：<a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/docs/beginners-guide?authuser=1">https://cloud.google.com/automl-tables/docs/beginners-guide?authuser=1</a></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="開始動手做"><a class="header-anchor" href="#開始動手做"></a>開始動手做</h3>
+<p>我們跟著<a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/docs/quickstart?authuser=1">這邊</a>的步驟，開始在AutoML Table上操作。</p>
+<blockquote>
+<p>啟用API可以參考<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10214988">第四天</a>的文章</p>
+</blockquote>
+<ol>
+<li>
+<p>Create dataset<br>
+每次進到AutoML的第一步都是要先建立個資料集，名稱內符號還是只允許下底線 <code>_</code><br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/create-dataset.jpg" alt="create dataset"></p>
+</li>
+<li>
+<p>Import data<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/import-data.jpg" alt="import data"><br>
+匯入資料有三種方式：從BigQuery匯入、從Google cloud storage匯入、從本地檔案匯入，範例上給了一個gcs位置<code>cloud-ml-tables-data/bank-marketing.csv</code>，我們就選<strong>從Cloud storage匯入</strong>的選項。</p>
+</li>
+</ol>
+<p>不免俗還是要觀察一下csv，至少知道以後要塞資料要怎麼塞。<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/csv-file.jpg" alt="csv file"><br>
+恩，第一欄可以看出來是schema name，接下來每列就是每個column value。</p>
+<ol start="3">
+<li>Select target<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/select-target.jpg" alt="select target"><br>
+匯入完會需要在schema選擇Target欄位的動作，我們這邊選的是存款欄位<code>deposit</code>，然後就continue吧。</li>
+</ol>
+<p>事實上這個data來自<a target="_blank" rel="noopener" href="https://datahub.io/machine-learning/bank-marketing#data-cli">datahub</a>，是用來預測客戶貸款是否是由銀行辦理，所以你可以在datahub上看到<a target="_blank" rel="noopener" href="https://datahub.io/machine-learning/bank-marketing#attribute-information">各個欄位的簡介</a>。</p>
+<ol start="4">
+<li>
+<p>Analyze<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/analyze.jpg" alt="analyze"><br>
+進到分析以後，會吐出一些基本的統計數值給你看，像是<code>Mean</code>、<code>Standard Deviation</code>，還有跟target的關聯性<code>correlation with Target</code>等等。<br>
+這邊確定沒問題就可以進到下一步Train。</p>
+</li>
+<li>
+<p>Train<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/train.jpg" alt="train"><br>
+進入Train就是要準備付錢了，所以一些設定要好好考慮一下，<code>Budget</code>可以設定時數最大值，避免被索取過多費用，旁邊的<code>問號?</code>也有建議資料量級距該設定的Budget給我們參考。</p>
+</li>
+</ol>
+<blockquote>
+<p>不過根據<a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/pricing?authuser=1">定價</a>說明，他們有提供一些免費用量<br>
+<strong>Free trial</strong>: You can try AutoML Tables for free by using 6 free node hours each for training and for batch prediction, per billing account. Your free node hours are issued right before you create your first model, and you have up to one year to use them.</p>
+</blockquote>
+<p>OK以後就是一陣子的訓練…，設定budget為<code>1</code>以後差不多一小時左右完成訓練，<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/finish-training.jpg" alt="finish training"></p>
+<ol start="6">
+<li>
+<p>Evaluate<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/evaluate.jpg" alt="evaluate"><br>
+Evaluate步驟則可以看出來，target為2的樣本數少很多，錯誤率也會比較高一點。但target為1的預測就相對精準許多。<br>
+然後<code>Duration</code>跟預測target的關聯度會比較高。<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/feature-importance.jpg" alt="feature importance"></p>
+</li>
+<li>
+<p>Prediction<br>
+<img src="/blog/2019/10/04/ithelp-2019-day26/online-prediction.jpg" alt="online prediction"><br>
+在最後預測這個階段，<code>Batch prediction</code>比較沒什麼特別的，就是把檔案丟上去給model去批次預測大量使用者的<code>deposit</code>結果。但這邊有個<code>Online prediction</code>可以讓我們填入一些數值，讓他直接根據數值馬上給你預測結果。這會是UI比較吃香的部分，讓很多沒有coding能力的人可以馬上上手。</p>
+</li>
+</ol>
+<blockquote>
+<p>online prediction前記得要先deploy喔。</p>
+</blockquote>
+<p>寫到這邊差不多把AutoML table看完了，確實節省了很多寫code的困擾，只要有<code>整理好的資料</code>，隨時都可以幫我們測出結果。</p>
+<p>OK，好，今天的文章就寫到這邊，謝謝各位的觀看。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/04/ithelp-2019-day26/" data-id="ckisbvad7001r01pcf7hc9qmj" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AutoML-Table/" rel="tag">AutoML Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/blog/2019/10/05/ithelp-2019-day27/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">[Day 27] Google AutoML Table - 2</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/blog/2019/10/03/ithelp-2019-day25/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">[Day 25] Google Dialogflow - 2</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+    <div class="col s12 m3">
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Authors</h5>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Tag Cloud</h5>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12.5px;">AI Hub</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12.5px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12.5px;">Dialogflow</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 17.5px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 17.5px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Shopee/" style="font-size: 12.5px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 17.5px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 15px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 17.5px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 17.5px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 17.5px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Archives</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Recents</h5>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/">[Side project] KinectV2 applications migrates to OpenPose</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/">[TIL] New service sharing: Hex.tech</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/09/14/Take-a-break-and-review-this-year/">Take a break and review this year</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/">Set godaddy domain and build hugo on gitlab pages</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/">品牌instagram成為人氣王的經營方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  
+  
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2020 Joseph Chou
+        <span class="social-network">
+        
+          
+            <a target="_blank"  href="mailto:joseph780116@msn.com">
+              <i class="white-text fa fa-envelope"></i>
+            </a>
+            
+        
+          
+            <a target="_blank"  href="https://github.com/josephMG">
+              <i class="white-text fa fa-github"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
+              <i class="white-text fa fa-linkedin"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
+              <i class="white-text fa fa-facebook"></i>
+            </a>
+          
+        
+        </span>
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>

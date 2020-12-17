@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 10] Google Natural Language - 1 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="今天是Natural Language的第一篇，這是一個可以用來分析語意並萃取出你要的資訊的工具。跟前面的服務一樣，也分成AutoML Natural Language跟Natural Language API。  AutoML Natural Language：提供一個UI介面訓練自己的Model，並用自己的Model做語意分析、詞彙分類之類的工作。 Natural Language API：用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 10] Google Natural Language - 1">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="今天是Natural Language的第一篇，這是一個可以用來分析語意並萃取出你要的資訊的工具。跟前面的服務一樣，也分成AutoML Natural Language跟Natural Language API。  AutoML Natural Language：提供一個UI介面訓練自己的Model，並用自己的Model做語意分析、詞彙分類之類的工作。 Natural Language API：用">
+<meta property="og:locale">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/Demo.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/entities.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/Sentiment.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/syntax.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/Categories.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/chinese.jpg">
+<meta property="article:published_time" content="2019-09-18T07:29:36.000Z">
+<meta property="article:modified_time" content="2020-12-08T06:33:31.000Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="Natural Language">
+<meta property="article:tag" content="鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/Demo.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/css/vendors.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46261454-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  
+<script src="/js/vendors.js"></script>
+
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12 m9">
+
+
+      <article id="blog-ithelp-2019-day10" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 10] Google Natural Language - 1
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-09-18T07:29:36.000Z" itemprop="datePublished">Sep 18, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天是<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/">Natural Language</a>的第一篇，這是一個可以用來分析語意並萃取出你要的資訊的工具。跟前面的服務一樣，也分成AutoML Natural Language跟Natural Language API。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/quickstart">AutoML Natural Language</a>：提供一個UI介面訓練自己的Model，並用自己的Model做語意分析、詞彙分類之類的工作。</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/quickstart">Natural Language API</a>：用預先訓練好的API直接給你基本的分析，讓我們更快理解Natural Language的語意、詞彙、內容分析之類的功能。</li>
+</ul>
+<a id="more"></a>
+<h3 id="try-the-demo"><a class="header-anchor" href="#try-the-demo"></a>Try the demo</h3>
+<p>好，我們也是先來玩看看它個<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/#natural-language-api-demo">Demo</a>。<br>
+<img src="/blog/2019/09/18/ithelp-2019-day10/Demo.jpg" alt="Demo.jpg"></p>
+<p>範例裡已經預先載好一段文字，我們就直接跑分析看看。這邊很快地分析出了一些資訊：</p>
+<h4 id="entities"><a class="header-anchor" href="#entities"></a>Entities</h4>
+<p><img src="/blog/2019/09/18/ithelp-2019-day10/entities.jpg" alt="entities.jpg"></p>
+<p>一段文字丟進去以後，快速的找到了<strong>ORGANIZATION</strong>、<strong>LOCATION</strong>、<strong>ADDRESS</strong>、<strong>PERSON</strong>、<strong>PRICE</strong>等等的資訊。</p>
+<blockquote>
+<p>值得注意的是有個<strong>Salience</strong>：Salience shows importance or centrality of an entity to the entire document text, ranges from 0 (less salient) to 1 (highly salient).)<br>
+意思是對整段文字的重要性。</p>
+</blockquote>
+<h4 id="sentiment"><a class="header-anchor" href="#sentiment"></a>Sentiment</h4>
+<p><img src="/blog/2019/09/18/ithelp-2019-day10/Sentiment.jpg" alt="Sentiment.jpg"></p>
+<blockquote>
+<p>Score = [-1.0, 1.0], Magnitude = [0, inf)<br>
+分成段落及Entities的情緒分析，整個文章可以看出第一段比較沒什麼情緒，但第二段被判斷有正向情緒。<br>
+下半段則顯示有哪些Entities有情緒及強度，可以看出<code>users</code>、<code>phones</code>這兩個字有較高的情緒與強度。</p>
+</blockquote>
+<h4 id="syntax"><a class="header-anchor" href="#syntax"></a>Syntax</h4>
+<p><img src="/blog/2019/09/18/ithelp-2019-day10/syntax.jpg" alt="syntax.jpg"><br>
+這邊分析整個文章的結構，分兩段，所以有兩張結構圖。並分析出<code>Dependency依賴關係</code>、<code>Parse Label</code>、<code>Part of speech詞性</code>、<code>Lemma(感覺是從哪變化而來)</code>、<code>Morphology型態</code>。是一個對字詞結構分析很有幫助的工具</p>
+<h4 id="categories"><a class="header-anchor" href="#categories"></a>Categories</h4>
+<p><img src="/blog/2019/09/18/ithelp-2019-day10/Categories.jpg" alt="Categories.jpg"><br>
+這邊是分析這是屬於哪個類型的文章，判斷以後AI給他分類為<code>/Internet &amp; Telecom/Mobile &amp; Wireless</code>也是滿準確的。</p>
+<blockquote>
+<p>這邊有更多的分類：<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/categories">https://cloud.google.com/natural-language/docs/categories</a></p>
+</blockquote>
+<p>這篇文章差不多結束，最後來玩一下中文分析，我從<a target="_blank" rel="noopener" href="https://www.npm.gov.tw/Article.aspx?sNo=03001502">故宮</a>官網簡介第一段擷取下來，貼進去語意分析看看結果。<br>
+<img src="/blog/2019/09/18/ithelp-2019-day10/chinese.jpg" alt="chinese.jpg"><br>
+在<code>Sentiment</code>跟<code>Categories</code>的部分還不是很支援，但<code>Entities</code>跟<code>Syntax</code>倒是都可以看到結果。</p>
+<p>OK，今天工作提早結束，謝謝大家。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/18/ithelp-2019-day10/" data-id="ckisbvabx000f01pc7vhcftuw" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Natural-Language/" rel="tag">Natural Language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/blog/2019/09/19/ithelp-2019-day11/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">[Day 11] Google Natural Language - 2</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/blog/2019/09/17/ithelp-2019-day9/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">[Day 9] Google Video Intelligence AI - 子系列最終章</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+    <div class="col s12 m3">
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Authors</h5>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Tag Cloud</h5>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12.5px;">AI Hub</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12.5px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12.5px;">Dialogflow</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 17.5px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 17.5px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Shopee/" style="font-size: 12.5px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 17.5px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 15px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 17.5px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 17.5px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 17.5px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Archives</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Recents</h5>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/">[Side project] KinectV2 applications migrates to OpenPose</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/">[TIL] New service sharing: Hex.tech</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/09/14/Take-a-break-and-review-this-year/">Take a break and review this year</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/">Set godaddy domain and build hugo on gitlab pages</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/">品牌instagram成為人氣王的經營方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  
+  
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2020 Joseph Chou
+        <span class="social-network">
+        
+          
+            <a target="_blank"  href="mailto:joseph780116@msn.com">
+              <i class="white-text fa fa-envelope"></i>
+            </a>
+            
+        
+          
+            <a target="_blank"  href="https://github.com/josephMG">
+              <i class="white-text fa fa-github"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
+              <i class="white-text fa fa-linkedin"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
+              <i class="white-text fa fa-facebook"></i>
+            </a>
+          
+        
+        </span>
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>

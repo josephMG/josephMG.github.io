@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 13] Google Natural Language - 子系列最終章 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="我們今天玩的是AutoML Natural Language，可以透過GCP左邊的sidebar，找到Natural Language打開，或直接點這個連結   AutoML Natural Language的收費方式記得先看這裡：https:&#x2F;&#x2F;cloud.google.com&#x2F;natural-language&#x2F;automl&#x2F;pricing?_ga&#x3D;2.125750730.-1764044900">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 13] Google Natural Language - 子系列最終章">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="我們今天玩的是AutoML Natural Language，可以透過GCP左邊的sidebar，找到Natural Language打開，或直接點這個連結   AutoML Natural Language的收費方式記得先看這裡：https:&#x2F;&#x2F;cloud.google.com&#x2F;natural-language&#x2F;automl&#x2F;pricing?_ga&#x3D;2.125750730.-1764044900">
+<meta property="og:locale">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/GCP.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/switch-account.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/500-error.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/new-dataset.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/import.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/text.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/row-1-result.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/start-train.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/finish-training.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/evaluate.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/test-and-use.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/prediction-results.jpg">
+<meta property="article:published_time" content="2019-09-21T07:29:43.000Z">
+<meta property="article:modified_time" content="2020-12-08T06:33:31.000Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="Natural Language">
+<meta property="article:tag" content="鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/GCP.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/css/vendors.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46261454-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  
+<script src="/js/vendors.js"></script>
+
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12 m9">
+
+
+      <article id="blog-ithelp-2019-day13" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 13] Google Natural Language - 子系列最終章
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-09-21T07:29:43.000Z" itemprop="datePublished">Sep 21, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>我們今天玩的是AutoML Natural Language，可以透過GCP左邊的sidebar，找到Natural Language打開，或直接點<a target="_blank" rel="noopener" href="https://console.cloud.google.com/natural-language">這個連結</a><br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/GCP.jpg" alt="GCP"></p>
+<blockquote>
+<p>AutoML Natural Language的收費方式記得先看這裡：<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/automl/pricing?_ga=2.125750730.-1764044900.1562297905">https://cloud.google.com/natural-language/automl/pricing?_ga=2.125750730.-1764044900.1562297905</a></p>
+</blockquote>
+<a id="more"></a>
+<p>這邊很有意思的是在<code>AutoML Text Classification</code>跟<code>AutoML Sentiment Analysis</code>(圖中兩個紅色的項目)在寫文章的時候，如果你驗證的不是google的第一個帳號，而是選其他帳號登入的話，允許授權後會一直跳500錯誤。<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/switch-account.jpg" alt="switch account"><br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/500-error.jpg" alt="500 error"></p>
+<p>沒關係，這部份我們就選<code>AutoML Entity Extraction</code>，就玩他這個功能，至少他的授權是成功的。<br>
+然後我們就照這份<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/automl/entity-analysis/docs/quickstart">Quickstarts</a>來操作，裡面也有範例檔案<code>gs://cloud-ml-data/NL-entity/dataset.csv</code></p>
+<p>那我們就來New一個dataset吧！<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/new-dataset.jpg" alt="new dataset"></p>
+<p>Import是吃一個CSV檔案，也有提供檔案格式，我們載下來的檔案長這個樣子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TRAIN,gs://cloud-ml-data/NL-entity/train.jsonl</span><br><span class="line">TEST,gs://cloud-ml-data/NL-entity/test.jsonl</span><br><span class="line">VALIDATION,gs://cloud-ml-data/NL-entity/validation.jsonl%</span><br></pre></td></tr></table></figure>
+<p>前面的SET可加可不加，但後面要個別帶入jsonl的資料集。輸入後長下面這樣<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/import.jpg" alt="import"></p>
+<p>經過一段時間的<code>Processing text items</code>(大概10分鐘)，就會有結果<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/text.jpg" alt="text"><br>
+至於這些label怎麼來的？我們就來看看jsonl裡面的內容吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;annotations&quot;: [&#123;&quot;text_extraction&quot;: &#123;&quot;text_segment&quot;: &#123;&quot;end_offset&quot;: 54, &quot;start_offset&quot;: 27&#125;&#125;, &quot;display_name&quot;: &quot;SpecificDisease&quot;&#125;, &#123;&quot;text_extraction&quot;: &#123;&quot;text_segment&quot;: &#123;&quot;end_offset&quot;: 173, &quot;start_offset&quot;: 156&#125;&#125;, &quot;display_name&quot;: &quot;SpecificDisease&quot;&#125;, &#123;&quot;text_extraction&quot;: &#123;&quot;text_segment&quot;: &#123;&quot;end_offset&quot;: 179, &quot;start_offset&quot;: 176&#125;&#125;, &quot;display_name&quot;: &quot;SpecificDisease&quot;&#125;, &#123;&quot;text_extraction&quot;: &#123;&quot;text_segment&quot;: &#123;&quot;end_offset&quot;: 246, &quot;start_offset&quot;: 243&#125;&#125;, &quot;display_name&quot;: &quot;Modifier&quot;&#125;, &#123;&quot;text_extraction&quot;: &#123;&quot;text_segment&quot;: &#123;&quot;end_offset&quot;: 340, &quot;start_offset&quot;: 337&#125;&#125;, &quot;display_name&quot;: &quot;Modifier&quot;&#125;, &#123;&quot;text_extraction&quot;: &#123;&quot;text_segment&quot;: &#123;&quot;end_offset&quot;: 698, &quot;start_offset&quot;: 695&#125;&#125;, &quot;display_name&quot;: &quot;Modifier&quot;&#125;], &quot;text_snippet&quot;: &#123;&quot;content&quot;: &quot;1301937\tMolecular basis of hexosaminidase A deficiency and pseudodeficiency in the Berks County Pennsylvania Dutch.\tFollowing the birth of two infants with Tay-Sachs disease ( TSD ) , a non-Jewish , Pennsylvania Dutch kindred was screened for TSD carriers using the biochemical assay . A high frequency of individuals who appeared to be TSD heterozygotes was detected ( Kelly et al . , 1975 ) . Clinical and biochemical evidence suggested that the increased carrier frequency was due to at least two altered alleles for the hexosaminidase A alpha-subunit . We now report two mutant alleles in this Pennsylvania Dutch kindred , and one polymorphism . One allele , reported originally in a French TSD patient ( Akli et al . , 1991 ) , is a GT-- &gt; AT transition at the donor splice-site of intron 9 . The second , a C-- &gt; T transition at nucleotide 739 ( Arg247Trp ) , has been shown by Triggs-Raine et al . ( 1992 ) to be a clinically benign \&quot; pseudodeficient \&quot; allele associated with reduced enzyme activity against artificial substrate . Finally , a polymorphism [ G-- &gt; A ( 759 ) ] , which leaves valine at codon 253 unchanged , is described  .\n &quot;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://jsonlines.org/">jsonl</a>就是把json一列一列表達的一種格式</p>
+</blockquote>
+<p>這是train.jsonl裡的第一筆資料，就是對content裡的文字把開始跟結束index的範圍框起來，給他一個label。舉例來說<code>&#123;&quot;end_offset&quot;: 54, &quot;start_offset&quot;: 27&#125;</code>給他<code>SpecificDisease</code>這個label，而27~54就是<code>hexosaminidase A deficiency</code>這個字，看明白點就是下圖的結果。<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/row-1-result.jpg" alt="row 1 result"></p>
+<p>好，接下來就train了，<strong>訓練前要注意他有建議至少要100個annotation</strong>：<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/start-train.jpg" alt="start train"></p>
+<p>然後又要經過一段時間的訓練…。大概跑了三個小時之久，你才會看到完成的結果。<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/finish-training.jpg" alt="finish training"></p>
+<p>Evaluate的部分可以看到model result，裡面包含<code>recall</code>、<code>precision</code>，還可以看到每個label的<code>true positive</code>、<code>False positives</code>、<code>False negative</code>等等，就可以依照結果去做調整。<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/evaluate.jpg" alt="evaluate"></p>
+<p>最後到了<code>Test &amp; Use</code>階段，這邊記得要把Model deploy才能做接下來的操作。按下<code>Predict</code>以後就可以看到預測結果了~<br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/test-and-use.jpg" alt="test-and-use.jpg"><br>
+<img src="/blog/2019/09/21/ithelp-2019-day13/prediction-results.jpg" alt="prediction-results"></p>
+<p>好囉，今天就寫到這邊。model跑得比我想像中的還久，而且又遇到有些GCP服務不能用，很令人尷尬的一次經驗。<br>
+OK，謝謝大家的觀看。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/21/ithelp-2019-day13/" data-id="ckisbvac5000k01pca9xldxrv" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Natural-Language/" rel="tag">Natural Language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/blog/2019/09/22/ithelp-2019-day14/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">[Day 14] Google Translation - 1</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/blog/2019/09/20/ithelp-2019-day12/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">[Day 12] Google Natural Language - 3</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+    <div class="col s12 m3">
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Authors</h5>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Tag Cloud</h5>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12.5px;">AI Hub</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12.5px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12.5px;">Dialogflow</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 17.5px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 17.5px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Shopee/" style="font-size: 12.5px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 17.5px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 15px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 17.5px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 17.5px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 17.5px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Archives</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Recents</h5>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/">[Side project] KinectV2 applications migrates to OpenPose</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/">[TIL] New service sharing: Hex.tech</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/09/14/Take-a-break-and-review-this-year/">Take a break and review this year</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/">Set godaddy domain and build hugo on gitlab pages</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/">品牌instagram成為人氣王的經營方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  
+  
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2020 Joseph Chou
+        <span class="social-network">
+        
+          
+            <a target="_blank"  href="mailto:joseph780116@msn.com">
+              <i class="white-text fa fa-envelope"></i>
+            </a>
+            
+        
+          
+            <a target="_blank"  href="https://github.com/josephMG">
+              <i class="white-text fa fa-github"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
+              <i class="white-text fa fa-linkedin"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
+              <i class="white-text fa fa-facebook"></i>
+            </a>
+          
+        
+        </span>
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>
