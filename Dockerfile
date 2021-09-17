@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:12.14-alpine
 
 COPY . /blog
 WORKDIR /blog
