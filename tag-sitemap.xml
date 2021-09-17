@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://josephmg.github.io/blog/tags/serverless/</loc>
+        <lastmod>2021-09-17T11:42:42.317Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/AWS/</loc>
+        <lastmod>2021-09-17T11:42:42.317Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Ruby-on-Rails/</loc>
+        <lastmod>2021-09-17T11:42:42.317Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://josephmg.github.io/blog/tags/KinectV2/</loc>
         <lastmod>2020-12-17T09:28:01.000Z</lastmod>
         <changefreq>weekly</changefreq>

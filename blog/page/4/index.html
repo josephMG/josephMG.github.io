@@ -141,6 +141,80 @@
       
         
 
+      <article id="blog-ithelp-2019-day11" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/blog/2019/09/19/ithelp-2019-day11/">[Day 11] Google Natural Language - 2</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-09-19T07:29:39.000Z" itemprop="datePublished">Sep 19, 2019</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天開始使用<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/quickstart-client-libraries">Natural3Language API</a>，一樣要先Enable API跟下載credential json。</p>
+<blockquote>
+<p>忘記的人可以看<a href="/blog/2019/09/11/ithelp-2019-day3/" title="這系列第三天">這系列第三天</a>的文章回想一下。</p>
+</blockquote>
+<p>在這之前我先重構一下原先的main.go，讓我加上參數去呼叫不同天的Demo api:</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Usage: `docker run -it golang ./app [DayXX]`</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  arg := os.Args[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> arg == <span class="string">&quot;Day3&quot;</span> &#123;</span><br><span class="line">    vision.DetectLabel(os.Stdout, <span class="string">&quot;./testdata/furniture.jpg&quot;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> arg == <span class="string">&quot;Day4&quot;</span> &#123;</span><br><span class="line">    vision.DetectText(os.Stdout, <span class="string">&quot;./testdata/las-vegas.jpg&quot;</span>)</span><br><span class="line">    vision.DetectFaces(os.Stdout, <span class="string">&quot;./testdata/face.jpg&quot;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> arg == <span class="string">&quot;Day7&quot;</span> &#123;</span><br><span class="line">    video.DemoCode(os.Stdout, <span class="string">&quot;gs://cloud-samples-data/video/cat.mp4&quot;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> arg == <span class="string">&quot;Day8&quot;</span> &#123;</span><br><span class="line">    video.ShotChangeURI(os.Stdout, <span class="string">&quot;gs://cloud-samples-data/video/gbikes_dinosaur.mp4&quot;</span>)</span><br><span class="line">    video.TextDetectionGCS(os.Stdout, <span class="string">&quot;gs://python-docs-samples-tests/video/googlework_short.mp4&quot;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> arg == <span class="string">&quot;Day11&quot;</span> &#123;</span><br><span class="line">    language.DemoCode(os.Stdout, <span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/blog/2019/09/19/ithelp-2019-day11/#more" class="waves-effect waves-light btn green lighten-7">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/19/ithelp-2019-day11/" data-id="ckisbvaca000o01pcdsgn6iwa" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Natural-Language/" rel="tag">Natural Language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
       <article id="blog-ithelp-2019-day10" class="article article-type-blog" itemscope itemprop="blogPost">
 
         <div class="article-inner">
@@ -800,82 +874,11 @@
 
 
       
-        
-
-      <article id="blog-ithelp-2019-day1" class="article article-type-blog" itemscope itemprop="blogPost">
-
-        <div class="article-inner">
-          
-
-
-          <header class="article-header">
-          
-              
-  
-    <h1 itemprop="name" class="header">
-      <a class="article-title " href="/blog/2019/09/09/ithelp-2019-day1/">[Day 1] 說說哪裡來的靈感</a>
-    </h1>
-  
-
-
-          
-
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-09-09T07:29:15.000Z" itemprop="datePublished">Sep 09, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
-          </header>
-
-
-          <div class="article-entry " itemprop="articleBody">
-            
-              <p>這系列的第一篇文章，來自於再解一個無窮無盡SSR的bug的時間。<br>
-去年的鐵人賽文章<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20103835/ironman/1806">跟著Google學ML</a> 生不逢時，晚一年出生就可以趕上這波主題賽，今年看到這主題後，努力思考到底可以產出些什麼？上網找了各式各樣的靈感，後來決定介紹一系列的<a target="_blank" rel="noopener" href="https://cloud.google.com/products/#ai-and-machine-learning">Google AI &amp; Machine learning products</a>。獻醜了，這些都是我沒用過的服務，但這也是我參加鐵人賽最主要的目的：練功+卯起來學新知識。</p>
-<p>這裡面的服務這麼多，有可能一一介紹嗎？我也不確定，但確定的是一定會有下面幾個服務：</p>
-            
-          </div>
-
-          
-            <p class="article-more-link">
-              <a href="/blog/2019/09/09/ithelp-2019-day1/#more" class="waves-effect waves-light btn green lighten-7">
-                Read More
-                &nbsp;
-                <i class="fa fa-plus-circle"></i>
-              </a>
-            </p>
-          
-
-          <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/09/09/ithelp-2019-day1/" data-id="ckisbvabz000h01pc5uitc4ip" class="article-share-link">Share</a>
-            
-            
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AI-ML-products/" rel="tag">AI & ML products</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
-
-          </footer>
-
-        </div>
-
-        
-      </article>
-
-
-      
-
-
-
-
-      
 
 
       
         <nav id="page-nav">
-          <a class="extend prev" rel="prev" href="/blog/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span>
+          <a class="extend prev" rel="prev" href="/blog/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/5/">Next &amp;raquo;</a>
         </nav>
       
 
@@ -900,7 +903,7 @@
   <div class="widget-wrap">
     <h5 class="widget-title">Tag Cloud</h5>
     <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12.5px;">AI Hub</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12.5px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12.5px;">Dialogflow</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 17.5px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 17.5px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Shopee/" style="font-size: 12.5px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 17.5px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 15px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 17.5px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 17.5px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 17.5px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12.5px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12.5px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12.5px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12.5px;">Dialogflow</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 17.5px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 17.5px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12.5px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 17.5px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 15px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 17.5px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 17.5px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 17.5px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 10px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
     </div>
   </div>
 
@@ -910,7 +913,7 @@
   <div class="widget-wrap">
     <h5 class="widget-title">Archives</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
     </div>
   </div>
 
@@ -921,6 +924,10 @@
     <h5 class="widget-title">Recents</h5>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/">Ruby on Jets - AWS serverless framework for Ruby on Rails</a>
+          </li>
         
           <li>
             <a href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/">[Side project] KinectV2 applications migrates to OpenPose</a>
@@ -936,10 +943,6 @@
         
           <li>
             <a href="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/">Set godaddy domain and build hugo on gitlab pages</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/">品牌instagram成為人氣王的經營方法</a>
           </li>
         
       </ul>
@@ -963,7 +966,7 @@
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2020 Joseph Chou
+        &copy; 2021 Joseph Chou
         <span class="social-network">
         
           
