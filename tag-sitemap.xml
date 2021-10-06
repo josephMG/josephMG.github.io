@@ -3,29 +3,50 @@
 
 
     <url>
+        <loc>https://josephmg.github.io/blog/tags/Facebook-Conversions-API/</loc>
+        <lastmod>2021-10-06T05:14:17.509Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Facebook-Pixel/</loc>
+        <lastmod>2021-10-06T05:14:17.509Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Marketing/</loc>
+        <lastmod>2021-10-06T05:14:17.509Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://josephmg.github.io/blog/tags/Google-Tag-Manager/</loc>
-        <lastmod>2021-09-23T14:28:20.912Z</lastmod>
+        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/GTM/</loc>
-        <lastmod>2021-09-23T14:28:20.912Z</lastmod>
+        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Google-Analytics-4/</loc>
-        <lastmod>2021-09-23T14:28:20.912Z</lastmod>
+        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/GA4/</loc>
-        <lastmod>2021-09-23T14:28:20.912Z</lastmod>
+        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -123,13 +144,6 @@
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/halloween/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Marketing/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

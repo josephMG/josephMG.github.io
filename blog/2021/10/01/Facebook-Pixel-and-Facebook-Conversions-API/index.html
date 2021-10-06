@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Facebook Pixel and Facebook Conversions API | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Recently I got a Trello ticket to add Facebook Pixel tracking code, and they gave me a token to use. As a frontend engineer on that project, it’s confusing to me, because the token is for Facebook Con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Facebook Pixel and Facebook Conversions API">
+<meta property="og:url" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Recently I got a Trello ticket to add Facebook Pixel tracking code, and they gave me a token to use. As a frontend engineer on that project, it’s confusing to me, because the token is for Facebook Con">
+<meta property="og:locale">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/pixel-home-page.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/conversions-api-settings.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/open-guide.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/generate-token.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/test-events.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/test-events-result.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/view-details.jpg">
+<meta property="article:published_time" content="2021-10-01T08:26:28.000Z">
+<meta property="article:modified_time" content="2021-10-06T05:14:17.509Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Marketing">
+<meta property="article:tag" content="Facebook Pixel">
+<meta property="article:tag" content="Facebook Conversions API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/pixel-home-page.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/css/vendors.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46261454-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  
+<script src="/js/vendors.js"></script>
+
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12 m9">
+
+
+      <article id="blog-Facebook-Pixel-and-Facebook-Conversions-API" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Facebook Pixel and Facebook Conversions API
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2021-10-01T08:26:28.000Z" itemprop="datePublished">Oct 01, 2021</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>Recently I got a Trello ticket to add <a target="_blank" rel="noopener" href="https://www.facebook.com/business/learn/facebook-ads-pixel">Facebook Pixel</a> tracking code, and they gave me a token to use. As a frontend engineer on that project, it’s confusing to me, because the token is for <a target="_blank" rel="noopener" href="https://developers.facebook.com/docs/marketing-api/conversions-api/">Facebook Conversions API</a>. The biggest difference between <a target="_blank" rel="noopener" href="https://developers.facebook.com/docs/marketing-api/conversions-api/">Facebook Conversions API</a> and <a target="_blank" rel="noopener" href="https://www.facebook.com/business/learn/facebook-ads-pixel">Facebook Pixel</a> is Facebook conversions API is invoked on the server, and Facebook Pixel is on the client. Besides, Facebook Conversions API is to solve <a target="_blank" rel="noopener" href="https://blog.hootsuite.com/facebook-conversion-api/">IOS 14 updates</a>. Now, let me write the usage of Facebook Conversions API down.</p>
+<h1 id="get-facebook-conversions-api-token"><a class="header-anchor" href="#get-facebook-conversions-api-token"></a>Get Facebook Conversions API token.</h1>
+<p><img src="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/pixel-home-page.jpg" alt="pixel-home-page"></p>
+<a id="more"></a>
+<p>You may be familiar with this page if you’re using Facebook Pixel. Let’s go to <code>Settings</code> and click <code>Get Started</code> in <code>Conversions API</code>, and select <code>Events</code> we are interested.<br>
+<img src="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/conversions-api-settings.jpg" alt="conversions-api-settings"></p>
+<p>In the final step, clicking <code>Open Implementation Guide</code> then redirects to <code>Using the Conversions API</code> page to <code>Generate Access Token</code>.<br>
+<img src="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/open-guide.jpg" alt="open-guide"><br>
+<img src="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/generate-token.jpg" alt="generate-token"></p>
+<h1 id="make-a-post-request"><a class="header-anchor" href="#make-a-post-request"></a>Make a POST request</h1>
+<blockquote>
+<p>To send new events, make a <code>POST</code> request to this API’s <code>/events</code> edge from this path: <code>https://graph.facebook.com/&#123;API_VERSION&#125;/&#123;PIXEL_ID&#125;/events?access_token=&#123;TOKEN&#125;</code>.</p>
+</blockquote>
+<p>As we saw <a target="_blank" rel="noopener" href="https://developers.facebook.com/docs/marketing-api/conversions-api/using-the-api#send">here</a>, it’s just a POST request. We can try it with <code>Graph API Explorer</code>.<br>
+<img src="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/test-events.jpg" alt="test-event"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;data&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;action_source&quot;</span>: <span class="string">&quot;website&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;event_id&quot;</span>: <span class="number">12345</span>,</span><br><span class="line">      <span class="attr">&quot;event_name&quot;</span>: <span class="string">&quot;TestEvent&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;event_time&quot;</span>: <span class="number">1633340316</span>,</span><br><span class="line">      <span class="attr">&quot;user_data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;client_user_agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.5 Mobile/15E148 Safari/604.1&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;em&quot;</span>: <span class="string">&quot;f660ab912ec121d1b1e928a0bb4bc61b15f5ad44d5efdc4e1c92a25e99b8e44a&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;client_ip_address&quot;</span>: <span class="string">&quot;11.22.33.44&quot;</span> </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;test_event_code&quot;</span>: <span class="string">&quot;TEST99012&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You have to add <code>client_ip_address</code> to JSON, or the POST request won’t be tracked. Now back to the <strong>Test Events</strong> tab to see the result.<br>
+<img src="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/test-events-result.jpg" alt="test-events-result"></p>
+<p>Also, the <strong>View Details</strong> of <code>TestEvents</code> in <strong>Overview</strong> shows the POST request log.<br>
+<img src="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/view-details.jpg" alt="view-details"></p>
+<h1 id="let-s-code"><a class="header-anchor" href="#let-s-code"></a>Let’s Code.</h1>
+<p>I run serverless lambda by AWS CDK, and set the token to AWS SecretManager. The following code is my Stack sample.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">import * as cdk from &#39;@aws-cdk&#x2F;core&#39;;</span><br><span class="line">import * as lambda from &#39;@aws-cdk&#x2F;aws-lambda&#39;;</span><br><span class="line">import * as apigw from &#39;@aws-cdk&#x2F;aws-apigatewayv2&#39;;</span><br><span class="line">import &#123; CorsHttpMethod &#125; from &#39;@aws-cdk&#x2F;aws-apigatewayv2&#x2F;lib&#x2F;http&#x2F;api&#39;;</span><br><span class="line">import * as secretsmanager from &#39;@aws-cdk&#x2F;aws-secretsmanager&#39;;</span><br><span class="line">import * as apigwIntergration from &#39;@aws-cdk&#x2F;aws-apigatewayv2-integrations&#39;;</span><br><span class="line"></span><br><span class="line">const params &#x3D; &#123;</span><br><span class="line">  ApiStack: &#123;</span><br><span class="line">    ENV: &#39;staging&#39;,</span><br><span class="line">    secretManager: &#123;</span><br><span class="line">      arn: &#39;&#123;SecretARN&#125;&#39;,</span><br><span class="line">      keys: [&#39;facebookConversionApiToken&#39;]</span><br><span class="line">    &#125;,</span><br><span class="line">    fbPixelID: &#39;YOUR_PIXEL_ID&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export class ApiStack extends cdk.Stack &#123;</span><br><span class="line">  constructor(scope: cdk.App, id: &quot;ApiStack&quot;, props?: cdk.StackProps) &#123;</span><br><span class="line">    super(scope, id, props);</span><br><span class="line"></span><br><span class="line">    const envParams &#x3D; params[id];</span><br><span class="line">    &#x2F;&#x2F; Dynamoose();</span><br><span class="line">    const &#123; ENV &#125; &#x3D; envParams;</span><br><span class="line">    const layerCommon: lambda.ILayerVersion &#x3D; new lambda.LayerVersion(this, &quot;LayerCommon&quot;, &#123;</span><br><span class="line">      compatibleRuntimes: [lambda.Runtime.NODEJS_14_X],</span><br><span class="line">      code: lambda.Code.fromAsset(&#39;layer&#x2F;common&#39;),</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    const secret &#x3D; secretsmanager.Secret.fromSecretCompleteArn(scope, &#39;ImportedSecret&#39;, envParams.secretManager.arn);</span><br><span class="line">    const secretParams &#x3D; envParams.secretManager.keys.reduce((params, key) &#x3D;&gt; (&#123; ...params, [key]: secret.secretValueFromJson(key) &#125;), &#123;&#125;) as &#123; facebookConversionApiToken: string &#125;;</span><br><span class="line">    const funcDefaultProps &#x3D; &#123;</span><br><span class="line">      runtime: lambda.Runtime.NODEJS_14_X,</span><br><span class="line">      code: new lambda.AssetCode(&#39;src&#39;),</span><br><span class="line">      memorySize: 1536,</span><br><span class="line">      environment: &#123; ENV &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    const facebookConversionLambda &#x3D; (layers: lambda.ILayerVersion[]) &#x3D;&gt; new lambda.Function(scope, &#39;facebookConversion&#39;, &#123;</span><br><span class="line">      ...funcDefaultProps,</span><br><span class="line">      handler: &#39;controllers&#x2F;facebook_conversion&#x2F;index.handler&#39;,</span><br><span class="line">      layers,</span><br><span class="line">      tracing: lambda.Tracing.ACTIVE,</span><br><span class="line">      timeout: cdk.Duration.seconds(300),</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    const FacebookConversionLambda &#x3D; facebookConversionLambda([layerCommon]);</span><br><span class="line"></span><br><span class="line">    [ FacebookConversionLambda ].forEach((lambdaFunc) &#x3D;&gt; &#123;</span><br><span class="line">      const envs: &#123;[key: string]: string&#125; &#x3D; &#123; fbToken: secretParams.facebookConversionApiToken, fbPixelID: envParams.fbPixelID &#125;</span><br><span class="line">      Object.keys(envs).forEach((key) &#x3D;&gt; &#123;</span><br><span class="line">        lambdaFunc.addEnvironment(key, envs[key]);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    const eventLambdaMapping &#x3D; &#123;</span><br><span class="line">      facebookConversion: FacebookConversionLambda,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    const httpApi &#x3D; new apigw.HttpApi(scope, id, &#123;</span><br><span class="line">      createDefaultStage: false,</span><br><span class="line">      corsPreflight: &#123;</span><br><span class="line">        allowHeaders: [&#39;Authorization&#39;, &#39;Content-Type&#39;],</span><br><span class="line">        allowMethods: [CorsHttpMethod.GET, CorsHttpMethod.HEAD, CorsHttpMethod.OPTIONS, CorsHttpMethod.POST, CorsHttpMethod.PUT, CorsHttpMethod.DELETE],</span><br><span class="line">        allowOrigins: [&#39;*&#39;],</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    httpApi.addRoutes(&#123;</span><br><span class="line">      path: &#39;&#x2F;fb_conversion&#39;,</span><br><span class="line">      methods: [apigw.HttpMethod.POST],</span><br><span class="line">      integration: new apigwIntergration.LambdaProxyIntegration(&#123;</span><br><span class="line">        handler: eventLambdaMapping[&quot;facebookConversion&quot;],</span><br><span class="line">      &#125;),</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And here is my lambda and class.<br>
+<strong>lambda</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  responseSuccess,</span><br><span class="line">  responseError,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;../../helpers/response&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> baseHandler = <span class="keyword">async</span> (event: APIGatewayProxyEventV2) =&gt; &#123;</span><br><span class="line">  <span class="comment">/***** Controller actions begin ******/</span></span><br><span class="line">  <span class="keyword">const</span> postConversion = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; event_name, event_id, event_source_url, user_data = &#123;&#125;, custom_data = &#123;&#125; &#125; = <span class="built_in">JSON</span>.parse(event.body || <span class="string">&#x27;&#123;&#125;&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> facebookSsApi = <span class="keyword">new</span> FacebookServerSideApi(</span><br><span class="line">      &#123; <span class="attr">eventName</span>: event_name, <span class="attr">eventId</span>: event_id, <span class="attr">eventSourceUrl</span>: event_source_url &#125;,</span><br><span class="line">      user_data,</span><br><span class="line">      custom_data</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> facebookSsApi.request();</span><br><span class="line">    <span class="keyword">return</span> result ? responseSuccess(&#123;&#125;) : responseError(&#123; <span class="attr">statusCode</span>: <span class="number">400</span>, <span class="attr">message</span>: <span class="string">&#x27;Facebook Conversions Api request failed&#x27;</span> &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (event.requestContext.http.method) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">await</span> postConversion();</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> responseError(&#123; <span class="attr">message</span>: <span class="string">&quot;Undefined method&quot;</span> &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> handler = baseHandler;</span><br></pre></td></tr></table></figure>
+<p><strong>FacebookServerSideApi</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">&quot;node-fetch&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FacebookServerSideApi</span> </span>&#123;</span><br><span class="line">  private uri: string;</span><br><span class="line">  private fbToken: string;</span><br><span class="line">  private eventName: string;</span><br><span class="line">  private eventId: string;</span><br><span class="line">  private eventSourceUrl: string;</span><br><span class="line">  private userData: Record&lt;string, any&gt;;</span><br><span class="line">  private customData: Record&lt;string,any&gt;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">eventObj: &#123;eventName: string, eventId: string, eventSourceUrl?: string&#125;, userData: Record&lt;string, any&gt;, customData: Record&lt;string, any&gt;</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> pixelId = process.env.fbPixelID <span class="keyword">as</span> string;</span><br><span class="line">    <span class="built_in">this</span>.fbToken = process.env.fbToken <span class="keyword">as</span> string;</span><br><span class="line">    <span class="built_in">this</span>.uri = <span class="string">`https://graph.facebook.com/v11.0/<span class="subst">$&#123;pixelId&#125;</span>/events`</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.eventName = eventObj.eventName;</span><br><span class="line">    <span class="built_in">this</span>.eventId = eventObj.eventId;</span><br><span class="line">    <span class="built_in">this</span>.eventSourceUrl = eventObj.eventSourceUrl;</span><br><span class="line">    <span class="built_in">this</span>.userData = userData; <span class="comment">//Should hash some key-value</span></span><br><span class="line">    <span class="built_in">this</span>.customData = customData;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public <span class="keyword">async</span> request(): <span class="built_in">Promise</span>&lt;boolean&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>.fbToken) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> event = &#123;</span><br><span class="line">        data: [</span><br><span class="line">          &#123;</span><br><span class="line">            event_name: <span class="built_in">this</span>.eventName,</span><br><span class="line">            event_id: <span class="built_in">this</span>.eventId,</span><br><span class="line">            event_source_url: <span class="built_in">this</span>.eventSourceUrl,</span><br><span class="line">            event_time: <span class="built_in">Math</span>.floor(+(<span class="keyword">new</span> <span class="built_in">Date</span>()) / <span class="number">1000</span>),</span><br><span class="line">            user_data: <span class="built_in">this</span>.userData,</span><br><span class="line">            custom_data: <span class="built_in">this</span>.customData,</span><br><span class="line">            action_source: <span class="string">&quot;website&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="keyword">const</span> body = <span class="built_in">JSON</span>.stringify(event);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.uri&#125;</span>?access_token=<span class="subst">$&#123;<span class="built_in">this</span>.fbToken&#125;</span>`</span>, &#123;</span><br><span class="line">        method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">        body,</span><br><span class="line">        headers: &#123;<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">const</span> data = <span class="keyword">await</span> response.json();</span><br><span class="line">      <span class="keyword">return</span> data[<span class="string">&#x27;events_received&#x27;</span>] == <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> FacebookServerSideApi;</span><br></pre></td></tr></table></figure>
+<p>I removed hashing logic used on <code>Line 20</code>, and it should hash each key described <a target="_blank" rel="noopener" href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/customer-information-parameters">here</a>. Finally, after Deploying to AWS and sending the request by Postman or the frontend library, the <strong>Overview</strong> should show the event log.</p>
+<p>That’s all. Now we can send such as <code>PageView</code> or other events defined by Facebook Pixel and Facebook Conversions API on the same page.</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/" data-id="cktzgqhkx000001o91ua51xyr" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Facebook-Conversions-API/" rel="tag">Facebook Conversions API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Facebook-Pixel/" rel="tag">Facebook Pixel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Marketing/" rel="tag">Marketing</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+
+    
+      <li class="col s6">
+        <a href="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">設定Google Analytics 4 / Google Tag Manager追蹤user id</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+    <div class="col s12 m3">
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Authors</h5>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Tag Cloud</h5>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 10px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Archives</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Recents</h5>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/">Facebook Pixel and Facebook Conversions API</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/">設定Google Analytics 4 / Google Tag Manager追蹤user id</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/">Ruby on Jets - AWS serverless framework for Ruby on Rails</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/">[Side project] KinectV2 applications migrates to OpenPose</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/">[TIL] New service sharing: Hex.tech</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  
+  
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2021 Joseph Chou
+        <span class="social-network">
+        
+          
+            <a target="_blank"  href="mailto:joseph780116@msn.com">
+              <i class="white-text fa fa-envelope"></i>
+            </a>
+            
+        
+          
+            <a target="_blank"  href="https://github.com/josephMG">
+              <i class="white-text fa fa-github"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
+              <i class="white-text fa fa-linkedin"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
+              <i class="white-text fa fa-facebook"></i>
+            </a>
+          
+        
+        </span>
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>
