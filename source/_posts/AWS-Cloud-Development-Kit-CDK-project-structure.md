@@ -263,8 +263,8 @@ const HttpApi = (
   envParams: HttpApiEnvParam
 ) => {
   const { id, jwtAudience, jwtIssuer, stageId, stageName } = envParams;
-  // con (property) jwtAudience: string[] UserPoolAuthorizer(
-  const                                   wtAuthorizer({
+  const userPool = new authorizers.HttpUserPoolAuthorizer(
+  const authorizer = new authorizers.HttpJwtAuthorizer({
     jwtAudience,
     jwtIssuer
   });
@@ -307,7 +307,7 @@ export default HttpApi;
 import * as cdk from '@aws-cdk/core';
 import { StreamViewType, Table, AttributeType as DbAttributeType, BillingMode } from '@aws-cdk/aws-dynamodb';
 
-// Please Remember to return the Table you new
+// Please remember to return the Table you new
 const DbConfig = (scope: cdk.Construct, { dynamoDBTablePrefix, ENV }: { dynamoDBTablePrefix: string, ENV: string }) => {
   const TestTable = new Table(scope, 'TestTable', {
     partitionKey: { name: 'target', type: DbAttributeType.STRING },
