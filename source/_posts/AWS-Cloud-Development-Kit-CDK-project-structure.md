@@ -182,7 +182,7 @@ On the line 33 to 36 of **lib/api-stack.ts** defines a layer. The following imag
 Then, we get lambda definitions from **lib/lambda.ts**, and set environments and policiess to them on line 38 to 55.
 
 **lib/lambda.ts**
-```
+```javascript
 import * as cdk from '@aws-cdk/core';
 import * as lambda from '@aws-cdk/aws-lambda';
 
