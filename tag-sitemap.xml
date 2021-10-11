@@ -4,21 +4,49 @@
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Facebook-Conversions-API/</loc>
-        <lastmod>2021-10-06T05:14:17.509Z</lastmod>
+        <lastmod>2021-10-10T16:41:04.215Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Facebook-Pixel/</loc>
-        <lastmod>2021-10-06T05:14:17.509Z</lastmod>
+        <lastmod>2021-10-10T16:41:04.215Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/serverless/</loc>
+        <lastmod>2021-10-10T16:41:04.215Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Marketing/</loc>
-        <lastmod>2021-10-06T05:14:17.509Z</lastmod>
+        <lastmod>2021-10-10T16:41:04.215Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Cloud-Development-Kit/</loc>
+        <lastmod>2021-10-10T16:40:41.824Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/CDK/</loc>
+        <lastmod>2021-10-10T16:40:41.824Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/AWS/</loc>
+        <lastmod>2021-10-10T16:40:41.824Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -47,20 +75,6 @@
     <url>
         <loc>https://josephmg.github.io/blog/tags/GA4/</loc>
         <lastmod>2021-09-25T08:58:32.764Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/serverless/</loc>
-        <lastmod>2021-09-17T11:42:42.317Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/AWS/</loc>
-        <lastmod>2021-09-17T11:42:42.317Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

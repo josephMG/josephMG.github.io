@@ -670,6 +670,7 @@ footer i.fa {
 }
 .article-entry .highlight .line {
   height: 28.8px;
+  line-height: 28.8px;
   font-size: 15.299999999999999px;
 }
 .article-entry .gist {
