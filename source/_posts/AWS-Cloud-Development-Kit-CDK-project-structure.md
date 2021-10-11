@@ -263,7 +263,6 @@ const HttpApi = (
   envParams: HttpApiEnvParam
 ) => {
   const { id, jwtAudience, jwtIssuer, stageId, stageName } = envParams;
-  const userPool = new authorizers.HttpUserPoolAuthorizer(
   const authorizer = new authorizers.HttpJwtAuthorizer({
     jwtAudience,
     jwtIssuer
