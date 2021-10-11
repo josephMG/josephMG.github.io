@@ -201,9 +201,9 @@ const lambdas = (scope: cdk.Construct, envParams?: { [key: string]: string }) =>
       tracing: lambda.Tracing.ACTIVE,
       timeout: cdk.Duration.seconds(10),
     }),
-    test2Event: (layers: lambda.ILayerVersion[]) => new lambda.Function(scope, 'testsEvent', {
+    test2Event: (layers: lambda.ILayerVersion[]) => new lambda.Function(scope, 'test2Event', {
       ...funcDefaultProps,
-      handler: 'controllers/tests/index.handler',
+      handler: 'controllers/test2/index.handler',
       layers,
       tracing: lambda.Tracing.ACTIVE,
       timeout: cdk.Duration.seconds(10),
