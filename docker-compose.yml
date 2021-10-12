@@ -2,12 +2,14 @@ version: '3.7'
 
 services:
   hexo:
-    container_name: hexo-blog
     build:
       context: .
-      dockerfile: Dockerfile
+      network: host
     volumes:
-      - '.:/blog'
-      - '/blog/node_modules'
+      - type: bind
+        source: ./hexo
+        target: /blog
+        read_only: false
+      - /blog/node_modules
     ports:
       - '4000:4000'

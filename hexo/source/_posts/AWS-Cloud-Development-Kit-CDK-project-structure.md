@@ -4,6 +4,7 @@ title: AWS Cloud Development Kit (CDK) project structure
 date: 2021-10-12 06:46:49
 tags: ["AWS", "CDK", "Cloud Development Kit", "serverless"]
 author: Joseph
+photos: ["logo.png"]
 categories: ["Joseph", "Serverless"]
 ---
 
