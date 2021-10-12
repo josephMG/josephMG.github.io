@@ -3,281 +3,29 @@
 
 
     <url>
+        <loc>https://josephmg.github.io/blog/tags/serverless/</loc>
+        <lastmod>2021-10-12T13:03:16.182Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://josephmg.github.io/blog/tags/Cloud-Development-Kit/</loc>
-        <lastmod>2021-10-11T03:08:56.793Z</lastmod>
+        <lastmod>2021-10-12T13:03:16.182Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/CDK/</loc>
-        <lastmod>2021-10-11T03:08:56.793Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/serverless/</loc>
-        <lastmod>2021-10-11T03:08:56.793Z</lastmod>
+        <lastmod>2021-10-12T13:03:16.182Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/AWS/</loc>
-        <lastmod>2021-10-11T03:08:56.793Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Facebook-Conversions-API/</loc>
-        <lastmod>2021-10-10T16:41:04.215Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Facebook-Pixel/</loc>
-        <lastmod>2021-10-10T16:41:04.215Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Marketing/</loc>
-        <lastmod>2021-10-10T16:41:04.215Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Google-Tag-Manager/</loc>
-        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/GTM/</loc>
-        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Google-Analytics-4/</loc>
-        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/GA4/</loc>
-        <lastmod>2021-09-25T08:58:32.764Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Ruby-on-Rails/</loc>
-        <lastmod>2021-09-17T11:42:42.317Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/KinectV2/</loc>
-        <lastmod>2020-12-17T09:28:01.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/OpenPose/</loc>
-        <lastmod>2020-12-17T09:28:01.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Today-I-learn/</loc>
-        <lastmod>2020-12-17T04:17:34.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/IG/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Instagram/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Shopee/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/gitlab/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/%E5%A4%A9%E6%AF%8D/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/tianmu/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/halloween/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Video-Intelligence-AI/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/AI-Hub/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/AutoML-Table/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Vision-AI/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Dialogflow/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Speech-to-Text/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Text-to-Speech/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Translate/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Load-balancer/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/GCP/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Google-Cloud-Platform/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/AI-ML-products/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Natural-Language/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Google-AI/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/docker/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/DevOps/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <lastmod>2021-10-12T13:03:16.182Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
