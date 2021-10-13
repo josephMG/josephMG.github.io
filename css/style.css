@@ -513,6 +513,7 @@ footer i.fa {
   display: block;
 }
 .article-gallery-img img {
+  background: #fff;
   display: block;
   max-width: 100%;
   margin: 0 auto;
