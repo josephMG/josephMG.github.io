@@ -105,14 +105,6 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://josephMG.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -127,23 +119,15 @@
     </url>
 
     <url>
+        <loc>https://josephMG.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://josephMG.github.io/blog/2019/09/09/ithelp-2019-day1/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://josephMG.github.io/blog/2019/09/19/ithelp-2019-day11/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://josephMG.github.io/blog/2019/09/20/ithelp-2019-day12/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -159,7 +143,31 @@
     </url>
 
     <url>
+        <loc>https://josephMG.github.io/blog/2019/09/19/ithelp-2019-day11/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://josephMG.github.io/blog/2019/09/21/ithelp-2019-day13/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/20/ithelp-2019-day12/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/22/ithelp-2019-day14/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -175,7 +183,7 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/09/22/ithelp-2019-day14/</loc>
+        <loc>https://josephMG.github.io/blog/2019/09/24/ithelp-2019-day16/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -199,7 +207,7 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/09/24/ithelp-2019-day16/</loc>
+        <loc>https://josephMG.github.io/blog/2019/09/27/ithelp-2019-day19/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -208,14 +216,6 @@
 
     <url>
         <loc>https://josephMG.github.io/blog/2019/09/10/ithelp-2019-day2/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://josephMG.github.io/blog/2019/09/27/ithelp-2019-day19/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -239,14 +239,6 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/09/30/ithelp-2019-day22/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://josephMG.github.io/blog/2019/10/01/ithelp-2019-day23/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -263,7 +255,7 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/10/03/ithelp-2019-day25/</loc>
+        <loc>https://josephMG.github.io/blog/2019/09/30/ithelp-2019-day22/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,6 +264,22 @@
 
     <url>
         <loc>https://josephMG.github.io/blog/2019/10/04/ithelp-2019-day26/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/03/ithelp-2019-day25/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/05/ithelp-2019-day27/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -295,7 +303,7 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/10/05/ithelp-2019-day27/</loc>
+        <loc>https://josephMG.github.io/blog/2019/10/08/ithelp-2019-day30/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -311,7 +319,7 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/10/08/ithelp-2019-day30/</loc>
+        <loc>https://josephMG.github.io/blog/2019/09/12/ithelp-2019-day4/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -320,14 +328,6 @@
 
     <url>
         <loc>https://josephMG.github.io/blog/2019/09/13/ithelp-2019-day5/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://josephMG.github.io/blog/2019/09/12/ithelp-2019-day4/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -359,14 +359,6 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://josephMG.github.io/blog/2019/09/17/ithelp-2019-day9/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -375,7 +367,7 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/09/19/shopee-advertisement-setting/</loc>
+        <loc>https://josephMG.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -391,7 +383,7 @@
     </url>
 
     <url>
-        <loc>https://josephMG.github.io/blog/2019/11/13/tianmu-halloween/</loc>
+        <loc>https://josephMG.github.io/blog/2019/09/19/shopee-advertisement-setting/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -400,6 +392,14 @@
 
     <url>
         <loc>https://josephMG.github.io/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/11/13/tianmu-halloween/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
