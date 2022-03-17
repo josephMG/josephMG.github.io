@@ -9,6 +9,34 @@
 
 
     <url>
+        <loc>https://josephMG.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/</loc>
+        <lastmod>2022-03-17T10:37:17.492Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.jpg</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/</loc>
+        <lastmod>2022-03-16T08:40:45.239Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.jpg</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
         <loc>https://josephMG.github.io/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/</loc>
         <lastmod>2021-10-12T13:03:16.182Z</lastmod>
         <changefreq>weekly</changefreq>
