@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Blockchain fullstack structure - Part 1 - Introduction | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Recently, I ogranized a template of my blockchain fullstack project, including a Hardhat Solidity, Golang backend, and React js frontend. Does it need golang backend? Actually, I’m not sure. But there">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blockchain fullstack structure - Part 1 - Introduction">
+<meta property="og:url" content="https://josephmg.github.io/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Recently, I ogranized a template of my blockchain fullstack project, including a Hardhat Solidity, Golang backend, and React js frontend. Does it need golang backend? Actually, I’m not sure. But there">
+<meta property="og:locale">
+<meta property="og:image" content="https://josephmg.github.io/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/logo.png">
+<meta property="article:published_time" content="2022-07-31T07:28:30.000Z">
+<meta property="article:modified_time" content="2022-08-02T06:54:56.946Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Blockchain">
+<meta property="article:tag" content="Fullstack">
+<meta property="article:tag" content="Solidity">
+<meta property="article:tag" content="Hardhat">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="Reactjs">
+<meta property="article:tag" content="Next.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/logo.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/css/vendors.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46261454-1', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  
+<script src="/js/vendors.js"></script>
+
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12 m9">
+
+
+      <article id="blog-Blockchain-fullstack-structure-Part-1-Introduction" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/logo.png" rel="gallery_cl6bttt0t00031hmod5g5d2ta">
+        <img src="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/logo.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Blockchain fullstack structure - Part 1 - Introduction
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <span class="">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2022-07-31T07:28:30.000Z" itemprop="datePublished">Jul 31, 2022</time>
+              </span>
+              <span class="article-author">
+                <i class="fa fa-user"></i>
+                <span itemprop="author"> Joseph </span>
+              </span>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>Recently, I ogranized a template of my blockchain fullstack project, including a Hardhat Solidity, Golang backend, and React js frontend. Does it need golang backend? Actually, I’m not sure. But there is a <a target="_blank" rel="noopener" href="https://soliditydeveloper.com/solidity-overview-2020">post</a> said:</p>
+<blockquote>
+<p>Server:<br>
+Even though you have your smart contracts as backend, often times a Dapp will still have an additional traditional server running. Not always, but probably more often than you think.</p>
+</blockquote>
+<p>So, I combined Harhat, Golang gin, and Next.js to my <a target="_blank" rel="noopener" href="https://github.com/josephMG/dApp-structure">dApp-structure</a> github repo, added some basic, simple interaction from Next.js to Blockchain, and from Golang to Blockchain.</p>
+<a id="more"></a>
+<h3 id="prerequisite"><a class="header-anchor" href="#prerequisite"></a>Prerequisite</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.docker.com/">Docker / Docker compose</a>: Each project is dockerized, so you have to install docker first.</li>
+<li><a target="_blank" rel="noopener" href="https://www.gnu.org/software/parallel/man.html">Gnu parallel</a>: At the root project, I run docker in each project parallelly by <code>parallel</code></li>
+</ul>
+<h3 id="project-structure"><a class="header-anchor" href="#project-structure"></a>Project structure</h3>
+<p>Now, let’s look at my project structure first.<br>
+<img src="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/project-structure.png" alt="project structure"></p>
+<p>Here I have:</p>
+<ul>
+<li><code>Makefile</code>: to make frontend, backend, and hardhat docker-compose run.</li>
+<li><code>backend</code>: to put Golang gin project, and I use <a target="_blank" rel="noopener" href="https://github.com/wesionaryTEAM/go_clean_architecture">go clean architecture</a>.</li>
+<li><code>frontend</code>: to put Next.js react project.</li>
+<li><code>hardhat</code>: to put Hardhat solidity project.</li>
+<li><code>run_abigen.sh</code>: to generate Golang file from Hardhat to backend.</li>
+</ul>
+<p>As you see, there’s nothing special at the root. Because my host is MacOS, I can use <code>http://docker.for.mac.localhost</code> to connect each docker container. I just need to think how to run each project’s dockerfile at the root, thus I create <code>Makefile</code> and call <code>parellel</code> to run <code>docker-compose</code> for each child folders.</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">SUBDIRS = hardhat backend frontend</span><br><span class="line">CURRENT_DIR := <span class="variable">$(<span class="built_in">shell</span> pwd)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">define</span> FOREACH</span><br><span class="line">    for DIR in <span class="variable">$(SUBDIRS)</span>; do \</span><br><span class="line">        echo <span class="string">&quot;=============  $(1) &gt; <span class="variable">$(CURRENT_DIR)</span>/$$DIR&quot;</span>; \</span><br><span class="line">        cd <span class="variable">$(CURRENT_DIR)</span>/$$DIR &amp;&amp; $(1); \</span><br><span class="line">    done</span><br><span class="line"><span class="keyword">endef</span></span><br><span class="line"></span><br><span class="line"><span class="section">all: build up</span></span><br><span class="line"><span class="section">clean: down stop-rm-volume prune</span></span><br><span class="line"></span><br><span class="line"><span class="section">up:</span></span><br><span class="line">  parallel -j3 --lb &#x27;cd $&#123;PWD&#125;/&#123;&#125; ; docker-compose --ansi always up&#x27; ::: <span class="variable">$(SUBDIRS)</span></span><br><span class="line"></span><br><span class="line"><span class="section">build:</span></span><br><span class="line">  <span class="variable">$(<span class="built_in">call</span> FOREACH, docker-compose build)</span></span><br><span class="line"></span><br><span class="line"><span class="section">down:</span></span><br><span class="line">  <span class="variable">$(<span class="built_in">call</span> FOREACH, docker-compose down)</span></span><br><span class="line"></span><br><span class="line"><span class="section">stop-rm:</span></span><br><span class="line">  <span class="variable">$(<span class="built_in">call</span> FOREACH, docker-compose rm -sf)</span></span><br><span class="line"></span><br><span class="line"><span class="section">stop-rm-volume:</span></span><br><span class="line">  <span class="variable">$(<span class="built_in">call</span> FOREACH, docker-compose rm -sfv)</span></span><br><span class="line"></span><br><span class="line"><span class="section">prune:</span></span><br><span class="line">  docker system prune -af</span><br></pre></td></tr></table></figure>
+<p><code>make up</code> run <code>docker-compose</code> parallelly, so that each subproject can run at the same time. <code>make build</code>, <code>make down</code>, <code>make stop-rm</code>, and <code>make stop-rm-volume</code> run <code>docker-compose</code> for each subproject in succession in order to generate an beautiful output.</p>
+<p><img src="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/output.jpg" alt="output"><br>
+Let’s see the outpue of <code>make up</code>, and it shows each docker-compose result simultaneously.</p>
+<p>Then, I introduce the <code>run_abigen.sh</code> file.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">read -p &#x27;Input solidity json filename in your hardhat/data/abi folder (e.g.: Greeter): &#x27; FILENAME</span><br><span class="line"></span><br><span class="line">docker run -v $(pwd)/hardhat:/sources -v $(pwd)/backend:/targets ethereum/client-go:alltools-stable abigen \</span><br><span class="line">  --abi=sources/data/abi/$FILENAME.json \</span><br><span class="line">  --type $FILENAME \</span><br><span class="line">  --pkg contracts \</span><br><span class="line">  --out=targets/contracts/$FILENAME.go</span><br></pre></td></tr></table></figure>
+<p>It’s not too hard. I use <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hardhat-abi-exporter">hardhat-abi-exporter</a> in hardhat to get ABI json, so I can use abigen docker to transfer ABI json to Go module. That’s all this file does.</p>
+<p>Next time I will introduce each project’s setting. If you have any advice or question, please feel free to let me know.</p>
+<h3 id="references"><a class="header-anchor" href="#references"></a>References</h3>
+<ul>
+<li>Github: <a target="_blank" rel="noopener" href="https://github.com/josephMG/dApp-structure">dApp-structure</a></li>
+</ul>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/" data-id="cl6bttt0t00031hmod5g5d2ta" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Fullstack/" rel="tag">Fullstack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Golang/" rel="tag">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Next-js/" rel="tag">Next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Reactjs/" rel="tag">Reactjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+
+    
+      <li class="col s6">
+        <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+    <div class="col s12 m3">
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Authors</h5>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Tag Cloud</h5>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 14px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 10px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 14px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 10px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 10px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 14px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Archives</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h5 class="widget-title">Recents</h5>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/">Hardhat - Solidity and NFT - Part 1 - Prepare project</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/">AWS Cloud Development Kit (CDK) project structure</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/">Facebook Pixel and Facebook Conversions API</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  
+  
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2022 Joseph Chou
+        <span class="social-network">
+        
+          
+            <a target="_blank"  href="mailto:joseph780116@msn.com">
+              <i class="white-text fa fa-envelope"></i>
+            </a>
+            
+        
+          
+            <a target="_blank"  href="https://github.com/josephMG">
+              <i class="white-text fa fa-github"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
+              <i class="white-text fa fa-linkedin"></i>
+            </a>
+          
+        
+          
+            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
+              <i class="white-text fa fa-facebook"></i>
+            </a>
+          
+        
+        </span>
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>
