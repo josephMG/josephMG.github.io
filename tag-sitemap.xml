@@ -4,49 +4,49 @@
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Next-js/</loc>
-        <lastmod>2022-08-02T06:54:56.946Z</lastmod>
+        <lastmod>2022-08-04T07:11:49.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Reactjs/</loc>
-        <lastmod>2022-08-02T06:54:56.946Z</lastmod>
+        <lastmod>2022-08-04T07:11:49.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Golang/</loc>
-        <lastmod>2022-08-02T06:54:56.946Z</lastmod>
+        <lastmod>2022-08-04T07:11:49.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Hardhat/</loc>
-        <lastmod>2022-08-02T06:54:56.946Z</lastmod>
+        <lastmod>2022-08-04T07:11:49.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Solidity/</loc>
-        <lastmod>2022-08-02T06:54:56.946Z</lastmod>
+        <lastmod>2022-08-04T07:11:49.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Fullstack/</loc>
-        <lastmod>2022-08-02T06:54:56.946Z</lastmod>
+        <lastmod>2022-08-04T07:11:49.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/Blockchain/</loc>
-        <lastmod>2022-08-02T06:54:56.946Z</lastmod>
+        <lastmod>2022-08-04T07:11:49.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -61,6 +61,13 @@
     <url>
         <loc>https://josephmg.github.io/blog/tags/Docker/</loc>
         <lastmod>2022-03-17T10:37:17.492Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/serverless/</loc>
+        <lastmod>2021-10-12T13:03:16.182Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -81,13 +88,6 @@
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/AWS/</loc>
-        <lastmod>2021-10-12T13:03:16.182Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/serverless/</loc>
         <lastmod>2021-10-12T13:03:16.182Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
