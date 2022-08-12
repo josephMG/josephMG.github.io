@@ -14,7 +14,7 @@ keywords:
 - laravel
 - nodejs
 author: Joseph Chou
-language:
+language: ['en', 'zh-tw']
 timezone:
 
 # URL
