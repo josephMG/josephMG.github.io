@@ -28,6 +28,10 @@ Although I'm more familiar with Node.js and Ruby than Golang, I choose Golang [G
 
 > Let me focus on DApp part, and just skip the folder structure introduction.
 
+### Docker
+
+The Docker compose includes 3 services such as `api`, `database`, and `adminer`. There are many files so I hope you can go through [the repo](https://github.com/wesionaryTEAM/go_clean_architecture) yourself.
+
 ### Migration database
 
 Check `Makefile` and `migration` first. It's important to run migration in the beginning.
