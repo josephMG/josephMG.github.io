@@ -16,7 +16,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://josephmg.github.io/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/logo.png">
 <meta property="article:published_time" content="2022-08-07T12:31:29.000Z">
-<meta property="article:modified_time" content="2022-08-12T15:11:24.248Z">
+<meta property="article:modified_time" content="2022-08-18T05:05:04.609Z">
 <meta property="article:author" content="Joseph Chou">
 <meta property="article:tag" content="Blockchain">
 <meta property="article:tag" content="Fullstack">
@@ -150,7 +150,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/logo.png" rel="gallery_cl6qm4sx6006510o4ggze0sho">
+      <a class="article-gallery-img fancybox" href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/logo.png" rel="gallery_cl7012yza005o10mv8tg38dzm">
         <img src="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/logo.png" itemprop="image">
       </a>
     
@@ -208,6 +208,8 @@ Moralis Dapp is used in order to speed up the implementation of the off-chain in
 <blockquote>
 <p>Let me focus on DApp part, and just skip the folder structure introduction.</p>
 </blockquote>
+<h3 id="docker"><a class="header-anchor" href="#docker"></a>Docker</h3>
+<p>The Docker compose includes 3 services such as <code>api</code>, <code>database</code>, and <code>adminer</code>. There are many files so I hope you can go through <a target="_blank" rel="noopener" href="https://github.com/wesionaryTEAM/go_clean_architecture">the repo</a> yourself.</p>
 <h3 id="migration-database"><a class="header-anchor" href="#migration-database"></a>Migration database</h3>
 <p>Check <code>Makefile</code> and <code>migration</code> first. It’s important to run migration in the beginning.</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span> .env</span><br><span class="line"></span><br><span class="line">MIGRATE=docker-compose exec api sql-migrate</span><br><span class="line"></span><br><span class="line"><span class="keyword">ifeq</span> (<span class="variable">$(p)</span>,host)</span><br><span class="line">        MIGRATE=sql-migrate</span><br><span class="line"><span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line"><span class="section">migrate-status:</span></span><br><span class="line">        <span class="variable">$(MIGRATE)</span> status</span><br><span class="line"></span><br><span class="line"><span class="section">migrate-up:</span></span><br><span class="line">        <span class="variable">$(MIGRATE)</span> up</span><br><span class="line"></span><br><span class="line"><span class="section">migrate-down:</span></span><br><span class="line">        <span class="variable">$(MIGRATE)</span> down</span><br><span class="line"></span><br><span class="line"><span class="section">redo:</span></span><br><span class="line">        @read -p  <span class="string">&quot;Are you sure to reapply the last migration? [y/n]&quot;</span> -n 1 -r; \</span><br><span class="line">        if [[ $$REPLY =~ ^[Yy] ]]; \</span><br><span class="line">        then \</span><br><span class="line">                <span class="variable">$(MIGRATE)</span> redo; \</span><br><span class="line">        fi</span><br><span class="line"></span><br><span class="line"><span class="section">create:</span></span><br><span class="line">        @read -p  <span class="string">&quot;What is the name of migration?&quot;</span> NAME; \</span><br><span class="line">        $&#123;MIGRATE&#125; new $$NAME</span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: migrate-status migrate-up migrate-down redo create</span></span><br></pre></td></tr></table></figure>
@@ -281,7 +283,7 @@ Moralis Dapp is used in order to speed up the implementation of the off-chain in
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/" data-id="cl6qm4sx6006510o4ggze0sho" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/" data-id="cl7012yza005o10mv8tg38dzm" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Fullstack/" rel="tag">Fullstack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Golang/" rel="tag">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Next-js/" rel="tag">Next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Reactjs/" rel="tag">Reactjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
@@ -295,6 +297,13 @@ Moralis Dapp is used in order to speed up the implementation of the off-chain in
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
     <ul class="row">
+    
+      <li class="col s6">
+        <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">Blockchain fullstack structure - Part 4 - React.js and Next.js</span>
+        </a>
+      </li>
     
 
     
@@ -338,7 +347,7 @@ Moralis Dapp is used in order to speed up the implementation of the off-chain in
   <div class="widget-wrap">
     <h5 class="widget-title">Tag Cloud</h5>
     <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 11.67px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 11.67px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 11.67px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 16.67px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 11.67px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 11.67px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 11.67px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 13.33px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 16.67px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18.33px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 15px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 13.33px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 13.33px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 11.67px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 16.67px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 15px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 13.33px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 15px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 15px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 15px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 13.33px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
+      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
     </div>
   </div>
 
@@ -361,6 +370,10 @@ Moralis Dapp is used in order to speed up the implementation of the off-chain in
       <ul>
         
           <li>
+            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
+          </li>
+        
+          <li>
             <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
           </li>
         
@@ -374,10 +387,6 @@ Moralis Dapp is used in order to speed up the implementation of the off-chain in
         
           <li>
             <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/">Hardhat - Solidity and NFT - Part 1 - Prepare project</a>
           </li>
         
       </ul>
