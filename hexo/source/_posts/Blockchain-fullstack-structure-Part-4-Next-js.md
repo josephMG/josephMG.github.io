@@ -8,7 +8,7 @@ photos: ["logo.png"]
 categories: ["Joseph", "Blockchain"]
 ---
 
-Finally, I post an article related to Blockchain with React.js and Next.js,. If you haven't seen my previous posts {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %}, {% post_link Blockchain-fullstack-structure-Part-2-Hardhat "Part 2 Hardhat" %}, and {% post_link Blockchain-fullstack-structure-Part-3-Golang-Gin "Part 3 Golang Gin" %}, please read them first.
+Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven't seen my previous posts {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %}, {% post_link Blockchain-fullstack-structure-Part-2-Hardhat "Part 2 Hardhat" %}, and {% post_link Blockchain-fullstack-structure-Part-3-Golang-Gin "Part 3 Golang Gin" %}, please read them first.
 
 In this article, I demostrate how to use React.js (Next.js) to interact with smart contract by Golang Gin API and hardhat RPC URL, and implement a simple Sign-in with Ethereum (SIWE) authentication and `setGreeting` to Solidity.
 
@@ -432,4 +432,4 @@ Yeah, everything's done. Just try to click button and send messages.
 
 ### Conclusion
 
-Finally, the last article is finished. The whole blockchain infrastructure project might contains many insufficient and untested codes, but I think I can modify in the future. Moreover, through this infrastruture project, I start using **Golang**, learn how to use **Gin**, and make sence of interacting with smart contract from backend and frontend. If you have any improvement in codes, please feel free send PR to me. And, if you need a blockchain developer, I'm glad to help you too.
+Eventually, the last article is finished. The whole blockchain infrastructure project might contains many insufficient and untested codes, but I think I can modify in the future. Moreover, through this infrastruture project, I start using **Golang**, learn how to use **Gin**, and make sence of interacting with smart contract from backend and frontend. If you have any improvement in codes, please feel free send PR to me. And, if you need a blockchain developer, I'm glad to help you too.
