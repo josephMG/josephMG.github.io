@@ -432,4 +432,4 @@ Yeah, everything's done. Just try to click button and send messages.
 
 ### Conclusion
 
-Eventually, the last article is finished. The whole blockchain infrastructure project might contains many insufficient and untested codes, but I think I can modify in the future. Moreover, through this infrastruture project, I start using **Golang**, learn how to use **Gin**, and make sence of interacting with smart contract from backend and frontend. If you have any improvement in codes, please feel free send PR to me. And, if you need a blockchain developer, I'm glad to help you too.
+Eventually, the last article is finished. The whole blockchain infrastructure project might contains many insufficient and untested codes, but I think I can modify in the future. Moreover, through this infrastructure project, I start using **Golang**, learn how to use **Gin**, and make sense of interacting with smart contract from backend and frontend. If you have any improvement in codes, please feel free send PR to me. And, if you need a blockchain developer, I'm glad to help you too.
