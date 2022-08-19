@@ -10,7 +10,7 @@ categories: ["Joseph", "Blockchain"]
 
 Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven't seen my previous posts {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %}, {% post_link Blockchain-fullstack-structure-Part-2-Hardhat "Part 2 Hardhat" %}, and {% post_link Blockchain-fullstack-structure-Part-3-Golang-Gin "Part 3 Golang Gin" %}, please read them first.
 
-In this article, I demostrate how to use React.js (Next.js) to interact with smart contract by Golang Gin API and hardhat RPC URL, and implement a simple Sign-in with Ethereum (SIWE) authentication and `setGreeting` to Solidity.
+In this article, I demonstrate how to use React.js (Next.js) to interact with smart contract by Golang Gin API and hardhat RPC URL, and implement a simple Sign-in with Ethereum (SIWE) authentication and `setGreeting` to Solidity.
 
 Okay, let's start it.
 <!-- more -->
