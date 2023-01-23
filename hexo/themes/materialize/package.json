@@ -1,25 +1,39 @@
 {
   "name": "hexo-theme-materialize",
-  "version": "1.1.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
-    "build": "grunt build"
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "build:watch": "webpack --mode production --watch",
+    "build:analyze": "npm run build -- --analyze",
+    "lint": "eslint \"src/**/*.js\""
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.3",
+    "jquery-circle-progress": "^1.2.2",
+    "lightbox2": "^2.11.3",
+    "materialize-css": "^1.0.0"
   },
   "devDependencies": {
-    "font-awesome": "^4.7.0",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-requirejs": "^1.0.0",
-    "grunt-contrib-uglify": "^3.1.0",
-    "jquery": "^3.2.1",
-    "jquery-circle-progress": "^1.2.2",
-    "lightbox2": "^2.9.0",
-    "load-grunt-tasks": "^3.5.2",
-    "materialize-css": "^0.100.2",
-    "requirejs": "^2.3.5"
+    "ajv": "^8.11.0",
+    "assets-webpack-plugin": "^7.1.1",
+    "autoprefixer": "^10.4.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "expose-loader": "^3.1.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.12",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.49.11",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.71.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.2"
   }
 }

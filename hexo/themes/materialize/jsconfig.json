@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "checkJs": true,
+    "lib": ["es2019", "dom"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "allowJs": true,
+  },
+  "include": ["src/**/*.js"],
+  "typeAcquisition": {
+    "include": ["hexo", "jquery", "requirejs", "node", "materialize-css"]
+  }
+}

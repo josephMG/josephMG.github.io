@@ -1,4 +1,4 @@
-FROM node:12.14-alpine
+FROM node:14-alpine
 
 COPY hexo /blog
 WORKDIR /blog
@@ -11,5 +11,7 @@ RUN npm config set unsafe-perm true \
   && npm install
 
 EXPOSE 4000
+
+# RUN cd /blog/themes/materialize && npm install && npm run build
 
 ENTRYPOINT ["hexo", "server"]

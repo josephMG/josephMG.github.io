@@ -13,6 +13,7 @@ categories: ["Joseph", "Blockchain"]
 ### Generate NFT metadata
 先建立一個`images`資料夾後，把你想要的圖片放進去，並存成1, 2, 3....之類的檔名，然後用`ipfs-car`指令打包在一起。
 > 找不到圖可以先用[opensea doc](https://docs.opensea.io/docs/part-3-adding-metadata-and-payments-to-your-contract)裡的圖當練習
+
 ![ipfs-car](ipfs-car.jpg)
 
 接著到[NFT Storage](https://nft.storage/)上傳`images.car`檔案就可以了。

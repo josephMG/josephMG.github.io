@@ -1,0 +1,43 @@
+{
+  "env": {
+    "browser": true,
+    "node": false,
+    "es6": true,
+    "amd": true
+  },
+
+  "extends": "airbnb-base",
+
+  "globals": {
+    "hexo": true,
+    "theme": true,
+    "config": true
+  },
+
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+
+  "rules": {
+    "comma-dangle": 0,
+    "no-use-before-define": ["error", { "functions": false, "classes": true }],
+    "no-console": ["error", { "allow": ["warn", "error", "info", "debug", "log"] }],
+    "no-param-reassign": ["error", { "props": false }],
+    "radix": ["error", "as-needed"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-amd": "off",
+    "strict": "off"
+  },
+
+  "overrides": [
+    {
+      "files": ["Gruntfile.js"],
+      "env": {
+        "browser": false,
+        "node": true,
+        "amd": false
+      }
+    }
+  ]
+}
