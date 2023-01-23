@@ -6,13 +6,14 @@
   <title>[Day 15] Google Translation - 2 | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="description" content="昨天玩完了Demo，按照步調今天就用Code來實踐吧。在下筆的時候Client Library有v2、v3beta1兩個版本，但Golang只有v2的Example，需要的話就只能用Golang執行CURL POST去呼叫v3beta1版API，所以我這邊就先使用v2來試試看。 Translate Text  架構一樣是在modules底下建立一個translation.go的module 還有要">
+  <meta name="description" content="昨天玩完了Demo，按照步調今天就用Code來實踐吧。在下筆的時候Client Library有v2、v3beta1兩個版本，但Golang只有v2的Example，需要的話就只能用Golang執行CURL POST去呼叫v3beta1版API，所以我這邊就先使用v2來試試看。 Translate Text 架構一樣是在modules底下建立一個translation.go的module還有要記得">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Day 15] Google Translation - 2">
 <meta property="og:url" content="https://josephmg.github.io/blog/2019/09/23/ithelp-2019-day15/index.html">
 <meta property="og:site_name" content="Joseph &amp; Sandy">
-<meta property="og:description" content="昨天玩完了Demo，按照步調今天就用Code來實踐吧。在下筆的時候Client Library有v2、v3beta1兩個版本，但Golang只有v2的Example，需要的話就只能用Golang執行CURL POST去呼叫v3beta1版API，所以我這邊就先使用v2來試試看。 Translate Text  架構一樣是在modules底下建立一個translation.go的module 還有要">
+<meta property="og:description" content="昨天玩完了Demo，按照步調今天就用Code來實踐吧。在下筆的時候Client Library有v2、v3beta1兩個版本，但Golang只有v2的Example，需要的話就只能用Golang執行CURL POST去呼叫v3beta1版API，所以我這邊就先使用v2來試試看。 Translate Text 架構一樣是在modules底下建立一個translation.go的module還有要記得">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-09-23T07:29:48.000Z">
 <meta property="article:modified_time" content="2020-12-08T06:33:31.000Z">
@@ -43,45 +44,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -106,14 +102,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -134,7 +130,7 @@
     
 <div class="container">
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12">
 
 
       <article id="blog-ithelp-2019-day15" class="article article-type-blog" itemscope itemprop="blogPost">
@@ -155,38 +151,44 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-09-23T07:29:48.000Z" itemprop="datePublished">Sep 23, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-23T07:29:48.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 23, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
               <p>昨天玩完了Demo，按照步調今天就用Code來實踐吧。在下筆的時候Client Library有<code>v2</code>、<code>v3beta1</code>兩個版本，但Golang只有<code>v2</code>的Example，需要的話就只能用Golang執行<code>CURL POST</code>去呼叫<code>v3beta1</code>版API，所以我這邊就先使用v2來試試看。</p>
-<h3 id="translate-text"><a class="header-anchor" href="#translate-text"></a><a target="_blank" rel="noopener" href="https://cloud.google.com/translate/docs/translating-text">Translate Text</a></h3>
-<blockquote>
-<p>架構一樣是在modules底下建立一個<code>translation.go</code>的module<br>
-還有要記得抓credential json下來，可以參考<a href="/blog/2019/09/11/ithelp-2019-day3/" title="這系列第三天">這系列第三天</a>的文章</p>
+<h3 id="Translate-Text"><a href="#Translate-Text" class="headerlink" title="Translate Text"></a><a target="_blank" rel="noopener" href="https://cloud.google.com/translate/docs/translating-text">Translate Text</a></h3><blockquote>
+<p>架構一樣是在modules底下建立一個<code>translation.go</code>的module<br>還有要記得抓credential json下來，可以參考<a href="/blog/2019/09/11/ithelp-2019-day3/" title="[Day 3] Google Vision AI - 2">這系列第三天</a>的文章</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
+
 <p>我們直接來看看<code>translation.go</code>裡面有什麼吧。</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> translation</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">&quot;context&quot;</span></span><br><span class="line">  <span class="string">&quot;fmt&quot;</span></span><br><span class="line">  <span class="string">&quot;log&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;cloud.google.com/go/translate&quot;</span></span><br><span class="line">  <span class="string">&quot;golang.org/x/text/language&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TranslateText</span><span class="params">(text <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">  ctx := context.Background()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Creates a client.</span></span><br><span class="line">  client, err := translate.NewClient(ctx)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalf(<span class="string">&quot;Failed to create client: %v&quot;</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Sets the target language.</span></span><br><span class="line">  target, err := language.Parse(<span class="string">&quot;zh-TW&quot;</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalf(<span class="string">&quot;Failed to parse target language: %v&quot;</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Translates the text into Russian.</span></span><br><span class="line">  translations, err := client.Translate(ctx, []<span class="keyword">string</span>&#123;text, text&#125;, target, <span class="literal">nil</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalf(<span class="string">&quot;Failed to translate text: %v&quot;</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Printf(<span class="string">&quot;Text: %v\n&quot;</span>, text)</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Translations: %+v\n&quot;</span>, translations)</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Translation[0]: %v\n&quot;</span>, translations[<span class="number">0</span>].Text)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> translation</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">&quot;context&quot;</span></span><br><span class="line">  <span class="string">&quot;fmt&quot;</span></span><br><span class="line">  <span class="string">&quot;log&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;cloud.google.com/go/translate&quot;</span></span><br><span class="line">  <span class="string">&quot;golang.org/x/text/language&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TranslateText</span><span class="params">(text <span class="type">string</span>)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">  ctx := context.Background()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Creates a client.</span></span><br><span class="line">  client, err := translate.NewClient(ctx)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalf(<span class="string">&quot;Failed to create client: %v&quot;</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Sets the target language.</span></span><br><span class="line">  target, err := language.Parse(<span class="string">&quot;zh-TW&quot;</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalf(<span class="string">&quot;Failed to parse target language: %v&quot;</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Translates the text into Russian.</span></span><br><span class="line">  translations, err := client.Translate(ctx, []<span class="type">string</span>&#123;text, text&#125;, target, <span class="literal">nil</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalf(<span class="string">&quot;Failed to translate text: %v&quot;</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Printf(<span class="string">&quot;Text: %v\n&quot;</span>, text)</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Translations: %+v\n&quot;</span>, translations)</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Translation[0]: %v\n&quot;</span>, translations[<span class="number">0</span>].Text)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Language Support可以參考這裡：<a target="_blank" rel="noopener" href="https://cloud.google.com/translate/docs/languages">https://cloud.google.com/translate/docs/languages</a></p>
 </blockquote>
-<p>這邊我特地做了個小實驗，<code>client.Translate(ctx, []string&#123;text, text&#125;, target, nil)</code>我傳入了兩個text，然後再後面看看translations出來會不會一次有兩個。結果呢…</p>
+<p>這邊我特地做了個小實驗，<code>client.Translate(ctx, []string&#123;text, text&#125;, target, nil)</code>我傳入了兩個text，然後再後面看看translations出來會不會一次有兩個。結果呢….</p>
 <p>output:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Text: Hello World</span><br><span class="line">Translations: [&#123;Text:你好，世界 Source:en Model:&#125; &#123;Text:你好，世界 Source:en Model:&#125;]</span><br><span class="line">Translation[0]: 你好，世界</span><br></pre></td></tr></table></figure>
-<p>恩，看來可以一次傳入多個需要翻譯的文字，會減少很多次API呼叫。<br>
-OK，好今天就到這邊，謝謝大家的觀看。</p>
+
+<p>恩，看來可以一次傳入多個需要翻譯的文字，會減少很多次API呼叫。<br>OK，好今天就到這邊，謝謝大家的觀看。</p>
 
             
           </div>
@@ -194,7 +196,7 @@ OK，好今天就到這邊，謝謝大家的觀看。</p>
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/09/23/ithelp-2019-day15/" data-id="cl702v55r001a5jmvgb9c34og" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/09/23/ithelp-2019-day15/" data-id="cld8vd0ef001i8eo4e6jhavzo" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Translate/" rel="tag">Translate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -207,20 +209,30 @@ OK，好今天就到這邊，謝謝大家的觀看。</p>
           
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
-    <ul class="row">
+    <ul>
     
-      <li class="col s6">
-        <a href="/blog/2019/09/24/ithelp-2019-day16/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/24/ithelp-2019-day16/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 16] Google Translation - 3"
+        >
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">[Day 16] Google Translation - 3</span>
+          <span class="article-nav-title truncate">[Day 16] Google Translation - 3</span>
         </a>
       </li>
     
 
     
-      <li class="col s6">
-        <a href="/blog/2019/09/22/ithelp-2019-day14/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">[Day 14] Google Translation - 1</span>
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/22/ithelp-2019-day14/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 14] Google Translation - 1"
+        >
+          <span class="article-nav-title truncate">[Day 14] Google Translation - 1</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
@@ -240,76 +252,6 @@ OK，好今天就到這邊，謝謝大家的觀看。</p>
 
 
     </div>
-    <div class="col s12 m3">
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Authors</h5>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Tag Cloud</h5>
-    <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Archives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Recents</h5>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/">Blockchain fullstack structure - Part 2 - Hardhat</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-
-      
-    </div>
   </div>
 </div>
 
@@ -318,50 +260,29 @@ OK，好今天就到這邊，謝謝大家的觀看。</p>
 
 
 
+
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

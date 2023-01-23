@@ -6,6 +6,7 @@
   <title>Category: Joseph | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <meta name="description" content="Engineer &#x2F; Marketing">
 <meta property="og:type" content="website">
@@ -44,45 +45,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -107,14 +103,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -132,7 +128,8 @@
 
 
   <div id="main-container">
-    <div class="container">
+    
+<div class="container">
   <div class="row">
     <div class="col s12 m9">
 
@@ -159,25 +156,30 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2020-12-17T04:22:31.000Z" itemprop="datePublished">Dec 17, 2020</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-12-17T04:22:31.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Dec 17, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <p><img src="https://raw.githubusercontent.com/CMU-Perceptual-Computing-Lab/openpose/master/.github/Logo_main_black.png" alt="OpenPose"><br>
-經過了三個多月的努力，終於完成了偵測器的轉換。<br>
-會有這次的side project是因為剛好看到OpenPose這套人體姿態辨識的AI函數庫，只要用單單一個RGB camera就可以偵測出人的動作，這讓我想到以前解決Asus xtion pro停產的問題，就是要轉換轉換Asus xtion到KinectV2。現在KinectV2雖已停產，但網路上還是可以透過各種管道買到KinectV2，我就想趁這機會把KinectV2轉換到OpenPose試試看，看未來是不是只要一個RGB camera，就不用再擔心KinectV2真的買不到的問題了。</p>
-<p>OpenPose: <a target="_blank" rel="noopener" href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">CMU-Perceptual-Computing-Lab / openpose</a></p>
+              <p><img src="https://raw.githubusercontent.com/CMU-Perceptual-Computing-Lab/openpose/master/.github/Logo_main_black.png" alt="OpenPose"><br>經過了三個多月的努力，終於完成了偵測器的轉換。<br>會有這次的side project是因為剛好看到OpenPose這套人體姿態辨識的AI函數庫，只要用單單一個RGB camera就可以偵測出人的動作，這讓我想到以前解決Asus xtion pro停產的問題，就是要轉換轉換Asus xtion到KinectV2。現在KinectV2雖已停產，但網路上還是可以透過各種管道買到KinectV2，我就想趁這機會把KinectV2轉換到OpenPose試試看，看未來是不是只要一個RGB camera，就不用再擔心KinectV2真的買不到的問題了。</p>
+<p>OpenPose: <a target="_blank" rel="noopener" href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">CMU-Perceptual-Computing-Lab &#x2F; openpose</a></p>
             
           </div>
 
@@ -192,7 +194,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/" data-id="cl702v555000g5jmv02dbbd4w" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/" data-id="cld8vd0cs000j8eo42f8ogdxp" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/KinectV2/" rel="tag">KinectV2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/OpenPose/" rel="tag">OpenPose</a></li></ul>
@@ -231,24 +233,31 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2020-12-10T06:48:25.000Z" itemprop="datePublished">Dec 10, 2020</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-12-10T06:48:25.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Dec 10, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
               <p>Podcast source: <a target="_blank" rel="noopener" href="https://softwareengineeringdaily.com/2020/12/03/hex-data-project-sharing-with-caitlin-colgrove-and-barry-mccardel/">Hex: Data Project Sharing with Caitlin Colgrove and Barry McCardel</a></p>
-<p>最近迷上聽podcast，裡面專門介紹新服務跟技術，同時可以練練聽力跟學習新知，既然學了乾脆把它寫成心得分享出來。今天來介紹一個新聽到的服務: <a target="_blank" rel="noopener" href="https://hex.tech">Hex</a>，在解決大數據專案資料共享的問題。</p>
-<p><img src="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/hex-screenshot.png" alt="Hex screenshot"></p>
+<p>最近迷上聽podcast，裡面專門介紹新服務跟技術，同時可以練練聽力跟學習新知，既然學了乾脆把它寫成心得分享出來。今天來介紹一個新聽到的服務: <a target="_blank" rel="noopener" href="https://hex.tech/">Hex</a>，在解決大數據專案資料共享的問題。</p>
+<p><img src="hex-screenshot.png" alt="Hex screenshot"></p>
 <p>雖然我不是個資料工程師，但曾經使用過Python Jupyter Notebook，而且中間又經歷過換電腦，要重跑都得安裝一堆有的沒的，每次用起來都很不方便。但這次聽到這個服務也是讓我滿臉問號，Jupyter不是已經很多人用了？為什麼又有一個類似的服務出來？</p>
             
           </div>
@@ -264,7 +273,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/" data-id="cl702v558000j5jmv6mgd0n0t" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/" data-id="cld8vd0d0000k8eo4hg9n1tdx" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Today-I-learn/" rel="tag">Today I learn</a></li></ul>
@@ -303,22 +312,29 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2020-09-14T09:34:40.000Z" itemprop="datePublished">Sep 14, 2020</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-09-14T09:34:40.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 14, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <p>/* English below */</p>
+              <p>&#x2F;* English below *&#x2F;</p>
 <p>終於有個案子空檔，又接了一年的案子，就像是期中檢討那樣，來說說這一年吧：</p>
 <ol>
 <li>今年的GitHub Arctic Code Vault有幸透過修復幾個Bug沾上光，成為Arctic Code Vault Contributor，確實讓人興奮不已。</li>
@@ -330,8 +346,7 @@
 <li>再來三個比較大的都是內容網站，兩個純前端、一個包含前後端，開始用React NextJS這Server-side rendering框架接案，React寫起來還是比較舒服。先透過純前端的案子把頁面及API溝通架構定好，接下來前後端的案子可以來來回回在Laravel API開發、寫API測試、React NextJS串接API之間跳來跳去，也順便利用閒暇之餘徹底改寫成Typescript，在開發、除錯的速度上都有很大的進展。</li>
 <li>最後，今年最大的進展，上面所有接手的、新開發的案子都導入Docker，讓我電腦環境減少很多負擔，也讓開發環境可以更單純且一致，用了Docker以後再也不用煩惱那些案子之間的衝突或逐漸縮減的硬碟空間。</li>
 </ol>
-<p>我經手的都還沒到百萬等級這個規模，看到最近電商跟ERP系統的新聞也只能笑笑帶過。<br>
-還有我很像離Ruby on Rails越來越遠，得要再找時間摸一摸了。</p>
+<p>我經手的都還沒到百萬等級這個規模，看到最近電商跟ERP系統的新聞也只能笑笑帶過。<br>還有我很像離Ruby on Rails越來越遠，得要再找時間摸一摸了。 </p>
 <p>I got some spare time because of cases ending. Let me review my experiences during the past year.</p>
 <ol>
 <li>It’s exciting to get “Arctic Code Vault Contributor” on github by fix some bugs and typo.</li>
@@ -351,7 +366,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2020/09/14/Take-a-break-and-review-this-year/" data-id="cl702v55c000n5jmv4hd701sy" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2020/09/14/Take-a-break-and-review-this-year/" data-id="cld8vd0d6000n8eo4ga851sw0" class="article-share-link">Share</a>
             
             
           </footer>
@@ -388,27 +403,31 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2020-04-09T08:08:05.000Z" itemprop="datePublished">Apr 09, 2020</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-04-09T08:08:05.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Apr 09, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <h3 id="the-idea-comes-from"><a class="header-anchor" href="#the-idea-comes-from"></a>The idea comes from…</h3>
-<p>I read a blog <a target="_blank" rel="noopener" href="https://medium.com/@moojing/%E5%80%8B%E4%BA%BA%E6%8A%80%E8%A1%93%E7%AB%99%E4%B8%80%E6%8A%8A%E7%BD%A9-%E9%83%A8%E8%90%BD%E6%A0%BC%E5%BB%BA%E7%BD%AE%E5%A4%A7%E5%85%A8-%E4%BA%8C-%E5%B0%87-github-page-%E4%B8%B2%E4%B8%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D-8f7e11cf2687">將 Github Page 串上自己的域名</a> on <a target="_blank" rel="noopener" href="http://Medium.com">Medium.com</a>, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set it again.</p>
-<h3 id="hugo"><a class="header-anchor" href="#hugo"></a>Hugo</h3>
-<h4 id="first-install-go-and-hugo"><a class="header-anchor" href="#first-install-go-and-hugo"></a>First, install go and hugo:</h4>
-<p>My system is Ubuntu 19.04, so I follow <a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/Ubuntu">Go wiki</a> instructions.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:longsleep&#x2F;golang-backports</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install golang-go</span><br></pre></td></tr></table></figure>
+              <h3 id="The-idea-comes-from…"><a href="#The-idea-comes-from…" class="headerlink" title="The idea comes from…"></a>The idea comes from…</h3><p>I read a blog <a target="_blank" rel="noopener" href="https://medium.com/@moojing/%E5%80%8B%E4%BA%BA%E6%8A%80%E8%A1%93%E7%AB%99%E4%B8%80%E6%8A%8A%E7%BD%A9-%E9%83%A8%E8%90%BD%E6%A0%BC%E5%BB%BA%E7%BD%AE%E5%A4%A7%E5%85%A8-%E4%BA%8C-%E5%B0%87-github-page-%E4%B8%B2%E4%B8%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D-8f7e11cf2687">將 Github Page 串上自己的域名</a> on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set it again.</p>
+<h3 id="Hugo"><a href="#Hugo" class="headerlink" title="Hugo"></a>Hugo</h3><h4 id="First-install-go-and-hugo"><a href="#First-install-go-and-hugo" class="headerlink" title="First, install go and hugo:"></a>First, install go and hugo:</h4><p>My system is Ubuntu 19.04, so I follow <a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/Ubuntu">Go wiki</a> instructions.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install golang-go</span><br></pre></td></tr></table></figure>
             
           </div>
 
@@ -423,7 +442,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/" data-id="cl702v59y00bu5jmvfrv32c6a" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/" data-id="cld8vd0fj003c8eo40e8l0qpw" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DevOps/" rel="tag">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/gitlab/" rel="tag">gitlab</a></li></ul>
@@ -462,26 +481,31 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2020-02-13T07:30:15.000Z" itemprop="datePublished">Feb 13, 2020</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-02-13T07:30:15.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Feb 13, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
               <p>新的一篇文章來講講最近踩的雷，起因手邊有個案子開了一台CentOS 8機器給我，讓我在上面設定docker跟跑起服務。實在跟CentOS很不熟的我決定寫篇備忘錄。</p>
-<p>一開始就先開台乾淨的CentOS VM來準備被我玩爛…<br>
-<img src="/blog/2020/02/13/centos-8-install-docker-and-docker-compose/install-centos.jpg" alt="install centos"></p>
-<h2 id="install-docker"><a class="header-anchor" href="#install-docker"></a>Install Docker</h2>
-<p>然後，讓我慢慢安裝docker。</p>
+<p>一開始就先開台乾淨的CentOS VM來準備被我玩爛…<br><img src="install-centos.jpg" alt="install centos"></p>
+<h2 id="Install-Docker"><a href="#Install-Docker" class="headerlink" title="Install Docker"></a>Install Docker</h2><p>然後，讓我慢慢安裝docker。</p>
             
           </div>
 
@@ -496,7 +520,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/" data-id="cl702v55a000k5jmv0qdecy0y" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/" data-id="cld8vd0dy00108eo4b0995o1m" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DevOps/" rel="tag">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
@@ -524,7 +548,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg" rel="gallery_cl702v55g000r5jmv8daib7ue">
+      <a class="article-gallery-img fancybox" href="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg" rel="gallery_cld8vd0d9000o8eo48unh69jr">
         <img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg" itemprop="image">
       </a>
     
@@ -545,24 +569,30 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-11-14T14:29:34.000Z" itemprop="datePublished">Nov 14, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-11-14T14:29:34.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Nov 14, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <h3 id="前情提要"><a class="header-anchor" href="#前情提要"></a>前情提要</h3>
-<p>最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。</p>
-<p><img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/docker-nginx.jpg" alt="docker-nginx.jpg"></p>
+              <h3 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h3><p>最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。</p>
+<p><img src="docker-nginx.jpg" alt="docker-nginx.jpg"></p>
             
           </div>
 
@@ -577,7 +607,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/" data-id="cl702v55g000r5jmv8daib7ue" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/" data-id="cld8vd0d9000o8eo48unh69jr" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GCP/" rel="tag">GCP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Load-balancer/" rel="tag">Load balancer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
@@ -616,16 +646,23 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-10-08T07:30:26.000Z" itemprop="datePublished">Oct 08, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-10-08T07:30:26.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Oct 08, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
@@ -636,8 +673,7 @@
 <ol>
 <li>更熟悉docker</li>
 <li>開始玩Golang</li>
-<li>入門大部分的Google AI &amp; ML Products<br>
-但也因為Google AI &amp; ML Products太多了，所以把它分了很多子系列進行，現在再來回顧一下這次的內容。</li>
+<li>入門大部分的Google AI &amp; ML Products<br>但也因為Google AI &amp; ML Products太多了，所以把它分了很多子系列進行，現在再來回顧一下這次的內容。</li>
 </ol>
 <blockquote>
 <p>前面先來個提醒，如果過程中你們有Deploy model做Online predict的，如果測完一定要記得刪掉，不然你deploy的model就會一直被收費喔。</p>
@@ -656,7 +692,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/10/08/ithelp-2019-day30/" data-id="cl702v56r002w5jmv3sli659r" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/10/08/ithelp-2019-day30/" data-id="cld8vd0f6002r8eo45ul83h7g" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Speech-to-Text/" rel="tag">Speech-to-Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -695,16 +731,23 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-10-07T07:30:24.000Z" itemprop="datePublished">Oct 07, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-10-07T07:30:24.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Oct 07, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
@@ -712,9 +755,7 @@
             
               <p>今天要來玩的是AI Hub裡面的<strong>Reusing a pipeline component</strong>，對Python超不熟的我弄了超久。</p>
 <blockquote>
-<p>這邊會需要run起tensorflow的docker<br>
-<code>docker pull tensorflow/tensorflow:latest-py3-jupyter</code><br>
-<code>docker run -it --rm -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 --name jupyter tensorflow/tensorflow:latest-py3-jupyter</code></p>
+<p>這邊會需要run起tensorflow的docker<br><code>docker pull tensorflow/tensorflow:latest-py3-jupyter</code><br><code>docker run -it --rm -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 --name jupyter tensorflow/tensorflow:latest-py3-jupyter</code> </p>
 </blockquote>
             
           </div>
@@ -730,7 +771,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/10/07/ithelp-2019-day29/" data-id="cl702v56i002l5jmv96w07klx" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/10/07/ithelp-2019-day29/" data-id="cld8vd0f5002o8eo410gaacor" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AI-Hub/" rel="tag">AI Hub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -769,26 +810,32 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-10-06T07:30:21.000Z" itemprop="datePublished">Oct 06, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-10-06T07:30:21.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Oct 06, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
               <blockquote>
-<p>話說照<a href="/blog/2019/09/09/ithelp-2019-day1/" title="第一天">第一天</a>的規劃，今天本來要寫<a target="_blank" rel="noopener" href="https://cloud.google.com/recommendations">Recommendation AI</a>，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。</p>
+<p>話說照<a href="/blog/2019/09/09/ithelp-2019-day1/" title="[Day 1] 說說哪裡來的靈感">第一天</a>的規劃，今天本來要寫<a target="_blank" rel="noopener" href="https://cloud.google.com/recommendations">Recommendation AI</a>，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。</p>
 </blockquote>
-<h3 id="ai-hub"><a class="header-anchor" href="#ai-hub"></a>AI Hub</h3>
-<p>今天找其他的玩具來玩，翻到了<strong>AI Hub</strong>，Hub會讓人直接連想到集線器，<strong>AI Hub</strong>就是把很多AI、ML集中在一起的平台，你可以在上面使用大家的AI model，也可以分享自己的AI上去給大家用。</p>
+<h3 id="AI-Hub"><a href="#AI-Hub" class="headerlink" title="AI Hub"></a>AI Hub</h3><p>今天找其他的玩具來玩，翻到了<strong>AI Hub</strong>，Hub會讓人直接連想到集線器，<strong>AI Hub</strong>就是把很多AI、ML集中在一起的平台，你可以在上面使用大家的AI model，也可以分享自己的AI上去給大家用。</p>
 <p>我今天會來介紹其中幾個內容：<strong>service</strong>、<strong>notebook</strong>、<strong>tensorflow module</strong>，入門一下AI Hub。</p>
             
           </div>
@@ -804,7 +851,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/" data-id="cl702v56o002r5jmv4a6uedvq" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/" data-id="cld8vd0ly00dv8eo4dtc5d6yz" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AI-Hub/" rel="tag">AI Hub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -843,25 +890,31 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-10-05T07:30:18.000Z" itemprop="datePublished">Oct 05, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-10-05T07:30:18.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Oct 05, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <p>今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。<br>
-<img src="/blog/2019/10/05/ithelp-2019-day27/deployed.jpg" alt="deployed"></p>
+              <p>今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。<br><img src="deployed.jpg" alt="deployed"></p>
 <blockquote>
-<p>大家可以先拿<a href="/blog/2019/10/04/ithelp-2019-day26/" title="昨天">昨天</a>的資料在UI介面上online predict一下。</p>
+<p>大家可以先拿<a href="/blog/2019/10/04/ithelp-2019-day26/" title="[Day 26] Google AutoML Table - 1">昨天</a>的資料在UI介面上online predict一下。</p>
 </blockquote>
             
           </div>
@@ -877,7 +930,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/" data-id="cl702v56k002o5jmvc9n49iv1" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/" data-id="cld8vd0f2002i8eo41joadzg3" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AutoML-Table/" rel="tag">AutoML Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -900,11 +953,9 @@
 
       
         <nav id="page-nav">
-          <a class="extend prev" rel="prev" href="/categories/Joseph/">&amp;laquo; Prev</a><a class="page-number" href="/categories/Joseph/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/Joseph/page/3/">3</a><a class="page-number" href="/categories/Joseph/page/4/">4</a><a class="page-number" href="/categories/Joseph/page/5/">5</a><a class="extend next" rel="next" href="/categories/Joseph/page/3/">Next &amp;raquo;</a>
+          <a class="extend prev" rel="prev" href="/categories/Joseph/">« Prev</a><a class="page-number" href="/categories/Joseph/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/Joseph/page/3/">3</a><a class="page-number" href="/categories/Joseph/page/4/">4</a><a class="page-number" href="/categories/Joseph/page/5/">5</a><a class="extend next" rel="next" href="/categories/Joseph/page/3/">Next »</a>
         </nav>
       
-
-
 
     </div>
     <div class="col s12 m3">
@@ -983,47 +1034,26 @@
 
   </div>
 
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

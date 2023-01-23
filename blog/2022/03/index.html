@@ -6,6 +6,7 @@
   <title>Blog: 2022/3 | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <meta name="description" content="Engineer &#x2F; Marketing">
 <meta property="og:type" content="website">
@@ -44,45 +45,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -107,14 +103,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -132,7 +128,8 @@
 
 
   <div id="main-container">
-    <div class="container">
+    
+<div class="container">
   <div class="row">
     <div class="col s12 m9">
 
@@ -148,7 +145,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/logo.jpg" rel="gallery_cl702v553000f5jmv03bgacuo">
+      <a class="article-gallery-img fancybox" href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/logo.jpg" rel="gallery_cld8vd0cj000f8eo4293dbq2a">
         <img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/logo.jpg" itemprop="image">
       </a>
     
@@ -169,30 +166,35 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2022-03-16T08:39:37.000Z" itemprop="datePublished">Mar 16, 2022</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2022-03-16T08:39:37.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Mar 16, 2022</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <p>我們<a href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" title="上一篇">上一篇</a>已經設定好docker及hardhat專案，這一篇就從NFT開始。</p>
-<h3 id="generate-nft-metadata"><a class="header-anchor" href="#generate-nft-metadata"></a>Generate NFT metadata</h3>
-<p>先建立一個<code>images</code>資料夾後，把你想要的圖片放進去，並存成1, 2, 3…之類的檔名，然後用<code>ipfs-car</code>指令打包在一起。</p>
+              <p>我們<a href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" title="Hardhat - Solidity and NFT - Part 1 - Prepare project">上一篇</a>已經設定好docker及hardhat專案，這一篇就從NFT開始。</p>
+<h3 id="Generate-NFT-metadata"><a href="#Generate-NFT-metadata" class="headerlink" title="Generate NFT metadata"></a>Generate NFT metadata</h3><p>先建立一個<code>images</code>資料夾後，把你想要的圖片放進去，並存成1, 2, 3….之類的檔名，然後用<code>ipfs-car</code>指令打包在一起。</p>
 <blockquote>
-<p>找不到圖可以先用<a target="_blank" rel="noopener" href="https://docs.opensea.io/docs/part-3-adding-metadata-and-payments-to-your-contract">opensea doc</a>裡的圖當練習<br>
-<img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/ipfs-car.jpg" alt="ipfs-car"></p>
+<p>找不到圖可以先用<a target="_blank" rel="noopener" href="https://docs.opensea.io/docs/part-3-adding-metadata-and-payments-to-your-contract">opensea doc</a>裡的圖當練習</p>
 </blockquote>
-<p>接著到<a target="_blank" rel="noopener" href="https://nft.storage/">NFT Storage</a>上傳<code>images.car</code>檔案就可以了。<br>
-<img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/image-car-upload.jpg" alt="image-car-upload"></p>
+<p><img src="ipfs-car.jpg" alt="ipfs-car"></p>
+<p>接著到<a target="_blank" rel="noopener" href="https://nft.storage/">NFT Storage</a>上傳<code>images.car</code>檔案就可以了。<br><img src="image-car-upload.jpg" alt="image-car-upload"></p>
             
           </div>
 
@@ -207,7 +209,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/" data-id="cl702v553000f5jmv03bgacuo" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/" data-id="cld8vd0cj000f8eo4293dbq2a" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/NFT/" rel="tag">NFT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
@@ -235,7 +237,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" rel="gallery_cl702v54y000b5jmv4ulmefct">
+      <a class="article-gallery-img fancybox" href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" rel="gallery_cld8vd0c8000b8eo41azt8qpw">
         <img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" itemprop="image">
       </a>
     
@@ -256,32 +258,36 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2022-03-10T15:38:47.000Z" itemprop="datePublished">Mar 10, 2022</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2022-03-10T15:38:47.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Mar 10, 2022</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <p>農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity / Hardhat上架NFT的過程，以免以後金魚腦忘光。</p>
-<h3 id="prerequisite-sign-up-these-services"><a class="header-anchor" href="#prerequisite-sign-up-these-services"></a>Prerequisite: Sign-up these services.</h3>
-<ul>
+              <p>農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。</p>
+<h3 id="Prerequisite-Sign-up-these-services"><a href="#Prerequisite-Sign-up-these-services" class="headerlink" title="Prerequisite: Sign-up these services."></a>Prerequisite: Sign-up these services.</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a> (這個服務是之後用來verify contract用的，如果不想驗證可以跳過申請。)</li>
 <li><a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a></li>
 <li><a target="_blank" rel="noopener" href="https://infura.io/">Infura</a></li>
 <li><a target="_blank" rel="noopener" href="https://nft.storage/">NFTStorage</a></li>
 </ul>
-<h3 id="init-project"><a class="header-anchor" href="#init-project"></a>Init project</h3>
-<p>我是使用docker, docker-compose，所以先來看看我的初始專案架構及<code>docker-compose.yml</code>跟<code>Dockerfile</code>。<br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/init-project.jpg" alt="Init project"></p>
+<h3 id="Init-project"><a href="#Init-project" class="headerlink" title="Init project"></a>Init project</h3><p>我是使用docker, docker-compose，所以先來看看我的初始專案架構及<code>docker-compose.yml</code>跟<code>Dockerfile</code>。<br><img src="init-project.jpg" alt="Init project"></p>
 <p><strong>docker-compose.yml</strong></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">hardhat:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">./hardhat</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./hardhat:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/node_modules</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8545</span><span class="string">:8545</span></span><br></pre></td></tr></table></figure>
             
@@ -298,7 +304,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" data-id="cl702v54y000b5jmv4ulmefct" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" data-id="cld8vd0c8000b8eo41azt8qpw" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
@@ -320,8 +326,6 @@
 
 
       
-
-
 
     </div>
     <div class="col s12 m3">
@@ -400,48 +404,26 @@
 
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

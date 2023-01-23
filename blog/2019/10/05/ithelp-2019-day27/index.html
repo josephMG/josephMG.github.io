@@ -6,13 +6,14 @@
   <title>[Day 27] Google AutoML Table - 2 | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="description" content="今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。   大家可以先拿昨天的資料在UI介面上online predict一下。">
+  <meta name="description" content="今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。  大家可以先拿昨天的資料在UI介面上online predict一下。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Day 27] Google AutoML Table - 2">
 <meta property="og:url" content="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/index.html">
 <meta property="og:site_name" content="Joseph &amp; Sandy">
-<meta property="og:description" content="今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。   大家可以先拿昨天的資料在UI介面上online predict一下。">
+<meta property="og:description" content="今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。  大家可以先拿昨天的資料在UI介面上online predict一下。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/deployed.jpg">
 <meta property="og:image" content="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/json-request.jpg">
@@ -48,45 +49,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -111,14 +107,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -139,7 +135,7 @@
     
 <div class="container">
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12">
 
 
       <article id="blog-ithelp-2019-day27" class="article article-type-blog" itemscope itemprop="blogPost">
@@ -160,43 +156,47 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-10-05T07:30:18.000Z" itemprop="datePublished">Oct 05, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-10-05T07:30:18.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Oct 05, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <p>今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。<br>
-<img src="/blog/2019/10/05/ithelp-2019-day27/deployed.jpg" alt="deployed"></p>
+              <p>今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。<br><img src="deployed.jpg" alt="deployed"></p>
 <blockquote>
-<p>大家可以先拿<a href="/blog/2019/10/04/ithelp-2019-day26/" title="昨天">昨天</a>的資料在UI介面上online predict一下。</p>
+<p>大家可以先拿<a href="/blog/2019/10/04/ithelp-2019-day26/" title="[Day 26] Google AutoML Table - 1">昨天</a>的資料在UI介面上online predict一下。</p>
 </blockquote>
-<a id="more"></a>
-<p>記得昨天的UI介面嗎？最下面有個<code>REST API</code>點下去就會把上方feature column的值變成json，並給你一個URL讓你呼叫。<br>
-<img src="/blog/2019/10/05/ithelp-2019-day27/json-request.jpg" alt="json request"></p>
-<p>不過我這邊CURL的方式一直會出現403，看來不是用我的service account去呼叫，而是使用我的google user去呼叫，所以一直驗證失敗。<br>
-<img src="/blog/2019/10/05/ithelp-2019-day27/CURL.jpg" alt="CURL"></p>
-<p>這讓我想到<a href="/blog/2019/09/24/ithelp-2019-day16/" title="Day16">Day16</a>我用了REST API呼叫Translation API，就照本宣科來一次AutoML Table。先按照JSON格式來定義<code>struct</code>，他需要<code>Payload</code>裡面有個<code>Row</code>，<code>Row</code>內有<code>Values</code> &amp; <code>ColumnSpecIds</code>。</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Body <span class="keyword">struct</span> &#123;</span><br><span class="line">  Payload Payload <span class="string">`json:&quot;payload&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Payload <span class="keyword">struct</span> &#123;</span><br><span class="line">  Row Row <span class="string">`json:&quot;row&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Row <span class="keyword">struct</span> &#123;</span><br><span class="line">  Values        []<span class="keyword">string</span> <span class="string">`json:&quot;values&quot;`</span></span><br><span class="line">  ColumnSpecIds []<span class="keyword">string</span> <span class="string">`json:&quot;columnSpecIds&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p>記得昨天的UI介面嗎？最下面有個<code>REST API</code>點下去就會把上方feature column的值變成json，並給你一個URL讓你呼叫。<br><img src="json-request.jpg" alt="json request"></p>
+<p>不過我這邊CURL的方式一直會出現403，看來不是用我的service account去呼叫，而是使用我的google user去呼叫，所以一直驗證失敗。<br><img src="CURL.jpg" alt="CURL"></p>
+<p>這讓我想到<a href="/blog/2019/09/24/ithelp-2019-day16/" title="[Day 16] Google Translation - 3">Day16</a>我用了REST API呼叫Translation API，就照本宣科來一次AutoML Table。先按照JSON格式來定義<code>struct</code>，他需要<code>Payload</code>裡面有個<code>Row</code>，<code>Row</code>內有<code>Values</code> &amp; <code>ColumnSpecIds</code>。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Body <span class="keyword">struct</span> &#123;</span><br><span class="line">  Payload Payload <span class="string">`json:&quot;payload&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Payload <span class="keyword">struct</span> &#123;</span><br><span class="line">  Row Row <span class="string">`json:&quot;row&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Row <span class="keyword">struct</span> &#123;</span><br><span class="line">  Values        []<span class="type">string</span> <span class="string">`json:&quot;values&quot;`</span></span><br><span class="line">  ColumnSpecIds []<span class="type">string</span> <span class="string">`json:&quot;columnSpecIds&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>實際的格式可以參考這裡：<a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/docs/reference/rest/v1beta1/projects.locations.models/predict">https://cloud.google.com/automl-tables/docs/reference/rest/v1beta1/projects.locations.models/predict</a><br>
-(你也可以看到其實Values, ColumnSpecIds是deprecated的狀態，可以用cells代替。</p>
+<p>實際的格式可以參考這裡：<a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/docs/reference/rest/v1beta1/projects.locations.models/predict">https://cloud.google.com/automl-tables/docs/reference/rest/v1beta1/projects.locations.models/predict</a><br>(你也可以看到其實Values, ColumnSpecIds是deprecated的狀態，可以用cells代替。</p>
 </blockquote>
 <p>接下來看看function：</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">OnlinePredict</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">  token, _ := auth.ServiceAccount(<span class="string">&quot;./authentication.json&quot;</span>, <span class="string">&quot;https://www.googleapis.com/auth/cloud-platform&quot;</span>)</span><br><span class="line"></span><br><span class="line">  header := req.Header&#123;</span><br><span class="line">    <span class="string">&quot;Accept&quot;</span>:        <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>:  <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Authorization&quot;</span>: <span class="string">&quot;Bearer &quot;</span> + token.AccessToken,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  body := Body&#123;</span><br><span class="line">    Payload: Payload&#123;</span><br><span class="line">      Row: Row&#123;</span><br><span class="line">        Values: []<span class="keyword">string</span>&#123;</span><br><span class="line">          <span class="string">&quot;39&quot;</span>, <span class="string">&quot;admin.&quot;</span>, <span class="string">&quot;married&quot;</span>, <span class="string">&quot;secondary&quot;</span>, <span class="string">&quot;no&quot;</span>, <span class="string">&quot;70&quot;</span>, <span class="string">&quot;yes&quot;</span>, <span class="string">&quot;no&quot;</span>, <span class="string">&quot;cellular&quot;</span>, <span class="string">&quot;31&quot;</span>, <span class="string">&quot;jul&quot;</span>, <span class="string">&quot;13&quot;</span>, <span class="string">&quot;11&quot;</span>, <span class="string">&quot;-1&quot;</span>, <span class="string">&quot;0&quot;</span>, <span class="string">&quot;unknown&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        ColumnSpecIds: []<span class="keyword">string</span>&#123;</span><br><span class="line">          <span class="string">&quot;461385865340387328&quot;</span>, <span class="string">&quot;5073071883767775232&quot;</span>, <span class="string">&quot;1614307369947234304&quot;</span>, <span class="string">&quot;2767228874554081280&quot;</span>, <span class="string">&quot;6225993388374622208&quot;</span>, <span class="string">&quot;7378914892981469184&quot;</span>,</span><br><span class="line"><span class="string">&quot;3920150379160928256&quot;</span>, <span class="string">&quot;5649532636071198720&quot;</span>, <span class="string">&quot;8531836397588316160&quot;</span>, <span class="string">&quot;1037846617643810816&quot;</span>, <span class="string">&quot;3343689626857504768&quot;</span>, <span class="string">&quot;7955375645284892672&quot;</span>, <span class="string">&quot;2190768122250657792&quot;</span>,</span><br><span class="line"><span class="string">&quot;9108297149891739648&quot;</span>, <span class="string">&quot;6802454140678045696&quot;</span>, <span class="string">&quot;4496611131464351744&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">  json_string, _ := json.Marshal(body)</span><br><span class="line"></span><br><span class="line">  param := req.BodyJSON(json_string)</span><br><span class="line">  <span class="comment">// only url is required, others are optional.</span></span><br><span class="line">  <span class="comment">// params &#123;name&#125; = &quot;projects/PROJECT_NUMBER/locations/us-central1/models/MODEL_NAME&quot;</span></span><br><span class="line">  r, err := req.Post(</span><br><span class="line">    fmt.Sprintf(<span class="string">&quot;https://automl.googleapis.com/v1beta1/projects/%s/locations/us-central1/models/%s:predict&quot;</span>, os.Getenv(<span class="string">&quot;PROJECT_NUMBER&quot;</span>), os.Getenv(<span class="string">&quot;MODEL_NAME&quot;</span>)),</span><br><span class="line">    header,</span><br><span class="line">    param,</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line">  log.Printf(<span class="string">&quot;%+v&quot;</span>, r) <span class="comment">// print info (try it, you may surprise)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">OnlinePredict</span><span class="params">()</span></span> <span class="type">error</span> &#123;</span><br><span class="line">  token, _ := auth.ServiceAccount(<span class="string">&quot;./authentication.json&quot;</span>, <span class="string">&quot;https://www.googleapis.com/auth/cloud-platform&quot;</span>)</span><br><span class="line"></span><br><span class="line">  header := req.Header&#123;</span><br><span class="line">    <span class="string">&quot;Accept&quot;</span>:        <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>:  <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Authorization&quot;</span>: <span class="string">&quot;Bearer &quot;</span> + token.AccessToken,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  body := Body&#123;</span><br><span class="line">    Payload: Payload&#123;</span><br><span class="line">      Row: Row&#123;</span><br><span class="line">        Values: []<span class="type">string</span>&#123;</span><br><span class="line">          <span class="string">&quot;39&quot;</span>, <span class="string">&quot;admin.&quot;</span>, <span class="string">&quot;married&quot;</span>, <span class="string">&quot;secondary&quot;</span>, <span class="string">&quot;no&quot;</span>, <span class="string">&quot;70&quot;</span>, <span class="string">&quot;yes&quot;</span>, <span class="string">&quot;no&quot;</span>, <span class="string">&quot;cellular&quot;</span>, <span class="string">&quot;31&quot;</span>, <span class="string">&quot;jul&quot;</span>, <span class="string">&quot;13&quot;</span>, <span class="string">&quot;11&quot;</span>, <span class="string">&quot;-1&quot;</span>, <span class="string">&quot;0&quot;</span>, <span class="string">&quot;unknown&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        ColumnSpecIds: []<span class="type">string</span>&#123;</span><br><span class="line">          <span class="string">&quot;461385865340387328&quot;</span>, <span class="string">&quot;5073071883767775232&quot;</span>, <span class="string">&quot;1614307369947234304&quot;</span>, <span class="string">&quot;2767228874554081280&quot;</span>, <span class="string">&quot;6225993388374622208&quot;</span>, <span class="string">&quot;7378914892981469184&quot;</span>,</span><br><span class="line"><span class="string">&quot;3920150379160928256&quot;</span>, <span class="string">&quot;5649532636071198720&quot;</span>, <span class="string">&quot;8531836397588316160&quot;</span>, <span class="string">&quot;1037846617643810816&quot;</span>, <span class="string">&quot;3343689626857504768&quot;</span>, <span class="string">&quot;7955375645284892672&quot;</span>, <span class="string">&quot;2190768122250657792&quot;</span>,</span><br><span class="line"><span class="string">&quot;9108297149891739648&quot;</span>, <span class="string">&quot;6802454140678045696&quot;</span>, <span class="string">&quot;4496611131464351744&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">  json_string, _ := json.Marshal(body)</span><br><span class="line"></span><br><span class="line">  param := req.BodyJSON(json_string)</span><br><span class="line">  <span class="comment">// only url is required, others are optional.</span></span><br><span class="line">  <span class="comment">// params &#123;name&#125; = &quot;projects/PROJECT_NUMBER/locations/us-central1/models/MODEL_NAME&quot;</span></span><br><span class="line">  r, err := req.Post(</span><br><span class="line">    fmt.Sprintf(<span class="string">&quot;https://automl.googleapis.com/v1beta1/projects/%s/locations/us-central1/models/%s:predict&quot;</span>, os.Getenv(<span class="string">&quot;PROJECT_NUMBER&quot;</span>), os.Getenv(<span class="string">&quot;MODEL_NAME&quot;</span>)),</span><br><span class="line">    header,</span><br><span class="line">    param,</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line">  log.Printf(<span class="string">&quot;%+v&quot;</span>, r) <span class="comment">// print info (try it, you may surprise)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>這邊除了建立body json以外，要注意的就是<a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/docs/reference/rest/v1beta1/projects.locations.models/predict">Predict API</a>裡的<code>&#123;name&#125;</code>其實很長，裡面包含<code>PROJECT_NUMBER</code>跟<code>MODEL_NAME</code>，應該長這樣子<code>projects/PROJECT_NUMBER/locations/us-central1/models/MODEL_NAME</code>。</p>
-<p>然後我們就來看看結果：<br>
-<img src="/blog/2019/10/05/ithelp-2019-day27/output.jpg" alt="output"><br>
-預測結果是99.83% Deposit=1 (存款不會透過銀行), 0.16% Deposit=2 (存款會透過銀行)，跟在UI結果直接按predict差不多。</p>
+<p>然後我們就來看看結果：<br><img src="output.jpg" alt="output"><br>預測結果是99.83% Deposit&#x3D;1 (存款不會透過銀行), 0.16% Deposit&#x3D;2 (存款會透過銀行)，跟在UI結果直接按predict差不多。</p>
 <blockquote>
 <p>寫到最後才發現原來其實有Go API可以呼叫，可是要去翻翻Github: <a target="_blank" rel="noopener" href="https://github.com/googleapis/google-cloud-go/tree/master/automl/apiv1beta1">https://github.com/googleapis/google-cloud-go/tree/master/automl/apiv1beta1</a></p>
 </blockquote>
@@ -211,7 +211,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/" data-id="cl702v56k002o5jmvc9n49iv1" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/10/05/ithelp-2019-day27/" data-id="cld8vd0f2002i8eo41joadzg3" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AutoML-Table/" rel="tag">AutoML Table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -224,20 +224,30 @@
           
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
-    <ul class="row">
+    <ul>
     
-      <li class="col s6">
-        <a href="/blog/2019/10/06/ithelp-2019-day28/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/10/06/ithelp-2019-day28/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 28] Google AI Hub - 1"
+        >
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">[Day 28] Google AI Hub - 1</span>
+          <span class="article-nav-title truncate">[Day 28] Google AI Hub - 1</span>
         </a>
       </li>
     
 
     
-      <li class="col s6">
-        <a href="/blog/2019/10/04/ithelp-2019-day26/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">[Day 26] Google AutoML Table - 1</span>
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/10/04/ithelp-2019-day26/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 26] Google AutoML Table - 1"
+        >
+          <span class="article-nav-title truncate">[Day 26] Google AutoML Table - 1</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
@@ -257,76 +267,6 @@
 
 
     </div>
-    <div class="col s12 m3">
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Authors</h5>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Tag Cloud</h5>
-    <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Archives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Recents</h5>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/">Blockchain fullstack structure - Part 2 - Hardhat</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-
-      
-    </div>
   </div>
 </div>
 
@@ -335,50 +275,29 @@
 
 
 
+
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

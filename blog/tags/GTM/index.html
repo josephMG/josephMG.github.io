@@ -6,6 +6,7 @@
   <title>Tag: GTM | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <meta name="description" content="Engineer &#x2F; Marketing">
 <meta property="og:type" content="website">
@@ -44,45 +45,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -107,14 +103,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -132,7 +128,8 @@
 
 
   <div id="main-container">
-    <div class="container">
+    
+<div class="container">
   <div class="row">
     <div class="col s12 m9">
 
@@ -161,28 +158,35 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2021-09-22T05:02:06.000Z" itemprop="datePublished">Sep 22, 2021</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2021-09-22T05:02:06.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 22, 2021</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
               <p>這篇文章我決定用中文寫，主要原因是中文的資料太少，而且也很多不是<a target="_blank" rel="noopener" href="https://support.google.com/analytics/answer/10089681?hl=zh-Hant">Google Analytics 4</a> + <a target="_blank" rel="noopener" href="https://tagmanager.google.com/">Google Tag Manager</a> (GA4+GTM) 的設定，所以我覺得用中文記錄一下，好讓大家要搜尋的可以搜得到。</p>
-<p>在以前GA追蹤埋追蹤碼時，我們要紀錄的<code>user_id</code>經過規劃後會視情況放在<code>category</code>, <code>action</code>, <code>label</code>, <code>value</code>或複雜一點的<a target="_blank" rel="noopener" href="https://support.google.com/analytics/answer/2709828#example-user&amp;zippy=%2Cin-this-article">custom dimensions</a>裡，GA經過長時間的演進，再加上GTM的助攻，現在已經可以有各種變化、也有多種<a target="_blank" rel="noopener" href="https://tagmanager.google.com/gallery/#/">templates</a>可以套用在網站及應用程式裡。</p>
+<p>在以前GA追蹤埋追蹤碼時，我們要紀錄的<code>user_id</code>經過規劃後會視情況放在<code>category</code>, <code>action</code>, <code>label</code>, <code>value</code>或複雜一點的<a target="_blank" rel="noopener" href="https://support.google.com/analytics/answer/2709828#example-user&zippy=%2Cin-this-article">custom dimensions</a>裡，GA經過長時間的演進，再加上GTM的助攻，現在已經可以有各種變化、也有多種<a target="_blank" rel="noopener" href="https://tagmanager.google.com/gallery/#/">templates</a>可以套用在網站及應用程式裡。</p>
 <p>至於要怎麼做呢？首先一樣從<a target="_blank" rel="noopener" href="https://tagmanager.google.com/">GTM</a>上方的<code>管理</code> &gt; <code>安裝 Google 代碼管理工具</code>把追蹤程式碼塞到我們的網站上，然後回到GA4去取得<code>評估ID</code>。</p>
 <blockquote>
 <p>如果你只有通用型GA分析的話，也可以從<code>管理</code> &gt; <code>Google Analytics (分析) 4 資源設定輔助程式</code>開啟GA4追蹤功能</p>
 </blockquote>
-<p><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/get-evaluation-id.jpg" alt="get-evaluation-id.jpg"></p>
+<p><img src="get-evaluation-id.jpg" alt="get-evaluation-id.jpg"></p>
             
           </div>
 
@@ -197,7 +201,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/" data-id="cl702v5ab00ca5jmvc8sr3rke" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/" data-id="cld8vd0fq003n8eo4elpqe07v" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GA4/" rel="tag">GA4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GTM/" rel="tag">GTM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-Analytics-4/" rel="tag">Google Analytics 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Marketing/" rel="tag">Marketing</a></li></ul>
@@ -219,8 +223,6 @@
 
 
       
-
-
 
     </div>
     <div class="col s12 m3">
@@ -296,49 +298,29 @@
   </div>
 </div>
 
+
   </div>
 
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

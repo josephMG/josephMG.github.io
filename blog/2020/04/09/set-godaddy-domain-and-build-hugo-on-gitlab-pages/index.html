@@ -6,13 +6,14 @@
   <title>Set godaddy domain and build hugo on gitlab pages | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="description" content="The idea comes from… I read a blog 將 Github Page 串上自己的域名 on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to se">
+  <meta name="description" content="The idea comes from…I read a blog 將 Github Page 串上自己的域名 on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Set godaddy domain and build hugo on gitlab pages">
 <meta property="og:url" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/index.html">
 <meta property="og:site_name" content="Joseph &amp; Sandy">
-<meta property="og:description" content="The idea comes from… I read a blog 將 Github Page 串上自己的域名 on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to se">
+<meta property="og:description" content="The idea comes from…I read a blog 將 Github Page 串上自己的域名 on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/Test-go-and-hugo.jpg">
 <meta property="og:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-setting-1.jpg">
@@ -48,45 +49,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -111,14 +107,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -139,7 +135,7 @@
     
 <div class="container">
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12">
 
 
       <article id="blog-set-godaddy-domain-and-build-hugo-on-gitlab-pages" class="article article-type-blog" itemscope itemprop="blogPost">
@@ -160,55 +156,51 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2020-04-09T08:08:05.000Z" itemprop="datePublished">Apr 09, 2020</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-04-09T08:08:05.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Apr 09, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <h3 id="the-idea-comes-from"><a class="header-anchor" href="#the-idea-comes-from"></a>The idea comes from…</h3>
-<p>I read a blog <a target="_blank" rel="noopener" href="https://medium.com/@moojing/%E5%80%8B%E4%BA%BA%E6%8A%80%E8%A1%93%E7%AB%99%E4%B8%80%E6%8A%8A%E7%BD%A9-%E9%83%A8%E8%90%BD%E6%A0%BC%E5%BB%BA%E7%BD%AE%E5%A4%A7%E5%85%A8-%E4%BA%8C-%E5%B0%87-github-page-%E4%B8%B2%E4%B8%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D-8f7e11cf2687">將 Github Page 串上自己的域名</a> on <a target="_blank" rel="noopener" href="http://Medium.com">Medium.com</a>, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set it again.</p>
-<h3 id="hugo"><a class="header-anchor" href="#hugo"></a>Hugo</h3>
-<h4 id="first-install-go-and-hugo"><a class="header-anchor" href="#first-install-go-and-hugo"></a>First, install go and hugo:</h4>
-<p>My system is Ubuntu 19.04, so I follow <a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/Ubuntu">Go wiki</a> instructions.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:longsleep&#x2F;golang-backports</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install golang-go</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>These commands will install latest Go.<br>
-Then, let’s install hugo following <a target="_blank" rel="noopener" href="https://gohugo.io/getting-started/installing/#snap-package">hugo</a>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snap install hugo --channel&#x3D;extended</span><br></pre></td></tr></table></figure>
-<p>Now, test it:<br>
-<img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/Test-go-and-hugo.jpg" alt="Test go and hugo"><br>
-Okay, system requirements are prepared.</p>
+              <h3 id="The-idea-comes-from…"><a href="#The-idea-comes-from…" class="headerlink" title="The idea comes from…"></a>The idea comes from…</h3><p>I read a blog <a target="_blank" rel="noopener" href="https://medium.com/@moojing/%E5%80%8B%E4%BA%BA%E6%8A%80%E8%A1%93%E7%AB%99%E4%B8%80%E6%8A%8A%E7%BD%A9-%E9%83%A8%E8%90%BD%E6%A0%BC%E5%BB%BA%E7%BD%AE%E5%A4%A7%E5%85%A8-%E4%BA%8C-%E5%B0%87-github-page-%E4%B8%B2%E4%B8%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D-8f7e11cf2687">將 Github Page 串上自己的域名</a> on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set it again.</p>
+<h3 id="Hugo"><a href="#Hugo" class="headerlink" title="Hugo"></a>Hugo</h3><h4 id="First-install-go-and-hugo"><a href="#First-install-go-and-hugo" class="headerlink" title="First, install go and hugo:"></a>First, install go and hugo:</h4><p>My system is Ubuntu 19.04, so I follow <a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/Ubuntu">Go wiki</a> instructions.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install golang-go</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>These commands will install latest Go.<br>Then, let’s install hugo following <a target="_blank" rel="noopener" href="https://gohugo.io/getting-started/installing/#snap-package">hugo</a>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snap install hugo --channel=extended</span><br></pre></td></tr></table></figure>
+
+<p>Now, test it:<br><img src="Test-go-and-hugo.jpg" alt="Test go and hugo"><br>Okay, system requirements are prepared.</p>
 <p>We can use <code>hugo new site SITE_NAME</code> to initialize a site, <code>hugo server -D</code> to see you page.</p>
-<h3 id="gitlab-pages"><a class="header-anchor" href="#gitlab-pages"></a>Gitlab pages</h3>
-<p>Open a <code>public</code> repository. (You will have <code>earth</code> icon.)<br>
-<img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-setting-1.jpg" alt="gitlab setting"></p>
-<p>Then, add a gitlab-ci yml file to run CI/CD on gitlab</p>
+<h3 id="Gitlab-pages"><a href="#Gitlab-pages" class="headerlink" title="Gitlab pages"></a>Gitlab pages</h3><p>Open a <code>public</code> repository. (You will have <code>earth</code> icon.)<br><img src="gitlab-setting-1.jpg" alt="gitlab setting"></p>
+<p>Then, add a gitlab-ci yml file to run CI&#x2F;CD on gitlab</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="string">registry.gitlab.com/pages/hugo:latest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line">  <span class="attr">GIT_SUBMODULE_STRATEGY:</span> <span class="string">recursive</span></span><br><span class="line"></span><br><span class="line"><span class="attr">test:</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hugo</span></span><br><span class="line">  <span class="attr">except:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">pages:</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">hugo</span> <span class="string">--gc</span></span><br><span class="line">  <span class="attr">artifacts:</span></span><br><span class="line">    <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">public</span></span><br><span class="line">    <span class="attr">expire_in:</span> <span class="number">1</span> <span class="string">day</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 <p>Finish! add, commit, and push it!</p>
 <blockquote>
-<p>Check your CI/CD pipeline is passed</p>
+<p>Check your CI&#x2F;CD pipeline is passed</p>
 </blockquote>
-<p>The last step on Gitlab is to set pages domain. Go to <code>Settings</code> &gt; <code>Pages</code> &gt; <code>New Domain</code> add your domain.<br>
-<img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-pages-1.jpg" alt="gitlab-pages-1"></p>
-<p>You will get a <code>CNAME</code> and a <code>TXT</code> settings to set in your godaddy.<br>
-<img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-pages-2.jpg" alt="gitlab-pages-2"></p>
+<p>The last step on Gitlab is to set pages domain. Go to <code>Settings</code> &gt; <code>Pages</code> &gt; <code>New Domain</code> add your domain.<br><img src="gitlab-pages-1.jpg" alt="gitlab-pages-1"></p>
+<p>You will get a <code>CNAME</code> and a <code>TXT</code> settings to set in your godaddy.<br><img src="gitlab-pages-2.jpg" alt="gitlab-pages-2"></p>
 <p>But the setting is tricky. Let’s see my Godaddy.</p>
-<h3 id="finally-godaddy-settings"><a class="header-anchor" href="#finally-godaddy-settings"></a>Finally, Godaddy settings</h3>
-<p><img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/godaddy.jpg" alt="godaddy"></p>
+<h3 id="Finally-Godaddy-settings"><a href="#Finally-Godaddy-settings" class="headerlink" title="Finally, Godaddy settings"></a>Finally, Godaddy settings</h3><p><img src="godaddy.jpg" alt="godaddy"></p>
 <p>I set two <code>A</code> records point to <code>35.185.44.232</code>, two <code>TXT</code> records corresponding to <code>A</code> and its <code>TXT</code> value. Note that <code>TXT</code> keys are only <code>@</code> and <code>www</code>. I’ve tried many settings, and only these settings are workable. Alternatively, you can use <a target="_blank" rel="noopener" href="https://www.cloudflare.com/">Cloudflare</a> with the whole keys and values that gitlab provided.</p>
 <p>That’s all. Go back to Gitlab pages setting to verify your domain, and then open your website in the browser.</p>
-<h3 id="summary"><a class="header-anchor" href="#summary"></a>Summary</h3>
-<p>I use <code>A</code> record instead of <code>CNAME</code>, and set <code>@</code> and <code>www</code> as <code>TXT</code> records’ key. Otherwise, I can’t verify my domain. There are many setting tutorial on the Internet. Just find and try it!</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>I use <code>A</code> record instead of <code>CNAME</code>, and set <code>@</code> and <code>www</code> as <code>TXT</code> records’ key. Otherwise, I can’t verify my domain. There are many setting tutorial on the Internet. Just find and try it!</p>
 <hr>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://docs.gitlab.com/ce/user/project/pages/custom_domains_ssl_tls_certification/index.html">Gitlab doc</a></li>
@@ -221,7 +213,7 @@ Okay, system requirements are prepared.</p>
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/" data-id="cl702v59y00bu5jmvfrv32c6a" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/" data-id="cld8vd0fj003c8eo40e8l0qpw" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DevOps/" rel="tag">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/gitlab/" rel="tag">gitlab</a></li></ul>
@@ -234,20 +226,30 @@ Okay, system requirements are prepared.</p>
           
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
-    <ul class="row">
+    <ul>
     
-      <li class="col s6">
-        <a href="/blog/2020/09/14/Take-a-break-and-review-this-year/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2020/09/14/Take-a-break-and-review-this-year/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Take a break and review this year"
+        >
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">Take a break and review this year</span>
+          <span class="article-nav-title truncate">Take a break and review this year</span>
         </a>
       </li>
     
 
     
-      <li class="col s6">
-        <a href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">品牌instagram成為人氣王的經營方法</span>
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="品牌instagram成為人氣王的經營方法"
+        >
+          <span class="article-nav-title truncate">品牌instagram成為人氣王的經營方法</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
@@ -267,76 +269,6 @@ Okay, system requirements are prepared.</p>
 
 
     </div>
-    <div class="col s12 m3">
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Authors</h5>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Tag Cloud</h5>
-    <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Archives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Recents</h5>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/">Blockchain fullstack structure - Part 2 - Hardhat</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-
-      
-    </div>
   </div>
 </div>
 
@@ -345,50 +277,29 @@ Okay, system requirements are prepared.</p>
 
 
 
+
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

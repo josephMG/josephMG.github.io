@@ -6,13 +6,14 @@
   <title>[Day 19] Google Cloud Text-to-Speech - 2 | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="description" content="昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門Cloud Text-to-Speech API吧。  前情提要：記得先Enable API，放置環境變數的教學可以看這系列第三天的文章 語言一樣使用Golang，然後跑在docker裡，之後也會放上github">
+  <meta name="description" content="昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門Cloud Text-to-Speech API吧。  前情提要：記得先Enable API，放置環境變數的教學可以看這系列第三天的文章語言一樣使用Golang，然後跑在docker裡，之後也會放上github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Day 19] Google Cloud Text-to-Speech - 2">
 <meta property="og:url" content="https://josephmg.github.io/blog/2019/09/27/ithelp-2019-day19/index.html">
 <meta property="og:site_name" content="Joseph &amp; Sandy">
-<meta property="og:description" content="昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門Cloud Text-to-Speech API吧。  前情提要：記得先Enable API，放置環境變數的教學可以看這系列第三天的文章 語言一樣使用Golang，然後跑在docker裡，之後也會放上github">
+<meta property="og:description" content="昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門Cloud Text-to-Speech API吧。  前情提要：記得先Enable API，放置環境變數的教學可以看這系列第三天的文章語言一樣使用Golang，然後跑在docker裡，之後也會放上github">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://josephmg.github.io/blog/2019/09/27/ithelp-2019-day19/file-structure.jpg">
 <meta property="og:image" content="https://josephmg.github.io/blog/2019/09/27/ithelp-2019-day19/output.jpg">
@@ -46,45 +47,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -109,14 +105,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -137,7 +133,7 @@
     
 <div class="container">
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12">
 
 
       <article id="blog-ithelp-2019-day19" class="article article-type-blog" itemscope itemprop="blogPost">
@@ -158,16 +154,23 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-09-27T07:29:57.000Z" itemprop="datePublished">Sep 27, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-27T07:29:57.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 27, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
@@ -175,18 +178,18 @@
             
               <p>昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門<a target="_blank" rel="noopener" href="https://cloud.google.com/text-to-speech/docs/?hl=zh-tw">Cloud Text-to-Speech API</a>吧。</p>
 <blockquote>
-<p>前情提要：記得先<a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/library">Enable API</a>，放置環境變數的教學可以看<a href="/blog/2019/09/11/ithelp-2019-day3/" title="這系列第三天">這系列第三天</a>的文章<br>
-語言一樣使用Golang，然後跑在docker裡，之後也會放上github</p>
+<p>前情提要：記得先<a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/library">Enable API</a>，放置環境變數的教學可以看<a href="/blog/2019/09/11/ithelp-2019-day3/" title="[Day 3] Google Vision AI - 2">這系列第三天</a>的文章<br>語言一樣使用Golang，然後跑在docker裡，之後也會放上github</p>
 </blockquote>
-<a id="more"></a>
-<p>這邊因為需要output一個檔案，但在docker裡面不好直接拿出來，所以在run的時候使用了-v <code>mount</code>，先來看一下檔案目錄：<br>
-<img src="/blog/2019/09/27/ithelp-2019-day19/file-structure.jpg" alt="file structure"></p>
+<span id="more"></span>
+
+<p>這邊因為需要output一個檔案，但在docker裡面不好直接拿出來，所以在run的時候使用了-v <code>mount</code>，先來看一下檔案目錄：<br><img src="file-structure.jpg" alt="file structure"></p>
 <p>我這邊就會Mount <code>testdata/text_to_speech</code>到docker，指令如下</p>
 <blockquote>
 <p><code>docker run -v $&#123;PWD&#125;/testdata:/app/testdata -it golang ./app Day19</code></p>
 </blockquote>
 <p>好，現在來看看code吧：</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> text_to_speech</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">&quot;context&quot;</span></span><br><span class="line">  <span class="string">&quot;fmt&quot;</span></span><br><span class="line">  <span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">  <span class="string">&quot;log&quot;</span></span><br><span class="line"></span><br><span class="line">  texttospeech <span class="string">&quot;cloud.google.com/go/texttospeech/apiv1&quot;</span></span><br><span class="line">  texttospeechpb <span class="string">&quot;google.golang.org/genproto/googleapis/cloud/texttospeech/v1&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ConvertToSpeech</span><span class="params">(text <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> root <span class="keyword">string</span> = <span class="string">&quot;./testdata/text_to_speech&quot;</span></span><br><span class="line">  <span class="comment">// Instantiates a client.</span></span><br><span class="line">  ctx := context.Background()</span><br><span class="line"></span><br><span class="line">  client, err := texttospeech.NewClient(ctx)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Perform the text-to-speech request on the text input with the selected</span></span><br><span class="line">  <span class="comment">// voice parameters and audio file type.</span></span><br><span class="line">  req := texttospeechpb.SynthesizeSpeechRequest&#123;</span><br><span class="line">    <span class="comment">// Set the text input to be synthesized.</span></span><br><span class="line">    Input: &amp;texttospeechpb.SynthesisInput&#123;</span><br><span class="line">      InputSource: &amp;texttospeechpb.SynthesisInput_Text&#123;Text: text&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Build the voice request, select the language code (&quot;en-US&quot;) and the SSML</span></span><br><span class="line">    <span class="comment">// voice gender (&quot;neutral&quot;).</span></span><br><span class="line">    Voice: &amp;texttospeechpb.VoiceSelectionParams&#123;</span><br><span class="line">      LanguageCode: <span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">      SsmlGender:   texttospeechpb.SsmlVoiceGender_NEUTRAL,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Select the type of audio file you want returned.</span></span><br><span class="line">    AudioConfig: &amp;texttospeechpb.AudioConfig&#123;</span><br><span class="line">      AudioEncoding: texttospeechpb.AudioEncoding_MP3,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  resp, err := client.SynthesizeSpeech(ctx, &amp;req)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The resp&#x27;s AudioContent is binary.</span></span><br><span class="line">  filename := <span class="string">&quot;output.mp3&quot;</span></span><br><span class="line">  err = ioutil.WriteFile(root+<span class="string">&quot;/&quot;</span>+filename, resp.AudioContent, <span class="number">0644</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Audio content written to file: %v\n&quot;</span>, filename)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> text_to_speech</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">&quot;context&quot;</span></span><br><span class="line">  <span class="string">&quot;fmt&quot;</span></span><br><span class="line">  <span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">  <span class="string">&quot;log&quot;</span></span><br><span class="line"></span><br><span class="line">  texttospeech <span class="string">&quot;cloud.google.com/go/texttospeech/apiv1&quot;</span></span><br><span class="line">  texttospeechpb <span class="string">&quot;google.golang.org/genproto/googleapis/cloud/texttospeech/v1&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ConvertToSpeech</span><span class="params">(text <span class="type">string</span>)</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> root <span class="type">string</span> = <span class="string">&quot;./testdata/text_to_speech&quot;</span></span><br><span class="line">  <span class="comment">// Instantiates a client.</span></span><br><span class="line">  ctx := context.Background()</span><br><span class="line"></span><br><span class="line">  client, err := texttospeech.NewClient(ctx)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Perform the text-to-speech request on the text input with the selected</span></span><br><span class="line">  <span class="comment">// voice parameters and audio file type.</span></span><br><span class="line">  req := texttospeechpb.SynthesizeSpeechRequest&#123;</span><br><span class="line">    <span class="comment">// Set the text input to be synthesized.</span></span><br><span class="line">    Input: &amp;texttospeechpb.SynthesisInput&#123;</span><br><span class="line">      InputSource: &amp;texttospeechpb.SynthesisInput_Text&#123;Text: text&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Build the voice request, select the language code (&quot;en-US&quot;) and the SSML</span></span><br><span class="line">    <span class="comment">// voice gender (&quot;neutral&quot;).</span></span><br><span class="line">    Voice: &amp;texttospeechpb.VoiceSelectionParams&#123;</span><br><span class="line">      LanguageCode: <span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">      SsmlGender:   texttospeechpb.SsmlVoiceGender_NEUTRAL,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Select the type of audio file you want returned.</span></span><br><span class="line">    AudioConfig: &amp;texttospeechpb.AudioConfig&#123;</span><br><span class="line">      AudioEncoding: texttospeechpb.AudioEncoding_MP3,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  resp, err := client.SynthesizeSpeech(ctx, &amp;req)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The resp&#x27;s AudioContent is binary.</span></span><br><span class="line">  filename := <span class="string">&quot;output.mp3&quot;</span></span><br><span class="line">  err = ioutil.WriteFile(root+<span class="string">&quot;/&quot;</span>+filename, resp.AudioContent, <span class="number">0644</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Audio content written to file: %v\n&quot;</span>, filename)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>中間有一個<code>AudioConfig</code>這是可以注意一下的地方，在<a target="_blank" rel="noopener" href="https://godoc.org/google.golang.org/api/texttospeech/v1beta1#AudioConfig">文件</a>裡她有很多參數可以設定：</p>
 <ul>
 <li>AudioEncoding：選擇輸出格式</li>
@@ -194,9 +197,7 @@
 <li>Pitch、SampleRateHertz、SpeakingRate、VolumeGainDb：都是一些在音訊領域常用到的常數</li>
 <li>ForceSendFields、NullFields：使用在Patch request，可以修改一些default的API request fields。</li>
 </ul>
-<p>好，我們就來看看output吧。<br>
-<img src="/blog/2019/09/27/ithelp-2019-day19/output.jpg" alt="output"><br>
-多了一個<code>output.mp3</code>。我只能讓你們看的到，要聽的話自己操作看看吧~</p>
+<p>好，我們就來看看output吧。<br><img src="output.jpg" alt="output"><br>多了一個<code>output.mp3</code>。我只能讓你們看的到，要聽的話自己操作看看吧~</p>
 <p>OK，今天的文章就到這邊，謝謝你的觀看。</p>
 <blockquote>
 <p>今天的github：<a target="_blank" rel="noopener" href="https://github.com/josephMG/ithelp-2019/tree/Day-19">https://github.com/josephMG/ithelp-2019/tree/Day-19</a></p>
@@ -208,7 +209,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/09/27/ithelp-2019-day19/" data-id="cl702v565001y5jmv97vl4xa2" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/09/27/ithelp-2019-day19/" data-id="cld8vd0eo001q8eo46m970ie3" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Text-to-Speech/" rel="tag">Text-to-Speech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -221,20 +222,30 @@
           
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
-    <ul class="row">
+    <ul>
     
-      <li class="col s6">
-        <a href="/blog/2019/09/28/ithelp-2019-day20/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/28/ithelp-2019-day20/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 20] Google Cloud Text-to-Speech - 子系列最終章"
+        >
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">[Day 20] Google Cloud Text-to-Speech - 子系列最終章</span>
+          <span class="article-nav-title truncate">[Day 20] Google Cloud Text-to-Speech - 子系列最終章</span>
         </a>
       </li>
     
 
     
-      <li class="col s6">
-        <a href="/blog/2019/09/26/ithelp-2019-day18/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">[Day 18] Google Cloud Text-to-Speech - 1</span>
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/26/ithelp-2019-day18/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 18] Google Cloud Text-to-Speech - 1"
+        >
+          <span class="article-nav-title truncate">[Day 18] Google Cloud Text-to-Speech - 1</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
@@ -254,76 +265,6 @@
 
 
     </div>
-    <div class="col s12 m3">
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Authors</h5>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Tag Cloud</h5>
-    <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Archives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Recents</h5>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/">Blockchain fullstack structure - Part 2 - Hardhat</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-
-      
-    </div>
   </div>
 </div>
 
@@ -332,50 +273,29 @@
 
 
 
+
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

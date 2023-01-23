@@ -6,13 +6,14 @@
   <title>Hardhat - Solidity and NFT - Part 1 - Prepare project | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="description" content="農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。 Prerequisite: Sign-up these services.  Etherscan (這個服務是之">
+  <meta name="description" content="農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。 Prerequisite: Sign-up these services. Etherscan (這個">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hardhat - Solidity and NFT - Part 1 - Prepare project">
 <meta property="og:url" content="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/index.html">
 <meta property="og:site_name" content="Joseph &amp; Sandy">
-<meta property="og:description" content="農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。 Prerequisite: Sign-up these services.  Etherscan (這個服務是之">
+<meta property="og:description" content="農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。 Prerequisite: Sign-up these services. Etherscan (這個">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg">
 <meta property="article:published_time" content="2022-03-10T15:38:47.000Z">
@@ -46,45 +47,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -109,14 +105,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -137,7 +133,7 @@
     
 <div class="container">
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12">
 
 
       <article id="blog-Hardhat-Solidity-and-NFT-Part-1" class="article article-type-blog" itemscope itemprop="blogPost">
@@ -147,7 +143,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" rel="gallery_cl702v54y000b5jmv4ulmefct">
+      <a class="article-gallery-img fancybox" href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" rel="gallery_cld8vd0c8000b8eo41azt8qpw">
         <img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" itemprop="image">
       </a>
     
@@ -168,66 +164,62 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2022-03-10T15:38:47.000Z" itemprop="datePublished">Mar 10, 2022</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2022-03-10T15:38:47.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Mar 10, 2022</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <p>農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity / Hardhat上架NFT的過程，以免以後金魚腦忘光。</p>
-<h3 id="prerequisite-sign-up-these-services"><a class="header-anchor" href="#prerequisite-sign-up-these-services"></a>Prerequisite: Sign-up these services.</h3>
-<ul>
+              <p>農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。</p>
+<h3 id="Prerequisite-Sign-up-these-services"><a href="#Prerequisite-Sign-up-these-services" class="headerlink" title="Prerequisite: Sign-up these services."></a>Prerequisite: Sign-up these services.</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a> (這個服務是之後用來verify contract用的，如果不想驗證可以跳過申請。)</li>
 <li><a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a></li>
 <li><a target="_blank" rel="noopener" href="https://infura.io/">Infura</a></li>
 <li><a target="_blank" rel="noopener" href="https://nft.storage/">NFTStorage</a></li>
 </ul>
-<h3 id="init-project"><a class="header-anchor" href="#init-project"></a>Init project</h3>
-<p>我是使用docker, docker-compose，所以先來看看我的初始專案架構及<code>docker-compose.yml</code>跟<code>Dockerfile</code>。<br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/init-project.jpg" alt="Init project"></p>
+<h3 id="Init-project"><a href="#Init-project" class="headerlink" title="Init project"></a>Init project</h3><p>我是使用docker, docker-compose，所以先來看看我的初始專案架構及<code>docker-compose.yml</code>跟<code>Dockerfile</code>。<br><img src="init-project.jpg" alt="Init project"></p>
 <p><strong>docker-compose.yml</strong></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">hardhat:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">./hardhat</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./hardhat:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/node_modules</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8545</span><span class="string">:8545</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><strong>hardhat/Dockerfile.dev</strong></p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> APP_ROOT /app</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> mkdir <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn install</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yarn global add \</span></span><br><span class="line"><span class="bash">  solhint \</span></span><br><span class="line"><span class="bash">  solc \</span></span><br><span class="line"><span class="bash">  eslint \</span></span><br><span class="line"><span class="bash">  typescript</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8545</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;dev&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
-<p>接下來，用npx建立一個新的hardhat專案：<br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/init-hardhat.jpg" alt="init hardhat"></p>
-<p>都完成以後，就可以看到我們的專案架構了。<br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/project-structure.jpg" alt="project structure"></p>
-<h3 id="settings"><a class="header-anchor" href="#settings"></a>Settings</h3>
-<p>我們前面申請過 <a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a>、<a target="_blank" rel="noopener" href="https://infura.io/">Infura</a>、<a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a>，現在把相關參數設定到.env裡</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PRIVATE_KEY&#x3D;YOUR_METAMASK_PRIVATE_KEY</span><br><span class="line">INFURA_ID&#x3D;</span><br><span class="line">RINKEBY_URL&#x3D;</span><br><span class="line">ETHERSCAN_API_KEY&#x3D;</span><br><span class="line">NFT_CONTRACT_ADDRESS&#x3D;YOUR_CONTRACT_ADDRESS</span><br></pre></td></tr></table></figure>
-<h5 id="metamask-private-key-private-key"><a class="header-anchor" href="#metamask-private-key-private-key"></a>Metamask private key (PRIVATE_KEY)</h5>
-<p>在你申請完錢包以後，可以在Chrome extension裡找到<code>Account details</code><br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/metamask-private-key.jpg" alt="metamask key"></p>
+<span id="more"></span>
+
+<p><strong>hardhat&#x2F;Dockerfile.dev</strong></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> APP_ROOT /app</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> . <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> yarn install</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> yarn global add \</span></span><br><span class="line"><span class="language-bash">  solhint \</span></span><br><span class="line"><span class="language-bash">  solc \</span></span><br><span class="line"><span class="language-bash">  eslint \</span></span><br><span class="line"><span class="language-bash">  typescript</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8545</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [ <span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;dev&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>接下來，用npx建立一個新的hardhat專案：<br><img src="init-hardhat.jpg" alt="init hardhat"></p>
+<p>都完成以後，就可以看到我們的專案架構了。<br><img src="project-structure.jpg" alt="project structure"></p>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><p>我們前面申請過 <a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a>、<a target="_blank" rel="noopener" href="https://infura.io/">Infura</a>、<a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a>，現在把相關參數設定到.env裡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PRIVATE_KEY=YOUR_METAMASK_PRIVATE_KEY</span><br><span class="line">INFURA_ID=</span><br><span class="line">RINKEBY_URL=</span><br><span class="line">ETHERSCAN_API_KEY=</span><br><span class="line">NFT_CONTRACT_ADDRESS=YOUR_CONTRACT_ADDRESS</span><br></pre></td></tr></table></figure>
+<h5 id="Metamask-private-key-PRIVATE-KEY"><a href="#Metamask-private-key-PRIVATE-KEY" class="headerlink" title="Metamask private key (PRIVATE_KEY)"></a>Metamask private key (PRIVATE_KEY)</h5><p>在你申請完錢包以後，可以在Chrome extension裡找到<code>Account details</code><br><img src="metamask-private-key.jpg" alt="metamask key"></p>
 <blockquote>
 <p>記得先選測試網路 <code>rinkeby test network</code>，測試網路的eth可以在這邊申請: <a target="_blank" rel="noopener" href="https://faucet.rinkeby.io/">https://faucet.rinkeby.io/</a></p>
 </blockquote>
 <blockquote>
 <p>注意這個key不要外流，否則你的metamask錢包可能會不安全。</p>
 </blockquote>
-<h5 id="infura-id-and-url-infura-id-rinkeby-url"><a class="header-anchor" href="#infura-id-and-url-infura-id-rinkeby-url"></a>Infura id and url (INFURA_ID, RINKEBY_URL)</h5>
-<p>先建立Infura project以後，進到setting就可以找到id and url了<br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/infura-setting-1.jpg" alt="infura create project"><br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/infura-env.jpg" alt="infura ENV"></p>
-<h5 id="etherscan-etherscan-api-key"><a class="header-anchor" href="#etherscan-etherscan-api-key"></a>Etherscan (ETHERSCAN_API_KEY)</h5>
-<p>在<a target="_blank" rel="noopener" href="https://etherscan.io/myapikey">Profile</a>裡Add Key以後就有個API Key可以使用了。<br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/etherscan-setting.jpg" alt="etherscan api key"></p>
+<h5 id="Infura-id-and-url-INFURA-ID-RINKEBY-URL"><a href="#Infura-id-and-url-INFURA-ID-RINKEBY-URL" class="headerlink" title="Infura id and url (INFURA_ID, RINKEBY_URL)"></a>Infura id and url (INFURA_ID, RINKEBY_URL)</h5><p>先建立Infura project以後，進到setting就可以找到id and url了<br><img src="infura-setting-1.jpg" alt="infura create project"><br><img src="infura-env.jpg" alt="infura ENV"></p>
+<h5 id="Etherscan-ETHERSCAN-API-KEY"><a href="#Etherscan-ETHERSCAN-API-KEY" class="headerlink" title="Etherscan (ETHERSCAN_API_KEY)"></a>Etherscan (ETHERSCAN_API_KEY)</h5><p>在<a target="_blank" rel="noopener" href="https://etherscan.io/myapikey">Profile</a>裡Add Key以後就有個API Key可以使用了。<br><img src="etherscan-setting.jpg" alt="etherscan api key"></p>
 <p>參數設定到這邊告一個段落，<code>NFT_CONTRACT_ADDRESS</code>之後deploy才會有，然後我們稍微修改一下<code>hardhat.config.ts</code>，把預設的測試網路設定改掉。</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> dotenv <span class="keyword">from</span> <span class="string">&quot;dotenv&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; HardhatUserConfig &#125; <span class="keyword">from</span> <span class="string">&quot;hardhat/config&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-etherscan&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-waffle&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@typechain/hardhat&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;hardhat-gas-reporter&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;solidity-coverage&quot;</span>;</span><br><span class="line"></span><br><span class="line">dotenv.config();</span><br><span class="line"></span><br><span class="line"><span class="comment">// You need to export an object to set up your config</span></span><br><span class="line"><span class="comment">// Go to https://hardhat.org/config/ to learn more</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config: HardhatUserConfig = &#123;</span><br><span class="line">  solidity: <span class="string">&quot;0.8.4&quot;</span>,</span><br><span class="line">  networks: &#123;</span><br><span class="line">    rinkeby: &#123;</span><br><span class="line">      url: process.env.RINKEBY_URL || <span class="string">&quot;&quot;</span>,</span><br><span class="line">      accounts:</span><br><span class="line">        process.env.PRIVATE_KEY !== <span class="literal">undefined</span> ? [process.env.PRIVATE_KEY] : [],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  gasReporter: &#123;</span><br><span class="line">    enabled: process.env.REPORT_GAS !== <span class="literal">undefined</span>,</span><br><span class="line">    currency: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  etherscan: &#123;</span><br><span class="line">    apiKey: &#123;</span><br><span class="line">      rinkeby: process.env.ETHERSCAN_API_KEY,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> config;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> dotenv <span class="keyword">from</span> <span class="string">&quot;dotenv&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HardhatUserConfig</span> &#125; <span class="keyword">from</span> <span class="string">&quot;hardhat/config&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-etherscan&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-waffle&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@typechain/hardhat&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;hardhat-gas-reporter&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;solidity-coverage&quot;</span>;</span><br><span class="line"></span><br><span class="line">dotenv.<span class="title function_">config</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// You need to export an object to set up your config</span></span><br><span class="line"><span class="comment">// Go to https://hardhat.org/config/ to learn more</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">config</span>: <span class="title class_">HardhatUserConfig</span> = &#123;</span><br><span class="line">  <span class="attr">solidity</span>: <span class="string">&quot;0.8.4&quot;</span>,</span><br><span class="line">  <span class="attr">networks</span>: &#123;</span><br><span class="line">    <span class="attr">rinkeby</span>: &#123;</span><br><span class="line">      <span class="attr">url</span>: process.<span class="property">env</span>.<span class="property">RINKEBY_URL</span> || <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="attr">accounts</span>:</span><br><span class="line">        process.<span class="property">env</span>.<span class="property">PRIVATE_KEY</span> !== <span class="literal">undefined</span> ? [process.<span class="property">env</span>.<span class="property">PRIVATE_KEY</span>] : [],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">gasReporter</span>: &#123;</span><br><span class="line">    <span class="attr">enabled</span>: process.<span class="property">env</span>.<span class="property">REPORT_GAS</span> !== <span class="literal">undefined</span>,</span><br><span class="line">    <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">etherscan</span>: &#123;</span><br><span class="line">    <span class="attr">apiKey</span>: &#123;</span><br><span class="line">      <span class="attr">rinkeby</span>: process.<span class="property">env</span>.<span class="property">ETHERSCAN_API_KEY</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> config;</span><br></pre></td></tr></table></figure>
+
 <p>到這邊我們可以試試看能不能跑起docker，先加上<code>scripts</code>在package.json裡：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;hardhat-project&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;dev&quot;: &quot;hardhat node --network hardhat&quot;,</span><br><span class="line">    &quot;console&quot;: &quot;hardhat console&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;hardhat test --network hardhat&quot;,</span><br><span class="line">    &quot;compile&quot;: &quot;hardhat compile&quot;,</span><br><span class="line">    &quot;rinkeby:deploy&quot;: &quot;hardhat --network rinkeby deploy --export-all tmp&#x2F;contracts&#x2F;manifest.json&quot;,</span><br><span class="line">    &quot;mainnet:deploy&quot;: &quot;hardhat --network mainnet deploy --export-all tmp&#x2F;contracts&#x2F;manifest.json&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>有了scripts以後，我們就可以<code>docker-compose up</code>了。<br>
-<img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/docker-first-run.jpg" alt="docker first run"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;hardhat-project&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;dev&quot;: &quot;hardhat node --network hardhat&quot;,</span><br><span class="line">    &quot;console&quot;: &quot;hardhat console&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;hardhat test --network hardhat&quot;,</span><br><span class="line">    &quot;compile&quot;: &quot;hardhat compile&quot;,</span><br><span class="line">    &quot;rinkeby:deploy&quot;: &quot;hardhat --network rinkeby deploy --export-all tmp/contracts/manifest.json&quot;,</span><br><span class="line">    &quot;mainnet:deploy&quot;: &quot;hardhat --network mainnet deploy --export-all tmp/contracts/manifest.json&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>有了scripts以後，我們就可以<code>docker-compose up</code>了。<br><img src="docker-first-run.jpg" alt="docker first run"></p>
 <p>好囉，看到上面的圖就正常了，這一篇就先到這邊，我們下一篇要開始上架NFT還有部署contract了。</p>
 
             
@@ -236,7 +228,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" data-id="cl702v54y000b5jmv4ulmefct" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" data-id="cld8vd0c8000b8eo41azt8qpw" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
@@ -249,20 +241,30 @@
           
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
-    <ul class="row">
+    <ul>
     
-      <li class="col s6">
-        <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT"
+        >
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</span>
+          <span class="article-nav-title truncate">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</span>
         </a>
       </li>
     
 
     
-      <li class="col s6">
-        <a href="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">AWS Cloud Development Kit (CDK) project structure</span>
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="AWS Cloud Development Kit (CDK) project structure"
+        >
+          <span class="article-nav-title truncate">AWS Cloud Development Kit (CDK) project structure</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
@@ -282,76 +284,6 @@
 
 
     </div>
-    <div class="col s12 m3">
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Authors</h5>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Tag Cloud</h5>
-    <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Archives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Recents</h5>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/">Blockchain fullstack structure - Part 2 - Hardhat</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-
-      
-    </div>
   </div>
 </div>
 
@@ -360,50 +292,29 @@
 
 
 
+
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

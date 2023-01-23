@@ -3,6 +3,41 @@
 
 
     <url>
+        <loc>https://josephmg.github.io/blog/tags/NFT/</loc>
+        <lastmod>2023-01-23T12:06:09.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Docker/</loc>
+        <lastmod>2023-01-23T12:06:09.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Hardhat/</loc>
+        <lastmod>2023-01-23T12:06:09.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Solidity/</loc>
+        <lastmod>2023-01-23T12:06:09.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Blockchain/</loc>
+        <lastmod>2023-01-23T12:06:09.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://josephmg.github.io/blog/tags/Next-js/</loc>
         <lastmod>2022-08-19T06:15:17.041Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,43 +59,8 @@
     </url>
 
     <url>
-        <loc>https://josephmg.github.io/blog/tags/Hardhat/</loc>
-        <lastmod>2022-08-19T06:15:17.041Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Solidity/</loc>
-        <lastmod>2022-08-19T06:15:17.041Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://josephmg.github.io/blog/tags/Fullstack/</loc>
         <lastmod>2022-08-19T06:15:17.041Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Blockchain/</loc>
-        <lastmod>2022-08-19T06:15:17.041Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/NFT/</loc>
-        <lastmod>2022-03-17T10:37:17.492Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Docker/</loc>
-        <lastmod>2022-03-17T10:37:17.492Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -171,6 +171,20 @@
     </url>
 
     <url>
+        <loc>https://josephmg.github.io/blog/tags/IG/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Instagram/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://josephmg.github.io/blog/tags/%E5%A4%A9%E6%AF%8D/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -193,20 +207,6 @@
 
     <url>
         <loc>https://josephmg.github.io/blog/tags/halloween/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/IG/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Instagram/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -283,28 +283,14 @@
     </url>
 
     <url>
+        <loc>https://josephmg.github.io/blog/tags/DevOps/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://josephmg.github.io/blog/tags/Natural-Language/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Load-balancer/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/GCP/</loc>
-        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://josephmg.github.io/blog/tags/Google-Cloud-Platform/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -339,7 +325,21 @@
     </url>
 
     <url>
-        <loc>https://josephmg.github.io/blog/tags/DevOps/</loc>
+        <loc>https://josephmg.github.io/blog/tags/Load-balancer/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/GCP/</loc>
+        <lastmod>2020-12-08T06:33:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://josephmg.github.io/blog/tags/Google-Cloud-Platform/</loc>
         <lastmod>2020-12-08T06:33:31.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

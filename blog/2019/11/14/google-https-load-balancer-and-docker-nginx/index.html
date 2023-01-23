@@ -6,22 +6,23 @@
   <title>用Google load balancer跟GCE docker-nginx設定HTTP(S) | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="description" content="前情提要 最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。">
+  <meta name="description" content="前情提要最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Google load balancer跟GCE docker-nginx設定HTTP(S)">
 <meta property="og:url" content="https://josephmg.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/index.html">
 <meta property="og:site_name" content="Joseph &amp; Sandy">
-<meta property="og:description" content="前情提要 最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。">
+<meta property="og:description" content="前情提要最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://josephmg.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg">
 <meta property="article:published_time" content="2019-11-14T14:29:34.000Z">
 <meta property="article:modified_time" content="2020-12-08T06:33:31.000Z">
 <meta property="article:author" content="Joseph Chou">
-<meta property="article:tag" content="docker">
 <meta property="article:tag" content="Google Cloud Platform">
 <meta property="article:tag" content="GCP">
 <meta property="article:tag" content="Load balancer">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://josephmg.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg">
 
@@ -46,45 +47,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -109,14 +105,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -137,7 +133,7 @@
     
 <div class="container">
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12">
 
 
       <article id="blog-google-https-load-balancer-and-docker-nginx" class="article article-type-blog" itemscope itemprop="blogPost">
@@ -147,7 +143,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg" rel="gallery_cl702v55g000r5jmv8daib7ue">
+      <a class="article-gallery-img fancybox" href="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg" rel="gallery_cld8vd0d9000o8eo48unh69jr">
         <img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg" itemprop="image">
       </a>
     
@@ -168,79 +164,67 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-11-14T14:29:34.000Z" itemprop="datePublished">Nov 14, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-11-14T14:29:34.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Nov 14, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
-              <h3 id="前情提要"><a class="header-anchor" href="#前情提要"></a>前情提要</h3>
-<p>最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。</p>
-<p><img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/docker-nginx.jpg" alt="docker-nginx.jpg"></p>
-<a id="more"></a>
-<p><img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/gce-with-static-ip.jpg" alt="gce-with-static-ip"></p>
-<p>從上面兩張圖可以看到，現在GCE是有掛上static ip，好讓Godaddy DNS可以直接指向IP。並且把80/443兩個port的資料forward到nginx docker，這裡雖然有開啟443 forward，但內部nginx卻沒有listen 443，也沒有certificate。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  _;</span><br><span class="line">    root   &#x2F;var&#x2F;www&#x2F;html;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    </span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">      if (!-e $request_filename)&#123;</span><br><span class="line">        rewrite ^&#x2F;(.*)$ &#x2F;index.php&#x2F;$1 last;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    error_page   500 502 503 504  &#x2F;50x.html;</span><br><span class="line">    location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">        root   &#x2F;var&#x2F;www&#x2F;html;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ \.php(.*)$ &#123;</span><br><span class="line">        root &#x2F;var&#x2F;www&#x2F;html;</span><br><span class="line">        fastcgi_pass   php:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(.*)$;</span><br><span class="line">        fastcgi_param  PATH_INFO  $fastcgi_path_info;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              <h3 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h3><p>最近要將手邊的案子掛上HTTPS，機器是在Google Cloud Platform (GCP)上面開compute engine (gce)，並在裡面run docker (nginx)，讓我們來看看現在的配置。</p>
+<p><img src="docker-nginx.jpg" alt="docker-nginx.jpg"></p>
+<span id="more"></span>
+<p><img src="gce-with-static-ip.jpg" alt="gce-with-static-ip"></p>
+<p>從上面兩張圖可以看到，現在GCE是有掛上static ip，好讓Godaddy DNS可以直接指向IP。並且把80&#x2F;443兩個port的資料forward到nginx docker，這裡雖然有開啟443 forward，但內部nginx卻沒有listen 443，也沒有certificate。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  _;</span><br><span class="line">    root   /var/www/html;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">      if (!-e $request_filename)&#123;</span><br><span class="line">        rewrite ^/(.*)$ /index.php/$1 last;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /var/www/html;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ \.php(.*)$ &#123;</span><br><span class="line">        root /var/www/html;</span><br><span class="line">        fastcgi_pass   php:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(.*)$;</span><br><span class="line">        fastcgi_param  PATH_INFO  $fastcgi_path_info;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>現在要開始掛HTTPS，目前觀察有兩種做法：</p>
 <ol>
 <li>GCE VM或docker裡使用Let’s Encrypt自己簽certificate，並定期renew</li>
 <li>用GCP裡的HTTP(S) load balancer簽certificate</li>
 </ol>
-<p>因為這次不太想增加機器運作負擔，所以我選擇第2條路，馬上來看看架構圖：<br>
-<img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/architecture.jpg" alt="architecture" title="Load balancer 架構圖"></p>
-<h3 id="instance-group"><a class="header-anchor" href="#instance-group"></a>Instance group</h3>
-<p>第一步我們要先替Instance建立一個group，可以透過**Compute Engine / 執行個體群組(Instance Groups)**建立一個新的instance group。</p>
+<p>因為這次不太想增加機器運作負擔，所以我選擇第2條路，馬上來看看架構圖：<br><img src="architecture.jpg" alt="architecture" title="Load balancer 架構圖"></p>
+<h3 id="Instance-group"><a href="#Instance-group" class="headerlink" title="Instance group"></a>Instance group</h3><p>第一步我們要先替Instance建立一個group，可以透過**Compute Engine &#x2F; 執行個體群組(Instance Groups)**建立一個新的instance group。</p>
 <blockquote>
-<p>記得建立的時候選<strong>新增非代管的執行個體群組</strong>，並在<strong>VM 執行個體</strong>裡選擇你們的VM<br>
-<img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/create-instance-group.jpg" alt="create instance group" title="create instance group"></p>
+<p>記得建立的時候選<strong>新增非代管的執行個體群組</strong>，並在<strong>VM 執行個體</strong>裡選擇你們的VM<br><img src="create-instance-group.jpg" alt="create instance group" title="create instance group"></p>
 </blockquote>
-<p>結果就會像下面這樣：<br>
-<img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/instance-group.jpg" alt="instance group" title="Instance group"></p>
+<p>結果就會像下面這樣：<br><img src="instance-group.jpg" alt="instance group" title="Instance group"></p>
 <p>接下來我們就可以進到下一步，設定load balancer。</p>
-<h3 id="http-s-load-balancer"><a class="header-anchor" href="#http-s-load-balancer"></a>HTTP(S) load balancer</h3>
-<p>打開sidebar找到<strong>網路服務 / 負載平衡 / 建立負載平衡器</strong>，選擇<strong>HTTP(S)負載平衡</strong>後，就可以開始輸入資訊：<br>
-<img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/load-balancer.jpg" alt="load-balancer" title="HTTP(S)負載平衡"></p>
-<p><img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/load-balancer-step-1.jpg" alt="load balancer step 1" title="網路到VM之間負載平衡"></p>
-<p>接著是<strong>建立後端服務</strong>，這部分相對單純，只要把instance group設定好，並把port number設定為<strong>80, 443</strong>，最後因為我們nginx 只有listen 80 port，所以下面有個**健康狀態檢查 (health check)**建立一個新的health check並設定port 80即可。<br>
-<img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/set-backend-instance-group.jpg" alt="set backend instance group" title="Load balancer 建立後端服務"><br>
-這邊建立好以後，<strong>主機與路徑規則</strong>會自動幫我們生成。如果沒有額外的static resource相關路徑要修改，其實這邊不用動。<br>
-<img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/host-and-path.jpg" alt="host and path" title="Load balancer 主機與路徑規則"></p>
+<h3 id="HTTP-S-load-balancer"><a href="#HTTP-S-load-balancer" class="headerlink" title="HTTP(S) load balancer"></a>HTTP(S) load balancer</h3><p>打開sidebar找到<strong>網路服務 &#x2F; 負載平衡 &#x2F; 建立負載平衡器</strong>，選擇<strong>HTTP(S)負載平衡</strong>後，就可以開始輸入資訊：<br><img src="load-balancer.jpg" alt="load-balancer" title="HTTP(S)負載平衡"></p>
+<p><img src="load-balancer-step-1.jpg" alt="load balancer step 1" title="網路到VM之間負載平衡"></p>
+<p>接著是<strong>建立後端服務</strong>，這部分相對單純，只要把instance group設定好，並把port number設定為<strong>80, 443</strong>，最後因為我們nginx 只有listen 80 port，所以下面有個<strong>健康狀態檢查 (health check)<strong>建立一個新的health check並設定port 80即可。<br><img src="set-backend-instance-group.jpg" alt="set backend instance group" title="Load balancer 建立後端服務"><br>這邊建立好以後，</strong>主機與路徑規則</strong>會自動幫我們生成。如果沒有額外的static resource相關路徑要修改，其實這邊不用動。<br><img src="host-and-path.jpg" alt="host and path" title="Load balancer 主機與路徑規則"></p>
 <p>最後是卡關卡很久的地方<strong>建立前端服務</strong>，這邊有三個要注意的：</p>
-<h4 id="針對https建立憑證"><a class="header-anchor" href="#針對https建立憑證"></a>針對HTTPS建立憑證</h4>
-<p><img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/create-cert.jpg" alt="create certificate" title="建立SSL憑證"><br>
-這邊因為我沒有憑證，所以我讓Google代管，只需要輸入domain即可。</p>
-<h4 id="建立靜態ip位址-不要使用臨時的位址"><a class="header-anchor" href="#建立靜態ip位址-不要使用臨時的位址"></a>建立<strong>靜態</strong>IP位址，不要使用<strong>臨時</strong>的位址</h4>
-<p><img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/create-ip.jpg" alt="create ip" title="建立靜態IP address"><br>
-如果都選<strong>臨時</strong>，會發現到時候要設定DNS的時候無法分辨80/443要去哪個IP，所以這邊選擇建立一個靜態位址，只需要在<strong>臨時</strong>這邊改成<strong>建立IP位址</strong>，並輸入名稱即可。</p>
+<h4 id="針對HTTPS建立憑證"><a href="#針對HTTPS建立憑證" class="headerlink" title="針對HTTPS建立憑證"></a>針對HTTPS建立憑證</h4><p><img src="create-cert.jpg" alt="create certificate" title="建立SSL憑證"><br>這邊因為我沒有憑證，所以我讓Google代管，只需要輸入domain即可。</p>
+<h4 id="建立靜態IP位址，不要使用臨時的位址"><a href="#建立靜態IP位址，不要使用臨時的位址" class="headerlink" title="建立靜態IP位址，不要使用臨時的位址"></a>建立<strong>靜態</strong>IP位址，不要使用<strong>臨時</strong>的位址</h4><p><img src="create-ip.jpg" alt="create ip" title="建立靜態IP address"><br>如果都選<strong>臨時</strong>，會發現到時候要設定DNS的時候無法分辨80&#x2F;443要去哪個IP，所以這邊選擇建立一個靜態位址，只需要在<strong>臨時</strong>這邊改成<strong>建立IP位址</strong>，並輸入名稱即可。</p>
 <blockquote>
-<p>之後可以在sidebar裡的<strong>VPC網路 / 外部IP位址</strong>，找到剛剛保留的ip address</p>
+<p>之後可以在sidebar裡的<strong>VPC網路 &#x2F; 外部IP位址</strong>，找到剛剛保留的ip address</p>
 </blockquote>
-<h4 id="建立兩個前端ip和通訊埠-一個給80-一個給443"><a class="header-anchor" href="#建立兩個前端ip和通訊埠-一個給80-一個給443"></a>建立<strong>兩個</strong>前端IP和通訊埠，一個給80，一個給443</h4>
-<p><img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/set-frontend.jpg" alt="set frontend" title="Load balancer 建立前端服務"><br>
-這邊可以看到兩個的IP是一樣的，port則分別為<code>80</code>跟<code>443</code>，這樣基本上就設定好了。</p>
-<p>最後來看看設定的結果：<br>
-<img src="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/result.jpg" alt="result" title="Load balancer結果"></p>
+<h4 id="建立兩個前端IP和通訊埠，一個給80，一個給443"><a href="#建立兩個前端IP和通訊埠，一個給80，一個給443" class="headerlink" title="建立兩個前端IP和通訊埠，一個給80，一個給443"></a>建立<strong>兩個</strong>前端IP和通訊埠，一個給80，一個給443</h4><p><img src="set-frontend.jpg" alt="set frontend" title="Load balancer 建立前端服務"><br>這邊可以看到兩個的IP是一樣的，port則分別為<code>80</code>跟<code>443</code>，這樣基本上就設定好了。</p>
+<p>最後來看看設定的結果：<br><img src="result.jpg" alt="result" title="Load balancer結果"></p>
 <blockquote>
 <p>我把我專案名稱碼掉了…</p>
 </blockquote>
 <blockquote>
-<p>這邊要注意到<b style="color: limegreen">綠色勾勾</b>，這可能要等20分鐘左右才會出現。<br>
-如果DNS沒設定好，讓domain找不到網站的話，他最後還會跳出<strong>FAILED_NOT_VISIBLE</strong></p>
+<p>這邊要注意到<b style="color: limegreen">綠色勾勾</b>，這可能要等20分鐘左右才會出現。<br>如果DNS沒設定好，讓domain找不到網站的話，他最後還會跳出<strong>FAILED_NOT_VISIBLE</strong></p>
 </blockquote>
 <p>等看到<b style="color: limegreen">綠色勾勾</b>以後，接著最後一步，就是godaddy設定DNS，把位址指到剛剛建立的IP就好。</p>
 <blockquote>
-<p><strong>省錢步驟</strong><br>
-記得最開始我們VM有掛上外部IP嗎？這時候他已經不需要了，沒用到的固定IP會被收取額外的費用<br>
-所以我們可以編輯VM設定，把<strong>外部IP</strong>取消，然後去<strong>VPC網路 / 外部IP位址</strong>釋放剛剛沒有用到的IP。</p>
+<p><strong>省錢步驟</strong><br>記得最開始我們VM有掛上外部IP嗎？這時候他已經不需要了，沒用到的固定IP會被收取額外的費用<br>所以我們可以編輯VM設定，把<strong>外部IP</strong>取消，然後去<strong>VPC網路 &#x2F; 外部IP位址</strong>釋放剛剛沒有用到的IP。</p>
 </blockquote>
 
             
@@ -249,7 +233,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/" data-id="cl702v55g000r5jmv8daib7ue" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/" data-id="cld8vd0d9000o8eo48unh69jr" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GCP/" rel="tag">GCP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Load-balancer/" rel="tag">Load balancer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/docker/" rel="tag">docker</a></li></ul>
@@ -262,20 +246,30 @@
           
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
-    <ul class="row">
+    <ul>
     
-      <li class="col s6">
-        <a href="/blog/2020/02/13/centos-8-install-docker-and-docker-compose/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2020/02/13/centos-8-install-docker-and-docker-compose/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Install Docker / Docker-compose on CentOS 8"
+        >
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">Install Docker / Docker-compose on CentOS 8</span>
+          <span class="article-nav-title truncate">Install Docker / Docker-compose on CentOS 8</span>
         </a>
       </li>
     
 
     
-      <li class="col s6">
-        <a href="/blog/2019/11/13/tianmu-halloween/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">天母搞什麼鬼-萬聖節活動</span>
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/11/13/tianmu-halloween/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="天母搞什麼鬼-萬聖節活動"
+        >
+          <span class="article-nav-title truncate">天母搞什麼鬼-萬聖節活動</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
@@ -295,76 +289,6 @@
 
 
     </div>
-    <div class="col s12 m3">
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Authors</h5>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Tag Cloud</h5>
-    <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Archives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Recents</h5>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/">Blockchain fullstack structure - Part 2 - Hardhat</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-
-      
-    </div>
   </div>
 </div>
 
@@ -373,50 +297,29 @@
 
 
 
+
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>

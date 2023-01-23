@@ -6,13 +6,14 @@
   <title>[Day 21] Google Cloud Speech-to-Text - 1 | Joseph &amp; Sandy</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="description" content="今天來講第六個服務，寫到第21天終於第六個了。這個服務跟前幾天的Text-to-Speech剛好相反，是把聲音轉成文字。這服務號稱可以辨識120種語言跟其變化，更開心的是它可以辨識中文，還有廣東話、日文之類的語言也都可以。 當然每個系列的第一天都是玩一下他提供的demo，不過這很像是最後一個有提供demo的服務，接下來還得要調整步調。 大家可以先透過錄音程式錄一段話，然後再將檔案上傳：">
+  <meta name="description" content="今天來講第六個服務，寫到第21天終於第六個了。這個服務跟前幾天的Text-to-Speech剛好相反，是把聲音轉成文字。這服務號稱可以辨識120種語言跟其變化，更開心的是它可以辨識中文，還有廣東話、日文之類的語言也都可以。 當然每個系列的第一天都是玩一下他提供的demo，不過這很像是最後一個有提供demo的服務，接下來還得要調整步調。大家可以先透過錄音程式錄一段話，然後再將檔案上傳：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Day 21] Google Cloud Speech-to-Text - 1">
 <meta property="og:url" content="https://josephmg.github.io/blog/2019/09/29/ithelp-2019-day21/index.html">
 <meta property="og:site_name" content="Joseph &amp; Sandy">
-<meta property="og:description" content="今天來講第六個服務，寫到第21天終於第六個了。這個服務跟前幾天的Text-to-Speech剛好相反，是把聲音轉成文字。這服務號稱可以辨識120種語言跟其變化，更開心的是它可以辨識中文，還有廣東話、日文之類的語言也都可以。 當然每個系列的第一天都是玩一下他提供的demo，不過這很像是最後一個有提供demo的服務，接下來還得要調整步調。 大家可以先透過錄音程式錄一段話，然後再將檔案上傳：">
+<meta property="og:description" content="今天來講第六個服務，寫到第21天終於第六個了。這個服務跟前幾天的Text-to-Speech剛好相反，是把聲音轉成文字。這服務號稱可以辨識120種語言跟其變化，更開心的是它可以辨識中文，還有廣東話、日文之類的語言也都可以。 當然每個系列的第一天都是玩一下他提供的demo，不過這很像是最後一個有提供demo的服務，接下來還得要調整步調。大家可以先透過錄音程式錄一段話，然後再將檔案上傳：">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://josephmg.github.io/blog/2019/09/29/ithelp-2019-day21/voice-recorder.jpg">
 <meta property="og:image" content="https://josephmg.github.io/blog/2019/09/29/ithelp-2019-day21/demo.jpg">
@@ -48,45 +49,40 @@
   <!--<![endif]-->
   
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
 
   
-<link rel="stylesheet" href="/css/vendors.css">
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-0f387f2aa9d1e5d07812.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
 
   
-<link rel="stylesheet" href="/css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46261454-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-46261454-1', 'auto');
-  ga('send', 'pageview');
-
+    gtag('config', 'UA-46261454-1');
   </script>
   <!-- End Google Analytics -->
 
 
 
-  
-<script src="/js/vendors.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
 
-
-  <script>
-    define('jquery', function () {
-      return window.jQuery;
-    });
-  </script>
-
-
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
 
-  <div class="navbar-fixed">
+  
+<div class="navbar-fixed">
   <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
     <div class="nav-wrapper container">
 
@@ -111,14 +107,14 @@
         
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
     </div>
   </nav>
 </div>
 
-<ul id="nav-mobile" class="side-nav">
+<ul id="nav-mobile" class="sidenav">
   
   <li>
     <a class="main-nav-link" href="/">Home</a>
@@ -139,7 +135,7 @@
     
 <div class="container">
   <div class="row">
-    <div class="col s12 m9">
+    <div class="col s12">
 
 
       <article id="blog-ithelp-2019-day21" class="article article-type-blog" itemscope itemprop="blogPost">
@@ -160,41 +156,43 @@
 
           
 
-            <div class="article-meta">
-              <span class="">
-                <i class="fa fa-calendar"></i>
-                <time datetime="2019-09-29T07:30:02.000Z" itemprop="datePublished">Sep 29, 2019</time>
-              </span>
-              <span class="article-author">
-                <i class="fa fa-user"></i>
-                <span itemprop="author"> Joseph </span>
-              </span>
-            </div>
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-29T07:30:02.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 29, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
           </header>
 
 
           <div class="article-entry " itemprop="articleBody">
             
               <p>今天來講第六個服務，寫到第21天終於第六個了。這個服務跟前幾天的<a href="/blog/tags/Text-to-Speech/">Text-to-Speech</a>剛好相反，是把聲音轉成文字。這服務號稱可以辨識120種語言跟其變化，更開心的是它可以辨識<strong>中文</strong>，還有廣東話、日文之類的語言也都可以。</p>
-<p>當然每個系列的第一天都是玩一下他提供的demo，不過這很像是最後一個有提供demo的服務，接下來還得要調整步調。<br>
-大家可以先透過錄音程式錄一段話，然後再將檔案上傳：<br>
-<img src="/blog/2019/09/29/ithelp-2019-day21/voice-recorder.jpg" alt="voice recorder"></p>
-<a id="more"></a>
-<h3 id="try-speech-to-text"><a class="header-anchor" href="#try-speech-to-text"></a>Try Speech-to-Text</h3>
-<p>準備好錄音檔以後，我們就趕快連上<a target="_blank" rel="noopener" href="https://cloud.google.com/speech-to-text/?authuser=1">Speech-to-Text</a>上傳。<br>
-<img src="/blog/2019/09/29/ithelp-2019-day21/demo.jpg" alt="demo"></p>
+<p>當然每個系列的第一天都是玩一下他提供的demo，不過這很像是最後一個有提供demo的服務，接下來還得要調整步調。<br>大家可以先透過錄音程式錄一段話，然後再將檔案上傳：<br><img src="voice-recorder.jpg" alt="voice recorder"></p>
+<span id="more"></span>
+
+<h3 id="Try-Speech-to-Text"><a href="#Try-Speech-to-Text" class="headerlink" title="Try Speech-to-Text"></a>Try Speech-to-Text</h3><p>準備好錄音檔以後，我們就趕快連上<a target="_blank" rel="noopener" href="https://cloud.google.com/speech-to-text/?authuser=1">Speech-to-Text</a>上傳。<br><img src="demo.jpg" alt="demo"></p>
 <blockquote>
 <p>這邊奇怪的是我的麥克風輸入一直失敗，無法辨識也沒回應</p>
 </blockquote>
 <p>我選擇檔案上傳，並設定為中文，然後就上傳剛剛錄好的音檔。很快的下面就會看到結果<code>錄音程式測試一下</code>的字句(隊就是我說的)。</p>
 <blockquote>
-<p>其實我們也可以用昨天<a href="/blog/2019/09/28/ithelp-2019-day20/" title="第二十天">第二十天</a>、跟前天<a href="/blog/2019/09/27/ithelp-2019-day19/" title="第十九天">第十九天</a>產生的output再把他丟回去分析，看看會不會有同樣的文字輸出</p>
+<p>其實我們也可以用昨天<a href="/blog/2019/09/28/ithelp-2019-day20/" title="[Day 20] Google Cloud Text-to-Speech - 子系列最終章">第二十天</a>、跟前天<a href="/blog/2019/09/27/ithelp-2019-day19/" title="[Day 19] Google Cloud Text-to-Speech - 2">第十九天</a>產生的output再把他丟回去分析，看看會不會有同樣的文字輸出</p>
 </blockquote>
 <p>如果無法錄音、也無法跑程式的各位，不用怕，<a target="_blank" rel="noopener" href="https://github.com/GoogleCloudPlatform/golang-samples/tree/master/speech/testdata">這邊</a>有幫大家找到測試檔案。我選擇英文並把連結內的<code>Google_Gnome.wav</code>載下來丟上去，結果就是下面這樣：</p>
-<h4 id="default"><a class="header-anchor" href="#default"></a>default</h4>
-<p><img src="/blog/2019/09/29/ithelp-2019-day21/demo-default.jpg" alt="Demo default"></p>
-<h4 id="search-command"><a class="header-anchor" href="#search-command"></a>search/command</h4>
-<p><img src="/blog/2019/09/29/ithelp-2019-day21/demo-search.jpg" alt="demo search"></p>
+<h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><p><img src="demo-default.jpg" alt="Demo default"></p>
+<h4 id="search-x2F-command"><a href="#search-x2F-command" class="headerlink" title="search&#x2F;command"></a>search&#x2F;command</h4><p><img src="demo-search.jpg" alt="demo search"></p>
 <p>這幾個是針對你的情境，給你的語音做最佳化的轉換文字效果，粗略的介紹像是下面這樣</p>
 <table>
 <thead>
@@ -203,8 +201,7 @@
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>command_and_search</td>
 <td>Best for short queries such as voice commands or voice search.</td>
 </tr>
@@ -220,8 +217,7 @@
 <td>default</td>
 <td>Best for audio that is not one of the specific audio models. For example, long-form audio. Ideally the audio is high-fidelity, recorded at a 16khz or greater sampling rate.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <blockquote>
 <p>這邊真的建議可以玩一下！！你會發現轉換出來還有很大一段進步空間(光看文字很難想像語音講了什麼)</p>
 </blockquote>
@@ -233,7 +229,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="https://josephmg.github.io/blog/2019/09/29/ithelp-2019-day21/" data-id="cl702v56600205jmvbt0gdng3" class="article-share-link">Share</a>
+            <a data-url="https://josephmg.github.io/blog/2019/09/29/ithelp-2019-day21/" data-id="cld8vd0ey002b8eo47q6t1jsp" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Speech-to-Text/" rel="tag">Speech-to-Text</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
@@ -246,20 +242,30 @@
           
 <nav id="article-nav" class="white">
   <div class="nav-wrapper">
-    <ul class="row">
+    <ul>
     
-      <li class="col s6">
-        <a href="/blog/2019/09/30/ithelp-2019-day22/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/30/ithelp-2019-day22/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 22] Google Cloud Speech-to-Text - 2"
+        >
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">[Day 22] Google Cloud Speech-to-Text - 2</span>
+          <span class="article-nav-title truncate">[Day 22] Google Cloud Speech-to-Text - 2</span>
         </a>
       </li>
     
 
     
-      <li class="col s6">
-        <a href="/blog/2019/09/28/ithelp-2019-day20/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">[Day 20] Google Cloud Text-to-Speech - 子系列最終章</span>
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/28/ithelp-2019-day20/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 20] Google Cloud Text-to-Speech - 子系列最終章"
+        >
+          <span class="article-nav-title truncate">[Day 20] Google Cloud Text-to-Speech - 子系列最終章</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
@@ -279,76 +285,6 @@
 
 
     </div>
-    <div class="col s12 m3">
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Authors</h5>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Joseph/">Joseph</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sandy/">Sandy</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Tag Cloud</h5>
-    <div class="widget tagcloud">
-      <a href="/blog/tags/AI-ML-products/" style="font-size: 10px;">AI & ML products</a> <a href="/blog/tags/AI-Hub/" style="font-size: 12px;">AI Hub</a> <a href="/blog/tags/AWS/" style="font-size: 12px;">AWS</a> <a href="/blog/tags/AutoML-Table/" style="font-size: 12px;">AutoML Table</a> <a href="/blog/tags/Blockchain/" style="font-size: 18px;">Blockchain</a> <a href="/blog/tags/CDK/" style="font-size: 10px;">CDK</a> <a href="/blog/tags/Cloud-Development-Kit/" style="font-size: 10px;">Cloud Development Kit</a> <a href="/blog/tags/DevOps/" style="font-size: 12px;">DevOps</a> <a href="/blog/tags/Dialogflow/" style="font-size: 12px;">Dialogflow</a> <a href="/blog/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/blog/tags/Facebook-Conversions-API/" style="font-size: 10px;">Facebook Conversions API</a> <a href="/blog/tags/Facebook-Pixel/" style="font-size: 10px;">Facebook Pixel</a> <a href="/blog/tags/Fullstack/" style="font-size: 16px;">Fullstack</a> <a href="/blog/tags/GA4/" style="font-size: 10px;">GA4</a> <a href="/blog/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/blog/tags/GTM/" style="font-size: 10px;">GTM</a> <a href="/blog/tags/Golang/" style="font-size: 16px;">Golang</a> <a href="/blog/tags/Google-AI/" style="font-size: 20px;">Google AI</a> <a href="/blog/tags/Google-Analytics-4/" style="font-size: 10px;">Google Analytics 4</a> <a href="/blog/tags/Google-Cloud-Platform/" style="font-size: 10px;">Google Cloud Platform</a> <a href="/blog/tags/Google-Tag-Manager/" style="font-size: 10px;">Google Tag Manager</a> <a href="/blog/tags/Hardhat/" style="font-size: 18px;">Hardhat</a> <a href="/blog/tags/IG/" style="font-size: 10px;">IG</a> <a href="/blog/tags/Instagram/" style="font-size: 10px;">Instagram</a> <a href="/blog/tags/KinectV2/" style="font-size: 10px;">KinectV2</a> <a href="/blog/tags/Load-balancer/" style="font-size: 10px;">Load balancer</a> <a href="/blog/tags/Marketing/" style="font-size: 18px;">Marketing</a> <a href="/blog/tags/NFT/" style="font-size: 10px;">NFT</a> <a href="/blog/tags/Natural-Language/" style="font-size: 16px;">Natural Language</a> <a href="/blog/tags/Next-js/" style="font-size: 16px;">Next.js</a> <a href="/blog/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/blog/tags/Reactjs/" style="font-size: 16px;">Reactjs</a> <a href="/blog/tags/Ruby-on-Rails/" style="font-size: 10px;">Ruby on Rails</a> <a href="/blog/tags/Shopee/" style="font-size: 12px;">Shopee</a> <a href="/blog/tags/Solidity/" style="font-size: 18px;">Solidity</a> <a href="/blog/tags/Speech-to-Text/" style="font-size: 16px;">Speech-to-Text</a> <a href="/blog/tags/Text-to-Speech/" style="font-size: 14px;">Text-to-Speech</a> <a href="/blog/tags/Today-I-learn/" style="font-size: 10px;">Today I learn</a> <a href="/blog/tags/Translate/" style="font-size: 16px;">Translate</a> <a href="/blog/tags/Video-Intelligence-AI/" style="font-size: 16px;">Video Intelligence AI</a> <a href="/blog/tags/Vision-AI/" style="font-size: 16px;">Vision AI</a> <a href="/blog/tags/docker/" style="font-size: 12px;">docker</a> <a href="/blog/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/blog/tags/halloween/" style="font-size: 10px;">halloween</a> <a href="/blog/tags/serverless/" style="font-size: 14px;">serverless</a> <a href="/blog/tags/tianmu/" style="font-size: 10px;">tianmu</a> <a href="/blog/tags/%E5%A4%A9%E6%AF%8D/" style="font-size: 10px;">天母</a> <a href="/blog/tags/%E8%90%AC%E8%81%96%E7%AF%80/" style="font-size: 10px;">萬聖節</a> <a href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" style="font-size: 20px;">鐵人賽</a>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Archives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/2019/09/">September 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h5 class="widget-title">Recents</h5>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/">Blockchain fullstack structure - Part 4 - React.js and Next.js</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/">Blockchain fullstack structure - Part 3 - Golang Gin</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/">Blockchain fullstack structure - Part 2 - Hardhat</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/">Blockchain fullstack structure - Part 1 - Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-
-      
-    </div>
   </div>
 </div>
 
@@ -357,50 +293,29 @@
 
 
 
+
   </div>
 
-  
-  
   <footer class="page-footer grey darken-2">
     <div class="footer-copyright">
       <div class="container">
-        &copy; 2022 Joseph Chou
-        <span class="social-network">
-        
-          
-            <a target="_blank"  href="mailto:joseph780116@msn.com">
-              <i class="white-text fa fa-envelope"></i>
-            </a>
-            
-        
-          
-            <a target="_blank"  href="https://github.com/josephMG">
-              <i class="white-text fa fa-github"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.linkedin.com/in/joseph-chou/">
-              <i class="white-text fa fa-linkedin"></i>
-            </a>
-          
-        
-          
-            <a target="_blank"  href="https://www.facebook.com/profile.php?id=100000145033152">
-              <i class="white-text fa fa-facebook"></i>
-            </a>
-          
-        
-        </span>
+        &copy; 2023 Joseph Chou
+
         <div class="right">
-          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
         </div>
       </div>
     </div>
   </footer>
 
   
-<script src="/js/app.js"></script>
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
 
 
 </body>
