@@ -37,14 +37,13 @@
     &:before {
       display: inline;
       content: " ("
-      }
-      &:after {
-        display: inline;
+    }
+    &:after {
+      display: inline;
       content: ") "
     }
   }
   
-
   .category-list-child {
     padding-left: 10px;
   }

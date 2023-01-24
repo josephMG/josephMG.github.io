@@ -1,6 +1,6 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "josephMG-blog",
+  "version": "2.0.0",
   "private": true,
   "hexo": {
     "version": "6.3.0"
