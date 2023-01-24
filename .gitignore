@@ -7,3 +7,4 @@ public/
 .deploy*/
 deploy.sh
 *.swp
+hexo/package-lock.json

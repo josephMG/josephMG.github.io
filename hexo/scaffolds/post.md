@@ -1,5 +1,9 @@
 ---
+layout: blog
 title: {{ title }}
 date: {{ date }}
-tags:
+tags: []
+author: Joseph
+photos: []
+categories: ["Joseph"]
 ---
