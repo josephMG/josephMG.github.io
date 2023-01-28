@@ -2,7 +2,7 @@
 layout: blog
 title: "用Google load balancer跟GCE docker-nginx設定HTTP(S)"
 date: 2019-11-14 14:29:34
-tags: ["Google Cloud Platform", "GCP", "Load balancer", "docker"]
+tags: ["Google Cloud Platform", "GCP", "Load balancer", "Docker"]
 author: Joseph
 photos: ["architecture.jpg"]
 categories: ["Joseph", "DevOps"]
@@ -25,7 +25,7 @@ server {
     server_name  _;
     root   /var/www/html;
     index index.html index.htm index.php;
-    
+
     location / {
       if (!-e $request_filename){
         rewrite ^/(.*)$ /index.php/$1 last;
@@ -106,4 +106,3 @@ server {
 > **省錢步驟**
 > 記得最開始我們VM有掛上外部IP嗎？這時候他已經不需要了，沒用到的固定IP會被收取額外的費用
 > 所以我們可以編輯VM設定，把**外部IP**取消，然後去**VPC網路 / 外部IP位址**釋放剛剛沒有用到的IP。
-

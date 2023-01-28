@@ -2,7 +2,7 @@
 layout: blog
 title: "Install Docker / Docker-compose on CentOS 8"
 date: 2020-02-13 07:30:15
-tags: ["DevOps", "docker"]
+tags: ["DevOps", "Docker"]
 author: Joseph
 categories: ["Joseph", "DevOps"]
 ---
@@ -86,7 +86,7 @@ $ sudo firewall-cmd --reload.
 ```
 把docker0 interface 加入trusted zone，這時候docker nslookup就通了。
 
-> 有時候你會需要把4243 port也被防火牆允許: 
+> 有時候你會需要把4243 port也被防火牆允許:
 > `sudo firewall-cmd --permanent --zone=trusted --add-port=4243/tcp`
 
 > 有時候你可能需要手動設定docker dns，可以vim編輯`/etc/docker/daemon.json`:
