@@ -93,7 +93,8 @@ theme: materialize
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/josephMG/josephMG.github.io.git
+  # repo: https://github.com/josephMG/josephMG.github.io.git
+  repo: git@github.com:josephMG/josephMG.github.io.git
   branch: gh-pages
 
 tag_cloud:
