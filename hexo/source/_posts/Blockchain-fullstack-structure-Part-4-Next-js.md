@@ -14,6 +14,7 @@ In this article, I demonstrate how to use React.js (Next.js) to interact with sm
 
 Okay, let's start it.
 <!-- more -->
+<!-- toc -->
 
 ### Prerequisite
 
