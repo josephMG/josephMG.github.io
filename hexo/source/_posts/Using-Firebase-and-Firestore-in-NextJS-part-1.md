@@ -43,6 +43,7 @@ Cool, but in this article we won't show how to create a nextjs project and setup
 ### Add firebase to docker-compose
 
 Instead of `npm install -g firebase-tools`, we use docker-compose. The following code shows how to integrate firebase-tools to docker-compose.
+> See also: https://hub.docker.com/r/andreysenov/firebase-tools
 
 ```yml
 version: '3.8'
@@ -101,10 +102,37 @@ By the way, notice these two questions:
 1. ? What do you want to use as your public directory? `app/build`
 2. ? Configure as a single-page app (rewrite all urls to /index.html)? `Yes`
 
+It's almost done. We have to add `host: 0.0.0.0` to each service of **emulators** in `firebase.json`:
+```
+    "firestore": {
+      "host": "0.0.0.0",
+      "port": 8080
+    },
+    "database": {
+      "host": "0.0.0.0",
+      "port": 9000
+    },
+    "hosting": {
+      "host": "0.0.0.0",
+      "port": 5000
+    },
+    "storage": {
+      "host": "0.0.0.0",
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true,
+      "host": "0.0.0.0",
+      "port": 4000
+    },
+    "singleProjectMode": true
+```
+
 Time to comment and uncomment our `command` part in `docker-compose.yml`, and restart `docker-compose up`.
-Yeah, we'll see the result!
+Yeah! After clicking http://localhost:4000/, we'll see the result!
 
 ![result](result.png)
+
 
 
 Okay! Firebase is ready for our project. Next artile we will demostrate how to use firebase with Next.js!
