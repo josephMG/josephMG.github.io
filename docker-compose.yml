@@ -9,4 +9,4 @@ services:
       - ./hexo:/blog
       - /blog/node_modules
     ports:
-      - '4000:4000'
+      - '4001:4000'
