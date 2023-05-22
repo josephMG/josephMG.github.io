@@ -6,7 +6,7 @@ author: Joseph
 photos: ["banner.png"]
 categories:
   - Joseph
-  - React.js
+  - Fullstack
 date: 2023-03-14 17:02:41
 ---
 
