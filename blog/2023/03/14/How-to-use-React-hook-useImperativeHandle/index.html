@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>How to use React hook - useImperativeHandle | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Today, We’re going to introduce the way to use a great and useful React hook - useImperativeHandle. Have you ever think what is meaning of Imperative?  ImperativeIn grammar, a clause that is in the im">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use React hook - useImperativeHandle">
+<meta property="og:url" content="https://josephmg.github.io/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Today, We’re going to introduce the way to use a great and useful React hook - useImperativeHandle. Have you ever think what is meaning of Imperative?  ImperativeIn grammar, a clause that is in the im">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/banner.png">
+<meta property="article:published_time" content="2023-03-14T17:02:41.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.547Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Reactjs">
+<meta property="article:tag" content="Typescript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/banner.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-How-to-use-React-hook-useImperativeHandle" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/banner.png" rel="gallery_clr8lqkof000slbpx0ile4z5l">
+        <img src="/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/banner.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      How to use React hook - useImperativeHandle
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2023-03-14T17:02:41.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Mar 14, 2023</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>Today, We’re going to introduce the way to use a great and useful React hook - useImperativeHandle. Have you ever think what is meaning of <strong>Imperative</strong>?</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.collinsdictionary.com/dictionary/english/imperative">Imperative</a><br>In grammar, a clause that is in the imperative, or in the imperative mood, contains the base form of a verb and usually has no subject. Examples are ‘ Go away’ and ‘ Please be careful’. Clauses of this kind are typically used to tell someone to do something.</p>
+</blockquote>
+<p>So we can just think <code>useImperativeHandle</code> is <strong>Let <code>ref</code> access the handle.</strong> Go back to <a target="_blank" rel="noopener" href="https://beta.reactjs.org/reference/react/useImperativeHandle">useImperativeHandle</a> definition:</p>
+<blockquote>
+<p>useImperativeHandle is a React Hook that lets you customize the handle exposed as a <strong>ref</strong>.</p>
+</blockquote>
+<p>Right? Okay, before starting it, we have to recap how we do if we don’t use it.</p>
+<span id="more"></span>
+
+<h3><span id="set-it-to-parent-s-state">Set it to parent’s state</span><a href="#set-it-to-parent-s-state" class="header-anchor">#</a></h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Dispatch</span>, useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">HandlerType</span> = &#123;</span><br><span class="line">  <span class="attr">val</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">action</span>: <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Input</span>(<span class="params">&#123; setHandler &#125;: &#123; setHandler: Dispatch&lt;HandlerType&gt; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [text, setText] = <span class="title function_">useState</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setHandler</span>(&#123; </span><br><span class="line">      <span class="attr">val</span>: text, </span><br><span class="line">      <span class="attr">action</span>: <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> <span class="title function_">setText</span>(str)</span><br><span class="line">     &#125;);</span><br><span class="line">  &#125;, [text, setHandler]);</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;text&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;(e)</span> =&gt;</span> setText(e.target.value)&#125; /&gt;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Demo</span>(<span class="params"></span>): <span class="variable constant_">JSX</span>.<span class="property">Element</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [inputHandle, setInputHandle] = useState&lt;<span class="title class_">HandlerType</span>&gt;();</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Input</span> <span class="attr">setHandler</span>=<span class="string">&#123;setInputHandle&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> inputHandle?.action(&quot;Changed by Demo&quot;)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">  I don&#x27;t like &#123;inputHandle?.val&#125;! Change it!</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>You can replace <code>inputHandle useState</code> in parent component <code>Demo</code> by reducer, context, or state management library. In my opinion, in child component <code>Input</code>, all we have to do is set something which is used in <code>Input</code> so that <code>Demo</code> access it.</p>
+<h3><span id="rewrite-action-by-ref">Rewrite action by ref</span><a href="#rewrite-action-by-ref" class="header-anchor">#</a></h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useEffect, useState, useRef, forwardRef, <span class="title class_">Dispatch</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">HandlerType</span> = &#123;</span><br><span class="line">  <span class="attr">action</span>: <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Input</span> = forwardRef&lt;<span class="title class_">HandlerType</span>, &#123; <span class="attr">setVal</span>: <span class="title class_">Dispatch</span>&lt;<span class="built_in">string</span>&gt;&#125;&gt;(<span class="function">(<span class="params">&#123;setVal&#125;, ref</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [text, setText] = <span class="title function_">useState</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (ref) &#123;</span><br><span class="line">      ref.<span class="property">current</span>.<span class="property">action</span> = <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> <span class="title function_">setText</span>(str)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [])</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setVal</span>(text)</span><br><span class="line">  &#125;, [text])</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;text&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;(e)</span> =&gt;</span> setText(e.target.value)&#125; /&gt;</span></span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Demo</span>(<span class="params"></span>): <span class="variable constant_">JSX</span>.<span class="property">Element</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ref = useRef&lt;<span class="title class_">HandlerType</span>&gt;(&#123;<span class="attr">action</span>: <span class="function">() =&gt;</span> &#123;&#125; &#125;);</span><br><span class="line">  <span class="keyword">const</span> [val, setVal] = <span class="title function_">useState</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Input</span> <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span> <span class="attr">setVal</span>=<span class="string">&#123;setVal&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          ref?.current.action(&quot;Changed by Demo&quot;)</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;&gt;</span></span><br><span class="line"><span class="language-xml">          I don&#x27;t like &#123;val&#125;! Change it!</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Now, because <code>ref</code> won’t re-render, so we use <code>ref</code> to handle <strong>action</strong>, and <code>[val, setVal]</code> to get text from <code>Input</code>.<br>Could we use <code>ref</code> to do everything? Sure, just use <code>useImperativeHandle</code>.</p>
+<h3><span id="useimperativehandle">useImperativeHandle</span><a href="#useimperativehandle" class="header-anchor">#</a></h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState, useRef, forwardRef, useImperativeHandle &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">HandlerType</span> = &#123;</span><br><span class="line">  <span class="attr">val</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">action</span>: <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Input</span> = forwardRef&lt;<span class="title class_">HandlerType</span>, <span class="built_in">unknown</span>&gt;(<span class="function">(<span class="params">_props, ref</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [text, setText] = <span class="title function_">useState</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="title function_">useImperativeHandle</span>(</span><br><span class="line">    ref,</span><br><span class="line">    <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">val</span>: text,</span><br><span class="line">        <span class="attr">action</span>: <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> <span class="title function_">setText</span>(str)</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    [text]</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;text&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;(e)</span> =&gt;</span> setText(e.target.value)&#125; /&gt;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Demo</span>(<span class="params"></span>): <span class="variable constant_">JSX</span>.<span class="property">Element</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> ref = useRef&lt;<span class="title class_">HandlerType</span>&gt;(&#123; <span class="attr">val</span>: <span class="string">&quot;&quot;</span>, <span class="attr">action</span>: <span class="function">() =&gt;</span> &#123;&#125; &#125;);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Input</span> <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">            ref?.current.action(&quot;Changed by Demo&quot;);</span></span><br><span class="line"><span class="language-xml">          &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        &gt;</span></span><br><span class="line"><span class="language-xml">          Change it!</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> alert(ref?.current.val)&#125;&gt;alert value<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You may notice that we don’t render <code>$&#123;ref?.current.val&#125;</code>, because <code>ref</code> won’t trigger re-render too. If you want to re-render parent component, <code>ref</code> may not suit for you. In this example, we use a button to <code>alert</code> the value, that is, you can get <code>ref?.current.val</code> in your handler or function. It’s so easy to access child component handler, isn’t it?</p>
+<h3><span id="conclusion">Conclusion</span><a href="#conclusion" class="header-anchor">#</a></h3><p>You can find these examples on <a target="_blank" rel="noopener" href="https://codesandbox.io/s/xenodochial-saha-bm4gqb">CodeSandbox</a>. Although <code>useImperativeHandle</code> is a useful feature, it is not commonly used. If you have an existing child component that is called by multiple parent components and you want to move some handlers into the parents, then you might consider using <code>useImperativeHandle</code>. However, if all of your parent components need to move some handlers into the child component, then using a <a target="_blank" rel="noopener" href="https://beta.reactjs.org/learn/reusing-logic-with-custom-hooks">custom hook</a> would be more appropriate.</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/" data-id="clr8lqkof000slbpx0ile4z5l" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Reactjs/" rel="tag">Reactjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Typescript/" rel="tag">Typescript</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2023/03/20/Use-ChatGPT-translate-new-react-dev-doc/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Use ChatGPT to translate new react-dev doc"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Use ChatGPT to translate new react-dev doc</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js"
+        >
+          <span class="article-nav-title truncate">Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

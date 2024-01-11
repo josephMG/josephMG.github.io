@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 18] Google Cloud Text-to-Speech - 1 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="今天來介紹Google另一個AI服務：文字轉語音(Text-To-Search)。把一段文字丟入以後，他可以唸出來給你。這套服務目前還沒有AutoML的UI介面可以操作，我們就只能看看API跟demo的操作。 在Text-To-Search裡，Google有使用到WaveNet模型，這套模型用了大量的語音去訓練AI，讓AI能知道哪些字接著哪些字應該怎麼發音，讓聲音更像人說出來的一樣。  更詳細的W">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 18] Google Cloud Text-to-Speech - 1">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/26/ithelp-2019-day18/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="今天來介紹Google另一個AI服務：文字轉語音(Text-To-Search)。把一段文字丟入以後，他可以唸出來給你。這套服務目前還沒有AutoML的UI介面可以操作，我們就只能看看API跟demo的操作。 在Text-To-Search裡，Google有使用到WaveNet模型，這套模型用了大量的語音去訓練AI，讓AI能知道哪些字接著哪些字應該怎麼發音，讓聲音更像人說出來的一樣。  更詳細的W">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/26/ithelp-2019-day18/Demo.jpg">
+<meta property="article:published_time" content="2019-09-26T07:29:55.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.723Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Text-to-Speech">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/26/ithelp-2019-day18/Demo.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day18" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 18] Google Cloud Text-to-Speech - 1
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-26T07:29:55.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 26, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天來介紹Google另一個AI服務：文字轉語音(Text-To-Search)。把一段文字丟入以後，他可以唸出來給你。這套服務目前還沒有AutoML的UI介面可以操作，我們就只能看看API跟demo的操作。</p>
+<p>在Text-To-Search裡，Google有使用到WaveNet模型，這套模型用了大量的語音去訓練AI，讓AI能知道哪些字接著哪些字應該怎麼發音，讓聲音更像人說出來的一樣。</p>
+<blockquote>
+<p>更詳細的WaveNet可以看Google這邊的介紹：<a target="_blank" rel="noopener" href="https://cloud.google.com/text-to-speech/docs/wavenet">https://cloud.google.com/text-to-speech/docs/wavenet</a><br><strong>還可以聽一下不是WaveNet說的話，跟WaveNet說的話之間的差別</strong></p>
+</blockquote>
+<span id="more"></span>
+<p>好，我們先來看看Demo：</p>
+<h3><span id="demo">Demo</span><a href="#demo" class="header-anchor">#</a></h3><p><img src="/blog/2019/09/26/ithelp-2019-day18/Demo.jpg" alt="Demo"></p>
+<p>點下去需要一段時間，他就會把輸入框裡的文字唸出來。只是這邊的<strong>locale</strong>目前還沒有中文可以選，所以聽不出來中文講出來會怎樣。<strong>Voice Name</strong>有很多種聲音可以選擇，也有男生跟女生的發音，另外你也可以自己調整<code>Speed</code>跟<code>Pitch(音調)</code></p>
+<p>然後我們來看看他的Request JSON：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;audioConfig&quot;: &#123;</span><br><span class="line">    &quot;audioEncoding&quot;: &quot;LINEAR16&quot;,</span><br><span class="line">    &quot;pitch&quot;: 0.4,</span><br><span class="line">    &quot;speakingRate&quot;: 1.94</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;input&quot;: &#123;</span><br><span class="line">    &quot;text&quot;: &quot;Google Cloud Text-to-Speech enables developers to synthesize natural-sounding speech with 100+ voices, available in multiple languages and variants. It applies DeepMind’s groundbreaking research in WaveNet and Google’s powerful neural networks to deliver the highest fidelity possible. As an easy-to-use API, you can create lifelike interactions with your users, across many applications and devices.&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;voice&quot;: &#123;</span><br><span class="line">    &quot;languageCode&quot;: &quot;en-US&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;en-US-Standard-E&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看起來在呼叫的時候也可以帶入這些參數：<code>pitch</code>、<code>speakingRate(speed)</code>、<code>text</code>、<code>languageCode</code>、還有<code>name</code>，至於<code>autoEncoding</code>，則有<code>UNSPECIFIED</code>、<code>LINEAR16</code>、<code>MP3</code>、<code>OGG_OPUS</code>四種選項，可以參考<a target="_blank" rel="noopener" href="https://godoc.org/google.golang.org/genproto/googleapis/cloud/texttospeech/v1#AudioEncoding">API doc</a>的說明。</p>
+<p>講到這邊差不多是今天的尾聲，每次的起手式都很簡單。明天又要來串API了。<br>OK，今天就寫到這邊，感謝大家的觀看。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/26/ithelp-2019-day18/" data-id="clr8lqkp0002nlbpxd6k1g34p" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Text-to-Speech/" rel="tag">Text-to-Speech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/27/ithelp-2019-day19/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 19] Google Cloud Text-to-Speech - 2"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 19] Google Cloud Text-to-Speech - 2</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/25/shopee-advertisement-advanced/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="認識Shopee關鍵字廣告優化"
+        >
+          <span class="article-nav-title truncate">認識Shopee關鍵字廣告優化</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

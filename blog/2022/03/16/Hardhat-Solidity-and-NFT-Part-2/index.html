@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="我們上一篇已經設定好docker及hardhat專案，這一篇就從NFT開始。 Generate NFT metadata先建立一個images資料夾後，把你想要的圖片放進去，並存成1, 2, 3….之類的檔名，然後用ipfs-car指令打包在一起。  找不到圖可以先用opensea doc裡的圖當練習   接著到NFT Storage上傳images.car檔案就可以了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT">
+<meta property="og:url" content="https://josephmg.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="我們上一篇已經設定好docker及hardhat專案，這一篇就從NFT開始。 Generate NFT metadata先建立一個images資料夾後，把你想要的圖片放進去，並存成1, 2, 3….之類的檔名，然後用ipfs-car指令打包在一起。  找不到圖可以先用opensea doc裡的圖當練習   接著到NFT Storage上傳images.car檔案就可以了。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/logo.jpg">
+<meta property="article:published_time" content="2022-03-16T08:39:37.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.539Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Blockchain">
+<meta property="article:tag" content="Solidity">
+<meta property="article:tag" content="Hardhat">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="NFT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/logo.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Hardhat-Solidity-and-NFT-Part-2" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/logo.jpg" rel="gallery_clr8lqkoe000rlbpx2qb7f85f">
+        <img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/logo.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2022-03-16T08:39:37.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Mar 16, 2022</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>我們<a href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" title="Hardhat - Solidity and NFT - Part 1 - Prepare project">上一篇</a>已經設定好docker及hardhat專案，這一篇就從NFT開始。</p>
+<h3><span id="generate-nft-metadata">Generate NFT metadata</span><a href="#generate-nft-metadata" class="header-anchor">#</a></h3><p>先建立一個<code>images</code>資料夾後，把你想要的圖片放進去，並存成1, 2, 3….之類的檔名，然後用<code>ipfs-car</code>指令打包在一起。</p>
+<blockquote>
+<p>找不到圖可以先用<a target="_blank" rel="noopener" href="https://docs.opensea.io/docs/part-3-adding-metadata-and-payments-to-your-contract">opensea doc</a>裡的圖當練習</p>
+</blockquote>
+<p><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/ipfs-car.jpg" alt="ipfs-car"></p>
+<p>接著到<a target="_blank" rel="noopener" href="https://nft.storage/">NFT Storage</a>上傳<code>images.car</code>檔案就可以了。<br><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/image-car-upload.jpg" alt="image-car-upload"></p>
+<span id="more"></span>
+<p>在<a target="_blank" rel="noopener" href="https://nft.storage/">NFT Storage</a>點開剛剛上傳檔案，找到image url，等一下要塞到metadata裡的<code>image</code>欄位。<br><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/ipfs-image-url.jpg" alt="ipfs image url"></p>
+<p>再來建立一個<code>metadata</code>資料夾，設計metadata json，每個metadata裡的資訊對應到每一張圖片，所以<code>metadata</code>資料夾裡會有3個json file，檔名則是單純的<code>1</code>, <code>2</code>, <code>3</code>，之後在solidity裡會對應到<code>tokenId</code>。</p>
+<p><strong>1</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;This is my daughter&#x27;s hand NFT.&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;external_url&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;https://example.com/?token_id=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image&quot;</span> <span class="punctuation">:</span> &lt;YOUR IPFS IMAGE <span class="number">1.</span>jpg&gt;<span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;Tearing off paper&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>2</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;attributes&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;trait_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;level&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="number">3</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;trait_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;stamina&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="number">11.7</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;trait_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;personality&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;sleepy&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;display_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;boost_number&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;trait_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;aqua_power&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="number">30</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;display_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;boost_percentage&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;trait_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;stamina_increase&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="number">15</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;display_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;number&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;trait_type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;generation&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;This is my daughter&#x27;s hand NFT.&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;external_url&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;https://example.com/?token_id=2&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image&quot;</span> <span class="punctuation">:</span> &lt;YOUR IPFS IMAGE <span class="number">2.</span>jpg&gt;<span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;Playing with building blocks&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>3</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;description&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;This is my daughter&#x27;s hand NFT.&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;external_url&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;https://example.com/?token_id=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image&quot;</span> <span class="punctuation">:</span> &lt;YOUR IPFS IMAGE <span class="number">3.</span>jpg&gt;<span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;Grabbing her dinner&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其中有個<code>json</code>裡有<code>attributes</code>，這資訊會顯示在Opensea上，詳細欄位可以在<a target="_blank" rel="noopener" href="https://docs.opensea.io/docs/metadata-standards">Opensea Docs</a>上看到</p>
+</blockquote>
+<p>然後一樣用<code>car</code>打包，上傳到<a target="_blank" rel="noopener" href="https://nft.storage/">NFTStorage</a><br><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/metadata-car.jpg" alt="metadata-car"></p>
+<p>在NFTStorage上就可以得到一個metadata url，要設定在solidity <code>setBaseTokenUrl</code>裡。<br>到這邊準備工作就告一個段落了，我們再來就要開始Coding了，分別要寫<code>solidity</code>跟<code>typescript</code>。</p>
+<h3><span id="start-coding">Start coding</span><a href="#start-coding" class="header-anchor">#</a></h3><h5><span id="solidity">Solidity</span><a href="#solidity" class="header-anchor">#</a></h5><p>我們先來寫contract，在contract資料夾底下建立自己的solidity檔案。</p>
+<p><strong>contracts&#x2F;BabyHands.sol</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.4;</span><br><span class="line"></span><br><span class="line">import &quot;@openzeppelin/contracts/token/ERC721/ERC721.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/utils/Counters.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/access/Ownable.sol&quot;;</span><br><span class="line">import &quot;hardhat/console.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract BabyHands is ERC721, Ownable &#123;</span><br><span class="line">  using Counters for Counters.Counter;</span><br><span class="line"></span><br><span class="line">  // Constants</span><br><span class="line">  uint256 public constant TOTAL_SUPPLY = 3;</span><br><span class="line">  uint256 public constant MINT_PRICE = 0.08 ether;</span><br><span class="line"></span><br><span class="line">  Counters.Counter private currentTokenId;</span><br><span class="line">  string public baseTokenURI;</span><br><span class="line"></span><br><span class="line">  constructor() ERC721(&quot;BabyHands&quot;, &quot;BBH&quot;) &#123;</span><br><span class="line">    baseTokenURI = &quot;&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function mintTo(address recipient) public payable returns (uint256) &#123;</span><br><span class="line">    uint256 tokenId = currentTokenId.current();</span><br><span class="line">    require(tokenId &lt; TOTAL_SUPPLY, &quot;Max supply reached&quot;);</span><br><span class="line">    require(msg.value == MINT_PRICE, &quot;Mint price is not equal.&quot;);</span><br><span class="line"></span><br><span class="line">    currentTokenId.increment();</span><br><span class="line">    uint256 newItemId = currentTokenId.current();</span><br><span class="line">    _safeMint(recipient, newItemId);</span><br><span class="line">    return newItemId;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /// @dev Returns an URI for a given token ID</span><br><span class="line">  function _baseURI() internal view virtual override returns (string memory) &#123;</span><br><span class="line">    return baseTokenURI;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /// @dev Sets the base token URI prefix.</span><br><span class="line">  function setBaseTokenURI(string memory _baseTokenURI) public onlyOwner &#123;</span><br><span class="line">    baseTokenURI = _baseTokenURI;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在contract裡，我們繼承了ERC721，然後開了<code>mintTo</code>, <code>setBaseTokenURI</code>兩個function，到時候會用hardhat的task去mint跟設定base URI。然後我們用<code>hardhat compile</code>去編譯我們的solidity。<br><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/compile.jpg" alt="compile"></p>
+<blockquote>
+<p>如果缺少**@openzeppelin&#x2F;contracts**的話，可以先跑 <code>docker-compose exec hardhat yarn add -D @openzeppelin/contracts</code></p>
+</blockquote>
+<h5><span id="typescript">Typescript</span><a href="#typescript" class="header-anchor">#</a></h5><p>再來用Typescript寫task，好讓我們可以透過hardhat cli操作部署上去的contract。</p>
+<p><strong>scripts&#x2F;helpers.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; getContractAt &#125; <span class="keyword">from</span> <span class="string">&quot;@nomiclabs/hardhat-ethers/internal/helpers&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Helper method for fetching environment variables from .env</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getEnvVariable</span>(<span class="params">key: <span class="built_in">string</span>, defaultValue?: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.<span class="property">env</span>[key]) &#123;</span><br><span class="line">        <span class="keyword">return</span> process.<span class="property">env</span>[key];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!defaultValue) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">`<span class="subst">$&#123;key&#125;</span> is not defined and no default value was provided`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> defaultValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Helper method for fetching a connection provider to the Ethereum network</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getProvider</span>(<span class="params">ethers: <span class="built_in">any</span></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> ethers.<span class="title function_">getDefaultProvider</span>(<span class="title function_">getEnvVariable</span>(<span class="string">&quot;NETWORK&quot;</span>, <span class="string">&quot;rinkeby&quot;</span>), &#123;</span><br><span class="line">        <span class="attr">infura</span>: <span class="title function_">getEnvVariable</span>(<span class="string">&quot;INFURA_ID&quot;</span>),</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Helper method for fetching a wallet account using an environment variable for the PK</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getAccount</span>(<span class="params">ethers: <span class="built_in">any</span></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ethers.<span class="title class_">Wallet</span>(<span class="title function_">getEnvVariable</span>(<span class="string">&quot;PRIVATE_KEY&quot;</span>) ?? <span class="string">&quot;&quot;</span>, <span class="title function_">getProvider</span>(ethers));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Helper method for fetching a contract instance at a given address</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getContract</span>(<span class="params">contractName: <span class="built_in">string</span>, hre: <span class="built_in">any</span></span>) &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">       // 如果你還不想發布到測試網路，可以用hardhat預設的account取代下面的getAccount()</span></span><br><span class="line"><span class="comment">       const accounts = await hre.ethers.getSigners();</span></span><br><span class="line"><span class="comment">       const account = accounts[0]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">const</span> account = <span class="title function_">getAccount</span>(hre.<span class="property">ethers</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">getContractAt</span>(hre, contractName, <span class="title function_">getEnvVariable</span>(<span class="string">&quot;NFT_CONTRACT_ADDRESS&quot;</span>) ?? <span class="string">&quot;&quot;</span>, account);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  getContract,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>scripts&#x2F;deploy.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-waffle&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> fetch <span class="keyword">from</span> <span class="string">&quot;node-fetch&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; task &#125; <span class="keyword">from</span> <span class="string">&quot;hardhat/config&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getContract &#125; <span class="keyword">from</span> <span class="string">&quot;./helpers&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">task</span>(<span class="string">&quot;deploy&quot;</span>, <span class="string">&quot;Deploys the BabyHand.sol contract&quot;</span>)</span><br><span class="line">  .<span class="title function_">setAction</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">taskArguments, hre</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">BabyHands</span> = <span class="keyword">await</span> hre.<span class="property">ethers</span>.<span class="title function_">getContractFactory</span>(<span class="string">&quot;BabyHands&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> babyHands = <span class="keyword">await</span> <span class="title class_">BabyHands</span>.<span class="title function_">deploy</span>();</span><br><span class="line">    <span class="keyword">await</span> babyHands.<span class="title function_">deployed</span>();</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;BabyHands deployed to:&quot;</span>, babyHands.<span class="property">address</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">task</span>(<span class="string">&quot;mint&quot;</span>, <span class="string">&quot;Mints from the NFT contract&quot;</span>)</span><br><span class="line">  .<span class="title function_">addParam</span>(<span class="string">&quot;address&quot;</span>, <span class="string">&quot;The address to receive a token&quot;</span>)</span><br><span class="line">  .<span class="title function_">setAction</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">taskArguments, hre</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> contract = <span class="keyword">await</span> <span class="title function_">getContract</span>(<span class="string">&quot;BabyHands&quot;</span>, hre);</span><br><span class="line">    <span class="keyword">const</span> transactionResponse = <span class="keyword">await</span> contract.<span class="title function_">mintTo</span>(taskArguments.<span class="property">address</span>, &#123;</span><br><span class="line">      <span class="attr">gasLimit</span>: <span class="number">500_000</span>,</span><br><span class="line">      <span class="attr">value</span>: hre.<span class="property">ethers</span>.<span class="property">utils</span>.<span class="title function_">parseEther</span>(<span class="string">&quot;0.08&quot;</span>),</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Transaction Hash: <span class="subst">$&#123;transactionResponse.hash&#125;</span>`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">task</span>(<span class="string">&quot;set-base-token-uri&quot;</span>, <span class="string">&quot;Sets the base token URI for the deployed smart contract&quot;</span>)</span><br><span class="line">  .<span class="title function_">addParam</span>(<span class="string">&quot;baseUrl&quot;</span>, <span class="string">&quot;The base of the tokenURI endpoint to set&quot;</span>)</span><br><span class="line">  .<span class="title function_">setAction</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">taskArguments, hre</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> contract = <span class="keyword">await</span> <span class="title function_">getContract</span>(<span class="string">&quot;BabyHands&quot;</span>, hre);</span><br><span class="line">    <span class="keyword">const</span> transactionResponse = <span class="keyword">await</span> contract.<span class="title function_">setBaseTokenURI</span>(</span><br><span class="line">      taskArguments.<span class="property">baseUrl</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">gasLimit</span>: <span class="number">500_000</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Transaction Hash: <span class="subst">$&#123;transactionResponse.hash&#125;</span>`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">task</span>(<span class="string">&quot;token-uri&quot;</span>, <span class="string">&quot;Fetches the token metadata for the given token ID&quot;</span>)</span><br><span class="line">  .<span class="title function_">addParam</span>(<span class="string">&quot;tokenId&quot;</span>, <span class="string">&quot;The tokenID to fetch metadata for&quot;</span>)</span><br><span class="line">  .<span class="title function_">setAction</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">taskArguments, hre</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> contract = <span class="keyword">await</span> <span class="title function_">getContract</span>(<span class="string">&quot;BabyHands&quot;</span>, hre);</span><br><span class="line">    <span class="keyword">const</span> response = <span class="keyword">await</span> contract.<span class="title function_">tokenURI</span>(taskArguments.<span class="property">tokenId</span>, &#123;</span><br><span class="line">      <span class="attr">gasLimit</span>: <span class="number">500_000</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> metadata_url = response;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Metadata URL: <span class="subst">$&#123;metadata_url&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> metadata = <span class="keyword">await</span> <span class="title function_">fetch</span>(metadata_url).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> res.<span class="title function_">json</span>());</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">      <span class="string">`Metadata fetch response: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(metadata, <span class="literal">null</span>, <span class="number">2</span>)&#125;</span>`</span></span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>然後回頭修改<strong>hardhat.config.ts</strong>檔案，載入<strong>deploy.ts</strong>，之後hardhat才能讀到我們寫的task</p>
+<p><strong>hardhat.config.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> dotenv <span class="keyword">from</span> <span class="string">&quot;dotenv&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HardhatUserConfig</span> &#125; <span class="keyword">from</span> <span class="string">&quot;hardhat/config&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-etherscan&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-waffle&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@typechain/hardhat&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;hardhat-gas-reporter&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;solidity-coverage&quot;</span>;</span><br><span class="line"></span><br><span class="line">dotenv.<span class="title function_">config</span>();</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./scripts/deploy.ts&quot;</span>; <span class="comment">// &lt;&lt;&lt;&lt;&lt;&lt;&lt; 新增這行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">config</span>: <span class="title class_">HardhatUserConfig</span> = &#123;</span><br><span class="line">  <span class="attr">solidity</span>: <span class="string">&quot;0.8.4&quot;</span>,</span><br><span class="line">  <span class="attr">networks</span>: &#123;</span><br><span class="line">    <span class="attr">hardhat</span>: &#123; <span class="comment">// &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; 新增這段，如果想使用本地部署的話</span></span><br><span class="line">      <span class="attr">forking</span>: &#123;</span><br><span class="line">        <span class="attr">url</span>: process.<span class="property">env</span>.<span class="property">RINKEBY_URL</span> || <span class="string">&quot;&quot;</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">rinkeby</span>: &#123;</span><br><span class="line">      <span class="attr">url</span>: process.<span class="property">env</span>.<span class="property">RINKEBY_URL</span> || <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="attr">accounts</span>:</span><br><span class="line">        process.<span class="property">env</span>.<span class="property">PRIVATE_KEY</span> !== <span class="literal">undefined</span> ? [process.<span class="property">env</span>.<span class="property">PRIVATE_KEY</span>] : [],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">gasReporter</span>: &#123;</span><br><span class="line">    <span class="attr">enabled</span>: process.<span class="property">env</span>.<span class="property">REPORT_GAS</span> !== <span class="literal">undefined</span>,</span><br><span class="line">    <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">etherscan</span>: &#123;</span><br><span class="line">    <span class="attr">apiKey</span>: &#123;</span><br><span class="line">      <span class="attr">rinkeby</span>: process.<span class="property">env</span>.<span class="property">ETHERSCAN_API_KEY</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> config;</span><br></pre></td></tr></table></figure>
+<p>來看看我們task有沒有載入吧！<br><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/hardhat-cli.jpg" alt="hardhat cli"></p>
+<p>我們會先<code>deploy</code>，然後會得到一個address，再把env裡新增一個<code>NFT_CONTRACT_ADDRESS</code>給<strong>helpers.ts</strong>用。</p>
+<p><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/deploy-and-mint.jpg" alt="deploy and mint"></p>
+<blockquote>
+<p>只要你<strong>rinkeby</strong>測試網路的錢包有ETH，就可以都改成<code>--network rinkeby</code>操作</p>
+</blockquote>
+<blockquote>
+<p>我這邊用的account是hardhat提供的Account #19，所以<code>mint</code> address跟env裡的<code>PRIVATE_KEY</code>都是拿Account #19的資訊</p>
+</blockquote>
+<p>操作都正常以後，我們就可以上opensea看mint到的NFT了。我<strong>rinkeby</strong>測試網路的在這裡 &gt; <a target="_blank" rel="noopener" href="https://testnets.opensea.io/collection/babyhands">BabyHands</a></p>
+<p>最後呢，如果要你的Etherscan contract可以看到solidity code，只要多跑一個指令就行：</p>
+<blockquote>
+<p><code>docker-compose exec hardhat npx hardhat verify 0x23E4673d7B7F494b328A967B60Daa58E2D19a947 &quot;BabyHands&quot; &quot;BBH&quot; --contract contracts/BabyHands.sol:BabyHands --network rinkeby</code></p>
+</blockquote>
+<p><img src="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/etherscan.jpg" alt="etherscan.jpg"></p>
+<p>好囉，看到你的NFT的，要更深入研究可以多看opensea其他項目的合約，可以有更多變化。</p>
+<hr>
+<p>References:</p>
+<ol>
+<li>Opensea doc: <a target="_blank" rel="noopener" href="https://docs.opensea.io/docs/creating-an-nft-contract">https://docs.opensea.io/docs/creating-an-nft-contract</a></li>
+<li>Azuki contract: <a target="_blank" rel="noopener" href="https://etherscan.io/address/0xed5af388653567af2f388e6224dc7c4b3241c544#code">https://etherscan.io/address/0xed5af388653567af2f388e6224dc7c4b3241c544#code</a></li>
+</ol>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/" data-id="clr8lqkoe000rlbpx2qb7f85f" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/NFT/" rel="tag">NFT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Blockchain fullstack structure - Part 1 - Introduction"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Blockchain fullstack structure - Part 1 - Introduction</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Hardhat - Solidity and NFT - Part 1 - Prepare project"
+        >
+          <span class="article-nav-title truncate">Hardhat - Solidity and NFT - Part 1 - Prepare project</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

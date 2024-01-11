@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 12] Google Natural Language - 3 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="今天來Google Natural Language第三篇，我本來想按照Natural Language裡分析情緒這個部分實作，可是看完以後發現它code有點短，只有下面這樣： 12345678910func analyzeSentimentFromGCS(ctx context.Context, gcsURI string) (*languagepb.AnalyzeSentimentRespon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 12] Google Natural Language - 3">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/20/ithelp-2019-day12/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="今天來Google Natural Language第三篇，我本來想按照Natural Language裡分析情緒這個部分實作，可是看完以後發現它code有點短，只有下面這樣： 12345678910func analyzeSentimentFromGCS(ctx context.Context, gcsURI string) (*languagepb.AnalyzeSentimentRespon">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/20/ithelp-2019-day12/output1.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/20/ithelp-2019-day12/output2.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/20/ithelp-2019-day12/output3.jpg">
+<meta property="article:published_time" content="2019-09-20T07:29:41.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.691Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Natural Language">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/20/ithelp-2019-day12/output1.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day12" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 12] Google Natural Language - 3
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-20T07:29:41.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 20, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天來Google Natural Language第三篇，我本來想按照Natural Language裡<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/analyzing-sentiment">分析情緒</a>這個部分實作，可是看完以後發現它code有點短，只有下面這樣：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">analyzeSentimentFromGCS</span><span class="params">(ctx context.Context, gcsURI <span class="type">string</span>)</span></span> (*languagepb.AnalyzeSentimentResponse, <span class="type">error</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> client.AnalyzeSentiment(ctx, &amp;languagepb.AnalyzeSentimentRequest&#123;</span><br><span class="line">                Document: &amp;languagepb.Document&#123;</span><br><span class="line">                        Source: &amp;languagepb.Document_GcsContentUri&#123;</span><br><span class="line">                                GcsContentUri: gcsURI,</span><br><span class="line">                        &#125;,</span><br><span class="line">                        Type: languagepb.Document_PLAIN_TEXT,</span><br><span class="line">                &#125;,</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>遲遲找不到適合的範例，恰巧看到<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/basics?hl=zh-tw">Natural Language基礎知識</a>有一個<code>蓋茨堡宣言</code>的範例，gcsURI是<code>gs://cloud-samples-tests/natural-language/gettysburg.txt</code>，我把gcsURI帶入<code>gs://cloud-samples-tests/natural-language/gettysburg.txt</code>，發現跑出來結果很難閱讀<br><img src="/blog/2019/09/20/ithelp-2019-day12/output1.jpg" alt="output1.jpg"></p>
+<p>好吧，就照著之前Video跟Vision那樣，把它改寫得比較好閱讀一點：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">AnalyzeSentiment</span><span class="params">(gcsURI <span class="type">string</span>)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">  ctx := context.Background()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Creates a client.</span></span><br><span class="line">  client, err := language.NewClient(ctx)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalf(<span class="string">&quot;Failed to create client: %v&quot;</span>, err)</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">  &#125;</span><br><span class="line">  op, err := client.AnalyzeSentiment(ctx, &amp;languagepb.AnalyzeSentimentRequest&#123;</span><br><span class="line">    Document: &amp;languagepb.Document&#123;</span><br><span class="line">      Source: &amp;languagepb.Document_GcsContentUri&#123;</span><br><span class="line">        GcsContentUri: gcsURI,</span><br><span class="line">      &#125;,</span><br><span class="line">      Type: languagepb.Document_PLAIN_TEXT,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Printf(<span class="string">&quot;Document Sentiment:\n&quot;</span>)</span><br><span class="line">  fmt.Printf(<span class="string">&quot;\tScore: %.2f\n&quot;</span>, op.DocumentSentiment.Score)</span><br><span class="line">  fmt.Printf(<span class="string">&quot;\tMagnitude: %.2f\n&quot;</span>, op.DocumentSentiment.Magnitude)</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Language: %q\n\n&quot;</span>, op.Language)</span><br><span class="line">  <span class="keyword">for</span> _, annotation := <span class="keyword">range</span> op.Sentences &#123;</span><br><span class="line">    text := annotation.GetText()</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Text:\n&quot;</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;\tContent: %s\n&quot;</span>, text.Content)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;\tSentiment: %q\n&quot;</span>, annotation.Sentiment)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再丟入一樣的<code>蓋茨堡宣言</code>進去運算以後，我們再來看看漂亮的output。<br><img src="/blog/2019/09/20/ithelp-2019-day12/output2.jpg" alt="output2.jpg"></p>
+<p>但我始終算不出<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/basics?hl=zh-tw#sentiment-request">Natural Language基礎知識</a>裡的<code>&#123;score: 0.2, magnitude: 3.6&#125;</code>。靈機一動看看<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gettysburg_Address#Text_of_the_Gettysburg_Address">其他版本</a>的宣言，來研究一下其他結果。<br><img src="/blog/2019/09/20/ithelp-2019-day12/output3.jpg" alt="output3.jpg"></p>
+<p>嗯？都是<code>蓋茨堡宣言</code>，竟然結果不完全一樣，可以看到最後兩段gcs沒辨識出來，但wiki上的有結果，不過每個句子的比重差不多，可能是不同結構造成的誤差，剩下就看實際使用時的情境去做調整。</p>
+<p>好了，今天是個很有實驗精神的一篇，測了不同的<code>蓋茨堡宣言</code>、改寫了範例程式。<br>今天就到這邊了，這是今天的Github: <a target="_blank" rel="noopener" href="https://github.com/josephMG/ithelp-2019/tree/Day-12">https://github.com/josephMG/ithelp-2019/tree/Day-12</a> 。謝謝大家~</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/20/ithelp-2019-day12/" data-id="clr8lqkov0026lbpxhrdhbcrv" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Natural-Language/" rel="tag">Natural Language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/21/ithelp-2019-day13/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 13] Google Natural Language - 子系列最終章"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 13] Google Natural Language - 子系列最終章</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/19/shopee-advertisement-setting/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="認識Shopee關鍵字廣告及設定"
+        >
+          <span class="article-nav-title truncate">認識Shopee關鍵字廣告及設定</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 20] Google Cloud Text-to-Speech - 子系列最終章 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="今天是這子系列的最後一篇，因為Text-to-Speech沒有AutoML UI介面可以操作，無奈只好讓這邊結束這回合。 按照進度，這篇必須更深入介紹Text-to-Speech API，來看看今天的兩個主題吧。 列出Voice清單下面這段code可以列出支援的語言，並提供不同種的發聲方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 20] Google Cloud Text-to-Speech - 子系列最終章">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/28/ithelp-2019-day20/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="今天是這子系列的最後一篇，因為Text-to-Speech沒有AutoML UI介面可以操作，無奈只好讓這邊結束這回合。 按照進度，這篇必須更深入介紹Text-to-Speech API，來看看今天的兩個主題吧。 列出Voice清單下面這段code可以列出支援的語言，並提供不同種的發聲方式。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/28/ithelp-2019-day20/output.jpg">
+<meta property="article:published_time" content="2019-09-28T07:29:59.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.731Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Text-to-Speech">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/28/ithelp-2019-day20/output.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day20" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 20] Google Cloud Text-to-Speech - 子系列最終章
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-28T07:29:59.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 28, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天是這子系列的最後一篇，因為Text-to-Speech沒有AutoML UI介面可以操作，無奈只好讓這邊結束這回合。</p>
+<p>按照進度，這篇必須更深入介紹Text-to-Speech API，來看看今天的兩個主題吧。</p>
+<h3><span id="lie-chu-voice-qing-dan"></span><a href="#lie-chu-voice-qing-dan" class="header-anchor">#</a></h3><p>下面這段code可以列出支援的語言，並提供不同種的發聲方式。</p>
+<span id="more"></span>
+
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ListVoices</span><span class="params">(w io.Writer)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">  ctx := context.Background()</span><br><span class="line"></span><br><span class="line">  client, err := texttospeech.NewClient(ctx)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Performs the list voices request.</span></span><br><span class="line">  resp, err := client.ListVoices(ctx, &amp;texttospeechpb.ListVoicesRequest&#123;&#125;)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> _, voice := <span class="keyword">range</span> resp.Voices &#123;</span><br><span class="line">    <span class="comment">// Display the voice&#x27;s name. Example: tpc-vocoded</span></span><br><span class="line">    fmt.Fprintf(w, <span class="string">&quot;Name: %v\n&quot;</span>, voice.Name)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Display the supported language codes for this voice. Example: &quot;en-US&quot;</span></span><br><span class="line">    <span class="keyword">for</span> _, languageCode := <span class="keyword">range</span> voice.LanguageCodes &#123;</span><br><span class="line">      fmt.Fprintf(w, <span class="string">&quot;  Supported language: %v\n&quot;</span>, languageCode)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Display the SSML Voice Gender.</span></span><br><span class="line">    fmt.Fprintf(w, <span class="string">&quot;  SSML Voice Gender: %v\n&quot;</span>, voice.SsmlGender.String())</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Display the natural sample rate hertz for this voice. Example: 24000</span></span><br><span class="line">    fmt.Fprintf(w, <span class="string">&quot;  Natural Sample Rate Hertz: %v\n&quot;</span>,</span><br><span class="line">      voice.NaturalSampleRateHertz)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/blog/2019/09/28/ithelp-2019-day20/output.jpg" alt="output"><br>透過output可以看到，每個語言大概都會有兩三種發音方式，涵蓋男性及女性的聲音，不過還是沒有中文QQ。</p>
+<blockquote>
+<p>這裡也可以聽到每個supported language的聲音：<a target="_blank" rel="noopener" href="https://cloud.google.com/text-to-speech/docs/voices">https://cloud.google.com/text-to-speech/docs/voices</a></p>
+</blockquote>
+<p>這邊有個特別的東西<code>SSML</code>，這到底是什麼呢？這可以讓我接續下一個主題！</p>
+<h3><span id="speech-synthesis-markup-language-ssml"></span><a href="#speech-synthesis-markup-language-ssml" class="header-anchor">#</a></h3><p>先看看她長怎樣，我們再來介紹他：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">speak</span>&gt;</span></span><br><span class="line">  Here are <span class="tag">&lt;<span class="name">say-as</span> <span class="attr">interpret-as</span>=<span class="string">&quot;characters&quot;</span>&gt;</span>SSML<span class="tag">&lt;/<span class="name">say-as</span>&gt;</span> samples.</span><br><span class="line">  I can pause <span class="tag">&lt;<span class="name">break</span> <span class="attr">time</span>=<span class="string">&quot;3s&quot;</span>/&gt;</span>.</span><br><span class="line">  I can play a sound</span><br><span class="line">  <span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">&quot;https://www.example.com/MY_MP3_FILE.mp3&quot;</span>&gt;</span>didn&#x27;t get your MP3 audio file<span class="tag">&lt;/<span class="name">audio</span>&gt;</span>.</span><br><span class="line">  I can speak in cardinals. Your number is <span class="tag">&lt;<span class="name">say-as</span> <span class="attr">interpret-as</span>=<span class="string">&quot;cardinal&quot;</span>&gt;</span>10<span class="tag">&lt;/<span class="name">say-as</span>&gt;</span>.</span><br><span class="line">  Or I can speak in ordinals. You are <span class="tag">&lt;<span class="name">say-as</span> <span class="attr">interpret-as</span>=<span class="string">&quot;ordinal&quot;</span>&gt;</span>10<span class="tag">&lt;/<span class="name">say-as</span>&gt;</span> in line.</span><br><span class="line">  Or I can even speak in digits. The digits for ten are <span class="tag">&lt;<span class="name">say-as</span> <span class="attr">interpret-as</span>=<span class="string">&quot;characters&quot;</span>&gt;</span>10<span class="tag">&lt;/<span class="name">say-as</span>&gt;</span>.</span><br><span class="line">  I can also substitute phrases, like the <span class="tag">&lt;<span class="name">sub</span> <span class="attr">alias</span>=<span class="string">&quot;World Wide Web Consortium&quot;</span>&gt;</span>W3C<span class="tag">&lt;/<span class="name">sub</span>&gt;</span>.</span><br><span class="line">  Finally, I can speak a paragraph with two sentences.</span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">s</span>&gt;</span>This is sentence one.<span class="tag">&lt;/<span class="name">s</span>&gt;</span><span class="tag">&lt;<span class="name">s</span>&gt;</span>This is sentence two.<span class="tag">&lt;/<span class="name">s</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">speak</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>看起來就像是HTML，一種Markup language，透過一些<code>tag</code>、<code>attribute</code>去定義(合成)該怎麼念、該停多久。裡面包含</p>
+<ul>
+<li><code>&lt;speak&gt;</code> root element</li>
+<li><code>&lt;break&gt;</code> 停頓</li>
+<li><code>&lt;say‑as&gt;</code> 要把內容當什麼唸出來</li>
+<li><code>&lt;audio&gt;</code> 定義額外的audio file</li>
+<li><code>&lt;p&gt;,&lt;s&gt;</code> 段落</li>
+<li><code>&lt;sub&gt;</code> 內容該怎麼念</li>
+<li><code>&lt;prosody&gt;</code> 定義速率音量</li>
+<li><code>&lt;emphasis&gt;</code> 強調語氣</li>
+<li><code>&lt;par&gt;</code> 把多個相關內容關聯在一起(實際上跟順序無關)</li>
+<li><code>&lt;seq&gt;</code> 把多個相關內容關聯在一起(跟順序有關)</li>
+<li><code>&lt;media&gt;</code> par與seq內的tag，可定義內容的時間、淡入淡出之類的屬性</li>
+</ul>
+<p>另外我們也可以傳入SSML讓Text-to-speech發音，像是下面的例子：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SSMLToSpeech</span><span class="params">(text <span class="type">string</span>)</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> root <span class="type">string</span> = <span class="string">&quot;./testdata/text_to_speech&quot;</span></span><br><span class="line">  <span class="comment">// Instantiates a client.</span></span><br><span class="line">  ctx := context.Background()</span><br><span class="line"></span><br><span class="line">  client, err := texttospeech.NewClient(ctx)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Perform the text-to-speech request on the text input with the selected</span></span><br><span class="line">  <span class="comment">// voice parameters and audio file type.</span></span><br><span class="line">  req := texttospeechpb.SynthesizeSpeechRequest&#123;</span><br><span class="line">    <span class="comment">// Set the text input to be synthesized.</span></span><br><span class="line">    Input: &amp;texttospeechpb.SynthesisInput&#123;</span><br><span class="line">      InputSource: &amp;texttospeechpb.SynthesisInput_Ssml&#123;Ssml: text&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Build the voice request, select the language code (&quot;en-US&quot;) and the SSML</span></span><br><span class="line">    <span class="comment">// voice gender (&quot;neutral&quot;).</span></span><br><span class="line">    Voice: &amp;texttospeechpb.VoiceSelectionParams&#123;</span><br><span class="line">      LanguageCode: <span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">      SsmlGender:   texttospeechpb.SsmlVoiceGender_FEMALE,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Select the type of audio file you want returned.</span></span><br><span class="line">    AudioConfig: &amp;texttospeechpb.AudioConfig&#123;</span><br><span class="line">      AudioEncoding: texttospeechpb.AudioEncoding_MP3,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  resp, err := client.SynthesizeSpeech(ctx, &amp;req)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The resp&#x27;s AudioContent is binary.</span></span><br><span class="line">  filename := <span class="string">&quot;output.mp3&quot;</span></span><br><span class="line">  err = ioutil.WriteFile(root+<span class="string">&quot;/&quot;</span>+filename, resp.AudioContent, <span class="number">0644</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line">  fmt.Printf(<span class="string">&quot;Audio content written to file: %v\n&quot;</span>, filename)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>呼叫時則傳入SSML:</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text_to_speech.SSMLToSpeech(<span class="string">&quot;&lt;speak&gt;The &lt;say-as interpret-as=\&quot;characters\&quot;&gt;SSML&lt;/say-as&gt;&quot;</span> +</span><br><span class="line">      <span class="string">&quot;standard &lt;break time=\&quot;1s\&quot;/&gt;is defined by the&quot;</span> +</span><br><span class="line">      <span class="string">&quot;&lt;sub alias=\&quot;World Wide Web Consortium\&quot;&gt;W3C&lt;/sub&gt;.&lt;/speak&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>透過上面的方式，就可以產生對應的Output音檔了。</p>
+<p>忽然覺得Text-to-speech真是博大精深，竟然還多了個markup language SSML出來。</p>
+<p>OK，因為這系列沒有AutoML UI可以操作，所以今天是子系列的最後一章，謝謝大家觀看。</p>
+<blockquote>
+<p>code可以看我的github：</p>
+</blockquote>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/28/ithelp-2019-day20/" data-id="clr8lqkp30030lbpx2f9u3gm0" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Text-to-Speech/" rel="tag">Text-to-Speech</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/29/ithelp-2019-day21/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 21] Google Cloud Speech-to-Text - 1"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 21] Google Cloud Speech-to-Text - 1</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/27/ithelp-2019-day19/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 19] Google Cloud Text-to-Speech - 2"
+        >
+          <span class="article-nav-title truncate">[Day 19] Google Cloud Text-to-Speech - 2</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

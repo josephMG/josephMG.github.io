@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Set godaddy domain and build hugo on gitlab pages | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="The idea comes from…I read a blog 將 Github Page 串上自己的域名 on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Set godaddy domain and build hugo on gitlab pages">
+<meta property="og:url" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="The idea comes from…I read a blog 將 Github Page 串上自己的域名 on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/Test-go-and-hugo.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-setting-1.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-pages-1.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-pages-2.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/godaddy.jpg">
+<meta property="article:published_time" content="2020-04-09T08:08:05.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.807Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="gitlab">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/Test-go-and-hugo.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-set-godaddy-domain-and-build-hugo-on-gitlab-pages" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Set godaddy domain and build hugo on gitlab pages
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-04-09T08:08:05.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Apr 09, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h3><span id="the-idea-comes-from">The idea comes from…</span><a href="#the-idea-comes-from" class="header-anchor">#</a></h3><p>I read a blog <a target="_blank" rel="noopener" href="https://medium.com/@moojing/%E5%80%8B%E4%BA%BA%E6%8A%80%E8%A1%93%E7%AB%99%E4%B8%80%E6%8A%8A%E7%BD%A9-%E9%83%A8%E8%90%BD%E6%A0%BC%E5%BB%BA%E7%BD%AE%E5%A4%A7%E5%85%A8-%E4%BA%8C-%E5%B0%87-github-page-%E4%B8%B2%E4%B8%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D-8f7e11cf2687">將 Github Page 串上自己的域名</a> on Medium.com, and I thought about my bad experience in setting gitlab pages. I think I have to write a blog now, and let me remember how to set it again.</p>
+<h3><span id="hugo">Hugo</span><a href="#hugo" class="header-anchor">#</a></h3><h4><span id="first-install-go-and-hugo">First, install go and hugo:</span><a href="#first-install-go-and-hugo" class="header-anchor">#</a></h4><p>My system is Ubuntu 19.04, so I follow <a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/Ubuntu">Go wiki</a> instructions.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install golang-go</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>These commands will install latest Go.<br>Then, let’s install hugo following <a target="_blank" rel="noopener" href="https://gohugo.io/getting-started/installing/#snap-package">hugo</a>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snap install hugo --channel=extended</span><br></pre></td></tr></table></figure>
+
+<p>Now, test it:<br><img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/Test-go-and-hugo.jpg" alt="Test go and hugo"><br>Okay, system requirements are prepared.</p>
+<p>We can use <code>hugo new site SITE_NAME</code> to initialize a site, <code>hugo server -D</code> to see you page.</p>
+<h3><span id="gitlab-pages">Gitlab pages</span><a href="#gitlab-pages" class="header-anchor">#</a></h3><p>Open a <code>public</code> repository. (You will have <code>earth</code> icon.)<br><img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-setting-1.jpg" alt="gitlab setting"></p>
+<p>Then, add a gitlab-ci yml file to run CI&#x2F;CD on gitlab</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="string">registry.gitlab.com/pages/hugo:latest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line">  <span class="attr">GIT_SUBMODULE_STRATEGY:</span> <span class="string">recursive</span></span><br><span class="line"></span><br><span class="line"><span class="attr">test:</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hugo</span></span><br><span class="line">  <span class="attr">except:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">pages:</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">hugo</span> <span class="string">--gc</span></span><br><span class="line">  <span class="attr">artifacts:</span></span><br><span class="line">    <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">public</span></span><br><span class="line">    <span class="attr">expire_in:</span> <span class="number">1</span> <span class="string">day</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>Finish! add, commit, and push it!</p>
+<blockquote>
+<p>Check your CI&#x2F;CD pipeline is passed</p>
+</blockquote>
+<p>The last step on Gitlab is to set pages domain. Go to <code>Settings</code> &gt; <code>Pages</code> &gt; <code>New Domain</code> add your domain.<br><img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-pages-1.jpg" alt="gitlab-pages-1"></p>
+<p>You will get a <code>CNAME</code> and a <code>TXT</code> settings to set in your godaddy.<br><img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/gitlab-pages-2.jpg" alt="gitlab-pages-2"></p>
+<p>But the setting is tricky. Let’s see my Godaddy.</p>
+<h3><span id="finally-godaddy-settings">Finally, Godaddy settings</span><a href="#finally-godaddy-settings" class="header-anchor">#</a></h3><p><img src="/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/godaddy.jpg" alt="godaddy"></p>
+<p>I set two <code>A</code> records point to <code>35.185.44.232</code>, two <code>TXT</code> records corresponding to <code>A</code> and its <code>TXT</code> value. Note that <code>TXT</code> keys are only <code>@</code> and <code>www</code>. I’ve tried many settings, and only these settings are workable. Alternatively, you can use <a target="_blank" rel="noopener" href="https://www.cloudflare.com/">Cloudflare</a> with the whole keys and values that gitlab provided.</p>
+<p>That’s all. Go back to Gitlab pages setting to verify your domain, and then open your website in the browser.</p>
+<h3><span id="summary">Summary</span><a href="#summary" class="header-anchor">#</a></h3><p>I use <code>A</code> record instead of <code>CNAME</code>, and set <code>@</code> and <code>www</code> as <code>TXT</code> records’ key. Otherwise, I can’t verify my domain. There are many setting tutorial on the Internet. Just find and try it!</p>
+<hr>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://docs.gitlab.com/ce/user/project/pages/custom_domains_ssl_tls_certification/index.html">Gitlab doc</a></li>
+<li><a target="_blank" rel="noopener" href="https://gohugo.io/hosting-and-deployment/hosting-on-gitlab/">Hugo doc</a></li>
+</ol>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/" data-id="clr8lqkpl004slbpx9fvv8mgl" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DevOps/" rel="tag">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/gitlab/" rel="tag">gitlab</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2020/09/14/Take-a-break-and-review-this-year/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Take a break and review this year"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Take a break and review this year</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="品牌instagram成為人氣王的經營方法"
+        >
+          <span class="article-nav-title truncate">品牌instagram成為人氣王的經營方法</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

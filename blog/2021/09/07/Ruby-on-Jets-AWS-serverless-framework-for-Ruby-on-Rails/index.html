@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Ruby on Jets - AWS serverless framework for Ruby on Rails | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Ruby on Rails (RoR) is my favorite web framework, and today I will share an AWS serverless framework of RoR: Ruby on Jets. I’m not an AWS expert and even have no AWS certifications, and besides, this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby on Jets - AWS serverless framework for Ruby on Rails">
+<meta property="og:url" content="https://josephmg.github.io/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Ruby on Rails (RoR) is my favorite web framework, and today I will share an AWS serverless framework of RoR: Ruby on Jets. I’m not an AWS expert and even have no AWS certifications, and besides, this">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/jets-logo.png">
+<meta property="article:published_time" content="2021-09-07T07:51:17.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.551Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="serverless">
+<meta property="article:tag" content="Ruby on Rails">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/jets-logo.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/jets-logo.png" rel="gallery_clr8lqkoi000zlbpx0l087dng">
+        <img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/jets-logo.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Ruby on Jets - AWS serverless framework for Ruby on Rails
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2021-09-07T07:51:17.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 07, 2021</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>Ruby on Rails (RoR) is my favorite web framework, and today I will share an AWS serverless framework of RoR: <a target="_blank" rel="noopener" href="https://rubyonjets.com/">Ruby on Jets</a>. I’m not an AWS expert and even have no AWS certifications, and besides, this is my first time to use AWS Lambda, API gateway, dynamodb, and other serverless services.</p>
+<h1><span id="preparation">Preparation:</span><a href="#preparation" class="header-anchor">#</a></h1><ol>
+<li>Add <code>aws_access_key_id</code> and <code>aws_secret_access_key</code> to <code>~/.aws/credentials</code></li>
+<li>Docker &#x2F; Docker-compose I use in this demo.</li>
+</ol>
+<p>Let’s look at initial project structure:<br><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/project-structure.png" alt="project-structure.png"></p>
+<span id="more"></span>
+
+<p>There’s my <code>Gemfile</code>, <code>Dockerfile</code>, and <code>docker-compose.yml</code></p>
+<p><strong>Gemfile</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source <span class="string">&quot;https://rubygems.org&quot;</span></span><br><span class="line"></span><br><span class="line">gem <span class="string">&quot;jets&quot;</span>, <span class="string">&quot;~&gt; 3.0.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Dockerfile</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM ruby:2.7</span><br><span class="line">RUN apt-get update \</span><br><span class="line">    &amp;&amp; apt-get -y install rsync zip</span><br><span class="line"></span><br><span class="line">WORKDIR /api</span><br><span class="line">COPY ./api /api</span><br><span class="line">RUN bundle install</span><br></pre></td></tr></table></figure>
+
+<p><strong>docker-compose.yml</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  api:</span><br><span class="line">    build:</span><br><span class="line">      context: ../</span><br><span class="line">      dockerfile: docker/api/Dockerfile</span><br><span class="line">    command: bash -c &quot;bundle exec jets server --port 3000 --host 0.0.0.0&quot;</span><br><span class="line">    environment:</span><br><span class="line">      - AWS_PROFILE=default</span><br><span class="line">      - AWS_REGION=ap-northeast-2</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x27;../api:/api&#x27;</span><br><span class="line">      - ~/.aws:/root/.aws</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;3000:3000&quot;</span><br><span class="line">    depends_on:</span><br><span class="line">      - dynamodb</span><br><span class="line">      - db</span><br><span class="line">  dynamodb:</span><br><span class="line">    image: instructure/dynamo-local-admin</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8000:8000&quot;</span><br><span class="line">      - &quot;8001:8001&quot;</span><br><span class="line">      - &quot;8002:8002&quot;</span><br><span class="line">  db:</span><br><span class="line">    image: mysql:8</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: app</span><br><span class="line">      MYSQL_USER: docker</span><br><span class="line">      MYSQL_PASSWORD: docker</span><br><span class="line">      TZ: &#x27;Asia/Taipei&#x27;</span><br><span class="line">    ports:</span><br><span class="line">      - 3306:3306</span><br><span class="line">    volumes:</span><br><span class="line">      - ./mysql/conf.d:/etc/mysql/conf.d</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Then, We go to <code>docker</code> folder to run <code>docker-compose run api jets new . --database=mysql</code> to install gems and generate Jets project.<br><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/jets-new.png" alt="jets-new.png"></p>
+<p>Now we can use <code>docker-compose up --build</code> to build <code>api</code>, <code>db</code>, and <code>dynamodb</code> containers.<br><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/docker-build.png" alt="docker-build.png"></p>
+<p>Can you see it? &gt;&gt; <a target="_blank" rel="noopener" href="http://localhost:3000/">localhost:3000</a><br><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/localhost.png" alt="localhost.png"></p>
+<h1><span id="let-s-crud">Let’s CRUD</span><a href="#let-s-crud" class="header-anchor">#</a></h1><p>We have to grant DB user first:</p>
+<p><strong>In docker folder</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &gt; docker-compose exec db /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p><strong>In db container</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@db0c0d54dfef:/# mysql -uroot -p</span><br><span class="line">mysql&gt; GRANT ALL ON *.* to docker@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>After granting <code>docker</code> permission, we can generate scaffold, create database and install webpacker by using jets:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker-compose exec api jets generate scaffold post title:string</span><br><span class="line">docker-compose exec api jets db:create db:migrate</span><br><span class="line">docker-compose exec api jets webpacker:install</span><br></pre></td></tr></table></figure>
+
+<p>Go to <a target="_blank" rel="noopener" href="http://localhost/posts">localhost&#x2F;posts</a> and see the result:<br><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/localhost-posts.png" alt="localhost-posts"></p>
+<p>Finally, we are ready to deploy. <a target="_blank" rel="noopener" href="https://rubyonjets.com/docs/env-files/">env-file</a> shows how to set environments. Let’s go to <a target="_blank" rel="noopener" href="https://ap-northeast-2.console.aws.amazon.com/rds/home">AWS RDS</a> create a MySQL RDS, and set value to <strong>.env.development.remote</strong>.<br><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/development-remote.jpg" alt="development-remote"></p>
+<p>Well done! Deploy it.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose exec api sh -c &#x27;JETS_ENV_REMOTE=1 bundle exec jets db:create db:migrate&#x27;</span><br><span class="line">docker-compose exec api sh -c &#x27;JETS_ENV_REMOTE=1 bundle exec jets deploy&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/jets-deploy.jpg" alt="jets-deploy"></p>
+<p>…….Waiting……</p>
+<p>We will get a URL, and we can get the page by clicking URL<br><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/jets-deploy-done.jpg" alt="jets-deploy-done"></p>
+<p><img src="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/serverless-page.jpg" alt="serverless-page"></p>
+<p>That’s all. But I have to mention that if you get <code>ERROR: Limit Reached</code> when you deploy, you need to check <a target="_blank" rel="noopener" href="https://www.serverlessgems.com/rate-limits">serverlessgems rate-limits</a> page. That’s why we eventually used <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/cdk/">AWS CDK</a> and changed the language to Typescript in our <a target="_blank" rel="noopener" href="https://firstage.io/">Firstage All-in-one blog</a>.</p>
+<p>Next time I will introduce <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/cdk/">AWS CDK</a> and which services we use.</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/" data-id="clr8lqkoi000zlbpx0l087dng" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AWS/" rel="tag">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Ruby-on-Rails/" rel="tag">Ruby on Rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/serverless/" rel="tag">serverless</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="設定Google Analytics 4 / Google Tag Manager追蹤user id"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">設定Google Analytics 4 / Google Tag Manager追蹤user id</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Side project] KinectV2 applications migrates to OpenPose"
+        >
+          <span class="article-nav-title truncate">[Side project] KinectV2 applications migrates to OpenPose</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

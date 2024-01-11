@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Blockchain fullstack structure - Part 4 - React.js and Next.js | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven’t seen my previous posts Part 1 Introduction, Part 2 Hardhat, and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blockchain fullstack structure - Part 4 - React.js and Next.js">
+<meta property="og:url" content="https://josephmg.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven’t seen my previous posts Part 1 Introduction, Part 2 Hardhat, and">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/logo.png">
+<meta property="article:published_time" content="2022-08-16T13:08:00.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.491Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Reactjs">
+<meta property="article:tag" content="Blockchain">
+<meta property="article:tag" content="Fullstack">
+<meta property="article:tag" content="Solidity">
+<meta property="article:tag" content="Hardhat">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="Next.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/logo.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Blockchain-fullstack-structure-Part-4-Next-js" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/logo.png" rel="gallery_clr8lqko7000dlbpxb9un329g">
+        <img src="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/logo.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Blockchain fullstack structure - Part 4 - React.js and Next.js
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2022-08-16T13:08:00.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Aug 16, 2022</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven’t seen my previous posts <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/" title="Blockchain fullstack structure - Part 1 - Introduction">Part 1 Introduction</a>, <a href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/" title="Blockchain fullstack structure - Part 2 - Hardhat">Part 2 Hardhat</a>, and <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/" title="Blockchain fullstack structure - Part 3 - Golang Gin">Part 3 Golang Gin</a>, please read them first.</p>
+<p>In this article, I demonstrate how to use React.js (Next.js) to interact with smart contract by Golang Gin API and hardhat RPC URL, and implement a simple Sign-in with Ethereum (SIWE) authentication and <code>setGreeting</code> to Solidity.</p>
+<p>Okay, let’s start it.</p>
+<span id="more"></span>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#project-initiation">Project Initiation</a></li>
+<li><a href="#react-hooks-for-ethereum-wagmi">React hooks for Ethereum - Wagmi</a></li>
+<li><a href="#authentication-nextauth-siwe">Authentication - NextAuth + SIWE</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<!-- tocstop -->
+
+</div>
+
+<h3><span id="prerequisite">Prerequisite</span><a href="#prerequisite" class="header-anchor">#</a></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a>: It’s a crypto wallet, and you can install it’s <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">Google chrome extension</a>.</li>
+</ul>
+<p>After you get the wallet and the extension, you have to use Hardhat localhost network to Metamask by setting <code>RPC URL</code> to <code>http://127.0.0.1:8545/</code> and <code>Chain ID</code> to <code>31337</code>.<br><img src="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/metamask-hardhat.png" alt="metamask hardhat setting"></p>
+<p>And then, you can get a rich wallet account by importing an account with the private key hardhat gave you.<br><img src="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/rich-wallet.png" alt="rich wallet"></p>
+<h3><span id="project-initiation">Project Initiation</span><a href="#project-initiation" class="header-anchor">#</a></h3><p>I choose the <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/create-m2-app">create-m2-app</a> to generate <a target="_blank" rel="noopener" href="https://github.com/MileTwo/nextjs-ts">nextjs-ts</a> template as my frontend project. It already includes Typescript, Material UI, ESLint, Jest, and React Testing Library.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd frontend</span><br><span class="line">npx create-next-app --example https://github.com/MileTwo/nextjs-ts app</span><br></pre></td></tr></table></figure>
+
+<p>Okay, I have a project now. Let’s set docker for it.</p>
+<p><strong>Dockerfile</strong></p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine3.<span class="number">15</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk add --no-cache git</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Install app dependencies</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> -p /app/node_modules</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./app /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install --legacy-peer-deps</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>docker-compose.yml</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./app:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./app/node_modules:/app/node_modules</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">sh</span> <span class="string">-c</span> <span class="string">&#x27;npm run dev&#x27;</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">stdin_open:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>Well done. I can go to next step!</p>
+<h3><span id="react-hooks-for-ethereum-wagmi">React hooks for Ethereum - Wagmi</span><a href="#react-hooks-for-ethereum-wagmi" class="header-anchor">#</a></h3><p>What is <a target="_blank" rel="noopener" href="https://wagmi.sh/">Wagmi</a>?</p>
+<blockquote>
+<p>Wagmi is a collection of React Hooks containing everything you need to start working with Ethereum. wagmi makes it easy to “Connect Wallet,” display ENS and balance information, sign messages, interact with contracts, and much more — all with caching, request deduplication, and persistence.</p>
+</blockquote>
+<p>You can also call <a target="_blank" rel="noopener" href="https://docs.ethers.io/v5/">ethers.js</a> or <a target="_blank" rel="noopener" href="https://web3js.readthedocs.io/en/v1.7.5/">web3.js</a> directly, but I don’t need to reinvent the wheel.</p>
+<p><strong>app&#x2F;src&#x2F;components&#x2F;WagmiProvider.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ReactElement</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; chain, <span class="title class_">WagmiConfig</span>, createClient, configureChains, defaultChains &#125; <span class="keyword">from</span> <span class="string">&#x27;wagmi&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; jsonRpcProvider &#125; <span class="keyword">from</span> <span class="string">&#x27;wagmi/providers/jsonRpc&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; publicProvider &#125; <span class="keyword">from</span> <span class="string">&#x27;wagmi/providers/public&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">InjectedConnector</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;wagmi/connectors/injected&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">WagmiProviderProps</span> &#123;</span><br><span class="line">  <span class="attr">children</span>: <span class="title class_">ReactElement</span>[] | <span class="title class_">ReactElement</span> | <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; chains, provider, webSocketProvider &#125; = <span class="title function_">configureChains</span>(</span><br><span class="line">  [chain.<span class="property">hardhat</span>, chain.<span class="property">localhost</span>, ...defaultChains],</span><br><span class="line">  [</span><br><span class="line">    <span class="title function_">jsonRpcProvider</span>(&#123;</span><br><span class="line">      <span class="attr">rpc</span>: <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">        <span class="attr">http</span>: process.<span class="property">env</span>.<span class="property">NEXT_PUBLIC_RPC_URL</span> || <span class="string">&#x27;http://localhost:8545&#x27;</span>,</span><br><span class="line">      &#125;),</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="title function_">publicProvider</span>(),</span><br><span class="line">  ]</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set up client</span></span><br><span class="line"><span class="keyword">const</span> client = <span class="title function_">createClient</span>(&#123;</span><br><span class="line">  <span class="attr">autoConnect</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">connectors</span>: [<span class="keyword">new</span> <span class="title class_">InjectedConnector</span>(&#123; chains &#125;)],</span><br><span class="line">  provider,</span><br><span class="line">  webSocketProvider,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">DappWagmiProvider</span> = (&#123; children &#125;: <span class="title class_">WagmiProviderProps</span>): <span class="function"><span class="params">ReactElement</span> =&gt;</span> (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">WagmiConfig</span> <span class="attr">client</span>=<span class="string">&#123;client&#125;</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">WagmiConfig</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">DappWagmiProvider</span>;</span><br></pre></td></tr></table></figure>
+
+<p>I set <code>NEXT_PUBLIC_RPC_URL</code> to hardhat RPC URL, and create a client with a <code>InjectedConnector</code>. I will import <code>DappWagmiProvider</code> in <code>pages/_app.tsx</code> later. Actually, <code>WagmiConfig</code> uses <code>React Context</code>, so that <code>wagmi</code> can use <code>hooks</code> anywhere.</p>
+<h3><span id="authentication-nextauth-siwe">Authentication - NextAuth + SIWE</span><a href="#authentication-nextauth-siwe" class="header-anchor">#</a></h3><p>In previous article <a href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/" title="Blockchain fullstack structure - Part 3 - Golang Gin">Part 3 Golang Gin</a>, I mentioned that I use the <a target="_blank" rel="noopener" href="https://docs.login.xyz/">SIWE</a> to verify sign-in messages. You can also follow <a target="_blank" rel="noopener" href="https://docs.login.xyz/integrations/nextauth.js">this tutorial</a> to integrate <strong>wagmi</strong> and <strong>siwe</strong>.</p>
+<p>Don’t worry. There are only three mainly files: <code>nextauth api endpoint</code>, <code>ConnectWallet component</code>, and <code>protected page</code>.<br> Okay! First, I create an api endpoint in <strong>pages&#x2F;api&#x2F;auth</strong>.</p>
+<blockquote>
+<p>What’s the three dots meaning? <a target="_blank" rel="noopener" href="https://nextjs.org/docs/api-routes/dynamic-api-routes#catch-all-api-routes">three dots usage</a></p>
+</blockquote>
+<p><strong>pages&#x2F;api&#x2F;auth&#x2F;[…nextauth].ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">NextAuth</span> <span class="keyword">from</span> <span class="string">&#x27;next-auth&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">CredentialsProvider</span> <span class="keyword">from</span> <span class="string">&#x27;next-auth/providers/credentials&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NextApiRequest</span>, <span class="title class_">NextApiResponse</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">SiweMessage</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;siwe&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getCsrfToken &#125; <span class="keyword">from</span> <span class="string">&#x27;next-auth/react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> fetcher <span class="keyword">from</span> <span class="string">&#x27;@/libs/fetcher&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">auth</span>(<span class="params">req: NextApiRequest, res: NextApiResponse</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> providers = [</span><br><span class="line">    <span class="title class_">CredentialsProvider</span>(&#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Ethereum&#x27;</span>,</span><br><span class="line">      <span class="attr">credentials</span>: &#123;</span><br><span class="line">        <span class="attr">message</span>: &#123;</span><br><span class="line">          <span class="attr">label</span>: <span class="string">&#x27;Message&#x27;</span>,</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">          <span class="attr">placeholder</span>: <span class="string">&#x27;0x0&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">signature</span>: &#123;</span><br><span class="line">          <span class="attr">label</span>: <span class="string">&#x27;Signature&#x27;</span>,</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">          <span class="attr">placeholder</span>: <span class="string">&#x27;0x0&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="keyword">async</span> <span class="title function_">authorize</span>(<span class="params">credentials</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> siwe = <span class="keyword">new</span> <span class="title class_">SiweMessage</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(credentials?.<span class="property">message</span> || <span class="string">&#x27;&#123;&#125;&#x27;</span>));</span><br><span class="line">          <span class="keyword">const</span> nextAuthUrl = <span class="keyword">new</span> <span class="title function_">URL</span>(process.<span class="property">env</span>.<span class="property">NEXTAUTH_URL</span> || <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">          <span class="keyword">if</span> (siwe.<span class="property">domain</span> !== nextAuthUrl.<span class="property">host</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (siwe.<span class="property">nonce</span> !== (<span class="keyword">await</span> <span class="title function_">getCsrfToken</span>(&#123; req &#125;))) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">await</span> siwe.<span class="title function_">validate</span>(credentials?.<span class="property">signature</span> || <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">          <span class="keyword">const</span> &#123; data &#125; = <span class="keyword">await</span> <span class="title function_">fetcher</span>(<span class="string">&#x27;/auth/login&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>, &#123;</span><br><span class="line">            <span class="attr">dataObj</span>: &#123;</span><br><span class="line">              <span class="attr">walletAddress</span>: siwe.<span class="property">address</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;);</span><br><span class="line"></span><br><span class="line">          <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">id</span>: data.<span class="property">user</span>.<span class="property">id</span>,</span><br><span class="line">            <span class="attr">address</span>: siwe.<span class="property">address</span>,</span><br><span class="line">          &#125;;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">          <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;),</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="title class_">NextAuth</span>(req, res, &#123;</span><br><span class="line">    <span class="comment">// https://next-auth.js.org/configuration/providers/oauth</span></span><br><span class="line">    providers,</span><br><span class="line">    <span class="attr">session</span>: &#123;</span><br><span class="line">      <span class="attr">strategy</span>: <span class="string">&#x27;jwt&#x27;</span>,</span><br><span class="line">      <span class="attr">maxAge</span>: <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>, <span class="comment">// 30 days</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">secret</span>: process.<span class="property">env</span>.<span class="property">SECRET</span>,</span><br><span class="line">    <span class="attr">callbacks</span>: &#123;</span><br><span class="line">      <span class="keyword">async</span> <span class="title function_">session</span>(<span class="params">&#123; session, token &#125;</span>) &#123;</span><br><span class="line">        session.<span class="property">user</span> = &#123;</span><br><span class="line">          <span class="attr">id</span>: token.<span class="property">sub</span>,</span><br><span class="line">          <span class="attr">address</span>: token.<span class="property">address</span>,</span><br><span class="line">          <span class="attr">name</span>: token.<span class="property">name</span>,</span><br><span class="line">          <span class="attr">email</span>: token.<span class="property">email</span>,</span><br><span class="line">          <span class="attr">image</span>: <span class="string">&#x27;https://www.fillmurray.com/128/128&#x27;</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">return</span> session;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="keyword">async</span> <span class="title function_">jwt</span>(<span class="params">&#123; token, user &#125;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (user) &#123;</span><br><span class="line">          token.<span class="property">address</span> = user.<span class="property">address</span> <span class="keyword">as</span> string;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> token;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">debug</span>: <span class="literal">false</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Line 10-50: creates a <code>CredentialsProvider</code> named Ethereum, and assigns <code>authorize</code> callback verifing message and fetching login with <code>walletAddress</code>.</li>
+<li>Line 63-80: defines asynchronous functions when an action is performed.</li>
+<li>data flow: <code>authorize</code> return data –&gt; <code>jwt</code> return data –&gt; <code>session</code>.</li>
+</ul>
+<p>Next, let me prepare <code>ConnectWallet</code> component to connect metamask and login.</p>
+<p><strong>src&#x2F;components&#x2F;ConnectWallet.tsx</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useCallback, useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Blockies</span> <span class="keyword">from</span> <span class="string">&#x27;react-blockies&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; makeStyles &#125; <span class="keyword">from</span> <span class="string">&#x27;@mui/styles&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">SiweMessage</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;siwe&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getCsrfToken, signIn, signOut &#125; <span class="keyword">from</span> <span class="string">&#x27;next-auth/react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useSignMessage, useAccount, useDisconnect, useConnect &#125; <span class="keyword">from</span> <span class="string">&#x27;wagmi&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; truncateAddress &#125; <span class="keyword">from</span> <span class="string">&#x27;@/libs/helpers&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> fetcher <span class="keyword">from</span> <span class="string">&#x27;@/libs/fetcher&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ConnectWallet</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> classes = <span class="title function_">useStyles</span>();</span><br><span class="line">  <span class="keyword">const</span> [state, setState] = useState&lt;&#123;</span><br><span class="line">    loading?: boolean;</span><br><span class="line">    nonce?: string;</span><br><span class="line">  &#125;&gt;(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">fetchNonce</span>();</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">fetchNonce</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// const &#123; data: nonce &#125; = await fetcher(&#x27;/siwe/nonce&#x27;);</span></span><br><span class="line">      <span class="keyword">const</span> nonce = <span class="keyword">await</span> <span class="title function_">getCsrfToken</span>();</span><br><span class="line">      <span class="title function_">setState</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> (&#123; ...x, nonce &#125;));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      <span class="title function_">setState</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> (&#123; ...x, <span class="attr">error</span>: error <span class="keyword">as</span> <span class="title class_">Error</span> &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> connectData = <span class="title function_">useConnect</span>();</span><br><span class="line">  <span class="keyword">const</span> &#123; signMessageAsync &#125; = <span class="title function_">useSignMessage</span>();</span><br><span class="line">  <span class="keyword">const</span> &#123; address &#125; = <span class="title function_">useAccount</span>();</span><br><span class="line">  <span class="keyword">const</span> &#123; disconnect &#125; = <span class="title function_">useDisconnect</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClickConnect</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> connectData.<span class="title function_">connectAsync</span>(&#123; <span class="attr">connector</span>: connectData.<span class="property">connectors</span>[<span class="number">0</span>] &#125;);</span><br><span class="line">      <span class="keyword">const</span> callbackUrl = <span class="string">&#x27;/protected&#x27;</span>;</span><br><span class="line"></span><br><span class="line">      <span class="title function_">setState</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> (&#123; ...x, <span class="attr">loading</span>: <span class="literal">true</span> &#125;));</span><br><span class="line">      <span class="keyword">const</span> message = <span class="keyword">new</span> <span class="title class_">SiweMessage</span>(&#123;</span><br><span class="line">        <span class="attr">domain</span>: <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">host</span>,</span><br><span class="line">        <span class="attr">address</span>: res.<span class="property">account</span>,</span><br><span class="line">        <span class="attr">statement</span>: <span class="string">&#x27;Sign in with Ethereum to the app.&#x27;</span>,</span><br><span class="line">        <span class="attr">uri</span>: <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">origin</span>,</span><br><span class="line">        <span class="attr">version</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">        <span class="attr">chainId</span>: res.<span class="property">chain</span>?.<span class="property">id</span>,</span><br><span class="line">        <span class="attr">nonce</span>: state.<span class="property">nonce</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">const</span> signature = <span class="keyword">await</span> <span class="title function_">signMessageAsync</span>(&#123;</span><br><span class="line">        <span class="attr">message</span>: message.<span class="title function_">prepareMessage</span>(),</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Verify signature</span></span><br><span class="line">      <span class="keyword">const</span> verifyRes = <span class="keyword">await</span> <span class="title function_">fetcher</span>(<span class="string">&#x27;/siwe/verify&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">dataObj</span>: &#123;</span><br><span class="line">          <span class="attr">message</span>: message.<span class="title function_">prepareMessage</span>(),</span><br><span class="line">          signature,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">if</span> (!verifyRes.<span class="property">ok</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Error verifying message&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">signIn</span>(<span class="string">&#x27;credentials&#x27;</span>, &#123; <span class="attr">message</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(message), <span class="attr">redirect</span>: <span class="literal">true</span>, signature, callbackUrl &#125;);</span><br><span class="line">      <span class="title function_">setState</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> (&#123; ...x, <span class="attr">loading</span>: <span class="literal">false</span> &#125;));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      <span class="title function_">setState</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> (&#123; ...x, <span class="attr">loading</span>: <span class="literal">false</span>, <span class="attr">nonce</span>: <span class="literal">undefined</span> &#125;));</span><br><span class="line">      <span class="title function_">fetchNonce</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> handleClickAddress = <span class="title function_">useCallback</span>(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="title function_">disconnect</span>();</span><br><span class="line">    <span class="title function_">signOut</span>(&#123; <span class="attr">callbackUrl</span>: <span class="string">&#x27;/&#x27;</span> &#125;);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">className</span>=<span class="string">&#123;classes.btn&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">disabled</span>=<span class="string">&#123;!state.nonce</span> || <span class="attr">state.loading</span>&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">onClick</span>=<span class="string">&#123;address</span> ? <span class="attr">handleClickAddress</span> <span class="attr">:</span> <span class="attr">handleClickConnect</span>&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    &gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Blockies</span> <span class="attr">className</span>=<span class="string">&#123;classes.img&#125;</span> <span class="attr">seed</span>=<span class="string">&#123;address?.toLowerCase()</span> || &#x27;&#x27;&#125; <span class="attr">size</span>=<span class="string">&#123;8&#125;</span> <span class="attr">scale</span>=<span class="string">&#123;3&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;address ? truncateAddress(address) : &#x27;Connect Wallet&#x27;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> useStyles = <span class="title function_">makeStyles</span>(<span class="function">(<span class="params">_theme</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">btn</span>: &#123;</span><br><span class="line">    <span class="attr">background</span>: <span class="string">&#x27;rgb(183,192,238)&#x27;</span>,</span><br><span class="line">    <span class="attr">cursor</span>: <span class="string">&#x27;pointer&#x27;</span>,</span><br><span class="line">    <span class="attr">border</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">outline</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">    <span class="attr">borderRadius</span>: <span class="number">9999</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">35</span>,</span><br><span class="line">    <span class="attr">display</span>: <span class="string">&#x27;flex&#x27;</span>,</span><br><span class="line">    <span class="attr">alignItems</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">img</span>: &#123;</span><br><span class="line">    <span class="attr">borderRadius</span>: <span class="number">999</span>,</span><br><span class="line">    <span class="attr">marginRight</span>: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">ConnectWallet</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Line 21-29: includes the different ways <code>fetch api</code> and <code>getCsrfToken</code> to <code>fetchNonce</code>. I use <code>getCsrfToken</code> because I do not have <code>/siwe/nonce</code> api.</li>
+<li>Line 35-70: prepares sign-in with Ethereum message and signature to <code>POST</code> to <code>/siwe/verify</code>, and calls <code>signIn</code> to NextAuth authentication.</li>
+</ul>
+<blockquote>
+<p>Note: Because of <code>wagmi</code> version, there is a little different on <strong>Line 37</strong> between <a target="_blank" rel="noopener" href="https://docs.login.xyz/integrations/nextauth.js">SIWE example</a> and mine.</p>
+</blockquote>
+<p>Lastly, I build a simple <code>protected</code> page to send message to contract.</p>
+<p><strong>pages&#x2F;protected.tsx</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Layout</span> <span class="keyword">from</span> <span class="string">&#x27;@/components/layout&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> fetcher <span class="keyword">from</span> <span class="string">&#x27;@/libs/fetcher&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span>, <span class="title class_">Container</span>, <span class="title class_">Grid</span>, <span class="title class_">Stack</span>, <span class="title class_">TextField</span>, <span class="title class_">TextFieldProps</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@mui/material&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; makeStyles &#125; <span class="keyword">from</span> <span class="string">&#x27;@mui/styles&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getSession, useSession &#125; <span class="keyword">from</span> <span class="string">&#x27;next-auth/react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useEffect, useRef &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; usePrepareContractWrite, useContractWrite &#125; <span class="keyword">from</span> <span class="string">&#x27;wagmi&#x27;</span>;</span><br><span class="line"><span class="comment">// import ContractABI from &#x27;@/contracts/Greeter.json&#x27;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> useStyles = <span class="title function_">makeStyles</span>(<span class="function">() =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">root</span>: &#123;</span><br><span class="line">    <span class="attr">flexGrow</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">margin</span>: <span class="string">&#x27;auto&#x27;</span>,</span><br><span class="line">    <span class="attr">marginTop</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">maxWidth</span>: <span class="number">1100</span>,</span><br><span class="line">    <span class="attr">boxShadow</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Protected</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> classes = <span class="title function_">useStyles</span>();</span><br><span class="line">  <span class="keyword">const</span> textRef = useRef&lt;<span class="title class_">TextFieldProps</span>&gt;(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> &#123; status &#125; = <span class="title function_">useSession</span>(&#123;</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; config &#125; = <span class="title function_">usePrepareContractWrite</span>(&#123;</span><br><span class="line">    <span class="attr">addressOrName</span>: process.<span class="property">env</span>.<span class="property">NEXT_PUBLIC_CONTRACT_ADDRESS</span> <span class="keyword">as</span> string,</span><br><span class="line">    <span class="attr">contractInterface</span>: [<span class="string">&#x27;function setGreeting(string)&#x27;</span>],</span><br><span class="line">    <span class="attr">functionName</span>: <span class="string">&#x27;setGreeting&#x27;</span>,</span><br><span class="line">    <span class="attr">args</span>: [<span class="string">&#x27;&#x27;</span>],</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> &#123; write &#125; = <span class="title function_">useContractWrite</span>(config);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">sendToContract</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> message = textRef.<span class="property">current</span>?.<span class="property">value</span> <span class="keyword">as</span> string;</span><br><span class="line">    write?.(&#123; <span class="attr">recklesslySetUnpreparedArgs</span>: [message] &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">sendToBackend</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> message = textRef.<span class="property">current</span>?.<span class="property">value</span> || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">fetcher</span>(<span class="string">&#x27;/contract/greeting&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>, &#123;</span><br><span class="line">      <span class="attr">dataObj</span>: &#123;</span><br><span class="line">        <span class="attr">greeting</span>: message,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (status === <span class="string">&#x27;loading&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Layout</span> <span class="attr">title</span>=<span class="string">&quot;Next.js protected&quot;</span>&gt;</span>&#123;&#x27;Loading or not authenticated...&#x27;&#125;<span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Layout</span> <span class="attr">title</span>=<span class="string">&quot;Next.js protected&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Container</span> <span class="attr">className</span>=<span class="string">&#123;classes.root&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">container</span> <span class="attr">spacing</span>=<span class="string">&#123;2&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">item</span> <span class="attr">xs</span>=<span class="string">&#123;6&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Stack</span> <span class="attr">direction</span>=<span class="string">&quot;column&quot;</span> <span class="attr">spacing</span>=<span class="string">&#123;2&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">TextField</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">id</span>=<span class="string">&quot;sign-message&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">inputRef</span>=<span class="string">&#123;textRef&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">label</span>=<span class="string">&quot;Sign messages&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">placeholder</span>=<span class="string">&quot;Please input message here&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">multiline</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">fullWidth</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">rows</span>=<span class="string">&#123;4&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">              /&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;sendToBackend&#125;</span> <span class="attr">fullWidth</span> <span class="attr">color</span>=<span class="string">&quot;secondary&quot;</span> <span class="attr">variant</span>=<span class="string">&quot;outlined&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                Send to backend</span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;sendToContract&#125;</span> <span class="attr">fullWidth</span> <span class="attr">color</span>=<span class="string">&quot;secondary&quot;</span> <span class="attr">variant</span>=<span class="string">&quot;outlined&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                Send to contract</span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">Stack</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Protected</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Line 27-38: prepares and sends message to contract from frontend by using <strong>wagmi</strong> <code>usePrepareContractWrite</code> and <code>useContractWrite</code>; in addition, You can use contract ABI.</li>
+<li>Line 40-47: calls backend <code>POST /contract/greeting</code> api to set greeting.</li>
+</ul>
+<p>Yeah, everything’s done. Just try to click button and send messages.</p>
+<p><img src="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/gas-fee.png" alt="gas-fee"></p>
+<blockquote>
+<p>Do you notice that gas fee do not show when you send message to backend?</p>
+</blockquote>
+<h3><span id="conclusion">Conclusion</span><a href="#conclusion" class="header-anchor">#</a></h3><p>Eventually, the last article is finished. The whole blockchain infrastructure project might contains many insufficient and untested codes, but I think I can modify in the future. Moreover, through this infrastructure project, I start using <strong>Golang</strong>, learn how to use <strong>Gin</strong>, and make sense of interacting with smart contract from backend and frontend. If you have any improvement in codes, please feel free send PR to me. And, if you need a blockchain developer, I’m glad to help you too.</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/" data-id="clr8lqko7000dlbpxb9un329g" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Fullstack/" rel="tag">Fullstack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Golang/" rel="tag">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Next-js/" rel="tag">Next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Reactjs/" rel="tag">Reactjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Upgrade hexo and hexo-theme-materialize"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Upgrade hexo and hexo-theme-materialize</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Blockchain fullstack structure - Part 3 - Golang Gin"
+        >
+          <span class="article-nav-title truncate">Blockchain fullstack structure - Part 3 - Golang Gin</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

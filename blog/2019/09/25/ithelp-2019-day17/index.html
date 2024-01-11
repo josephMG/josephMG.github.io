@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 17] Google Translation - 子系列最終章 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="今天要講AutoML translation的部分，這部分在官網上一直沒找到對應的範例，很有可能範例要自己生。我只好自己在網路上找些翻譯的dataset，幸好在這邊有找到很多很多的資料集，只需要做一些資料處理的動作，現在就來先處理一下。  我下載的資料集：News Commentary，並取出中文跟英文的部分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 17] Google Translation - 子系列最終章">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="今天要講AutoML translation的部分，這部分在官網上一直沒找到對應的範例，很有可能範例要自己生。我只好自己在網路上找些翻譯的dataset，幸好在這邊有找到很多很多的資料集，只需要做一些資料處理的動作，現在就來先處理一下。  我下載的資料集：News Commentary，並取出中文跟英文的部分。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/not-equal.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/tsv-line-count.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/create-dataseet.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/import-data.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/sentences.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/train.jpg">
+<meta property="article:published_time" content="2019-09-25T07:29:52.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.715Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Translate">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/not-equal.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day17" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 17] Google Translation - 子系列最終章
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-25T07:29:52.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 25, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天要講<a target="_blank" rel="noopener" href="https://cloud.google.com/translate/automl/docs/">AutoML translation</a>的部分，這部分在官網上一直沒找到對應的範例，很有可能範例要自己生。我只好自己在網路上找些翻譯的dataset，幸好在<a target="_blank" rel="noopener" href="http://www.statmt.org/wmt19/translation-task.html#download">這邊</a>有找到很多很多的資料集，只需要做一些資料處理的動作，現在就來先處理一下。</p>
+<blockquote>
+<p>我下載的資料集：<a target="_blank" rel="noopener" href="http://data.statmt.org/news-commentary/v14/">News Commentary</a>，並取出中文跟英文的部分。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="chu-li-zi-liao">處理資料</span><a href="#chu-li-zi-liao" class="header-anchor">#</a></h4><p>觀察一下原始資料你會發現，他基本上是透過<code>&lt;P&gt;</code>來做分隔，然後大概看一下，我做了一個基本假設<strong>每一列就是對應的翻譯</strong>。有了這個假設，我就要先把<code>&lt;P&gt;</code>跟<code>&lt;P&gt;</code>之間行數不一樣的部分刪除掉(像圖中紅色的地方要)，留下一樣的部分就好。<br><img src="/blog/2019/09/25/ithelp-2019-day17/not-equal.jpg" alt="not equal"></p>
+<p>好來看看code：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">procTranslateFiles</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> (</span><br><span class="line">    root            <span class="type">string</span> = <span class="string">&quot;./testdata/translate&quot;</span></span><br><span class="line">    validationCount <span class="type">int</span>    = <span class="number">0</span></span><br><span class="line">    testCount       <span class="type">int</span>    = <span class="number">0</span></span><br><span class="line">    trainCount      <span class="type">int</span>    = <span class="number">0</span></span><br><span class="line">  )</span><br><span class="line">  files, err := ioutil.ReadDir(root + <span class="string">&quot;/en&quot;</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> _, file := <span class="keyword">range</span> files &#123;</span><br><span class="line">    fmt.Println(file.Name())</span><br><span class="line">    <span class="keyword">if</span> _, err := os.Stat(root + <span class="string">&quot;/zh/&quot;</span> + file.Name()); err == <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="comment">// 先把有英文也有中文的檔案，分別讀到`enLines`、`zhLines`</span></span><br><span class="line">      <span class="keyword">var</span> enLines, enErr = readLines(root + <span class="string">&quot;/en/&quot;</span> + file.Name())</span><br><span class="line">      <span class="keyword">var</span> zhLines, zhErr = readLines(root + <span class="string">&quot;/zh/&quot;</span> + file.Name())</span><br><span class="line">      <span class="keyword">if</span> enErr != <span class="literal">nil</span> || zhErr != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//刪掉行數不一樣的部分</span></span><br><span class="line">      enLines, zhLines = normalizeLines(enLines, zhLines)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//塞入tsv data</span></span><br><span class="line">      <span class="keyword">if</span> trainCount &lt; <span class="number">11000</span> &#123;</span><br><span class="line">        trainCount += <span class="built_in">len</span>(enLines)</span><br><span class="line">        writeCSV(root+<span class="string">&quot;/train.tsv&quot;</span>, enLines, zhLines)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> testCount &lt; <span class="number">1000</span> &#123;</span><br><span class="line">        testCount += <span class="built_in">len</span>(enLines)</span><br><span class="line">        writeCSV(root+<span class="string">&quot;/test.tsv&quot;</span>, enLines, zhLines)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> validationCount &lt; <span class="number">1000</span> &#123;</span><br><span class="line">        validationCount += <span class="built_in">len</span>(enLines)</span><br><span class="line">        writeCSV(root+<span class="string">&quot;/validation.tsv&quot;</span>, enLines, zhLines)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">&quot;Done!&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因為是透過docker執行，所以執行時記得帶上 <code>-v</code> mount volumes<br>e.g., <code>docker run -v $&#123;PWD&#125;/testdata:/app/testdata -it golang ./app Day17</code></p>
+</blockquote>
+<blockquote>
+<p>詳細的code可以看github：<a target="_blank" rel="noopener" href="https://github.com/josephMG/ithelp-2019/blob/Day-17/main.go">https://github.com/josephMG/ithelp-2019/blob/Day-17/main.go</a></p>
+</blockquote>
+<p><img src="/blog/2019/09/25/ithelp-2019-day17/tsv-line-count.jpg" alt="tsv line count"><br>確認一下，每個檔案行號都夠training。</p>
+<h4><span id="train">train</span><a href="#train" class="header-anchor">#</a></h4><p>好囉，回到<a target="_blank" rel="noopener" href="https://console.cloud.google.com/translatio">GCP AutoML Translate</a>，我們先建立一個dataset。<br><img src="/blog/2019/09/25/ithelp-2019-day17/create-dataseet.jpg" alt="create dataset"><br>你會注意到建立的時候要你選source language &amp; target language。</p>
+<p><img src="/blog/2019/09/25/ithelp-2019-day17/import-data.jpg" alt="import data"><br>接下來import data，這邊比較人性化一點，讓我們可以分開上傳tsv。否則你會需要傳一個csv上去，裡面指定你tsv的位置，格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TRAIN,gs://my-project-vcm/csv/en-fr-train.tsv</span><br><span class="line">VALIDATION,gs://my-project-vcm/csv/en-fr-validation.tsv</span><br><span class="line">TEST,gs://my-project-vcm/csv/en-fr-test.tsv</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>記得<code>Destination on Cloud Storage</code>要選region <code>us-central1</code></p>
+</blockquote>
+<p>接下來你就會看到很久的**Processing sentence pairs…..**，匯完以後你會看到一堆sentences，還有他們的label。<br><img src="/blog/2019/09/25/ithelp-2019-day17/sentences.jpg" alt="sentences"></p>
+<p>然後呢，我們就進入到train了。<br><img src="/blog/2019/09/25/ithelp-2019-day17/train.jpg" alt="train"></p>
+<p>操作過前面文章的應該就知道，開始訓練又是幾個小時以後才能結束。<br>所以今天就到這邊，就姑且不論訓練結果好壞，之後的優化就留到實際有自己data的時候再做吧！</p>
+<blockquote>
+<p>今天的github在這：<a target="_blank" rel="noopener" href="https://github.com/josephMG/ithelp-2019/tree/Day-17">https://github.com/josephMG/ithelp-2019/tree/Day-17</a></p>
+</blockquote>
+<p>好，今天就到這邊了，謝謝各位的觀看。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/25/ithelp-2019-day17/" data-id="clr8lqkp0002llbpx7kv61md6" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Translate/" rel="tag">Translate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/25/shopee-advertisement-advanced/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="認識Shopee關鍵字廣告優化"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">認識Shopee關鍵字廣告優化</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/24/ithelp-2019-day16/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 16] Google Translation - 3"
+        >
+          <span class="article-nav-title truncate">[Day 16] Google Translation - 3</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 28] Google AI Hub - 1 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="話說照第一天的規劃，今天本來要寫Recommendation AI，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。  AI Hub今天找其他的玩具來玩，翻到了AI Hub，Hub會讓人直接連想到集線器，AI Hub就是把很多AI、ML集中在一起的平台，你可以在上面使用大家的AI model，也可以分享自己的AI上去給大家用。 我今天會來介紹其">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 28] Google AI Hub - 1">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="話說照第一天的規劃，今天本來要寫Recommendation AI，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。  AI Hub今天找其他的玩具來玩，翻到了AI Hub，Hub會讓人直接連想到集線器，AI Hub就是把很多AI、ML集中在一起的平台，你可以在上面使用大家的AI model，也可以分享自己的AI上去給大家用。 我今天會來介紹其">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/service.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/service-try.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/service-apply.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/notebook.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/tensorflow-module.jpg">
+<meta property="article:published_time" content="2019-10-06T07:30:21.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.763Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="AI Hub">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/service.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day28" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 28] Google AI Hub - 1
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-10-06T07:30:21.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Oct 06, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <blockquote>
+<p>話說照<a href="/blog/2019/09/09/ithelp-2019-day1/" title="[Day 1] 說說哪裡來的靈感">第一天</a>的規劃，今天本來要寫<a target="_blank" rel="noopener" href="https://cloud.google.com/recommendations">Recommendation AI</a>，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。</p>
+</blockquote>
+<h3><span id="ai-hub">AI Hub</span><a href="#ai-hub" class="header-anchor">#</a></h3><p>今天找其他的玩具來玩，翻到了<strong>AI Hub</strong>，Hub會讓人直接連想到集線器，<strong>AI Hub</strong>就是把很多AI、ML集中在一起的平台，你可以在上面使用大家的AI model，也可以分享自己的AI上去給大家用。</p>
+<p>我今天會來介紹其中幾個內容：<strong>service</strong>、<strong>notebook</strong>、<strong>tensorflow module</strong>，入門一下AI Hub。</p>
+<span id="more"></span>
+
+<h4><span id="service"></span><a href="#service" class="header-anchor">#</a></h4><p>這部分相對單純，它把Google提供的AI服務都整合在這裡，你可以看到很多是我們前幾天文章有提到的內容，像是<strong>Text-to-speech</strong>、<strong>Video Intelligence</strong>等等。<br><img src="/blog/2019/10/06/ithelp-2019-day28/service.jpg" alt="service"></p>
+<p>隨便點進去<strong>Text-to-speech</strong>，可以看到除了一些介紹，就是給個連結引導去<strong>Visit</strong>或<strong>Get started</strong>。<br><img src="/blog/2019/10/06/ithelp-2019-day28/service-try.jpg" alt="service-try"></p>
+<p>至於沒有提供的，它會給你個Link讓你有地方可以<strong>Apply</strong>。<br><img src="/blog/2019/10/06/ithelp-2019-day28/service-apply.jpg" alt="service-apply"></p>
+<h4><span id="notebook"></span><a href="#notebook" class="header-anchor">#</a></h4><p>在去年寫<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20103835/ironman/1806">Machine Learning Crash course</a>的文章的時候，有很多線上Example都是用<strong>Colab</strong>的形式在練習，這邊也把MLCC裡所有的Colab都聚集在這裡，成為Notebook，讓大家可以搜尋後可以透過旁邊的<strong>Colab</strong>連結測試。<br><img src="/blog/2019/10/06/ithelp-2019-day28/notebook.jpg" alt="notebook"></p>
+<h4><span id="tensorflow-module"></span><a href="#tensorflow-module" class="header-anchor">#</a></h4><p>這邊聚集了很多Tensorflow module，可以透過Tensorflow hub的方式引入到自己的Code裡去。像是下面的範例就有提供Link <code>https://tfhub.dev/google/efficientnet/b1/classification/1</code>，也有提供code example，幾乎不用在從頭設計model了。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">module = hub.Module(<span class="string">&quot;https://tfhub.dev/google/efficientnet/b1/classification/1&quot;</span>)</span><br><span class="line">height, width = hub.get_expected_image_size(module)</span><br><span class="line">images = ...  # A batch of images with shape [batch_size, height, width, <span class="number">3</span>].</span><br><span class="line">logits = module(images)  # Logits with shape [batch_size, num_classes].</span><br></pre></td></tr></table></figure>
+<p><img src="/blog/2019/10/06/ithelp-2019-day28/tensorflow-module.jpg" alt="tensorflow module"></p>
+<p>寫到這邊差不多把AI Hub講了大半段，裡面的內容自己動手操作會更了解，明天還有<strong>Kubeflow pipeline</strong>可以實際動手玩看看，希望一切順利。</p>
+<p>OK，今天的文章就到這邊，謝謝各位的觀看。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/10/06/ithelp-2019-day28/" data-id="clr8lqkpa003rlbpx6ywz24t9" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AI-Hub/" rel="tag">AI Hub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/10/07/ithelp-2019-day29/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 29] Google AI Hub - 2"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 29] Google AI Hub - 2</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/10/05/ithelp-2019-day27/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 27] Google AutoML Table - 2"
+        >
+          <span class="article-nav-title truncate">[Day 27] Google AutoML Table - 2</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

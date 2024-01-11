@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>設定Google Analytics 4 / Google Tag Manager追蹤user id | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="這篇文章我決定用中文寫，主要原因是中文的資料太少，而且也很多不是Google Analytics 4 + Google Tag Manager (GA4+GTM) 的設定，所以我覺得用中文記錄一下，好讓大家要搜尋的可以搜得到。 在以前GA追蹤埋追蹤碼時，我們要紀錄的user_id經過規劃後會視情況放在category, action, label, value或複雜一點的custom dimens">
+<meta property="og:type" content="article">
+<meta property="og:title" content="設定Google Analytics 4 &#x2F; Google Tag Manager追蹤user id">
+<meta property="og:url" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="這篇文章我決定用中文寫，主要原因是中文的資料太少，而且也很多不是Google Analytics 4 + Google Tag Manager (GA4+GTM) 的設定，所以我覺得用中文記錄一下，好讓大家要搜尋的可以搜得到。 在以前GA追蹤埋追蹤碼時，我們要紀錄的user_id經過規劃後會視情況放在category, action, label, value或複雜一點的custom dimens">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/get-evaluation-id.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/get-evaluation-id-2.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/GTM-GA4-setting.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/GA4-setting-works.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/add-data-layer-var.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/add-trigger-event.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/add-field-to-set.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/ga4-data-layer-userId.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/result.jpg">
+<meta property="article:published_time" content="2021-09-22T05:02:06.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.855Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Marketing">
+<meta property="article:tag" content="GA4">
+<meta property="article:tag" content="Google Analytics 4">
+<meta property="article:tag" content="GTM">
+<meta property="article:tag" content="Google Tag Manager">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/get-evaluation-id.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-設定Google-Analytics-4-Google-Tag-Manager追蹤user-id" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      設定Google Analytics 4 / Google Tag Manager追蹤user id
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2021-09-22T05:02:06.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 22, 2021</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>這篇文章我決定用中文寫，主要原因是中文的資料太少，而且也很多不是<a target="_blank" rel="noopener" href="https://support.google.com/analytics/answer/10089681?hl=zh-Hant">Google Analytics 4</a> + <a target="_blank" rel="noopener" href="https://tagmanager.google.com/">Google Tag Manager</a> (GA4+GTM) 的設定，所以我覺得用中文記錄一下，好讓大家要搜尋的可以搜得到。</p>
+<p>在以前GA追蹤埋追蹤碼時，我們要紀錄的<code>user_id</code>經過規劃後會視情況放在<code>category</code>, <code>action</code>, <code>label</code>, <code>value</code>或複雜一點的<a target="_blank" rel="noopener" href="https://support.google.com/analytics/answer/2709828#example-user&zippy=%2Cin-this-article">custom dimensions</a>裡，GA經過長時間的演進，再加上GTM的助攻，現在已經可以有各種變化、也有多種<a target="_blank" rel="noopener" href="https://tagmanager.google.com/gallery/#/">templates</a>可以套用在網站及應用程式裡。</p>
+<p>至於要怎麼做呢？首先一樣從<a target="_blank" rel="noopener" href="https://tagmanager.google.com/">GTM</a>上方的<code>管理</code> &gt; <code>安裝 Google 代碼管理工具</code>把追蹤程式碼塞到我們的網站上，然後回到GA4去取得<code>評估ID</code>。</p>
+<blockquote>
+<p>如果你只有通用型GA分析的話，也可以從<code>管理</code> &gt; <code>Google Analytics (分析) 4 資源設定輔助程式</code>開啟GA4追蹤功能</p>
+</blockquote>
+<p><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/get-evaluation-id.jpg" alt="get-evaluation-id.jpg"></p>
+<span id="more"></span>
+<p><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/get-evaluation-id-2.jpg" alt="get-evaluation-id-2.jpg"><br>圖裡的<code>評估ID</code>等一下在設定GTM的時候會用到。</p>
+<h1><span id="xian-chuan-gtm-gen-ga">先串GTM跟GA</span><a href="#xian-chuan-gtm-gen-ga" class="header-anchor">#</a></h1><p>進到<a target="_blank" rel="noopener" href="https://tagmanager.google.com/">GTM</a>，從左邊<code>代碼</code>裡新增一個代碼設定：<code>Google Analytics (分析)：GA4 設定</code>，貼上剛剛的<code>評估ID</code>，然後最下面觸發條件選擇<code>All Pages</code>。<br><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/GTM-GA4-setting.jpg" alt="GTM-GA4-setting.jpg"></p>
+<p><code>儲存</code>然後右上角的<code>提交</code>，設定完回到GA4，在瀏覽網頁的時候就會有一些<code>page_view</code>的事件。<br><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/GA4-setting-works.jpg" alt="GA4-setting-works.jpg"></p>
+<p>這邊就讓你的GA4跟以前通用型GA一樣了。</p>
+<h1><span id="zai-chuan-user-id">再串user_id</span><a href="#zai-chuan-user-id" class="header-anchor">#</a></h1><p>串<code>user_id</code>的時候，我們要設定GTM、GA4、還有也要寫code，我們從GTM開始。</p>
+<h3><span id="xian-zai-gtm-she-ding-user-id">先在GTM設定user_id</span><a href="#xian-zai-gtm-she-ding-user-id" class="header-anchor">#</a></h3><p><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/add-data-layer-var.jpg" alt="add-data-layer-var.jpg"><br>我們在左邊<code>變數</code>的地方新增一個<code>資料層變數</code>，這邊輸入的<code>user_id</code>要跟程式碼裡<code>push</code>進dataLayer的一致。</p>
+<p><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/add-trigger-event.jpg" alt="add-trigger-event.jpg"><br>這一步是我遲疑的地方，在左邊<code>觸發條件</code>裡我手動新增一個<code>page_view</code>的<code>自訂事件</code>，準備去把每個<code>user_id</code>一起追蹤進去。雖然<code>All Pages</code>應該可以被觸發，但測試時一直沒進去，設定這個觸發條件才可以。</p>
+<p><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/add-field-to-set.jpg" alt="add-field-to-set.jpg"><br>接著回去修改剛剛的<code>代碼</code>，把<code>要設定的欄位</code>跟<code>使用者屬性</code>加上欄位名稱及資源名稱<code>userId</code>，而數值的部分可以透過選擇或是直接key上去，都是。<br><code>要設定的欄位</code>的<code>userId</code>會顯示在GA4的<code>事件</code>裡，而<code>使用者屬性</code>則會顯示在<code>依使用者屬性</code>裡。</p>
+<p>這邊為什麼不是<code>user_id</code>而是<code>userId</code>？因為之後在GA4設定的時候我一直餵不進去<code>user_id</code>，反而<code>userId</code>可以。</p>
+<h3><span id="jie-zhu-she-ding-ga4">接著設定GA4</span><a href="#jie-zhu-she-ding-ga4" class="header-anchor">#</a></h3><p><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/ga4-data-layer-userId.jpg" alt="ga4-data-layer-userId.jpg"><br>在<code>自訂定義</code>裡新增維度，範圍選<code>使用者</code>，而<code>使用者屬性/變數</code>這邊就是我說的只能輸入<code>userId</code>，不接受<code>user_id</code>的地方。</p>
+<blockquote>
+<p>這邊的設定會影響<code>依使用者屬性</code>這部分的追蹤，<code>事件</code>的部分不會影響。</p>
+</blockquote>
+<p>最後是code的部分，我以React &#x2F; NextJs為例。</p>
+<h3><span id="kan-kan-code">看看code</span><a href="#kan-kan-code" class="header-anchor">#</a></h3><p><strong>gtag.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">pushDataLayer</span> = (<span class="params">event</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">window</span> &amp;&amp; <span class="variable language_">window</span>.<span class="property">dataLayer</span>) &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">dataLayer</span>.<span class="title function_">push</span>(event);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">pageview</span> = (<span class="params">url</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> pageEvent = &#123;</span><br><span class="line">    <span class="attr">event</span>: <span class="string">&#x27;page_view&#x27;</span>,</span><br><span class="line">    <span class="attr">page</span>: url,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">pushDataLayer</span>(pageEvent);</span><br><span class="line">  <span class="keyword">return</span> pageEvent;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">setUserId</span> = (<span class="params">userId</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> pageEvent = &#123;</span><br><span class="line">    <span class="attr">user_id</span>: userId,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">pushDataLayer</span>(pageEvent);</span><br><span class="line">  <span class="keyword">return</span> pageEvent;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>pages&#x2F;_app.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> cookies = <span class="title function_">parseCookies</span>()</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleRouteChange</span> = (<span class="params">url</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (cookies.<span class="property">userId</span>) &#123;</span><br><span class="line">      gtag.<span class="title function_">setUserId</span>(cookies.<span class="property">userId</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    gtag.<span class="title function_">pageview</span>(url)</span><br><span class="line">  &#125;</span><br><span class="line">  router.<span class="property">events</span>.<span class="title function_">on</span>(<span class="string">&#x27;routeChangeComplete&#x27;</span>, handleRouteChange)</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    router.<span class="property">events</span>.<span class="title function_">off</span>(<span class="string">&#x27;routeChangeComplete&#x27;</span>, handleRouteChange)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, [router.<span class="property">events</span>])</span><br></pre></td></tr></table></figure>
+
+<p>在<code>setUserId</code>裡可以看到key是<code>user_id</code>，而<code>handleRouteChange</code>裡在<code>pageview</code>之前要先<code>setUserId</code>，把<code>user_id</code>塞進dataLayer裡。</p>
+<p>最後就來看看結果了。<br><img src="/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/result.jpg" alt="result.jpg"><br>這張圖的1跟2呼應到上面修改代碼時的<code>要設定的欄位</code>跟<code>使用者屬性</code>，每個<code>page_view</code>都會紀錄<code>userId</code>，使用者屬性也有把<code>userId</code>記錄下來。</p>
+<p>這是設定第二次了，即便如此我還是失敗了很久，希望文章寫下來以後不會忘記。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/" data-id="clr8lqkrf00gglbpxdyak3k5r" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GA4/" rel="tag">GA4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/GTM/" rel="tag">GTM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-Analytics-4/" rel="tag">Google Analytics 4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Marketing/" rel="tag">Marketing</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Facebook Pixel and Facebook Conversions API"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Facebook Pixel and Facebook Conversions API</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Ruby on Jets - AWS serverless framework for Ruby on Rails"
+        >
+          <span class="article-nav-title truncate">Ruby on Jets - AWS serverless framework for Ruby on Rails</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

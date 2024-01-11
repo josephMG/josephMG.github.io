@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 2] Google Vision AI - 1 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Google Vision AI分成兩個服務：AutoML Vision、Vision API，我們今天先講Vision API。 Vision API要講什麼？講什麼都比不過先來玩看看。  選擇圖片：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 2] Google Vision AI - 1">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/10/ithelp-2019-day2/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Google Vision AI分成兩個服務：AutoML Vision、Vision API，我們今天先講Vision API。 Vision API要講什麼？講什麼都比不過先來玩看看。  選擇圖片：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/10/ithelp-2019-day2/furniture.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/10/ithelp-2019-day2/demo.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/10/ithelp-2019-day2/show-json.jpg">
+<meta property="article:published_time" content="2019-09-10T07:29:18.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.727Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Vision AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/10/ithelp-2019-day2/furniture.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day2" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 2] Google Vision AI - 1
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-10T07:29:18.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 10, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p><a target="_blank" rel="noopener" href="https://cloud.google.com/vision/">Google Vision AI</a>分成兩個服務：AutoML Vision、Vision API，我們今天先講Vision API。</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.google.com/vision/">Vision API</a>要講什麼？講什麼都比不過先來玩看看。</p>
+<ol>
+<li><p>選擇圖片：</p>
+<span id="more"></span>
+<p>我們先從<a target="_blank" rel="noopener" href="https://unsplash.com/search/photos/furniture">https://unsplash.com</a> 給些tag找個圖片。我搜尋furniture找了下面這張圖。<br><img src="/blog/2019/09/10/ithelp-2019-day2/furniture.jpg" alt="furniture.jpg"></p>
+</li>
+<li><p>傳到Vision API裡：<br>按<a target="_blank" rel="noopener" href="https://cloud.google.com/vision/#vision-api-demo">這裡</a>有個try the API可以使用，我們就把圖片拖曳進去。<br><img src="/blog/2019/09/10/ithelp-2019-day2/demo.jpg" alt="demo.jpg"></p>
+</li>
+</ol>
+<p>這邊你會發現，一張圖進去有五個資訊給你：Objects, Labels, Web, Properties, Safe Search. 對於簡單的圖片分析有很大的功用。</p>
+<ul>
+<li>Objects:<br>分析圖片內的物體，像這個範例找到了椅子跟桌子之類的，不過也可以看到這張圖應該有三個椅子，分析出來卻只有兩個。對於物體辨別服務來講，這個是很方便的資訊。</li>
+<li>Labels:<br>把視野拉高，Label會告訴我們這張圖到底<strong>屬於什麼</strong>。是客廳、室內設計、房間、而且很多家具。同時讓你直接透過google搜尋找跟某個Label相關的資料。</li>
+<li>Web:<br>是哪些地方<em>可能</em>含有這張圖呢？透過Web Entities讓我們連結到Google Image，也可以透過Matched pages尋找Google以外可能含有這張圖片的網站，Fully Matched跟Partially Matched Images則是以圖搜圖的概念，哪個連結的圖跟這張一模一樣，或大部分一樣。</li>
+<li>Properties:<br>分析這張圖<strong>像素</strong>相關的資訊，多少顏色占百分之幾，還有各個比例的縮圖。</li>
+<li>Safe Search:<br>分析這張圖不雅或不妥的資訊，是否包含成人(Adult)、欺騙(Spoof)、醫學(Medical)、暴力(Violence)、Racy(幼兒不宜)等等，不過這溫馨的家具配置圖還好都是非常不可能(Very Unlikely)。</li>
+</ul>
+<p>只有這樣？只有這樣就不會成為一個產品了。如果你注意到圖片底下的<strong>Show JSON</strong>的話，會發現還有更多好玩的組合在裡面。<br><img src="/blog/2019/09/10/ithelp-2019-day2/show-json.jpg" alt="show-json.jpg"><br>看到了一隻API，帶著一些Request JSON，然後會回給你Response JSON。其中Request則看到了一些沒在畫面上出現的東西：LANDMARK_DETECTION、FACE_DETECTION、LOGO_DETECTION、DOCUMENT_TEXT_DETECTION，先有這些彩蛋以後，我們明天再來深入了解Vision API的<a target="_blank" rel="noopener" href="https://cloud.google.com/vision/overview/docs/get-started">官方文件</a>。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/10/ithelp-2019-day2/" data-id="clr8lqkp2002vlbpx5jq39xkm" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Vision-AI/" rel="tag">Vision AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/11/ithelp-2019-day3/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 3] Google Vision AI - 2"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 3] Google Vision AI - 2</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/09/ithelp-2019-day1/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 1] 說說哪裡來的靈感"
+        >
+          <span class="article-nav-title truncate">[Day 1] 說說哪裡來的靈感</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

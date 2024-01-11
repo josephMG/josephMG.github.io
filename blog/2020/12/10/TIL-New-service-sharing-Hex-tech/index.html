@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[TIL] New service sharing: Hex.tech | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Podcast source: Hex: Data Project Sharing with Caitlin Colgrove and Barry McCardel 最近迷上聽podcast，裡面專門介紹新服務跟技術，同時可以練練聽力跟學習新知，既然學了乾脆把它寫成心得分享出來。今天來介紹一個新聽到的服務: Hex，在解決大數據專案資料共享的問題。  雖然我不是個資料工程師，但曾經使用過Pytho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[TIL] New service sharing: Hex.tech">
+<meta property="og:url" content="https://josephmg.github.io/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Podcast source: Hex: Data Project Sharing with Caitlin Colgrove and Barry McCardel 最近迷上聽podcast，裡面專門介紹新服務跟技術，同時可以練練聽力跟學習新知，既然學了乾脆把它寫成心得分享出來。今天來介紹一個新聽到的服務: Hex，在解決大數據專案資料共享的問題。  雖然我不是個資料工程師，但曾經使用過Pytho">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/hex-screenshot.png">
+<meta property="article:published_time" content="2020-12-10T06:48:25.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.563Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Today I learn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/hex-screenshot.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-TIL-New-service-sharing-Hex-tech" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [TIL] New service sharing: Hex.tech
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-12-10T06:48:25.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Dec 10, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>Podcast source: <a target="_blank" rel="noopener" href="https://softwareengineeringdaily.com/2020/12/03/hex-data-project-sharing-with-caitlin-colgrove-and-barry-mccardel/">Hex: Data Project Sharing with Caitlin Colgrove and Barry McCardel</a></p>
+<p>最近迷上聽podcast，裡面專門介紹新服務跟技術，同時可以練練聽力跟學習新知，既然學了乾脆把它寫成心得分享出來。今天來介紹一個新聽到的服務: <a target="_blank" rel="noopener" href="https://hex.tech/">Hex</a>，在解決大數據專案資料共享的問題。</p>
+<p><img src="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/hex-screenshot.png" alt="Hex screenshot"></p>
+<p>雖然我不是個資料工程師，但曾經使用過Python Jupyter Notebook，而且中間又經歷過換電腦，要重跑都得安裝一堆有的沒的，每次用起來都很不方便。但這次聽到這個服務也是讓我滿臉問號，Jupyter不是已經很多人用了？為什麼又有一個類似的服務出來？</p>
+<span id="more"></span>
+
+<p>這次訪問到的兩個人Caitlin跟Barry是<a target="_blank" rel="noopener" href="https://www.palantir.com/">Palantir</a>的同事，Palantir共同創辦人是Paypal的Peter，他們的客戶都是赫赫有名的大公司大企業或政府機關，但Caitlin跟Barry在Palantir裡看到客戶們導入Data-driven時的種種困難，才衍伸出這個<a target="_blank" rel="noopener" href="https://hex.tech/">Hex</a>產品。當資料越來越多，就出現共享資料的問題；當團隊越來越大，就出現共同討論的問題。更宏觀一點來看，其實<a target="_blank" rel="noopener" href="https://hex.tech/">Hex</a>是為了解決整個workflow的問題，會不會我在測試的方法別人用過了？會不會我用同樣的方法可以但你用同樣的方法不行？每次溝通都要透過切換軟體？討論結果還得匯出成PDF傳給對方？<a target="_blank" rel="noopener" href="https://hex.tech/">Hex</a>可以讓data team的workflow又可以解決討論跟共享的問題，這很像真的挺有價值的。</p>
+<p>中間訪問到技術面如何解決共享問題時，Caitlin提到了一個<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">Conflict-free replicated data type(CRDT)</a>演算法，還有另一套<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Operational_transformation">Operational Transformation(OT)</a>，這兩個都是他們在處理real-time功能時的tradeoff。再加上他們優化了Apollo跟GraphQL，最後才達到他們想要的協作體驗。</p>
+<p>這篇podcast還提到了很多很多資料科學領域會用到的tools跟一些BI的工具，甚至是新的data pipeline，而這些也是現在資料科學家要一直學習的東西。或許未來pipeline會不一樣，但他們應該也會更快整合並讓大家使用。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/" data-id="clr8lqkom0016lbpxh9lm8e3k" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Today-I-learn/" rel="tag">Today I learn</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Side project] KinectV2 applications migrates to OpenPose"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Side project] KinectV2 applications migrates to OpenPose</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2020/09/14/Take-a-break-and-review-this-year/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Take a break and review this year"
+        >
+          <span class="article-nav-title truncate">Take a break and review this year</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

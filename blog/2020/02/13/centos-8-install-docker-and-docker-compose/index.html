@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Install Docker / Docker-compose on CentOS 8 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="新的一篇文章來講講最近踩的雷，起因手邊有個案子開了一台CentOS 8機器給我，讓我在上面設定docker跟跑起服務。實在跟CentOS很不熟的我決定寫篇備忘錄。 一開始就先開台乾淨的CentOS VM來準備被我玩爛… Install Docker然後，讓我慢慢安裝docker。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install Docker &#x2F; Docker-compose on CentOS 8">
+<meta property="og:url" content="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="新的一篇文章來講講最近踩的雷，起因手邊有個案子開了一台CentOS 8機器給我，讓我在上面設定docker跟跑起服務。實在跟CentOS很不熟的我決定寫篇備忘錄。 一開始就先開台乾淨的CentOS VM來準備被我玩爛… Install Docker然後，讓我慢慢安裝docker。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/install-centos.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/docker-requires.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/docker-status.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/docker-dns.jpg">
+<meta property="article:published_time" content="2020-02-13T07:30:15.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.667Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="DevOps">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/install-centos.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-centos-8-install-docker-and-docker-compose" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Install Docker / Docker-compose on CentOS 8
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-02-13T07:30:15.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Feb 13, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>新的一篇文章來講講最近踩的雷，起因手邊有個案子開了一台CentOS 8機器給我，讓我在上面設定docker跟跑起服務。實在跟CentOS很不熟的我決定寫篇備忘錄。</p>
+<p>一開始就先開台乾淨的CentOS VM來準備被我玩爛…<br><img src="/blog/2020/02/13/centos-8-install-docker-and-docker-compose/install-centos.jpg" alt="install centos"></p>
+<h2><span id="install-docker">Install Docker</span><a href="#install-docker" class="header-anchor">#</a></h2><p>然後，讓我慢慢安裝docker。</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br><span class="line">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line">$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">$ sudo yum install docker-ce #可能會遇到`問題一`</span><br></pre></td></tr></table></figure>
+
+<h4><span id="wen-ti-yi">問題一：</span><a href="#wen-ti-yi" class="header-anchor">#</a></h4><p><code>yum install docker-ce</code>時出現下列訊息:</p>
+<blockquote>
+<p> package docker-ce-3:19.03.5-3.el7.x86_64 requires containerd.io &gt;&#x3D; 1.2.2-3, but none of the providers can be installed<br><img src="/blog/2020/02/13/centos-8-install-docker-and-docker-compose/docker-requires.jpg" alt="docker requires"></p>
+</blockquote>
+<p>可以透過先執行下列指令解決</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+
+<p>跑完就安裝好了，讓我們start &amp; enable docker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br><span class="line">$ sudo systemctl enable docker</span><br><span class="line">$ sudo systemctl status docker</span><br></pre></td></tr></table></figure>
+<p>看看跟我一不一樣。<br><img src="/blog/2020/02/13/centos-8-install-docker-and-docker-compose/docker-status.jpg" alt="docker status"></p>
+<blockquote>
+<p>我在安裝的時候有把我的user視為administrator，如果你每次都要透過sudo去執行docker的話，請看看<code>問題二</code></p>
+</blockquote>
+<h5><span id="wen-ti-er">問題二：</span><a href="#wen-ti-er" class="header-anchor">#</a></h5><p>每次都要透過sudo docker執行docker或某些指令會回給你Permission denied嗎？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $(whoami)</span><br></pre></td></tr></table></figure>
+<p>把自己加入docker群組吧(記得要重新登入)</p>
+<h2><span id="install-docker-compose">Install docker-compose</span><a href="#install-docker-compose" class="header-anchor">#</a></h2><p>很快的透過curl抓取docker-compose的執行檔，然後把他設定+x mode。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br><span class="line">$ sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>OK，<code>docker-compose --version</code>就可以看到版本了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose --version</span><br><span class="line">docker-compose version 1.24.1, build 4667896b</span><br></pre></td></tr></table></figure>
+
+<p>到這邊都好了嗎？接下來你會遇到docker DNS跟防火牆的困擾。</p>
+<blockquote>
+<p>npm ERR! code EAI_AGAIN<br>npm ERR! errno EAI_AGAIN<br>npm ERR! request to <a target="_blank" rel="noopener" href="https://registry.npmjs.org/xxxxxxx">https://registry.npmjs.org/xxxxxxx</a> failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org:443<br>npm ERR! A complete log of this run can be found in:<br>npm ERR!     &#x2F;root&#x2F;.npm&#x2F;_logs&#x2F;2020-02-12T15_32_35_422Z-debug.log</p>
+</blockquote>
+<p>確認一下docker dns：<br><img src="/blog/2020/02/13/centos-8-install-docker-and-docker-compose/docker-dns.jpg" alt="docker dns"></p>
+<p><code>docker run busybox ping -c 1 192.203.230.10</code> 可以出去<br><code>docker run busybox nslookup google.com</code> 找不到host</p>
+<blockquote>
+<p>8.8.8.8是我VM的dns server</p>
+</blockquote>
+<p>好，把它打通吧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo firewall-cmd --zone=trusted --change-interface=docker0</span><br><span class="line">$ sudo firewall-cmd --reload.</span><br></pre></td></tr></table></figure>
+<p>把docker0 interface 加入trusted zone，這時候docker nslookup就通了。</p>
+<blockquote>
+<p>有時候你會需要把4243 port也被防火牆允許:<br><code>sudo firewall-cmd --permanent --zone=trusted --add-port=4243/tcp</code></p>
+</blockquote>
+<blockquote>
+<p>有時候你可能需要手動設定docker dns，可以vim編輯<code>/etc/docker/daemon.json</code>:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;dns&quot;: [&quot;8.8.8.8&quot;, &quot;8.8.4.4&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>到這邊就結束了。最後可以跑個隨便的服務，然後透過VM ip &amp; port 連進去(記得要port mapping)。<br>剛接到案子本來想說沒這麼複雜，沒想到複雜到我要開一台VM實驗，不過也是學了很多centos的東西。</p>
+<hr>
+<ol>
+<li>firewall-cmd 指令參考: <a target="_blank" rel="noopener" href="https://kirby86a.pixnet.net/blog/post/118276362-centos-7-%E4%BD%BF%E7%94%A8firewall-cmd%E6%8C%87%E4%BB%A4">https://kirby86a.pixnet.net/blog/post/118276362-centos-7-%E4%BD%BF%E7%94%A8firewall-cmd%E6%8C%87%E4%BB%A4</a></li>
+</ol>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/" data-id="clr8lqkor001rlbpx2ynketfe" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DevOps/" rel="tag">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="品牌instagram成為人氣王的經營方法"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">品牌instagram成為人氣王的經營方法</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="用Google load balancer跟GCE docker-nginx設定HTTP(S)"
+        >
+          <span class="article-nav-title truncate">用Google load balancer跟GCE docker-nginx設定HTTP(S)</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

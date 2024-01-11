@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>AWS Cloud Development Kit (CDK) project structure | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Previously blog I used NodeJs&#x2F;Typescript as a backend and deployed with AWS Cloud Development Kit (AWS CDK). The same framework, but more complex than the sample, is used on our Firstage. So this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS Cloud Development Kit (CDK) project structure">
+<meta property="og:url" content="https://josephmg.github.io/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Previously blog I used NodeJs&#x2F;Typescript as a backend and deployed with AWS Cloud Development Kit (AWS CDK). The same framework, but more complex than the sample, is used on our Firstage. So this">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/logo.png">
+<meta property="article:published_time" content="2021-10-12T06:46:49.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.479Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="CDK">
+<meta property="article:tag" content="Cloud Development Kit">
+<meta property="article:tag" content="serverless">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/logo.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-AWS-Cloud-Development-Kit-CDK-project-structure" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/logo.png" rel="gallery_clr8lqko20006lbpx6us50zgt">
+        <img src="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/logo.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      AWS Cloud Development Kit (CDK) project structure
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2021-10-12T06:46:49.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Oct 12, 2021</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p><a href="https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/">Previously blog</a> I used NodeJs&#x2F;Typescript as a backend and deployed with <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/cdk/">AWS Cloud Development Kit</a> (AWS CDK). The same framework, but more complex than the sample, is used on our <a target="_blank" rel="noopener" href="https://firstage.io/">Firstage</a>. So this post I will show how we structure our AWS CDK project codebase.</p>
+<h1><span id="project-structure">Project Structure</span><a href="#project-structure" class="header-anchor">#</a></h1><p><img src="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/project-structure.jpg" alt="project structure"></p>
+<span id="more"></span>
+
+<p>As you saw, we have several folders in the project:</p>
+<ol>
+<li><strong>bin</strong>: Contains only one file lets <code>cdk deploy</code> know which env should deploy,</li>
+<li><strong>events</strong>: Saves JSON object which <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html">AWS SAM</a> uses,</li>
+<li><strong>lib</strong>: Configures each service we used on AWS, such as route53, dynamodb, lambda, API gateway, and secret manager</li>
+<li><strong>src</strong>: Puts all codes like controllers, models, and helpers here.</li>
+<li><strong>test</strong>: Puts testing codes.</li>
+<li><strong>types</strong>: Defines types for Typescript.</li>
+<li><strong>layer</strong>: Installs <code>npm package</code> relative to lambdas.</li>
+</ol>
+<p>We move out <strong>layer</strong> from <strong>src</strong> because sometimes we need to debug the code on <a target="_blank" rel="noopener" href="https://ap-northeast-2.console.aws.amazon.com/lambda/home">AWS lambda editor</a>. Now let me show some important files and codes.</p>
+<p><strong>bin&#x2F;api.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;source-map-support/register&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ApiStack</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;../lib/api-stack&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> cdk.<span class="title class_">App</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// SYNTAX:</span></span><br><span class="line"><span class="comment">// new ApiStack(app, &#x27;THIS_NAME_FOR_CDK_DEPLOY&#x27;, &#123; stackName: &#x27;THIS_NAME_FOR_AWS_CloudFormation_StackName&#x27; &#125;);</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">ApiStack</span>(app, <span class="string">&#x27;ApiStaging&#x27;</span>, &#123; <span class="attr">stackName</span>: <span class="string">&#x27;ApiStaging&#x27;</span> &#125;);</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">ApiStack</span>(app, <span class="string">&#x27;ApiProduction&#x27;</span>, &#123; <span class="attr">stackName</span>: <span class="string">&#x27;ApiProduction&#x27;</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This is an entry point and simply point to <strong>lib&#x2F;api-stack</strong> file, and then we can use <code>cdk deploy ApiStaging</code> or <code>cdk deploy ApiProduction</code> to deploy.</p>
+<p><strong>lib&#x2F;api-stack.ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> lambda <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-lambda&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> elasticsearch <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-elasticsearch&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">DynamoEventSource</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-lambda-event-sources&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> iam <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-iam&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> events = <span class="built_in">require</span>(<span class="string">&#x27;@aws-cdk/aws-events&#x27;</span>);</span><br><span class="line"><span class="keyword">import</span> targets = <span class="built_in">require</span>(<span class="string">&#x27;@aws-cdk/aws-events-targets&#x27;</span>);</span><br><span class="line"><span class="keyword">import</span> type &#123; <span class="title class_">EnvType</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;../types/api-stack&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">SecretManager</span> <span class="keyword">from</span> <span class="string">&#x27;./secret-manager&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Lambda</span> <span class="keyword">from</span> <span class="string">&#x27;./lambda&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Route53</span> <span class="keyword">from</span> <span class="string">&#x27;./route53&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HttpApi</span> <span class="keyword">from</span> <span class="string">&#x27;./http-api&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">DbConfig</span> <span class="keyword">from</span> <span class="string">&#x27;./dynamodb&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">params</span>: <span class="title class_">EnvType</span> = &#123;</span><br><span class="line">    <span class="title class_">ApiStaging</span>: &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title class_">ApiProduction</span>: &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">ApiStack</span> <span class="keyword">extends</span> <span class="title class_ inherited__">cdk.Stack</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">scope: cdk.App, id: <span class="string">&quot;ApiStaging&quot;</span> | <span class="string">&quot;ApiProduction&quot;</span>, props?: cdk.StackProps</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(scope, id, props);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> envParams = params[id];</span><br><span class="line">    <span class="keyword">const</span> &#123; <span class="variable constant_">ENV</span>, route53Params, httpApiParams &#125; = envParams;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> secretParams = <span class="title class_">SecretManager</span>(<span class="variable language_">this</span>, envParams.<span class="property">secretManager</span>.<span class="property">arn</span>, envParams.<span class="property">secretManager</span>.<span class="property">keys</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="attr">layerCommon</span>: lambda.<span class="property">ILayerVersion</span> = <span class="keyword">new</span> lambda.<span class="title class_">LayerVersion</span>(<span class="variable language_">this</span>, <span class="string">&quot;LayerCommon&quot;</span>, &#123;</span><br><span class="line">      <span class="attr">compatibleRuntimes</span>: [lambda.<span class="property">Runtime</span>.<span class="property">NODEJS_14_X</span>],</span><br><span class="line">      <span class="attr">code</span>: lambda.<span class="property">Code</span>.<span class="title function_">fromAsset</span>(<span class="string">&#x27;layer/common&#x27;</span>),</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> &#123;</span><br><span class="line">      testEvent, test2Event</span><br><span class="line">    &#125; = <span class="title class_">Lambda</span>(<span class="variable language_">this</span>, &#123; <span class="variable constant_">ENV</span> &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">TestEventLambda</span> = <span class="title function_">testEvent</span>([layerCommon]);</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Test2EventLambda</span> = <span class="title function_">test2Event</span>([layerCommon]);</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Test2EventLambda</span>.<span class="title function_">addEnvironment</span>(<span class="string">&#x27;testLambdaArn&#x27;</span>, <span class="title class_">TestEventLambda</span>.<span class="property">functionArn</span>);</span><br><span class="line"></span><br><span class="line">    [ <span class="title class_">TestEventLambda</span>, <span class="title class_">Test2EventLambda</span> ].<span class="title function_">forEach</span>(<span class="function">(<span class="params">lambdaFunc</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> <span class="attr">envs</span>: &#123;[<span class="attr">key</span>: string]: string&#125; = &#123; <span class="attr">secretToken</span>: secretParams.<span class="property">secretToken</span> &#125;;</span><br><span class="line">      <span class="title class_">Object</span>.<span class="title function_">keys</span>(envs).<span class="title function_">forEach</span>(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">        lambdaFunc.<span class="title function_">addEnvironment</span>(key, envs[key]);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    [ <span class="title class_">TestEventLambda</span>, <span class="title class_">Test2EventLambda</span> ].<span class="title function_">forEach</span>(<span class="function">(<span class="params">lambdaFunc</span>) =&gt;</span> &#123;</span><br><span class="line">      lambdaFunc.<span class="title function_">addToRolePolicy</span>(<span class="keyword">new</span> iam.<span class="title class_">PolicyStatement</span>(&#123;</span><br><span class="line">        <span class="attr">effect</span>: iam.<span class="property">Effect</span>.<span class="property">ALLOW</span>,</span><br><span class="line">        <span class="attr">actions</span>: [<span class="string">&#x27;dynamodb:*&#x27;</span>],</span><br><span class="line">        <span class="attr">resources</span>: [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line">      &#125;));</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; domainName &#125; = <span class="title class_">Route53</span>(<span class="variable language_">this</span>, route53Params);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> eventLambdaMapping = &#123;</span><br><span class="line">      <span class="attr">testEvent</span>: <span class="title class_">TestEventLambda</span>,</span><br><span class="line">      <span class="attr">test2Event</span>: <span class="title class_">Test2EventLambda</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">HttpApi</span>(<span class="variable language_">this</span>, domainName, eventLambdaMapping, httpApiParams);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">DynamoDB</span> = <span class="title class_">DbConfig</span>(<span class="variable language_">this</span>, &#123; dynamoDBTablePrefix, <span class="variable constant_">ENV</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The skeleton is our ApiStack. We defines  AWS services to files seperately, and import into this ApiStack. Let’s go through from top to down. First, on lines 8, 15, 28 and 29 of <strong>lib&#x2F;api-stack.ts</strong> we define type for our <code>envParams</code>.</p>
+<p><strong>types&#x2F;api-stack.ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">ParamsType</span> = &#123;</span><br><span class="line">  <span class="attr">ENV</span>: string,</span><br><span class="line">  <span class="attr">userPool</span>: string,</span><br><span class="line">  <span class="attr">domainEndpoint</span>: string,</span><br><span class="line">  <span class="attr">dynamoDBTablePrefix</span>: string,</span><br><span class="line">  <span class="attr">route53Params</span>: <span class="title class_">Route53EnvParam</span>,</span><br><span class="line">  <span class="attr">httpApiParams</span>: <span class="title class_">HttpApiEnvParam</span>,</span><br><span class="line">  <span class="attr">secretManager</span>: &#123;</span><br><span class="line">    <span class="attr">arn</span>: string,</span><br><span class="line">    <span class="attr">keys</span>: string[]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">cognitoParams</span>: &#123;</span><br><span class="line">    <span class="attr">clientId</span>: string</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">fbPixelID</span>: string,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> type <span class="title class_">EnvType</span> = &#123;</span><br><span class="line">  <span class="title class_">ApiStaging</span>: <span class="title class_">ParamsType</span>,</span><br><span class="line">  <span class="title class_">ApiProduction</span>: <span class="title class_">ParamsType</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>Route53EnvParam</code> and <code>HttpApiEnvParam</code> are just some constant strings relatives to <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/route53/">Route53</a> and <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/api-gateway/">Api Gateway</a>. We have to mention that <code>secretManager</code> we hard-coded the keys used on <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/secrets-manager/">AWS Secrets Manager</a>, and <strong>lib&#x2F;secret-manager.ts</strong> uses it on the line 36 and 48 of <strong>lib&#x2F;api-stack.ts</strong>.</p>
+<p><strong>lib&#x2F;secret-manager.ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import * as ssm from &#x27;@aws-cdk/aws-ssm&#x27;;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> secretsmanager <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-secretsmanager&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> secretManager = (<span class="attr">scope</span>: cdk.<span class="property">Construct</span>, <span class="attr">arn</span>: string, <span class="attr">keys</span>: string[]): &#123; [<span class="attr">key</span>: string]: string &#125; =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> secret = secretsmanager.<span class="property">Secret</span>.<span class="title function_">fromSecretCompleteArn</span>(scope, <span class="string">&#x27;ImportedSecret&#x27;</span>, arn);</span><br><span class="line">  <span class="keyword">return</span> keys.<span class="title function_">reduce</span>(<span class="function">(<span class="params">params, key</span>) =&gt;</span> (&#123; ...params, [key]: secret.<span class="title function_">secretValueFromJson</span>(key) &#125;), &#123;&#125;);</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  const ssmParams: &#123; [key: string]: string &#125; = &#123;&#125;;</span></span><br><span class="line"><span class="comment">  Object.keys(params).forEach(name =&gt; &#123;</span></span><br><span class="line"><span class="comment">    const param = ssm.StringParameter.fromStringParameterAttributes(scope, name, &#123;</span></span><br><span class="line"><span class="comment">      parameterName: params[name],</span></span><br><span class="line"><span class="comment">      // &#x27;version&#x27; can be specified but is optional.</span></span><br><span class="line"><span class="comment">    &#125;);</span></span><br><span class="line"><span class="comment">    ssmParams[name] = param.stringValue;</span></span><br><span class="line"><span class="comment">  &#125;);</span></span><br><span class="line"><span class="comment">  return ssmParams</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> secretManager;</span><br></pre></td></tr></table></figure>
+
+<p>THe codes we commented are <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/systems-manager/">AWS Systems Manager</a>, but now we change to <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/secrets-manager/">AWS Secrets Manager</a>. As the code above, we <code>reduce</code> simply keys array to key-value object.</p>
+<blockquote>
+<p>But here is an issue when you change value from AWS Secrets Manager, you have to remove the env value from lambda and re-add again.</p>
+</blockquote>
+<p>On the line 33 to 36 of <strong>lib&#x2F;api-stack.ts</strong> defines a layer. The following image shows layer folder.<br><img src="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/layer.jpg" alt="layer"></p>
+<p>Then, we get lambda definitions from <strong>lib&#x2F;lambda.ts</strong>, and set environments and policiess to them on line 38 to 55.</p>
+<p><strong>lib&#x2F;lambda.ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> lambda <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-lambda&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">lambdas</span> = (<span class="params">scope: cdk.Construct, envParams?: &#123; [key: string]: string &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> funcDefaultProps = &#123;</span><br><span class="line">    <span class="attr">runtime</span>: lambda.<span class="property">Runtime</span>.<span class="property">NODEJS_14_X</span>,</span><br><span class="line">    <span class="attr">code</span>: <span class="keyword">new</span> lambda.<span class="title class_">AssetCode</span>(<span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">    <span class="attr">memorySize</span>: <span class="number">1536</span>,</span><br><span class="line">    <span class="attr">environment</span>: envParams</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">testEvent</span>: <span class="function">(<span class="params">layers: lambda.ILayerVersion[]</span>) =&gt;</span> <span class="keyword">new</span> lambda.<span class="title class_">Function</span>(scope, <span class="string">&#x27;testEvent&#x27;</span>, &#123;</span><br><span class="line">      ...funcDefaultProps,</span><br><span class="line">      <span class="attr">handler</span>: <span class="string">&#x27;controllers/test/index.handler&#x27;</span>,</span><br><span class="line">      layers,</span><br><span class="line">      <span class="attr">tracing</span>: lambda.<span class="property">Tracing</span>.<span class="property">ACTIVE</span>,</span><br><span class="line">      <span class="attr">timeout</span>: cdk.<span class="property">Duration</span>.<span class="title function_">seconds</span>(<span class="number">10</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="attr">test2Event</span>: <span class="function">(<span class="params">layers: lambda.ILayerVersion[]</span>) =&gt;</span> <span class="keyword">new</span> lambda.<span class="title class_">Function</span>(scope, <span class="string">&#x27;test2Event&#x27;</span>, &#123;</span><br><span class="line">      ...funcDefaultProps,</span><br><span class="line">      <span class="attr">handler</span>: <span class="string">&#x27;controllers/test2/index.handler&#x27;</span>,</span><br><span class="line">      layers,</span><br><span class="line">      <span class="attr">tracing</span>: lambda.<span class="property">Tracing</span>.<span class="property">ACTIVE</span>,</span><br><span class="line">      <span class="attr">timeout</span>: cdk.<span class="property">Duration</span>.<span class="title function_">seconds</span>(<span class="number">10</span>),</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Lastly, <code>Route53</code>, <code>HttpApi</code> and <code>Dbconfig</code> are the same structure as <strong>lib&#x2F;lambda.ts</strong>. We set dns, domain name and ip in <strong>lib&#x2F;route53.ts</strong>, authorizer and router in <strong>lib&#x2F;http-api.ts</strong>, and table and global secondary key in <strong>lib&#x2F;dynamodb.ts</strong>.</p>
+<p><strong>lib&#x2F;route53.ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> apigw <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-apigatewayv2&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> route53 <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-route53&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> acm <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-certificatemanager&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> targets <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-route53-targets&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> type &#123; <span class="title class_">Route53EnvParam</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;../types/api-stack&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Route53</span> = (<span class="params">scope: cdk.Construct, envParams: Route53EnvParam</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; zoneName, certArn, domain, aRecord &#125; = envParams;</span><br><span class="line">  <span class="keyword">const</span> zone = route53.<span class="property">HostedZone</span>.<span class="title function_">fromHostedZoneAttributes</span>(scope, <span class="string">&#x27;HostedZone&#x27;</span>, &#123;</span><br><span class="line">    zoneName,</span><br><span class="line">    <span class="attr">hostedZoneId</span>: <span class="string">&#x27;YOUR_ID&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> domainName = <span class="keyword">new</span> apigw.<span class="title class_">DomainName</span>(scope, domain.<span class="property">id</span>, &#123;</span><br><span class="line">    <span class="attr">domainName</span>: domain.<span class="property">domainName</span>,</span><br><span class="line">    <span class="attr">certificate</span>: acm.<span class="property">Certificate</span>.<span class="title function_">fromCertificateArn</span>(scope, <span class="string">&#x27;cert&#x27;</span>, certArn),</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">new</span> route53.<span class="title class_">ARecord</span>(scope, aRecord.<span class="property">alias</span>.<span class="property">id</span>, &#123;</span><br><span class="line">    zone,</span><br><span class="line">    <span class="attr">recordName</span>: aRecord.<span class="property">alias</span>.<span class="property">recordName</span>,</span><br><span class="line">    <span class="attr">target</span>: route53.<span class="property">RecordTarget</span>.<span class="title function_">fromAlias</span>(<span class="keyword">new</span> targets.<span class="title class_">ApiGatewayv2Domain</span>(domainName)),</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; domainName &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Route53</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>lib&#x2F;http-api.ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> apigw <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-apigatewayv2&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">CorsHttpMethod</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-apigatewayv2/lib/http/api&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> apigwIntergration <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-apigatewayv2-integrations&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> authorizers <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-apigatewayv2-authorizers&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> lambda <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-lambda&#x27;</span>;</span><br><span class="line"><span class="comment">// import * as cognito from &#x27;@aws-cdk/aws-cognito&#x27;;</span></span><br><span class="line"><span class="keyword">import</span> type &#123; <span class="title class_">HttpApiEnvParam</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;../types/api-stack&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">HttpApi</span> = (<span class="params"></span></span><br><span class="line"><span class="params">  scope: cdk.Construct,</span></span><br><span class="line"><span class="params">  domainName: apigw.DomainName,</span></span><br><span class="line"><span class="params">  handlers: &#123; [key: string]: lambda.<span class="built_in">Function</span> &#125;,</span></span><br><span class="line"><span class="params">  envParams: HttpApiEnvParam</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; id, jwtAudience, jwtIssuer, stageId, stageName &#125; = envParams;</span><br><span class="line">  <span class="keyword">const</span> authorizer = <span class="keyword">new</span> authorizers.<span class="title class_">HttpJwtAuthorizer</span>(&#123;</span><br><span class="line">    jwtAudience,</span><br><span class="line">    jwtIssuer</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> httpApi = <span class="keyword">new</span> apigw.<span class="title class_">HttpApi</span>(scope, id, &#123;</span><br><span class="line">    <span class="attr">createDefaultStage</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">corsPreflight</span>: &#123;</span><br><span class="line">      <span class="attr">allowHeaders</span>: [<span class="string">&#x27;Authorization&#x27;</span>, <span class="string">&#x27;Content-Type&#x27;</span>],</span><br><span class="line">      <span class="attr">allowMethods</span>: [<span class="title class_">CorsHttpMethod</span>.<span class="property">GET</span>, <span class="title class_">CorsHttpMethod</span>.<span class="property">HEAD</span>, <span class="title class_">CorsHttpMethod</span>.<span class="property">OPTIONS</span>, <span class="title class_">CorsHttpMethod</span>.<span class="property">POST</span>, <span class="title class_">CorsHttpMethod</span>.<span class="property">PUT</span>, <span class="title class_">CorsHttpMethod</span>.<span class="property">DELETE</span>],</span><br><span class="line">      <span class="attr">allowOrigins</span>: [<span class="string">&#x27;*&#x27;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  httpApi.<span class="title function_">addStage</span>(stageId, &#123;</span><br><span class="line">    <span class="attr">autoDeploy</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">domainMapping</span>: &#123;</span><br><span class="line">      domainName,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">stageName</span>: stageName || <span class="string">&quot;dev&quot;</span></span><br><span class="line">  &#125;);</span><br><span class="line">  httpApi.<span class="title function_">addRoutes</span>(&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/test&#x27;</span>,</span><br><span class="line">    <span class="attr">methods</span>: [apigw.<span class="property">HttpMethod</span>.<span class="property">GET</span>, apigw.<span class="property">HttpMethod</span>.<span class="property">PUT</span>],</span><br><span class="line">    <span class="attr">integration</span>: <span class="keyword">new</span> apigwIntergration.<span class="title class_">LambdaProxyIntegration</span>(&#123;</span><br><span class="line">      <span class="attr">handler</span>: handlers[<span class="string">&quot;testEvent&quot;</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;);</span><br><span class="line">  httpApi.<span class="title function_">addRoutes</span>(&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/test2&#x27;</span>,</span><br><span class="line">    <span class="attr">methods</span>: [apigw.<span class="property">HttpMethod</span>.<span class="property">GET</span>, apigw.<span class="property">HttpMethod</span>.<span class="property">PUT</span>],</span><br><span class="line">    <span class="attr">integration</span>: <span class="keyword">new</span> apigwIntergration.<span class="title class_">LambdaProxyIntegration</span>(&#123;</span><br><span class="line">      <span class="attr">handler</span>: handlers[<span class="string">&quot;test2Event&quot;</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">HttpApi</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>lib&#x2F;dynamodb.ts</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">StreamViewType</span>, <span class="title class_">Table</span>, <span class="title class_">AttributeType</span> <span class="keyword">as</span> <span class="title class_">DbAttributeType</span>, <span class="title class_">BillingMode</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@aws-cdk/aws-dynamodb&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Please remember to return the Table you new</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">DbConfig</span> = (<span class="params">scope: cdk.Construct, &#123; dynamoDBTablePrefix, ENV &#125;: &#123; dynamoDBTablePrefix: string, ENV: string &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title class_">TestTable</span> = <span class="keyword">new</span> <span class="title class_">Table</span>(scope, <span class="string">&#x27;TestTable&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">partitionKey</span>: &#123; <span class="attr">name</span>: <span class="string">&#x27;target&#x27;</span>, <span class="attr">type</span>: <span class="title class_">DbAttributeType</span>.<span class="property">STRING</span> &#125;,</span><br><span class="line">    <span class="attr">sortKey</span>: &#123; <span class="attr">name</span>: <span class="string">&#x27;id&#x27;</span>, <span class="attr">type</span>: <span class="title class_">DbAttributeType</span>.<span class="property">STRING</span> &#125;,</span><br><span class="line">    <span class="comment">// stream: StreamViewType.NEW_IMAGE,</span></span><br><span class="line">    <span class="attr">tableName</span>: <span class="string">`<span class="subst">$&#123;dynamoDBTablePrefix&#125;</span>_Tests`</span>,</span><br><span class="line">    <span class="attr">billingMode</span>: <span class="title class_">BillingMode</span>.<span class="property">PAY_PER_REQUEST</span>,</span><br><span class="line">    <span class="attr">pointInTimeRecovery</span>: <span class="variable constant_">ENV</span> === <span class="string">&#x27;production&#x27;</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="title class_">TestTable</span>.<span class="title function_">addGlobalSecondaryIndex</span>(&#123;</span><br><span class="line">    <span class="attr">indexName</span>: <span class="string">&quot;TestGSI_target_created_at&quot;</span>,</span><br><span class="line">    <span class="attr">partitionKey</span>: &#123; <span class="attr">name</span>: <span class="string">&#x27;target&#x27;</span>, <span class="attr">type</span>: <span class="title class_">DbAttributeType</span>.<span class="property">STRING</span> &#125;,</span><br><span class="line">    <span class="attr">sortKey</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;created_at&quot;</span>,</span><br><span class="line">      <span class="attr">type</span>: <span class="title class_">DbAttributeType</span>.<span class="property">NUMBER</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Get EventSource from table and stream it to lambda</span></span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="title class_">TestTable</span> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>That’s our cdk project structure. If you have a long file of ApiStack, you may consider and try our setting.</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/" data-id="clr8lqko20006lbpx6us50zgt" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AWS/" rel="tag">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/CDK/" rel="tag">CDK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Cloud-Development-Kit/" rel="tag">Cloud Development Kit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/serverless/" rel="tag">serverless</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Hardhat - Solidity and NFT - Part 1 - Prepare project"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Hardhat - Solidity and NFT - Part 1 - Prepare project</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Facebook Pixel and Facebook Conversions API"
+        >
+          <span class="article-nav-title truncate">Facebook Pixel and Facebook Conversions API</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

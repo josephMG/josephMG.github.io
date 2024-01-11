@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="Last year, I got a case to use firebase and firestore with Next.js. I’ve been fullstack many years, so I haven’t tried to use firebase and firestore. There was a great chance to give it a try. In this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker">
+<meta property="og:url" content="https://josephmg.github.io/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="Last year, I got a case to use firebase and firestore with Next.js. I’ve been fullstack many years, so I haven’t tried to use firebase and firestore. There was a great chance to give it a try. In this">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/banner.png">
+<meta property="article:published_time" content="2023-01-28T14:06:20.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.627Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="serverless">
+<meta property="article:tag" content="Next.js">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="firebase">
+<meta property="article:tag" content="firestore">
+<meta property="article:tag" content="DevOps">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/banner.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Using-Firebase-and-Firestore-in-NextJS-part-1" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/banner.png" rel="gallery_clr8lqkoq001klbpx8zzvfa1i">
+        <img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/banner.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2023-01-28T14:06:20.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Jan 28, 2023</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>Last year, I got a case to use <a target="_blank" rel="noopener" href="https://firebase.google.com/">firebase</a> and <a target="_blank" rel="noopener" href="https://firebase.google.com/docs/firestore">firestore</a> with Next.js. I’ve been fullstack many years, so I haven’t tried to use firebase and firestore. There was a great chance to give it a try.</p>
+<p>In this article I’ll show how to use firebase and firestore in <a target="_blank" rel="noopener" href="https://www.docker.com/">Docker</a> and <a target="_blank" rel="noopener" href="https://nextjs.org/">Next.js</a>. If you don’t have backend support, or you don’t want to build whole backend, database, and infrastructure, you would probably think this is a useful way.</p>
+<span id="more"></span>
+
+<h1><span id="toc">TOC</span><a href="#toc" class="header-anchor">#</a></h1><div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#create-a-firebase-project">Create a firebase project</a></li>
+<li><a href="#add-firebase-to-docker-compose">Add firebase to docker-compose</a></li>
+</ul>
+<!-- tocstop -->
+
+</div>
+
+<h3><span id="create-a-firebase-project">Create a firebase project</span><a href="#create-a-firebase-project" class="header-anchor">#</a></h3><p>Let’s start it. Go to <a target="_blank" rel="noopener" href="https://console.firebase.google.com/?pli=1">firebase console</a> and follow the step to create a new project.<br><img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/create-project-step1.png" alt="create project step 1"></p>
+<blockquote>
+<p>It is just for demo, so I uncheck google analytics in step 2.</p>
+</blockquote>
+<p>A few minutes later, it shows you the firebase console. Next we have to add <code>firebase</code> to webapp by clicking the button.<br><img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/firebase-console.jpg" alt="add firebase to webapp"></p>
+<p>We just need to focus on Step 1 and Step 4 in the following image, because we step 2 config you can get it from project setting again and step 3 we will use docker later.<br><img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/create-firebase-app.jpg" alt="create firebase app"></p>
+<blockquote>
+<p>step 4 commands:</p>
+<ul>
+<li>firebase login</li>
+<li>firebase init</li>
+<li>firebase deploy</li>
+</ul>
+</blockquote>
+<p>After creating firebase app, we have to create firestore database for our app (we use <code>test-mode</code> and locale use <code>asia-east1</code>):<br><img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/create-firestore.jpg" alt="create-firestore"></p>
+<p>Cool, but in this article we won’t show how to create a nextjs project and setup docker-compose, you can find it in <a href="https://josephmg.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/#project-initiation" title target="_blank">my previous blog</a>. Then, let’s add firebase docker to docker-compose.</p>
+<h3><span id="add-firebase-to-docker-compose">Add firebase to docker-compose</span><a href="#add-firebase-to-docker-compose" class="header-anchor">#</a></h3><p>Instead of <code>npm install -g firebase-tools</code>, we use docker-compose. The following code shows how to integrate firebase-tools to docker-compose.</p>
+<blockquote>
+<p>See also: <a target="_blank" rel="noopener" href="https://hub.docker.com/r/andreysenov/firebase-tools">https://hub.docker.com/r/andreysenov/firebase-tools</a></p>
+</blockquote>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./app:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./app/node_modules:/app/node_modules</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">sh</span> <span class="string">-c</span> <span class="string">&#x27;npm start&#x27;</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">stdin_open:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">firebase:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">firebase</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">andreysenov/firebase-tools</span></span><br><span class="line">    <span class="attr">user:</span> <span class="string">node</span></span><br><span class="line">    <span class="comment">#command: firebase emulators:start</span></span><br><span class="line">    <span class="string">command:·tail·-f·/dev/null</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9005</span><span class="string">:9005</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9099</span><span class="string">:9099</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9199</span><span class="string">:9199</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5001</span><span class="string">:5001</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">5000</span><span class="string">:5000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8085</span><span class="string">:8085</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9000</span><span class="string">:9000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">3003</span><span class="string">:3003</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">4000</span><span class="string">:4000</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./:/home/node</span></span><br></pre></td></tr></table></figure>
+
+<p>Look at our file structure:<br><img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/project-structure.png" alt="project-structure"></p>
+<blockquote>
+<p>You can type <code>docker-compose build</code> to build docker container now.<br>And don’t forget to install npm into <code>app</code>: <code>docker-compose run --rm frontend npm install</code></p>
+</blockquote>
+<blockquote>
+<p>Before we firebase login and firebase init, use <code>command: tail -f /dev/null</code>.<br>Once we have <code>firebase.json</code> we can use <code>command: firebase emulators:start</code>.</p>
+</blockquote>
+<p>Okay, after <code>docker-compose up</code>, try to use <code>firebase-tool</code> to login first:</p>
+<blockquote>
+<p><code>docker-compose exec firebase firebase login</code><br><code>docker-compose exec firebase firebase init</code></p>
+</blockquote>
+<p><img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/firebase-init.png" alt="firebase-init"></p>
+<blockquote>
+<p>If you get this message: <strong>Error: It looks like you haven’t used Cloud Firestore in this project before.</strong><br>Please check your <strong>Default GCP resource location</strong> in <code>Project Setting</code>.</p>
+</blockquote>
+<p>By the way, notice these two questions:</p>
+<ol>
+<li>? What do you want to use as your public directory? <code>app/build</code></li>
+<li>? Configure as a single-page app (rewrite all urls to &#x2F;index.html)? <code>Yes</code></li>
+</ol>
+<p>It’s almost done. We have to add <code>host: 0.0.0.0</code> to each service of <strong>emulators</strong> in <code>firebase.json</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&quot;firestore&quot;: &#123;</span><br><span class="line">  &quot;host&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">  &quot;port&quot;: 8080</span><br><span class="line">&#125;,</span><br><span class="line">&quot;database&quot;: &#123;</span><br><span class="line">  &quot;host&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">  &quot;port&quot;: 9000</span><br><span class="line">&#125;,</span><br><span class="line">&quot;hosting&quot;: &#123;</span><br><span class="line">  &quot;host&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">  &quot;port&quot;: 5000</span><br><span class="line">&#125;,</span><br><span class="line">&quot;storage&quot;: &#123;</span><br><span class="line">  &quot;host&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">  &quot;port&quot;: 9199</span><br><span class="line">&#125;,</span><br><span class="line">&quot;ui&quot;: &#123;</span><br><span class="line">  &quot;enabled&quot;: true,</span><br><span class="line">  &quot;host&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">  &quot;port&quot;: 4000</span><br><span class="line">&#125;,</span><br><span class="line">&quot;singleProjectMode&quot;: true</span><br></pre></td></tr></table></figure>
+
+<p>Time to comment and uncomment our <code>command</code> part in <code>docker-compose.yml</code>, and restart <code>docker-compose up</code>.<br>Yeah! After clicking <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>, we’ll see the result!</p>
+<p><img src="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/result.png" alt="result"></p>
+<p>Okay! Firebase is ready for our project. Next artile we will demostrate how to use firebase with Next.js!</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/" data-id="clr8lqkoq001klbpx8zzvfa1i" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DevOps/" rel="tag">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Next-js/" rel="tag">Next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/firebase/" rel="tag">firebase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/firestore/" rel="tag">firestore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/serverless/" rel="tag">serverless</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Upgrade hexo and hexo-theme-materialize"
+        >
+          <span class="article-nav-title truncate">Upgrade hexo and hexo-theme-materialize</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Side project] KinectV2 applications migrates to OpenPose | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="經過了三個多月的努力，終於完成了偵測器的轉換。會有這次的side project是因為剛好看到OpenPose這套人體姿態辨識的AI函數庫，只要用單單一個RGB camera就可以偵測出人的動作，這讓我想到以前解決Asus xtion pro停產的問題，就是要轉換轉換Asus xtion到KinectV2。現在KinectV2雖已停產，但網路上還是可以透過各種管道買到KinectV2，我就想趁這機">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Side project] KinectV2 applications migrates to OpenPose">
+<meta property="og:url" content="https://josephmg.github.io/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="經過了三個多月的努力，終於完成了偵測器的轉換。會有這次的side project是因為剛好看到OpenPose這套人體姿態辨識的AI函數庫，只要用單單一個RGB camera就可以偵測出人的動作，這讓我想到以前解決Asus xtion pro停產的問題，就是要轉換轉換Asus xtion到KinectV2。現在KinectV2雖已停產，但網路上還是可以透過各種管道買到KinectV2，我就想趁這機">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/CMU-Perceptual-Computing-Lab/openpose/master/.github/Logo_main_black.png">
+<meta property="og:image" content="https://josephmg.github.io/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/flowchart.png">
+<meta property="article:published_time" content="2020-12-17T04:22:31.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.559Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="OpenPose">
+<meta property="article:tag" content="KinectV2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/CMU-Perceptual-Computing-Lab/openpose/master/.github/Logo_main_black.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Side-project-KinectV2-applications-migrates-to-OpenPose" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Side project] KinectV2 applications migrates to OpenPose
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2020-12-17T04:22:31.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Dec 17, 2020</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p><img src="https://raw.githubusercontent.com/CMU-Perceptual-Computing-Lab/openpose/master/.github/Logo_main_black.png" alt="OpenPose"><br>經過了三個多月的努力，終於完成了偵測器的轉換。<br>會有這次的side project是因為剛好看到OpenPose這套人體姿態辨識的AI函數庫，只要用單單一個RGB camera就可以偵測出人的動作，這讓我想到以前解決Asus xtion pro停產的問題，就是要轉換轉換Asus xtion到KinectV2。現在KinectV2雖已停產，但網路上還是可以透過各種管道買到KinectV2，我就想趁這機會把KinectV2轉換到OpenPose試試看，看未來是不是只要一個RGB camera，就不用再擔心KinectV2真的買不到的問題了。</p>
+<p>OpenPose: <a target="_blank" rel="noopener" href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">CMU-Perceptual-Computing-Lab &#x2F; openpose</a></p>
+<span id="more"></span>
+
+<p>他在安裝上還是有一些環境的限制，實際可以參考<a target="_blank" rel="noopener" href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation/README.md#operating-systems-requirements-and-dependencies">這裡</a>，才不會鬼打牆太久。</p>
+<p>接下來我就來分享一下轉換的方法。一張圖道盡前言萬語。<br><img src="/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/flowchart.png" alt="flowchart"></p>
+<p>Code是不能講得太明白，不過應該流程圖就能推知一二。最難的就是Transform這一層，要把OpenPose的座標空間跟KinectV2做對應，才能在進入程式時順利進行。以前KinectV2轉xtion OpenNI的時候根本是悲劇，那時候又用了一個不再繼續維護的套件ZigFu，整個包得死死的，所有資料型態跟資料結構都要自己去猜。還好從那之中學到很多，這次的轉換才能順利一點。</p>
+<p>另外Transform這一層還可以做很多應用，包含過濾特定物件、物件取代、或特定的辨識，甚至是之後有更好更快的演算法，都可以在這一層做調整跟測試。中間有一些商業機密不太能公開，不過如果有類似問題歡迎私訊，我們很樂於分享我們的經驗。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/" data-id="clr8lqkol0013lbpxc3f2ef5k" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/KinectV2/" rel="tag">KinectV2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/OpenPose/" rel="tag">OpenPose</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Ruby on Jets - AWS serverless framework for Ruby on Rails"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Ruby on Jets - AWS serverless framework for Ruby on Rails</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[TIL] New service sharing: Hex.tech"
+        >
+          <span class="article-nav-title truncate">[TIL] New service sharing: Hex.tech</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

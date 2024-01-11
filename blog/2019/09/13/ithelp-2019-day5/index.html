@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 5] Google Vision AI - 子系列最終章 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="今天是Google Vision AI這子系列最後一章節，我們今天要來講Vision AI的Auto ML Vision。我玩的是GCP上面的UI介面，側邊欄打開找到Vision點進去就可以看到了:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 5] Google Vision AI - 子系列最終章">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="今天是Google Vision AI這子系列最後一章節，我們今天要來講Vision AI的Auto ML Vision。我玩的是GCP上面的UI介面，側邊欄打開找到Vision點進去就可以看到了:">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/AutoML-Vision.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/create-dataset.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/import.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/catogory.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/select-region.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/traing-failed.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/export.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/download_csv.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/csv.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/training-start.jpg">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/training.jpg">
+<meta property="article:published_time" content="2019-09-13T07:29:25.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.783Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Vision AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/AutoML-Vision.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day5" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 5] Google Vision AI - 子系列最終章
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-13T07:29:25.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 13, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>今天是Google Vision AI這子系列最後一章節，我們今天要來講Vision AI的<a target="_blank" rel="noopener" href="https://cloud.google.com/vision/automl/docs/">Auto ML Vision</a>。我玩的是GCP上面的UI介面，側邊欄打開找到<strong>Vision</strong>點進去就可以看到了:<br><img src="/blog/2019/09/13/ithelp-2019-day5/AutoML-Vision.jpg" alt="AutoML-Vision.jpg"></p>
+<span id="more"></span>
+
+<p>我選擇的是AutoML物件偵測，然後先建立一個資料集：<br><img src="/blog/2019/09/13/ithelp-2019-day5/create-dataset.jpg" alt="create-dataset.jpg"></p>
+<p>然後我在<a target="_blank" rel="noopener" href="https://www.kaggle.com/chetankv/dogs-cats-images/downloads/dogs-cats-images.zip/1">Kaggle</a>下載貓跟狗的dataset，準備匯入AutoML裡。進到Dateset以後選擇匯入、選擇圖片、然後選Google Cloud Storage Bucket，就可以繼續啦。<br><img src="/blog/2019/09/13/ithelp-2019-day5/import.jpg" alt="import.jpg"><br>然後要建立一陣子映像檔案………………………</p>
+<p>然後，先建立兩個標籤: Dog, Cat，<br><img src="/blog/2019/09/13/ithelp-2019-day5/catogory.jpg" alt="catogory.jpg"><br>接著一張一張開始分類：<br><img src="/blog/2019/09/13/ithelp-2019-day5/select-region.jpg" alt="select-region.jpg"></p>
+<p>但這邊我分類了一陣子以後，跑訓練依然會失敗，至今不確定是不是操作上的問題，先上圖讓我再來研究一番…<br><img src="/blog/2019/09/13/ithelp-2019-day5/traing-failed.jpg" alt="traing-failed.jpg"></p>
+<hr>
+<p>玩了一陣子以後，找到了一個暫時的解法：</p>
+<ol>
+<li><p>先把分類好的匯出CSV，<br><img src="/blog/2019/09/13/ithelp-2019-day5/export.jpg" alt="export.jpg"></p>
+</li>
+<li><p>去Google Cloud Storage下載，<br><img src="/blog/2019/09/13/ithelp-2019-day5/download_csv.jpg" alt="download_csv.jpg"></p>
+</li>
+<li><p>然後去手動調整SET成8:1:1的training, test, validation set，奇怪的是分類的時候無法選擇，讓人很困擾。<br><img src="/blog/2019/09/13/ithelp-2019-day5/csv.jpg" alt="csv.jpg"></p>
+</li>
+<li><p>開始訓練~~<br><img src="/blog/2019/09/13/ithelp-2019-day5/training-start.jpg" alt="training-start.jpg"><br><img src="/blog/2019/09/13/ithelp-2019-day5/training.jpg" alt="training.jpg"></p>
+</li>
+</ol>
+<p>萬事起頭難之終於開始訓練了，訓練好壞就不是這邊的重點，好壞之後再繼續摸索。<br>Vision AI就先到這邊結束，明天來玩Video AI囉~。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/13/ithelp-2019-day5/" data-id="clr8lqkpe0048lbpxbepyguci" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Vision-AI/" rel="tag">Vision AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/14/ithelp-2019-day6/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 6] Google Video Intelligence AI - 1"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 6] Google Video Intelligence AI - 1</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/12/ithelp-2019-day4/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 4] Google Vision AI - 3"
+        >
+          <span class="article-nav-title truncate">[Day 4] Google Vision AI - 3</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

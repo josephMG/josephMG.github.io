@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://josephMG.github.io/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2021/09/22/%E8%A8%AD%E5%AE%9AGoogle-Analytics-4-Google-Tag-Manager%E8%BF%BD%E8%B9%A4user-id/</loc>
+        <lastmod>2024-01-11T02:39:46.855Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2020/02/14/%E5%93%81%E7%89%8Cinstagram%E6%88%90%E7%82%BA%E4%BA%BA%E6%B0%A3%E7%8E%8B%E7%9A%84%E7%B6%93%E7%87%9F%E6%96%B9%E6%B3%95/</loc>
+        <lastmod>2024-01-11T02:39:46.851Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/11/13/tianmu-halloween/</loc>
+        <lastmod>2024-01-11T02:39:46.823Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/25/shopee-advertisement-advanced/</loc>
+        <lastmod>2024-01-11T02:39:46.815Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/19/shopee-advertisement-setting/</loc>
+        <lastmod>2024-01-11T02:39:46.815Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2020/04/09/set-godaddy-domain-and-build-hugo-on-gitlab-pages/</loc>
+        <lastmod>2024-01-11T02:39:46.807Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/15/ithelp-2019-day7/</loc>
+        <lastmod>2024-01-11T02:39:46.799Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/16/ithelp-2019-day8/</loc>
+        <lastmod>2024-01-11T02:39:46.799Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/17/ithelp-2019-day9/</loc>
+        <lastmod>2024-01-11T02:39:46.799Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/14/ithelp-2019-day6/</loc>
+        <lastmod>2024-01-11T02:39:46.795Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/13/ithelp-2019-day5/</loc>
+        <lastmod>2024-01-11T02:39:46.783Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/08/ithelp-2019-day30/</loc>
+        <lastmod>2024-01-11T02:39:46.779Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/12/ithelp-2019-day4/</loc>
+        <lastmod>2024-01-11T02:39:46.779Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/11/ithelp-2019-day3/</loc>
+        <lastmod>2024-01-11T02:39:46.775Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/07/ithelp-2019-day29/</loc>
+        <lastmod>2024-01-11T02:39:46.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/06/ithelp-2019-day28/</loc>
+        <lastmod>2024-01-11T02:39:46.763Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/05/ithelp-2019-day27/</loc>
+        <lastmod>2024-01-11T02:39:46.755Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/03/ithelp-2019-day25/</loc>
+        <lastmod>2024-01-11T02:39:46.743Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/04/ithelp-2019-day26/</loc>
+        <lastmod>2024-01-11T02:39:46.743Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/01/ithelp-2019-day23/</loc>
+        <lastmod>2024-01-11T02:39:46.735Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/30/ithelp-2019-day22/</loc>
+        <lastmod>2024-01-11T02:39:46.735Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/10/02/ithelp-2019-day24/</loc>
+        <lastmod>2024-01-11T02:39:46.735Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/28/ithelp-2019-day20/</loc>
+        <lastmod>2024-01-11T02:39:46.731Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/29/ithelp-2019-day21/</loc>
+        <lastmod>2024-01-11T02:39:46.731Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/27/ithelp-2019-day19/</loc>
+        <lastmod>2024-01-11T02:39:46.727Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/10/ithelp-2019-day2/</loc>
+        <lastmod>2024-01-11T02:39:46.727Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/26/ithelp-2019-day18/</loc>
+        <lastmod>2024-01-11T02:39:46.723Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/25/ithelp-2019-day17/</loc>
+        <lastmod>2024-01-11T02:39:46.715Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/23/ithelp-2019-day15/</loc>
+        <lastmod>2024-01-11T02:39:46.711Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/24/ithelp-2019-day16/</loc>
+        <lastmod>2024-01-11T02:39:46.711Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/22/ithelp-2019-day14/</loc>
+        <lastmod>2024-01-11T02:39:46.707Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/21/ithelp-2019-day13/</loc>
+        <lastmod>2024-01-11T02:39:46.695Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/20/ithelp-2019-day12/</loc>
+        <lastmod>2024-01-11T02:39:46.691Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/19/ithelp-2019-day11/</loc>
+        <lastmod>2024-01-11T02:39:46.687Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/09/ithelp-2019-day1/</loc>
+        <lastmod>2024-01-11T02:39:46.683Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/09/18/ithelp-2019-day10/</loc>
+        <lastmod>2024-01-11T02:39:46.683Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2019/11/14/google-https-load-balancer-and-docker-nginx/</loc>
+        <lastmod>2024-01-11T02:39:46.675Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/architecture.jpg</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2020/02/13/centos-8-install-docker-and-docker-compose/</loc>
+        <lastmod>2024-01-11T02:39:46.667Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/</loc>
+        <lastmod>2024-01-11T02:39:46.635Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/banner.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/</loc>
+        <lastmod>2024-01-11T02:39:46.627Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/banner.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2023/03/20/Use-ChatGPT-translate-new-react-dev-doc/</loc>
+        <lastmod>2024-01-11T02:39:46.567Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/banner.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2020/12/10/TIL-New-service-sharing-Hex-tech/</loc>
+        <lastmod>2024-01-11T02:39:46.563Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2020/09/14/Take-a-break-and-review-this-year/</loc>
+        <lastmod>2024-01-11T02:39:46.563Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/</loc>
+        <lastmod>2024-01-11T02:39:46.563Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/banner.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2020/12/17/Side-project-KinectV2-applications-migrates-to-OpenPose/</loc>
+        <lastmod>2024-01-11T02:39:46.559Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2021/09/07/Ruby-on-Jets-AWS-serverless-framework-for-Ruby-on-Rails/</loc>
+        <lastmod>2024-01-11T02:39:46.551Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/jets-logo.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/</loc>
+        <lastmod>2024-01-11T02:39:46.547Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/banner.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2023/05/21/I18n-in-NextJS-13-app-dir/</loc>
+        <lastmod>2024-01-11T02:39:46.547Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/</loc>
+        <lastmod>2024-01-11T02:39:46.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.jpg</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/</loc>
+        <lastmod>2024-01-11T02:39:46.523Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.jpg</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2024/01/11/Google-Ads%E6%90%9C%E5%B0%8B%E9%97%9C%E9%8D%B5%E5%AD%97%E5%BB%A3%E5%91%8A%E8%A8%AD%E5%AE%9A/</loc>
+        <lastmod>2024-01-11T02:39:46.515Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2023/12/17/Google-Ads-account-setting/</loc>
+        <lastmod>2024-01-11T02:39:46.507Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/</loc>
+        <lastmod>2024-01-11T02:39:46.495Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/</loc>
+        <lastmod>2024-01-11T02:39:46.491Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/</loc>
+        <lastmod>2024-01-11T02:39:46.487Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/</loc>
+        <lastmod>2024-01-11T02:39:46.483Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/</loc>
+        <lastmod>2024-01-11T02:39:46.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/</loc>
+        <lastmod>2024-01-11T02:39:46.479Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+        <image:image>
+
+            <image:loc>https://josephMG.github.io/logo.png</image:loc>
+
+        </image:image>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2024/01/01/2023-recap/</loc>
+        <lastmod>2024-01-11T02:39:46.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://josephMG.github.io/blog/2024/01/02/A-powerful-react-hook-useSyncExternalStore/</loc>
+        <lastmod>2024-01-11T02:39:46.475Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->

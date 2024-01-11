@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Upgrade hexo and hexo-theme-materialize | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="終於在年節時間把這個部落格升級到Hexo 6.2了！2019年建立這個部落格那時候還是用Hexo 4，前年曾經升級到Hexo 5，並且嘗試把hexo-theme-materialize一起升級到v4，不料這次theme升級幅度有點大，hexo-theme-materialize v4他們把Stylus都給改成scss，還改成了webpack，升級沒這麼順利，所以當時就只有先把Hexo從4升級到5.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Upgrade hexo and hexo-theme-materialize">
+<meta property="og:url" content="https://josephmg.github.io/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="終於在年節時間把這個部落格升級到Hexo 6.2了！2019年建立這個部落格那時候還是用Hexo 4，前年曾經升級到Hexo 5，並且嘗試把hexo-theme-materialize一起升級到v4，不料這次theme升級幅度有點大，hexo-theme-materialize v4他們把Stylus都給改成scss，還改成了webpack，升級沒這麼順利，所以當時就只有先把Hexo從4升級到5.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/banner.png">
+<meta property="article:published_time" content="2023-01-23T16:47:08.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.563Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Marketing">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/banner.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Upgrade-hexo-and-hexo-theme-materialize" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/banner.png" rel="gallery_clr8lqkoo001clbpxghqy2swq">
+        <img src="/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/banner.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Upgrade hexo and hexo-theme-materialize
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2023-01-23T16:47:08.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Jan 23, 2023</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>終於在年節時間把這個部落格升級到Hexo 6.2了！2019年建立這個部落格那時候還是用Hexo 4，前年曾經升級到Hexo 5，並且嘗試把<a target="_blank" rel="noopener" href="https://github.com/carlos-algms/hexo-theme-materialize">hexo-theme-materialize</a>一起升級到v4，不料這次theme升級幅度有點大，hexo-theme-materialize v4他們把<a target="_blank" rel="noopener" href="https://stylus-lang.com/">Stylus</a>都給改成scss，還改成了webpack，升級沒這麼順利，所以當時就只有先把Hexo從4升級到5.2。這次九天連假，前兩天就把動畫追完，後面只好把之前欠的補一補了。</p>
+<span id="more"></span>
+
+<h3><span id="shi-qian-zhun-bei">事前準備</span><a href="#shi-qian-zhun-bei" class="header-anchor">#</a></h3><p>首先我們來看看Hexo版本之間的差異</p>
+<table>
+<thead>
+<tr>
+<th>Hexo version</th>
+<th>Minimum (Node.js version)</th>
+<th>Less than (Node.js version)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6.2+</td>
+<td>12.13.0</td>
+<td>latest</td>
+</tr>
+<tr>
+<td>6.0+</td>
+<td>12.13.0</td>
+<td>18.5.0</td>
+</tr>
+<tr>
+<td>5.0+</td>
+<td>10.13.0</td>
+<td>12.0.0</td>
+</tr>
+<tr>
+<td>4.1 - 4.2</td>
+<td>8.10</td>
+<td>10.0.0</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>8.6</td>
+<td>8.10.0</td>
+</tr>
+</tbody></table>
+<p>升級到6.2至少要NodeJs 12.13，還好都是跑在docker裡面，這邊只要改寫Dockerfile即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FROM node:18-alpine</span><br><span class="line"></span><br><span class="line">COPY hexo /blog</span><br><span class="line">WORKDIR /blog</span><br><span class="line"></span><br><span class="line">RUN echo &quot;http://dl-cdn.alpinelinux.org/alpine/edge/testing&quot; &gt;&gt; /etc/apk/repositories</span><br><span class="line"></span><br><span class="line">RUN apk add --update --no-cache git</span><br><span class="line">RUN npm config set unsafe-perm true \</span><br><span class="line">        &amp;&amp; npm install hexo-cli -g \</span><br><span class="line">  &amp;&amp; npm install</span><br><span class="line"></span><br><span class="line">EXPOSE 4000</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;hexo&quot;, &quot;server&quot;]</span><br></pre></td></tr></table></figure>
+
+<h3><span id="kai-shi-sheng-ji">開始升級！</span><a href="#kai-shi-sheng-ji" class="header-anchor">#</a></h3><p>基礎架設搞定以後呢，就可以開始把所有的package.json都更新上去：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hexo-site&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;private&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;6.3.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-asset-link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-deployer-git&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-archive&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-seo-friendly-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.2.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-ejs&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-markdown-it&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-marked&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^6.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-renderer-stylus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;hexo-tag-cloud&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.1.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-abbr&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-checkbox&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-container&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-deflist&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-emoji&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-footnote&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-imsize&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-ins&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-mark&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-regexp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-sub&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-sup&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;markdown-it-task-checkbox&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.6&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我們比對一下可以發現都是滿大版號的跳動：<br><img src="/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/package.png" alt="package.json"></p>
+<p>然後 <code>_config.yml</code>裡有個針對<code>external_link</code>的修正，原先他是吃<code>true|false</code>，現在要改成下面這樣</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">external_link:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+<p>除此之外，這次我還安裝了<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>，讓他去處理post assets路徑的問題，更詳細的討論可以看<a target="_blank" rel="noopener" href="https://hexo.io/docs/asset-folders#Embedding-an-image-using-markdown">這裡</a>，</p>
+<blockquote>
+<p>Once enabled, an asset image will be automatically resolved to its corresponding post’s path. For example, “image.jpg” is located at “&#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F;image.jpg”, meaning it is an asset image of “&#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F;“ post, <code>![](image.jpg)</code> will be rendered as <code>&lt;img src=&quot;/2020/01/02/foo/image.jpg&quot;&gt;</code>.</p>
+</blockquote>
+<p>為此，對於<code>_config.yml</code>要增加</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span> <span class="comment">#這可能之前有，有的話就去修改它 </span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>到此為止，Hexo 6.2算是升級完成了。緊接著是對於theme的升級步驟。</p>
+<h3><span id="theme-hexo-theme-materialize">Theme: hexo-theme-materialize</span><a href="#theme-hexo-theme-materialize" class="header-anchor">#</a></h3><p>大部分人都用 <a target="_blank" rel="noopener" href="https://theme-next.js.org/">NexT theme</a>，但我跟他還是沒那麼對眼，所以我一直都是用<a target="_blank" rel="noopener" href="https://github.com/carlos-algms/hexo-theme-materialize">hexo-theme-materialize</a>，我們就直接clone他到theme folder裡。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/carlos-algms/hexo-theme-materialize themes/materialize</span><br></pre></td></tr></table></figure>
+
+<p>但我的部落格有sidebar跟categories，這些都要把他們加進去，就先來處理categories吧。先在<code>themes/materialize/layout</code>底下，增加一個<code>categories.ejs</code></p>
+<h5><span id="add-categories">Add categories</span><a href="#add-categories" class="header-anchor">#</a></h5><p><strong>themes&#x2F;materialize&#x2F;layout&#x2F;categories.ejs</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="keyword">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col s12 m9&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">&quot;article-header&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;article-title&quot;</span> <span class="attr">itemprop</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &lt;%= page.title %&gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">      &lt;% if (site.categories.length)&#123; %&gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;category-all-page article-type-post show&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &lt;%- list_categories(site.categories, &#123;</span></span><br><span class="line"><span class="language-xml">          show_count: true,</span></span><br><span class="line"><span class="language-xml">          class: &#x27;category-list-item&#x27;,</span></span><br><span class="line"><span class="language-xml">          style: &#x27;list&#x27;,</span></span><br><span class="line"><span class="language-xml">          depth: 2,</span></span><br><span class="line"><span class="language-xml">          separator: &#x27;&#x27;</span></span><br><span class="line"><span class="language-xml">        &#125;) %&gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &lt;% &#125; %&gt;</span></span><br><span class="line"><span class="language-xml">      &lt;% if ( is_tag() ) &#123; %&gt;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;header color-featured&quot;</span>&gt;</span>Tag: &lt;%- page.tag %&gt;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &lt;% &#125; %&gt;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col s12 m3&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &lt;% if (theme.sidebar &amp;&amp; theme.sidebar !== &#x27;bottom&#x27;)&#123; %&gt;</span></span><br><span class="line"><span class="language-xml">        &lt;%- partial(&#x27;_partial/sidebar&#x27;, null, &#123;cache: !config.relative_link&#125;) %&gt;</span></span><br><span class="line"><span class="language-xml">      &lt;% &#125; %&gt;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>然後還缺少CSS:</p>
+<p><strong>themes&#x2F;materialize&#x2F;src&#x2F;styles&#x2F;_partial&#x2F;categories.scss</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.category-all-page</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">h2</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-title</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all</span> &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-list</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-list-item-list-item</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">15px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-list-item-list-count</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: $color-grey;</span><br><span class="line">    &amp;<span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline;</span><br><span class="line">      <span class="attribute">content</span>: <span class="string">&quot; (&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &amp;<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline;</span><br><span class="line">      <span class="attribute">content</span>: <span class="string">&quot;) &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-list-item</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-list-count</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: $color-grey;</span><br><span class="line">    &amp;<span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline;</span><br><span class="line">      <span class="attribute">content</span>: <span class="string">&quot; (&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: inline;</span><br><span class="line">      <span class="attribute">content</span>: <span class="string">&quot;) &quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="selector-class">.category-list-child</span> &#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最後把這個partial加回去 <strong>themes&#x2F;materialize&#x2F;src&#x2F;styles&#x2F;style.css</strong>就好了</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// add it</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;_partial/categories&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h5><span id="add-sidebar">Add sidebar</span><a href="#add-sidebar" class="header-anchor">#</a></h5><p>然後我的sidebar呢？在每個想要有sidebar的layout裡，找到正確位置新增：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;col s12 m3&quot;&gt;</span><br><span class="line">  &lt;% if (theme.sidebar &amp;&amp; theme.sidebar !== &#x27;bottom&#x27;)&#123; %&gt;</span><br><span class="line">    &lt;%- partial(&#x27;_partial/sidebar&#x27;, null, &#123;cache: !config.relative_link&#125;) %&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>然後將sidebar.ejs partial layout加回來，<br><strong>themes&#x2F;materialize&#x2F;layout&#x2F;_partial&#x2F;sidebar.ejs</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;aside id=&quot;sidebar&quot;&lt;% if (theme.sidebar === &#x27;bottom&#x27;)&#123; %&gt; class=&quot;outer&quot;&lt;% &#125; %&gt;&gt;</span><br><span class="line">  &lt;% theme.widgets.forEach(function(widget)&#123; %&gt;</span><br><span class="line">    &lt;%- partial(&#x27;_widget/&#x27; + widget) %&gt;</span><br><span class="line">  &lt;% &#125;) %&gt;</span><br><span class="line">&lt;/aside&gt;</span><br></pre></td></tr></table></figure>
+
+<p>剩下這些partial widget，可以參考其他theme的設計，這邊檔案太多就不每個都show出來了。<br><img src="/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/widget.png" alt="widget"></p>
+<p>到此終於升級完整個hexo + theme，用了一個比較冷門的theme還真的是一個挑戰。<br>不過升級完的另一個挑戰，是年假還有好多天，要開始來補文章了….。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2023/01/23/Upgrade-hexo-and-hexo-theme-materialize/" data-id="clr8lqkoo001clbpxghqy2swq" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Marketing/" rel="tag">Marketing</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Blockchain fullstack structure - Part 4 - React.js and Next.js"
+        >
+          <span class="article-nav-title truncate">Blockchain fullstack structure - Part 4 - React.js and Next.js</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

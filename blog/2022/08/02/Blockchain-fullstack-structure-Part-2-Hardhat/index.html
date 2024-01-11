@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Blockchain fullstack structure - Part 2 - Hardhat | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="This is a series articles of Blockchain fullstack structure, please read Part 1 Introduction first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blockchain fullstack structure - Part 2 - Hardhat">
+<meta property="og:url" content="https://josephmg.github.io/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="This is a series articles of Blockchain fullstack structure, please read Part 1 Introduction first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/logo.png">
+<meta property="article:published_time" content="2022-08-02T16:31:26.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.483Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Reactjs">
+<meta property="article:tag" content="Blockchain">
+<meta property="article:tag" content="Fullstack">
+<meta property="article:tag" content="Solidity">
+<meta property="article:tag" content="Hardhat">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="Next.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/logo.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Blockchain-fullstack-structure-Part-2-Hardhat" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/logo.png" rel="gallery_clr8lqko40008lbpxawejcyre">
+        <img src="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/logo.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Blockchain fullstack structure - Part 2 - Hardhat
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2022-08-02T16:31:26.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Aug 02, 2022</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>This is a series articles of Blockchain fullstack structure, please read <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/" title="Blockchain fullstack structure - Part 1 - Introduction">Part 1 Introduction</a> first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article <a href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" title="Hardhat - Solidity and NFT - Part 1 - Prepare project">Hardhat Solidity NFT tutorial</a>.</p>
+<span id="more"></span>
+
+<h3><span id="project-structure">Project structure</span><a href="#project-structure" class="header-anchor">#</a></h3><p>Look my hardhat project structure first:<br><img src="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/project-structure.png" alt="project structure"></p>
+<p>Let’s check my Dockerfile:<br><strong>Dockerfile.dev</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">FROM node:16</span><br><span class="line"></span><br><span class="line">ENV APP_ROOT /app</span><br><span class="line"></span><br><span class="line">RUN mkdir $&#123;APP_ROOT&#125;</span><br><span class="line">WORKDIR $&#123;APP_ROOT&#125;</span><br><span class="line">ADD . $&#123;APP_ROOT&#125;</span><br><span class="line"></span><br><span class="line">RUN yarn install</span><br><span class="line">RUN yarn global add \</span><br><span class="line">  solhint \</span><br><span class="line">  solc \</span><br><span class="line">  eslint \</span><br><span class="line">  typescript</span><br><span class="line"></span><br><span class="line">EXPOSE 8545</span><br><span class="line"></span><br><span class="line">CMD [ &quot;yarn&quot;, &quot;dev&quot; ]</span><br></pre></td></tr></table></figure>
+
+<p><strong>docker-compose.yml</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="comment">####### Blockchain hardhat ##############</span></span><br><span class="line">  <span class="attr">hardhat:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">.:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./node_modules:/app/node_modules</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8545</span><span class="string">:8545</span></span><br></pre></td></tr></table></figure>
+<p>I expose <strong>8545</strong> port so that I can connect to hardhat by <strong><a target="_blank" rel="noopener" href="http://docker.for.mac.localhost:8545/">http://docker.for.mac.localhost:8545</a></strong> on my MacOS.</p>
+<p>And, as I mentioned in <a href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/" title="Blockchain fullstack structure - Part 1 - Introduction">previous post</a>, I use <code>hardhat-abi-exporter</code>, so I have to run <code>yarn</code> to install it.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> hardhat yarn add --dev hardhat-abi-exporter</span><br><span class="line"></span><br><span class="line"><span class="comment"># OR</span></span><br><span class="line"><span class="comment"># docker-compose run --rm hardhat yarn add --dev hardhat-abi-exporter</span></span><br></pre></td></tr></table></figure>
+
+<p>And I add <code>abiExporter</code> config to <code>hardhat.config.ts</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import other packages.......</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;hardhat-abi-exporter&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">config</span>: <span class="title class_">HardhatUserConfig</span> = &#123;</span><br><span class="line">    <span class="attr">solidity</span>: <span class="string">&quot;0.8.4&quot;</span>,</span><br><span class="line">    <span class="attr">defaultNetwork</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="attr">networks</span>: &#123;</span><br><span class="line">      ...</span><br><span class="line">      ...</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">abiExporter</span>: &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;./data/abi&#x27;</span>,</span><br><span class="line">      <span class="attr">runOnCompile</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">clear</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">flat</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">spacing</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="attr">format</span>: <span class="string">&#x27;json&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Because of this config, I can generate ABI by:</p>
+<blockquote>
+<p><code>docker-compose run --rm hardhat yarn run hardhat export-abi --no-compile</code></p>
+</blockquote>
+<p>Lastly, I use the simplest contract only <code>set</code> and <code>get</code> functions:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//SPDX-License-Identifier: Unlicense</span><br><span class="line">pragma solidity ^0.8.4;</span><br><span class="line"></span><br><span class="line">import &quot;hardhat/console.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract Greeter &#123;</span><br><span class="line">  string greeting;</span><br><span class="line"></span><br><span class="line">  constructor(string memory _greeting) &#123;</span><br><span class="line">    console.log(&quot;Deploying a Greeter with greeting:&quot;, _greeting);</span><br><span class="line">    greeting = _greeting;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function greet() public view returns (string memory) &#123;</span><br><span class="line">    console.log(&quot;greet function called &quot;);</span><br><span class="line">    console.log(&quot;------ %s&quot;, greeting);</span><br><span class="line">    return greeting;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function setGreeting(string memory _greeting) public &#123;</span><br><span class="line">    console.log(&quot;Changing greeting from &#x27;%s&#x27; to &#x27;%s&#x27;&quot;, greeting, _greeting);</span><br><span class="line">    console.log(&quot;sender: &quot;, msg.sender);</span><br><span class="line">    greeting = _greeting;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This contract just test the functions can be called from  backend and frontend. That’s quite enough.<br>The output is:<br><img src="/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/output.png" alt="output"></p>
+<h3><span id="references">References</span><a href="#references" class="header-anchor">#</a></h3><ul>
+<li>Github: <a target="_blank" rel="noopener" href="https://github.com/josephMG/dApp-hardhat">dApp-hardhat</a></li>
+<li>Hardhat docker example: <a target="_blank" rel="noopener" href="https://github.com/garethfuller/hardhat-template">Hardhat-template</a></li>
+</ul>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2022/08/02/Blockchain-fullstack-structure-Part-2-Hardhat/" data-id="clr8lqko40008lbpxawejcyre" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Fullstack/" rel="tag">Fullstack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Golang/" rel="tag">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Next-js/" rel="tag">Next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Reactjs/" rel="tag">Reactjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2022/08/07/Blockchain-fullstack-structure-Part-3-Golang-Gin/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Blockchain fullstack structure - Part 3 - Golang Gin"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Blockchain fullstack structure - Part 3 - Golang Gin</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2022/07/31/Blockchain-fullstack-structure-Part-1-Introduction/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Blockchain fullstack structure - Part 1 - Introduction"
+        >
+          <span class="article-nav-title truncate">Blockchain fullstack structure - Part 1 - Introduction</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

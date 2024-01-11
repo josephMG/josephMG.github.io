@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 1] 說說哪裡來的靈感 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="這系列的第一篇文章，來自於再解一個無窮無盡SSR的bug的時間。去年的鐵人賽文章跟著Google學ML 生不逢時，晚一年出生就可以趕上這波主題賽，今年看到這主題後，努力思考到底可以產出些什麼？上網找了各式各樣的靈感，後來決定介紹一系列的Google AI &amp; Machine learning products。獻醜了，這些都是我沒用過的服務，但這也是我參加鐵人賽最主要的目的：練功+卯起來學">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 1] 說說哪裡來的靈感">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/09/ithelp-2019-day1/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="這系列的第一篇文章，來自於再解一個無窮無盡SSR的bug的時間。去年的鐵人賽文章跟著Google學ML 生不逢時，晚一年出生就可以趕上這波主題賽，今年看到這主題後，努力思考到底可以產出些什麼？上網找了各式各樣的靈感，後來決定介紹一系列的Google AI &amp; Machine learning products。獻醜了，這些都是我沒用過的服務，但這也是我參加鐵人賽最主要的目的：練功+卯起來學">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-09-09T07:29:15.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.683Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="AI &amp; ML products">
+<meta property="article:tag" content="鐵人賽">
+<meta name="twitter:card" content="summary">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day1" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 1] 說說哪裡來的靈感
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-09T07:29:15.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 09, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>這系列的第一篇文章，來自於再解一個無窮無盡SSR的bug的時間。<br>去年的鐵人賽文章<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20103835/ironman/1806">跟著Google學ML</a> 生不逢時，晚一年出生就可以趕上這波主題賽，今年看到這主題後，努力思考到底可以產出些什麼？上網找了各式各樣的靈感，後來決定介紹一系列的<a target="_blank" rel="noopener" href="https://cloud.google.com/products/#ai-and-machine-learning">Google AI &amp; Machine learning products</a>。獻醜了，這些都是我沒用過的服務，但這也是我參加鐵人賽最主要的目的：練功+卯起來學新知識。</p>
+<p>這裡面的服務這麼多，有可能一一介紹嗎？我也不確定，但確定的是一定會有下面幾個服務：</p>
+<span id="more"></span>
+
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/vision/">Vision AI</a><br>探索某張圖裡有哪些秘密，包含文字、情緒等等，可以透過AutoML Vision加以訓練，也可以透過Vision API使用Google預先訓練好的Model。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/video-intelligence/">Video AI</a><br>一張圖可以透過Vision AI分析，一個影片一秒好多張圖，我們可以選擇Video AI這個強大的工具。除了可以用一般預先訓練好的Video intelligence API外，也可以AutoML去做一些客製化的Model訓練你的Video。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/">Natural Language</a><br>自然語言的分析，投入一段文字，他可以分析出文字的內容(人、事件、地點等等)，結合Google Cloud Storage還能替我們分析GCS內的文件，是一套處理語意分析很好的工具。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/translate/">Translation</a><br>這一套工具大家一定不陌生，Google翻譯，不過他竟然是一個AI &amp; ML products，讓我更想了解他成為一個產品後，真正強大的功能是什麼‧</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/text-to-speech/">Cloud Text-to-Speech</a><br>文字轉語音，可以把一段文字用橫跨30多種語言的180種聲音唸出來給你聽，應該可以來玩一下怎麼用，或者寫文章的過程看看能不能發現其他組合。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/speech-to-text/">Cloud Speech-to-Text</a><br>語音轉文字，就是上面那個服務的顛倒，據說可以分析120種語言的對話，這兩個服務都很想試試看對中文的support程度如何。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/dialogflow/">Dialogflow</a><br>馬上聯想到的是Siri跟Google語音助理。恩，會講話的聊天機器人，預錄一段對話流程，對企業而言可以做一些客服在做的事情。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/automl-tables/">AutoML Tables</a><br>這有趣了。去年寫<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20103835/ironman/1806">跟著Google學ML</a>的時候，一堆資料從CSV來，然後要寫一堆分析，最後看結果。這個可以把CSV匯入，然後直接在上面做些簡單的訓練，在串上Prediction給我們的APP使用，可以的話這次會來搞懂怎麼用。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/recommendations/">Recommendations AI</a><br>聽起來電商很愛這個，看看他們的slogan: **Earn your customers’ trust and loyalty by proving how well you understand them.**聽起來就很厲害，當年讀了一堆<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Recommender_system#Approaches">recommedation algorithm</a>應該比較容易理解這怎麼玩，哈哈哈。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/automl/">Cloud AutoML</a><br>最後一個一定要玩到的，就是這個AutoML，上面的服務都跟這個有關，一定要<strong>知其所以然</strong>一下，再看看有了他跟大家能擦出什麼樣的火花。</p>
+</li>
+</ul>
+<p>OK，這是這一系列文章的規劃，希望我寫的玩30天，也希望我這30天的內容夠有價值。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/09/ithelp-2019-day1/" data-id="clr8lqkot001xlbpx7x7x232e" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/AI-ML-products/" rel="tag">AI &amp; ML products</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/10/ithelp-2019-day2/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 2] Google Vision AI - 1"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 2] Google Vision AI - 1</span>
+        </a>
+      </li>
+    
+
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

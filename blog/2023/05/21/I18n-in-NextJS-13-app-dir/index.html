@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>I18n in NextJS 13 app dir | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="I used to implement I18n with next-i18next in Next.js. However, after upgrading Next.js 13, there is no need for next-i18next. Instead, you can directly use i18next and react-i18next by this tutorial.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I18n in NextJS 13 app dir">
+<meta property="og:url" content="https://josephmg.github.io/blog/2023/05/21/I18n-in-NextJS-13-app-dir/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="I used to implement I18n with next-i18next in Next.js. However, after upgrading Next.js 13, there is no need for next-i18next. Instead, you can directly use i18next and react-i18next by this tutorial.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-21T11:46:07.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.547Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Next.js">
+<meta name="twitter:card" content="summary">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-I18n-in-NextJS-13-app-dir" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      I18n in NextJS 13 app dir
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2023-05-21T11:46:07.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >May 21, 2023</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>I used to implement I18n with <a target="_blank" rel="noopener" href="https://github.com/i18next/next-i18next">next-i18next</a> in Next.js. However, after upgrading Next.js 13, there is no need for next-i18next. Instead, you can directly use i18next and react-i18next by <a target="_blank" rel="noopener" href="https://locize.com/blog/next-13-app-dir-i18n/">this tutorial</a>. Meanwhile, the <a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/building-your-application/routing/internationalization">official doc</a> shows how to use internationalization in app dir. and also provide an example of using <a target="_blank" rel="noopener" href="https://next-intl-docs.vercel.app/docs/next-13">next-intl</a>. In this blog, I’ll demostrate how to use <a target="_blank" rel="noopener" href="https://next-intl-docs.vercel.app/docs/next-13">next-intl</a> in Next.js 13 app dir.</p>
+<span id="more"></span>
+
+<h2><span id="1-settings-and-middleware">1. Settings and middleware</span><a href="#1-settings-and-middleware" class="header-anchor">#</a></h2><p>Let’s start by looking at my <code>src/app/i18n</code> folder structure.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">src/app/i18n</span><br><span class="line">├── IntlWrapper.tsx      # Imports `NextIntlClientProvider` and reads locale messages</span><br><span class="line">├── locales              # Puts locale files</span><br><span class="line">│   ├── en</span><br><span class="line">│   │   └── common.json</span><br><span class="line">│   └── zh-TW</span><br><span class="line">│       └── common.json</span><br><span class="line">├── settings.ts          # Sets Lang and namespace settings</span><br><span class="line">└── utils.ts             # Implements utility functions</span><br></pre></td></tr></table></figure>
+
+<p>So, I have to show <code>settings.ts</code> first.</p>
+<p><strong>src&#x2F;app&#x2F;i18n&#x2F;settings.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> locales = [<span class="string">&#x27;en&#x27;</span>, <span class="string">&#x27;zh-TW&#x27;</span>];</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> defaultLocale = <span class="string">&#x27;en&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ns = [</span><br><span class="line">  <span class="string">&#x27;common&#x27;</span>,</span><br><span class="line">] <span class="keyword">as</span> <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">NsType</span> = (<span class="keyword">typeof</span> ns)[<span class="built_in">number</span>];</span><br></pre></td></tr></table></figure>
+
+<p>In <code>settings.ts</code>, I have set <code>locales</code> and <code>ns</code> namespaces, which facilitate the easy addition of more locales or page-specific namespaces. Also, I’ve defined <code>NsType</code> as namespaces type and <code>defaultLocale</code> as <code>en</code> in this file.</p>
+<p>Next, the <code>IntlWrapper</code> could look like this:</p>
+<p><strong>src&#x2F;app&#x2F;i18n&#x2F;IntlWrapper.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; notFound &#125; <span class="keyword">from</span> <span class="string">&#x27;next/navigation&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NextIntlClientProvider</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next-intl&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NsType</span>, ns &#125; <span class="keyword">from</span> <span class="string">&#x27;@/app/i18n/settings&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getTranslationJson &#125; <span class="keyword">from</span> <span class="string">&#x27;@/app/i18n/utils&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">IntlWrapper</span> = <span class="keyword">async</span> (<span class="params">&#123;</span></span><br><span class="line"><span class="params">  children, // will be a page or nested layout</span></span><br><span class="line"><span class="params">  locale,</span></span><br><span class="line"><span class="params">  namespaces = [...ns],</span></span><br><span class="line"><span class="params">&#125;: &#123;</span></span><br><span class="line"><span class="params">  children: React.ReactNode;</span></span><br><span class="line"><span class="params">  locale: <span class="built_in">string</span>;</span></span><br><span class="line"><span class="params">  namespaces?: NsType[];</span></span><br><span class="line"><span class="params">&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> messages;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    messages = <span class="keyword">await</span> <span class="title function_">getTranslationJson</span>(locale, namespaces);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="title function_">notFound</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">NextIntlClientProvider</span> <span class="attr">locale</span>=<span class="string">&#123;locale&#125;</span> <span class="attr">messages</span>=<span class="string">&#123;messages&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">NextIntlClientProvider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">IntlWrapper</span>;</span><br></pre></td></tr></table></figure>
+<p>Nothing special. just import <code>NextIntlClientProvider</code> and put <code>children</code> into it, and I can import <code>IntlWrapper</code> in the <code>layout.tsx</code> or <code>page.tsx</code> files.<br> You may notice the <code>getTranslationJson</code> function, which is imported from <code>utils</code>. The <code>utils</code> could have the following structure:</p>
+<p><strong>src&#x2F;app&#x2F;i18n&#x2F;utils.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AbstractIntlMessages</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next-intl&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NsType</span>, ns &#125; <span class="keyword">from</span> <span class="string">&#x27;@/app/i18n/settings&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getTranslationJson</span> = <span class="keyword">async</span> (<span class="params">locale: <span class="built_in">string</span>, namespaces: NsType[] = [...ns]</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">messages</span>: <span class="title class_">AbstractIntlMessages</span> = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">namespace</span> of namespaces) &#123;</span><br><span class="line">    <span class="keyword">const</span> message = (<span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">`./locales/<span class="subst">$&#123;locale&#125;</span>/<span class="subst">$&#123;<span class="keyword">namespace</span>&#125;</span>.json`</span>)).<span class="property">default</span>;</span><br><span class="line">    messages = &#123; ...messages, [<span class="keyword">namespace</span>]: message &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  return messages;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>According to <code>locales</code>, the <code>getTranslationJson</code> works as server side function to import multiple namespaces <code>json</code> sequentially.<br>The json files could look like this:</p>
+<p><strong>src&#x2F;app&#x2F;i18n&#x2F;locales&#x2F;en&#x2F;common.json</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;header&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;product&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Product&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Category&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sign_in_sign_up&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Log in&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;profile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Profile&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;lang&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;zh-TW&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Chinese&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;en&quot;</span><span class="punctuation">:</span> <span class="string">&quot;English&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>src&#x2F;app&#x2F;i18n&#x2F;locales&#x2F;en&#x2F;common.json</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;header&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;product&quot;</span><span class="punctuation">:</span> <span class="string">&quot;所有商品&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;類別&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sign_in_sign_up&quot;</span><span class="punctuation">:</span> <span class="string">&quot;登入/註冊&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;profile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;會員資料&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;lang&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;zh-TW&quot;</span><span class="punctuation">:</span> <span class="string">&quot;繁體中文&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;en&quot;</span><span class="punctuation">:</span> <span class="string">&quot;英文&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>That’s all about <code>i18n</code> settings. I’ll go ahead to <code>middleware</code>, </p>
+<p><strong>src&#x2F;app&#x2F;middleware.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> createMiddleware <span class="keyword">from</span> <span class="string">&#x27;next-intl/middleware&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; locales, defaultLocale &#125; <span class="keyword">from</span> <span class="string">&#x27;./i18n/settings&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">createMiddleware</span>(&#123;</span><br><span class="line">  locales,</span><br><span class="line">  defaultLocale</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> config = &#123;</span><br><span class="line">  <span class="comment">// Skip all paths that should not be internationalized</span></span><br><span class="line">  <span class="attr">matcher</span>: [<span class="string">&#x27;/((?!api|_next|.*\\..*).*)&#x27;</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>createMiddleware</code> handles accessing cookies <code>NEXT_LOCALE</code>, parsing headers, and redirecting to <code>NEXT_LOCALE</code> langs.<br>Right now, settings and middleware are ready, so let’s start looking my app <code>[locale]</code> dir!</p>
+<h2><span id="2-locale-dynamic-routes">2. <code>[locale]</code> dynamic routes</span><a href="#2-locale-dynamic-routes" class="header-anchor">#</a></h2><p>I think <code>layout.tsx</code> is more important in Next.js 13 <code>app</code> directory structure, and thus I show it first.</p>
+<p><strong>src&#x2F;app&#x2F;[locale]&#x2F;layout.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">IntlWrapper</span> <span class="keyword">from</span> <span class="string">&#x27;@/app/i18n/IntlWrapper&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; locales &#125; <span class="keyword">from</span> <span class="string">&#x27;@/app/i18n/settings&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">DefaultLayout</span> <span class="keyword">as</span> <span class="title class_">Layout</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@/components/layouts&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">generateStaticParams</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> locales.<span class="title function_">map</span>(<span class="function">(<span class="params">locale</span>) =&gt;</span> (&#123; locale &#125;));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">MainLayout</span>(<span class="params">&#123;</span></span><br><span class="line"><span class="params">  children, // will be a page or nested layout</span></span><br><span class="line"><span class="params">  params,</span></span><br><span class="line"><span class="params">&#125;: &#123;</span></span><br><span class="line"><span class="params">  children: React.ReactNode;</span></span><br><span class="line"><span class="params">  params: &#123; locale: <span class="built_in">string</span> &#125;;</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">IntlWrapper</span> <span class="attr">locale</span>=<span class="string">&#123;params.locale&#125;</span> <span class="attr">namespaces</span>=<span class="string">&#123;[</span>&#x27;<span class="attr">common</span>&#x27;]&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Layout</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">main</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">minHeight:</span> &#x27;<span class="attr">calc</span>(<span class="attr">100vh</span> <span class="attr">-</span> <span class="attr">70px</span>)&#x27;, <span class="attr">marginTop:</span> &#x27;<span class="attr">69px</span>&#x27; &#125;&#125;&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">main</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">IntlWrapper</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>params</code> comes from <a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes">dynamic routes</a>. As you see, I pass <code>params.locale</code> and <code>[&#39;common&#39;]</code> into <code>IntlWrapper</code> props. Thanks for <code>next-intl</code>, now I can simply use <code>useTranslations</code>.</p>
+<p><strong>src&#x2F;components&#x2F;layouts&#x2F;NavLinks.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> appBarRoutes = [</span><br><span class="line">  &#123; <span class="attr">text</span>: <span class="string">&#x27;所有商品&#x27;</span>, <span class="attr">href</span>: <span class="string">&#x27;/&#x27;</span>, <span class="attr">key</span>: <span class="string">&#x27;product&#x27;</span>, <span class="attr">icon</span>: <span class="string">&#x27;store&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">text</span>: <span class="string">&#x27;類別&#x27;</span>, <span class="attr">href</span>: <span class="string">&#x27;/&#x27;</span>, <span class="attr">key</span>: <span class="string">&#x27;category&#x27;</span>, <span class="attr">icon</span>: <span class="string">&#x27;category&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">text</span>: <span class="string">&#x27;登入/註冊&#x27;</span>, <span class="attr">href</span>: <span class="string">&#x27;/auth/login&#x27;</span>, <span class="attr">key</span>: <span class="string">&#x27;sign_in_sign_up&#x27;</span>, <span class="attr">icon</span>: <span class="string">&#x27;account_circle&#x27;</span> &#125;,</span><br><span class="line">] <span class="keyword">as</span> <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DesktopLinks is one of the child components of Layout component</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">DesktopLinks</span> = <span class="title function_">memo</span>(<span class="keyword">function</span> <span class="title function_">DesktopLinks</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> t = <span class="title function_">useTranslations</span>(<span class="string">&#x27;common&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> links = <span class="title class_">AppBarRoutes</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;links.map((&#123; href, key, icon &#125;) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">        return (</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">NavButton</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">SwitchLink</span> <span class="attr">href</span>=<span class="string">&#123;href&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Icon</span> <span class="attr">className</span>=<span class="string">&quot;material-symbols-outlined&quot;</span>&gt;</span>&#123;icon&#125;<span class="tag">&lt;/<span class="name">Icon</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;t(`header.$&#123;key&#125;`)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;/<span class="name">SwitchLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">NavButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">ColorDivider</span> <span class="attr">orientation</span>=<span class="string">&quot;vertical&quot;</span> <span class="attr">flexItem</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">        );</span><br><span class="line">      &#125;)&#125;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Lastly, let me describe how I change <code>locale</code>. I have a <code>handleChangeLocale</code> function, so that I can set cookie in this function and redirect to correct page.</p>
+<p><strong>src&#x2F;components&#x2F;layouts&#x2F;LayoutAppBar.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pathname = <span class="title function_">usePathname</span>();</span><br><span class="line"><span class="keyword">const</span> handleChangeLocale = <span class="title function_">useCallback</span>(</span><br><span class="line">  <span class="function">(<span class="params">key: <span class="built_in">string</span></span>) =&gt;</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setCookie</span>(<span class="literal">null</span>, <span class="string">&#x27;NEXT_LOCALE&#x27;</span>, key, &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span> &#125;);</span><br><span class="line">    <span class="keyword">const</span> re = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`^/<span class="subst">$&#123;i18n&#125;</span>`</span>, <span class="string">&#x27;g&#x27;</span>);</span><br><span class="line">    router.<span class="title function_">push</span>(<span class="string">`/<span class="subst">$&#123;key&#125;</span><span class="subst">$&#123;pathname?.replace(re, <span class="string">&#x27;&#x27;</span>)&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  [router, i18n, pathname]</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* button example</span></span><br><span class="line"><span class="comment">&#123;Langs.map((setting) =&gt; (</span></span><br><span class="line"><span class="comment">  &lt;MenuItem key=&#123;setting.key&#125; onClick=&#123;handleCloseLangsMenu&#125;&gt;</span></span><br><span class="line"><span class="comment">    &lt;Link component=&quot;button&quot; onClick=&#123;handleChangeLocale(setting.key)&#125; locale=&#123;setting.key&#125;&gt;</span></span><br><span class="line"><span class="comment">      &#123;t(`header.lang.$&#123;setting.key as LangType&#125;`)&#125;</span></span><br><span class="line"><span class="comment">    &lt;/Link&gt;</span></span><br><span class="line"><span class="comment">  &lt;/MenuItem&gt;</span></span><br><span class="line"><span class="comment">))&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Click the following video to show the result.</p>
+<video width="500px" controls> <source src="video.mov" type="video/mp4"> </video>
+
+<h2><span id="conclusion">Conclusion</span><a href="#conclusion" class="header-anchor">#</a></h2><p>I have converted one of my projects to use the Next.js 13 application directory structure and migrated from <a target="_blank" rel="noopener" href="https://github.com/i18next/next-i18next">next-i18next</a> to <a target="_blank" rel="noopener" href="https://github.com/amannn/next-intl">next-intl</a>. The <a target="_blank" rel="noopener" href="https://next-intl-docs.vercel.app/docs/next-13/server-components#using-interactive-state-in-translations">official documentation</a> seems to suggest combining all namespaces together, but with my <code>getTranslationJson</code> function, I can separate them into multiple namespaces, similar to <code>next-i18next</code>.</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2023/05/21/I18n-in-NextJS-13-app-dir/" data-id="clr8lqkoh000vlbpx7mcx2rcj" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Next-js/" rel="tag">Next.js</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2023/12/17/Google-Ads-account-setting/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Google Ads account setting"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Google Ads account setting</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2023/03/20/Use-ChatGPT-translate-new-react-dev-doc/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Use ChatGPT to translate new react-dev doc"
+        >
+          <span class="article-nav-title truncate">Use ChatGPT to translate new react-dev doc</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

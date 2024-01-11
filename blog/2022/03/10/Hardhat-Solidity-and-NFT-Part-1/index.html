@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Hardhat - Solidity and NFT - Part 1 - Prepare project | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。 Prerequisite: Sign-up these services. Etherscan (這個">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hardhat - Solidity and NFT - Part 1 - Prepare project">
+<meta property="og:url" content="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。 Prerequisite: Sign-up these services. Etherscan (這個">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg">
+<meta property="article:published_time" content="2022-03-10T15:38:47.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.523Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Blockchain">
+<meta property="article:tag" content="Solidity">
+<meta property="article:tag" content="Hardhat">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Hardhat-Solidity-and-NFT-Part-1" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" rel="gallery_clr8lqkoc000nlbpx44lx8pwk">
+        <img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/logo.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Hardhat - Solidity and NFT - Part 1 - Prepare project
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2022-03-10T15:38:47.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Mar 10, 2022</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity &#x2F; Hardhat上架NFT的過程，以免以後金魚腦忘光。</p>
+<h3><span id="prerequisite-sign-up-these-services">Prerequisite: Sign-up these services.</span><a href="#prerequisite-sign-up-these-services" class="header-anchor">#</a></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a> (這個服務是之後用來verify contract用的，如果不想驗證可以跳過申請。)</li>
+<li><a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a></li>
+<li><a target="_blank" rel="noopener" href="https://infura.io/">Infura</a></li>
+<li><a target="_blank" rel="noopener" href="https://nft.storage/">NFTStorage</a></li>
+</ul>
+<h3><span id="init-project">Init project</span><a href="#init-project" class="header-anchor">#</a></h3><p>我是使用docker, docker-compose，所以先來看看我的初始專案架構及<code>docker-compose.yml</code>跟<code>Dockerfile</code>。<br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/init-project.jpg" alt="Init project"></p>
+<p><strong>docker-compose.yml</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">hardhat:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">./hardhat</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile.dev</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./hardhat:/app</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/node_modules</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8545</span><span class="string">:8545</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p><strong>hardhat&#x2F;Dockerfile.dev</strong></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> APP_ROOT /app</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> . <span class="variable">$&#123;APP_ROOT&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> yarn install</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> yarn global add \</span></span><br><span class="line"><span class="language-bash">  solhint \</span></span><br><span class="line"><span class="language-bash">  solc \</span></span><br><span class="line"><span class="language-bash">  eslint \</span></span><br><span class="line"><span class="language-bash">  typescript</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8545</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [ <span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;dev&quot;</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p>接下來，用npx建立一個新的hardhat專案：<br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/init-hardhat.jpg" alt="init hardhat"></p>
+<p>都完成以後，就可以看到我們的專案架構了。<br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/project-structure.jpg" alt="project structure"></p>
+<h3><span id="settings">Settings</span><a href="#settings" class="header-anchor">#</a></h3><p>我們前面申請過 <a target="_blank" rel="noopener" href="https://metamask.io/">Metamask</a>、<a target="_blank" rel="noopener" href="https://infura.io/">Infura</a>、<a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a>，現在把相關參數設定到.env裡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PRIVATE_KEY=YOUR_METAMASK_PRIVATE_KEY</span><br><span class="line">INFURA_ID=</span><br><span class="line">RINKEBY_URL=</span><br><span class="line">ETHERSCAN_API_KEY=</span><br><span class="line">NFT_CONTRACT_ADDRESS=YOUR_CONTRACT_ADDRESS</span><br></pre></td></tr></table></figure>
+<h5><span id="metamask-private-key-private-key">Metamask private key (PRIVATE_KEY)</span><a href="#metamask-private-key-private-key" class="header-anchor">#</a></h5><p>在你申請完錢包以後，可以在Chrome extension裡找到<code>Account details</code><br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/metamask-private-key.jpg" alt="metamask key"></p>
+<blockquote>
+<p>記得先選測試網路 <code>rinkeby test network</code>，測試網路的eth可以在這邊申請: <a target="_blank" rel="noopener" href="https://faucet.rinkeby.io/">https://faucet.rinkeby.io/</a></p>
+</blockquote>
+<blockquote>
+<p>注意這個key不要外流，否則你的metamask錢包可能會不安全。</p>
+</blockquote>
+<h5><span id="infura-id-and-url-infura-id-rinkeby-url">Infura id and url (INFURA_ID, RINKEBY_URL)</span><a href="#infura-id-and-url-infura-id-rinkeby-url" class="header-anchor">#</a></h5><p>先建立Infura project以後，進到setting就可以找到id and url了<br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/infura-setting-1.jpg" alt="infura create project"><br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/infura-env.jpg" alt="infura ENV"></p>
+<h5><span id="etherscan-etherscan-api-key">Etherscan (ETHERSCAN_API_KEY)</span><a href="#etherscan-etherscan-api-key" class="header-anchor">#</a></h5><p>在<a target="_blank" rel="noopener" href="https://etherscan.io/myapikey">Profile</a>裡Add Key以後就有個API Key可以使用了。<br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/etherscan-setting.jpg" alt="etherscan api key"></p>
+<p>參數設定到這邊告一個段落，<code>NFT_CONTRACT_ADDRESS</code>之後deploy才會有，然後我們稍微修改一下<code>hardhat.config.ts</code>，把預設的測試網路設定改掉。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> dotenv <span class="keyword">from</span> <span class="string">&quot;dotenv&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HardhatUserConfig</span> &#125; <span class="keyword">from</span> <span class="string">&quot;hardhat/config&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-etherscan&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@nomiclabs/hardhat-waffle&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@typechain/hardhat&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;hardhat-gas-reporter&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;solidity-coverage&quot;</span>;</span><br><span class="line"></span><br><span class="line">dotenv.<span class="title function_">config</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// You need to export an object to set up your config</span></span><br><span class="line"><span class="comment">// Go to https://hardhat.org/config/ to learn more</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">config</span>: <span class="title class_">HardhatUserConfig</span> = &#123;</span><br><span class="line">  <span class="attr">solidity</span>: <span class="string">&quot;0.8.4&quot;</span>,</span><br><span class="line">  <span class="attr">networks</span>: &#123;</span><br><span class="line">    <span class="attr">rinkeby</span>: &#123;</span><br><span class="line">      <span class="attr">url</span>: process.<span class="property">env</span>.<span class="property">RINKEBY_URL</span> || <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="attr">accounts</span>:</span><br><span class="line">        process.<span class="property">env</span>.<span class="property">PRIVATE_KEY</span> !== <span class="literal">undefined</span> ? [process.<span class="property">env</span>.<span class="property">PRIVATE_KEY</span>] : [],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">gasReporter</span>: &#123;</span><br><span class="line">    <span class="attr">enabled</span>: process.<span class="property">env</span>.<span class="property">REPORT_GAS</span> !== <span class="literal">undefined</span>,</span><br><span class="line">    <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">etherscan</span>: &#123;</span><br><span class="line">    <span class="attr">apiKey</span>: &#123;</span><br><span class="line">      <span class="attr">rinkeby</span>: process.<span class="property">env</span>.<span class="property">ETHERSCAN_API_KEY</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> config;</span><br></pre></td></tr></table></figure>
+
+<p>到這邊我們可以試試看能不能跑起docker，先加上<code>scripts</code>在package.json裡：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;hardhat-project&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;dev&quot;: &quot;hardhat node --network hardhat&quot;,</span><br><span class="line">    &quot;console&quot;: &quot;hardhat console&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;hardhat test --network hardhat&quot;,</span><br><span class="line">    &quot;compile&quot;: &quot;hardhat compile&quot;,</span><br><span class="line">    &quot;rinkeby:deploy&quot;: &quot;hardhat --network rinkeby deploy --export-all tmp/contracts/manifest.json&quot;,</span><br><span class="line">    &quot;mainnet:deploy&quot;: &quot;hardhat --network mainnet deploy --export-all tmp/contracts/manifest.json&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>有了scripts以後，我們就可以<code>docker-compose up</code>了。<br><img src="/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/docker-first-run.jpg" alt="docker first run"></p>
+<p>好囉，看到上面的圖就正常了，這一篇就先到這邊，我們下一篇要開始上架NFT還有部署contract了。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2022/03/10/Hardhat-Solidity-and-NFT-Part-1/" data-id="clr8lqkoc000nlbpx44lx8pwk" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Blockchain/" rel="tag">Blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hardhat/" rel="tag">Hardhat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Solidity/" rel="tag">Solidity</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2022/03/16/Hardhat-Solidity-and-NFT-Part-2/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2021/10/12/AWS-Cloud-Development-Kit-CDK-project-structure/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="AWS Cloud Development Kit (CDK) project structure"
+        >
+          <span class="article-nav-title truncate">AWS Cloud Development Kit (CDK) project structure</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

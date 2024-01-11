@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="On our previous post shows how to integrate firebase with docker. This article we will integrate Next.js with firebase, and then deploy app with Github actions.  In this webapp, we can input cryptocur">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js">
+<meta property="og:url" content="https://josephmg.github.io/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="On our previous post shows how to integrate firebase with docker. This article we will integrate Next.js with firebase, and then deploy app with Github actions.  In this webapp, we can input cryptocur">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/banner.png">
+<meta property="article:published_time" content="2023-02-28T13:51:04.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.635Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="serverless">
+<meta property="article:tag" content="Next.js">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="firebase">
+<meta property="article:tag" content="firestore">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="clude storage">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/banner.png">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/banner.png" rel="gallery_clr8lqkor001olbpx2urjetz0">
+        <img src="/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/banner.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2023-02-28T13:51:04.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Feb 28, 2023</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>On our <a href="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/" title="Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker">previous post</a> shows how to integrate firebase with docker. This article we will integrate Next.js with firebase, and then deploy app with Github actions.  In this webapp, we can input cryptocurrency name, and upload logo, and therefore we use <code>firestore</code> to save <code>Tokens</code> collection and <code>Cloud Storage</code> to save logo images.</p>
+<span id="more"></span>
+
+<h3><span id="project-structure">Project structure</span><a href="#project-structure" class="header-anchor">#</a></h3><p><img src="/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/project-structure.png" alt="project structure"><br>We use NextJS 13 with <code>appDir</code> folder, so we have <code>layout.tsx</code> and <code>page.tsx</code> in <code>appDir</code>. Keep your eye on <code>EmotionRootStyleRegistry.tsx</code>, in this example we use <a target="_blank" rel="noopener" href="https://mui.com/material-ui/getting-started/overview/">Material UI</a> and <a target="_blank" rel="noopener" href="https://emotion.sh/docs/introduction">Emotion</a> so we need to wrap a <code>Provider</code> (<strong>client component</strong>) in our <code>layout.tsx</code>. Only by doing this, we can use them with NextJS 13.</p>
+<blockquote>
+<p>ref: <a target="_blank" rel="noopener" href="https://github.com/emotion-js/emotion/issues/2928">https://github.com/emotion-js/emotion/issues/2928</a></p>
+</blockquote>
+<h3><span id="firebase-config">Firebase config</span><a href="#firebase-config" class="header-anchor">#</a></h3><p>We configure our <code>Firebase</code> object in <code>configs/firebase/index.ts</code></p>
+<p><strong>configs&#x2F;firebase&#x2F;index.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; initializeApp &#125; <span class="keyword">from</span> <span class="string">&quot;firebase/app&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getStorage, connectStorageEmulator &#125; <span class="keyword">from</span> <span class="string">&quot;@firebase/storage&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  connectFirestoreEmulator,</span><br><span class="line">  enableIndexedDbPersistence,</span><br><span class="line">  initializeFirestore,</span><br><span class="line">  <span class="variable constant_">CACHE_SIZE_UNLIMITED</span>,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&quot;@firebase/firestore&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> firebaseConfig = &#123;</span><br><span class="line">  <span class="attr">apiKey</span>: process.<span class="property">env</span>.<span class="property">FIREBASE_API_KEY</span>,</span><br><span class="line">  <span class="attr">authDomain</span>: <span class="string">&quot;fir-firebase-94fdd.firebaseapp.com&quot;</span>,</span><br><span class="line">  <span class="attr">projectId</span>: <span class="string">&quot;fir-firebase-94fdd&quot;</span>,</span><br><span class="line">  <span class="attr">storageBucket</span>: <span class="string">&quot;fir-firebase-94fdd.appspot.com&quot;</span>,</span><br><span class="line">  <span class="attr">messagingSenderId</span>: process.<span class="property">env</span>.<span class="property">FIREBASE_MESSAGING_SENDER_ID</span>,</span><br><span class="line">  <span class="attr">appId</span>: process.<span class="property">env</span>.<span class="property">FIREBASE_APP_ID</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">initializeApp</span>(firebaseConfig);</span><br><span class="line"><span class="keyword">const</span> cloudStorage = <span class="title function_">getStorage</span>(app);</span><br><span class="line"><span class="comment">// const db = getFirestore(app);</span></span><br><span class="line"><span class="keyword">const</span> db = <span class="title function_">initializeFirestore</span>(app, &#123;</span><br><span class="line">  <span class="attr">cacheSizeBytes</span>: <span class="variable constant_">CACHE_SIZE_UNLIMITED</span>,</span><br><span class="line">  <span class="attr">ignoreUndefinedProperties</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&quot;production&quot;</span>) &#123;</span><br><span class="line">  <span class="title function_">connectStorageEmulator</span>(cloudStorage, <span class="string">&quot;localhost&quot;</span>, <span class="number">9199</span>);</span><br><span class="line">  <span class="title function_">connectFirestoreEmulator</span>(db, <span class="string">&quot;localhost&quot;</span>, <span class="number">8080</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">window</span> !== <span class="string">&quot;undefined&quot;</span>) &#123;</span><br><span class="line">  <span class="title function_">enableIndexedDbPersistence</span>(db);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; cloudStorage, db &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Firstly, <code>FIREBASE_API_KEY</code>, <code>FIREBASE_MESSAGING_SENDER_ID</code>, and <code>FIREBASE_APP_ID</code> are set in environment variable. Secondly, we connect our <code>cloudStorage</code> and <code>db</code> with <code>emulator</code> when we are not in production. Thirdly, we set <code>db</code> as a offline-first database by <code>enableIndexedDbPersistence</code>. And lastly we export <code>cloudStorage</code> and <code>db</code> directly.</p>
+<h3><span id="appdir-files">appDir files</span><a href="#appdir-files" class="header-anchor">#</a></h3><p>Now, let’s dig into our <code>appDir</code> files: <code>layout.tsx</code>, <code>page.tsx</code>, and <code>HomePage.tsx</code>.</p>
+<p><strong>app&#x2F;layout.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ReactNode</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Copyright</span> <span class="keyword">from</span> <span class="string">&quot;@/components/Copyright&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">EmotionRootStyleRegistry</span> <span class="keyword">from</span> <span class="string">&quot;./EmotionRootStyleRegistry&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">RootLayout</span>(<span class="params">&#123; children &#125;: &#123; children: ReactNode &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">EmotionRootStyleRegistry</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Copyright</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">EmotionRootStyleRegistry</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> metadata = &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">default</span>: <span class="string">&quot;NextJS and Firebase&quot;</span>,</span><br><span class="line">    <span class="attr">template</span>: <span class="string">&quot;%s | NextJS and Firebase&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&quot;Generated by create next app&quot;</span>,</span><br><span class="line">  <span class="attr">viewport</span>: &#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="string">&quot;device-width&quot;</span>,</span><br><span class="line">    <span class="attr">initialScale</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">maximumScale</span>: <span class="number">1</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>metadata</code> in <code>layout.tsx</code> will render into <code>&lt;head&gt;&lt;/head&gt;</code>. Besides <code>RootLayout</code>, you can have many <a target="_blank" rel="noopener" href="https://beta.nextjs.org/docs/routing/pages-and-layouts#nesting-layouts">nested layout</a> in each sub-routes, and use <a target="_blank" rel="noopener" href="https://beta.nextjs.org/docs/api-reference/metadata#generatemetadata">generateMetadata</a> with <code>title template</code> to generate title in each nested layout.</p>
+<p><strong>app&#x2F;page.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">HomePage</span> <span class="keyword">from</span> <span class="string">&quot;./HomePage&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">HomePage</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Our <code>page.tsx</code> is a very simple <strong>server component</strong>. We can <a target="_blank" rel="noopener" href="https://beta.nextjs.org/docs/data-fetching/fetching">fetch data</a> or set metadata over here if necessary.</p>
+<p><strong>app&#x2F;HomePage.tsx</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;use client&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Container</span>, <span class="title class_">Typography</span>, <span class="title class_">Box</span>, <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@mui/material&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useCallback, useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useShareTokenDialog &#125; <span class="keyword">from</span> <span class="string">&quot;@/hooks/useShareTokenDialog&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">TokenInfoDialog</span> <span class="keyword">from</span> <span class="string">&quot;@/components/dialogs/TokenInfoDialog&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="title class_">TokenService</span> <span class="keyword">from</span> <span class="string">&quot;@/services/TokenService&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">TokenInfoProps</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@/types/TokenProps&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Token</span> <span class="keyword">from</span> <span class="string">&quot;@/components/Token&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">HomePage</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; setDialog &#125; = <span class="title function_">useShareTokenDialog</span>();</span><br><span class="line">  <span class="keyword">const</span> [tokens, setTokens] = useState&lt;<span class="title class_">TokenInfoProps</span>[]&gt;([]);</span><br><span class="line">  <span class="keyword">const</span> fetchTokens = <span class="title function_">useCallback</span>(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> <span class="title class_">TokenService</span>.<span class="title function_">getTokens</span>();</span><br><span class="line">    <span class="title function_">setTokens</span>(data);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">fetchTokens</span>();</span><br><span class="line">  &#125;, [fetchTokens]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Container</span> <span class="attr">maxWidth</span>=<span class="string">&quot;lg&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Box</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">sx</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">my:</span> <span class="attr">2</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">display:</span> &quot;<span class="attr">flex</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">justifyContent:</span> &quot;<span class="attr">space-between</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">alignItems:</span> &quot;<span class="attr">center</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      &gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Typography</span> <span class="attr">variant</span>=<span class="string">&quot;h4&quot;</span> <span class="attr">component</span>=<span class="string">&quot;h1&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          Token List</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Typography</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">variant</span>=<span class="string">&quot;contained&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setDialog(&#123; open: true, isCreate: true &#125;)&#125;</span></span><br><span class="line"><span class="language-xml">        &gt;</span></span><br><span class="line"><span class="language-xml">          Add Token</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Box</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Box</span> <span class="attr">display</span>=<span class="string">&quot;flex&quot;</span> <span class="attr">sx</span>=<span class="string">&#123;&#123;</span> <span class="attr">mx:</span> &quot;<span class="attr">auto</span>&quot;, <span class="attr">width:</span> &quot;<span class="attr">90</span>%&quot; &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;tokens.map((token) =&gt; (</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Token</span> <span class="attr">key</span>=<span class="string">&#123;token.id&#125;</span> &#123;<span class="attr">...token</span>&#125; /&gt;</span></span></span><br><span class="line"><span class="language-xml">        ))&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Box</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">TokenInfoDialog</span> <span class="attr">onSave</span>=<span class="string">&#123;fetchTokens&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Our <code>HomePage.tsx</code> <strong>client component</strong> is more complicted. Let’s us focus on <code>useShareTokenDialog</code> hook and <code>TokenService</code>. Instead of <code>redux</code>, in this example we use <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/use-between">use-between</a> to share state between components. It’s really easy and useful.</p>
+<h3><span id="hooks-and-service">hooks and Service</span><a href="#hooks-and-service" class="header-anchor">#</a></h3><p>We won’t go through every component, but you can find it on our <a target="_blank" rel="noopener" href="https://github.com/josephMG/docker-nextjs-firebase">github repo</a>.<br>But how we save data to firesotre and storage? We implement it in our <code>TokenService</code> and <code>UploadService</code>!</p>
+<p><strong>services&#x2F;TokenService.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; v4 <span class="keyword">as</span> uuidv4 &#125; <span class="keyword">from</span> <span class="string">&quot;uuid&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; collection, getDocs, getDoc, doc &#125; <span class="keyword">from</span> <span class="string">&quot;firebase/firestore&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">TokenInfoProps</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@/types/TokenProps&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> setDocWithTimeoutError <span class="keyword">from</span> <span class="string">&quot;@/libs/setDocWithTimeoutError&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; db &#125; <span class="keyword">from</span> <span class="string">&quot;@/configs/firebase&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> setToken = <span class="keyword">async</span> (</span><br><span class="line">  <span class="attr">tokenInfo</span>: <span class="title class_">TokenInfoProps</span></span><br><span class="line">): <span class="title class_">Promise</span>&lt;<span class="title class_">TokenInfoProps</span>&gt; =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (!tokenInfo.<span class="property">id</span>) &#123;</span><br><span class="line">    tokenInfo.<span class="property">id</span> = <span class="title function_">uuidv4</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">setDocWithTimeoutError</span>(<span class="string">`tokens/<span class="subst">$&#123;tokenInfo.id&#125;</span>`</span>, tokenInfo);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> tokenInfo;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getToken = <span class="keyword">async</span> (<span class="attr">id</span>: <span class="built_in">string</span>): <span class="title class_">Promise</span>&lt;<span class="title class_">TokenInfoProps</span> | <span class="literal">null</span>&gt; =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> docRef = <span class="title function_">doc</span>(db, <span class="string">&quot;tokens&quot;</span>, id);</span><br><span class="line">  <span class="keyword">const</span> tokenSnapshot = <span class="keyword">await</span> <span class="title function_">getDoc</span>(docRef);</span><br><span class="line">  <span class="keyword">if</span> (tokenSnapshot.<span class="title function_">exists</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> tokenSnapshot.<span class="title function_">data</span>() <span class="keyword">as</span> <span class="title class_">TokenInfoProps</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTokens = <span class="keyword">async</span> (): <span class="title class_">Promise</span>&lt;<span class="title class_">TokenInfoProps</span>[] | []&gt; =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> tokensSnapshot = <span class="keyword">await</span> <span class="title function_">getDocs</span>(<span class="title function_">collection</span>(db, <span class="string">&quot;tokens&quot;</span>));</span><br><span class="line">  <span class="keyword">return</span> tokensSnapshot.<span class="property">docs</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">snap</span>) =&gt;</span> snap.<span class="title function_">data</span>() <span class="keyword">as</span> <span class="title class_">TokenInfoProps</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>services&#x2F;UploadService.ts</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, uploadBytesResumable, getDownloadURL &#125; <span class="keyword">from</span> <span class="string">&quot;firebase/storage&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; cloudStorage &#125; <span class="keyword">from</span> <span class="string">&quot;configs/firebase&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">uploadFromBlobAsync</span> = <span class="keyword">async</span> (<span class="params"></span></span><br><span class="line"><span class="params">  file: File,</span></span><br><span class="line"><span class="params">  folder: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  onSuccess: (url: <span class="built_in">string</span>) =&gt; <span class="built_in">void</span>,</span></span><br><span class="line"><span class="params">  onError = (err?: <span class="built_in">Error</span>) =&gt; &#123;&#125;</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (!file) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">const</span> storageRef = <span class="title function_">ref</span>(cloudStorage, <span class="string">`/<span class="subst">$&#123;folder&#125;</span>/<span class="subst">$&#123;<span class="built_in">Date</span>.now()&#125;</span>_<span class="subst">$&#123;file.name&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> uploadTask = <span class="title function_">uploadBytesResumable</span>(storageRef, file);</span><br><span class="line">  uploadTask.<span class="title function_">on</span>(</span><br><span class="line">    <span class="string">&quot;state_changed&quot;</span>,</span><br><span class="line">    <span class="function">() =&gt;</span> &#123;&#125;,</span><br><span class="line">    onError,</span><br><span class="line">    <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">getDownloadURL</span>(uploadTask.<span class="property">snapshot</span>.<span class="property">ref</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">url</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">onSuccess</span>(url);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>As you see, there are many Firestore methods such as <code>collection</code>, <code>getDocs</code>, <code>getDoc</code>, and <code>doc</code>, and we import <code>db</code> from configs so that we can manipulate firestore database. On the other hand, our <code>UploadService</code> imports <code>cloudStorage</code> and handles Storage methods.</p>
+<p>You can implement your components as you wish, but now we’re gonna to deploy to Firebase.</p>
+<h3><span id="deploy">Deploy</span><a href="#deploy" class="header-anchor">#</a></h3><p>We use Github action to deploy our app. You can generate a template by <code>firebase init hosting</code>, choose <code>webframeworks</code>, and login authorize Github to deploy.</p>
+<p><strong>.github&#x2F;workflows&#x2F;firebase-hosting-merge.yml</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">Firebase</span> <span class="string">Hosting</span> <span class="string">on</span> <span class="string">merge</span></span><br><span class="line"></span><br><span class="line"><span class="attr">permissions:</span></span><br><span class="line">  <span class="attr">checks:</span> <span class="string">write</span></span><br><span class="line">  <span class="attr">contents:</span> <span class="string">read</span></span><br><span class="line">  <span class="attr">pull-requests:</span> <span class="string">write</span></span><br><span class="line"></span><br><span class="line"><span class="attr">&#x27;on&#x27;:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build_and_deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">defaults:</span></span><br><span class="line">      <span class="attr">run:</span></span><br><span class="line">        <span class="attr">working-directory:</span> <span class="string">./app</span></span><br><span class="line">    <span class="attr">environment:</span> <span class="string">production</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node-version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span> <span class="string">yarn</span> <span class="string">install</span> <span class="string">--immutable</span> <span class="string">&amp;&amp;</span> <span class="string">yarn</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Enable</span> <span class="string">Firebase</span> <span class="string">Experiments</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">/usr/local/bin/npx</span> <span class="string">firebase-tools@latest</span> <span class="string">experiments:enable</span> <span class="string">webframeworks</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">FirebaseExtended/action-hosting-deploy@v0</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">entrypoint:</span> <span class="string">&quot;./app&quot;</span></span><br><span class="line">          <span class="attr">repoToken:</span> <span class="string">&#x27;$<span class="template-variable">&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</span>&#x27;</span></span><br><span class="line">          <span class="attr">firebaseServiceAccount:</span> <span class="string">&#x27;$<span class="template-variable">&#123;&#123; secrets.FIREBASE_SERVICE_ACCOUNT_FIR_FIREBASE_94FDD &#125;&#125;</span>&#x27;</span></span><br><span class="line">          <span class="attr">channelId:</span> <span class="string">live</span></span><br><span class="line">          <span class="attr">projectId:</span> <span class="string">fir-firebase-94fdd</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">FIREBASE_CLI_EXPERIMENTS:</span> <span class="string">webframeworks</span></span><br><span class="line">          <span class="attr">FIREBASE_API_KEY:</span> <span class="string">&#x27;$<span class="template-variable">&#123;&#123; secrets.FIREBASE_API_KEY &#125;&#125;</span>&#x27;</span></span><br><span class="line">          <span class="attr">FIREBASE_MESSAGING_SENDER_ID:</span> <span class="string">&#x27;$<span class="template-variable">&#123;&#123; secrets.FIREBASE_MESSAGING_SENDER_ID &#125;&#125;</span>&#x27;</span></span><br><span class="line">          <span class="attr">FIREBASE_APP_ID:</span> <span class="string">&#x27;$<span class="template-variable">&#123;&#123; secrets.FIREBASE_APP_ID &#125;&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>By the way, we set <code>production</code> environment and environment variables on Github repository settings.<br><img src="/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/github-env.png" alt="Github environment"></p>
+<p>It’s time to commit, push, deploy, and go to your firebase url to see result.<br><img src="/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/result.gif" alt="result"></p>
+<blockquote>
+<p>If you got an deploy 403 error, please add some <code>IAM permissions</code> by checking:</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/69105552/http-error-403-permission-denied-to-enable-service-cloudfunctions-googleapis">https://stackoverflow.com/questions/69105552/http-error-403-permission-denied-to-enable-service-cloudfunctions-googleapis</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/FirebaseExtended/action-hosting-deploy/issues/253">https://github.com/FirebaseExtended/action-hosting-deploy/issues/253</a></li>
+</ol>
+</blockquote>
+<h3><span id="conclusion">Conclusion</span><a href="#conclusion" class="header-anchor">#</a></h3><p>Finally we get an opportunity to use NextJS 13 <code>appDir</code>. Although it’s still an experimental feature, we feel that is more intuitive to organize server-side and client-side components. Some packages are not supported now, but you still can find a patch easily by Google or ChatGPT.</p>
+<p>In this simple example, even through we don’t build relationships in database and don’t use Firebase Auth or Firebase Function, we use NextJS 13 <code>appDir</code> folder integrating with Firebase, Firestore, and Cloud Storage. And, it is also worth of reference if you want to use <code>Firebase Emulator</code> in <code>docker-compose</code>. If you need more details about this project, please go to <a target="_blank" rel="noopener" href="https://github.com/josephMG/docker-nextjs-firebase">Github repo</a>. Hope this is useful for you.</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2023/02/28/Using-Firebase-and-Firestore-with-NextJS-and-Docker-Part-2/" data-id="clr8lqkor001olbpx2urjetz0" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/DevOps/" rel="tag">DevOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Next-js/" rel="tag">Next.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/clude-storage/" rel="tag">clude storage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/firebase/" rel="tag">firebase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/firestore/" rel="tag">firestore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/serverless/" rel="tag">serverless</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2023/03/14/How-to-use-React-hook-useImperativeHandle/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="How to use React hook - useImperativeHandle"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">How to use React hook - useImperativeHandle</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2023/01/28/Using-Firebase-and-Firestore-in-NextJS-part-1/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker"
+        >
+          <span class="article-nav-title truncate">Using Firebase and Firestore with NextJS and Docker - Part 1 - Setup firebase in docker</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>

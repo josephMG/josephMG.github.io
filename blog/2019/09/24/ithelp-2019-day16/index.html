@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>[Day 16] Google Translation - 3 | Joseph &amp; Sandy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <meta name="description" content="還記得昨天在串API的時候，有特別提到Google Translate API在Go client library沒有v3beta1的版本。秉持著練習golang的精神，看到v3beta1有RESTful API，就花了點時間來串一下。 Google translate API v3我這邊參考的是Using the command line的內容，使用CURL的方式呼叫，並把他改寫成Go req">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Day 16] Google Translation - 3">
+<meta property="og:url" content="https://josephmg.github.io/blog/2019/09/24/ithelp-2019-day16/index.html">
+<meta property="og:site_name" content="Joseph &amp; Sandy">
+<meta property="og:description" content="還記得昨天在串API的時候，有特別提到Google Translate API在Go client library沒有v3beta1的版本。秉持著練習golang的精神，看到v3beta1有RESTful API，就花了點時間來串一下。 Google translate API v3我這邊參考的是Using the command line的內容，使用CURL的方式呼叫，並把他改寫成Go req">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://josephmg.github.io/blog/2019/09/24/ithelp-2019-day16/output.jpg">
+<meta property="article:published_time" content="2019-09-24T07:29:50.000Z">
+<meta property="article:modified_time" content="2024-01-11T02:39:46.711Z">
+<meta property="article:author" content="Joseph Chou">
+<meta property="article:tag" content="Google AI">
+<meta property="article:tag" content="鐵人賽">
+<meta property="article:tag" content="Translate">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://josephmg.github.io/blog/2019/09/24/ithelp-2019-day16/output.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Joseph &amp; Sandy" type="application/atom+xml" />
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png"/>
+  <meta name="msapplication-TileColor" content="#000000"/>
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png" />
+  <!--<![endif]-->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css" />
+
+  
+<link rel="stylesheet" href="/generated/668-00d7cf7067e0204d9a1a.css">
+
+<link rel="stylesheet" href="/generated/app-6513a95fd0931156078f.css">
+
+<link rel="stylesheet" href="/generated/blog-0e6ef510d0b1ed0762da.css">
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC1JF1MZDV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SC1JF1MZDV');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7,fetch,Object.entries,Object.values&flags=gated"></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+
+  
+<div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Joseph &amp; Sandy</span>
+        <sub>Fullstack Engineer / Digital Marketing</sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/categories">Category</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="button-collapse sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="sidenav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/categories">Category</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="blog-ithelp-2019-day16" class="article article-type-blog" itemscope itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      [Day 16] Google Translation - 3
+    </h1>
+  
+
+
+          
+
+            
+              <div class="article-meta">
+                <span class="">
+                  <i class="fa fa-calendar"></i>
+                  Published:
+                  <time
+                    datetime="2019-09-24T07:29:50.000Z"
+                    itemprop="datePublished"
+                    title="Date published"
+                  >Sep 24, 2019</time>
+                </span>
+                <span class="article-author">
+                  <i class="fa fa-user"></i>
+                  <span itemprop="author"> Joseph </span>
+                </span>
+              </div>
+            
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>還記得<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10219304">昨天</a>在串API的時候，有特別提到Google Translate API在Go client library沒有<code>v3beta1</code>的版本。秉持著練習golang的精神，看到<code>v3beta1</code>有RESTful API，就花了點時間來串一下。</p>
+<h3><span id="google-translate-api-v3"></span><a href="#google-translate-api-v3" class="header-anchor">#</a></h3><p>我這邊參考的是<code>Using the command line</code>的內容，使用CURL的方式呼叫，並把他改寫成Go <a target="_blank" rel="noopener" href="https://github.com/imroc/req">req</a> (http client)這類型的RESTful API call。仔細想想，要解決的問題有兩個：1. Get Access token、2. 呼叫restful api。</p>
+<span id="more"></span>
+
+<h4><span id="1-get-access-token">1. Get Access token</span><a href="#1-get-access-token" class="header-anchor">#</a></h4><blockquote>
+<p>參考資料：<a target="_blank" rel="noopener" href="https://godoc.org/golang.org/x/oauth2/google#example-JWTConfigFromJSON">https://godoc.org/golang.org/x/oauth2/google#example-JWTConfigFromJSON</a><br>我這邊先建立一個auth模組，並把<code>credential json file</code>傳入到裡面的<code>ServiceAccount</code> func，然後回傳一個<code>token</code> struct，</p>
+</blockquote>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> auth</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;golang.org/x/oauth2&quot;</span></span><br><span class="line">  <span class="string">&quot;golang.org/x/oauth2/google&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ServiceAccount</span><span class="params">(credentialFile <span class="type">string</span>)</span></span> (*oauth2.Token, <span class="type">error</span>) &#123;</span><br><span class="line">  b, err := ioutil.ReadFile(credentialFile)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">  &#125;</span><br><span class="line">  config, _ := google.JWTConfigFromJSON(b, <span class="string">&quot;https://www.googleapis.com/auth/cloud-translation&quot;</span>)</span><br><span class="line"></span><br><span class="line">  token, err := config.TokenSource(oauth2.NoContext).Token()</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> token, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2-hu-jiao-restful-api">2. 呼叫restful api</span><a href="#2-hu-jiao-restful-api" class="header-anchor">#</a></h4><p>這樣就有AccessToken了，再來看看CURL該怎麼呼叫</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST \</span><br><span class="line">-H &quot;Authorization: Bearer TOKEN&quot; \</span><br><span class="line">-H &quot;Content-Type: application/json; charset=utf-8&quot; \</span><br><span class="line">-d @request.json \</span><br><span class="line">https://translation.googleapis.com/v3beta1/projects/PROJECT_ID:translateText</span><br></pre></td></tr></table></figure>
+
+<p>而request.json則是 <code>&#123;&quot;sourceLanguageCode&quot;: &quot;en&quot;, &quot;targetLanguageCode&quot;: &quot;ru&quot;, &quot;contents&quot;: [&quot;Dr. Watson, come here!&quot;, &quot;Bring me some coffee!&quot;]&#125;</code></p>
+<p>翻譯的時候會打一隻<code>POST</code>到 <code>https://translation.googleapis.com/v3beta1/projects/PROJECT_ID:translateText</code>，帶著<code>sourceLanguage</code>、<code>targetLanguageCode</code>、<code>contents</code>，再呼叫的時候需要額外的PROJECT_ID，我這邊選擇用環境變數帶進去。</p>
+<p>好，有這些知識以後，我們開始來寫呼叫的方法，直接寫在translation模組裡。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TranslateTextV3Beta1</span><span class="params">(text []<span class="type">string</span>)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">  token, _ := auth.ServiceAccount(<span class="string">&quot;./authentication.json&quot;</span>)</span><br><span class="line"></span><br><span class="line">  header := req.Header&#123;</span><br><span class="line">    <span class="string">&quot;Accept&quot;</span>:        <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>:  <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Authorization&quot;</span>: <span class="string">&quot;Bearer &quot;</span> + token.AccessToken,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  body := <span class="keyword">struct</span> &#123;</span><br><span class="line">    SourceLanguageCode <span class="type">string</span>   <span class="string">`json:&quot;sourceLanguageCode&quot;`</span></span><br><span class="line">    TargetLanguageCode <span class="type">string</span>   <span class="string">`json:&quot;targetLanguageCode&quot;`</span></span><br><span class="line">    Contents           []<span class="type">string</span> <span class="string">`json:&quot;contents&quot;`</span></span><br><span class="line">  &#125;&#123;</span><br><span class="line">    SourceLanguageCode: <span class="string">&quot;en&quot;</span>,</span><br><span class="line">    TargetLanguageCode: <span class="string">&quot;zh-TW&quot;</span>,</span><br><span class="line">    Contents:           text,</span><br><span class="line">  &#125;</span><br><span class="line">  json_string, _ := json.Marshal(body)</span><br><span class="line"></span><br><span class="line">  param := req.BodyJSON(json_string)</span><br><span class="line">  <span class="comment">// only url is required, others are optional.</span></span><br><span class="line">  r, err := req.Post(</span><br><span class="line">    fmt.Sprintf(<span class="string">&quot;https://translation.googleapis.com/v3beta1/projects/%s:translateText&quot;</span>, os.Getenv(<span class="string">&quot;PROJECT_ID&quot;</span>)),</span><br><span class="line">    header,</span><br><span class="line">    param,</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">  &#125;</span><br><span class="line">  log.Printf(<span class="string">&quot;%+v&quot;</span>, r) <span class="comment">// print info (try it, you may surprise)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這有幾個重點：</p>
+<ul>
+<li>從auth模組裡的<code>ServiceAccount</code>得到token</li>
+<li>產生<code>header</code>把AccessToken帶入</li>
+<li>建立body struct，然後透過這個body產生json <code>param</code></li>
+<li>呼叫req.POST，先從<code>os.Getenv</code>取得PROJECT_ID，並帶入<code>header</code>、<code>params</code></li>
+<li>然後得到response <code>r</code>。</li>
+</ul>
+<p>那來看看output吧：</p>
+<blockquote>
+<p>docker以<code>docker run -it --env PROJECT_ID=ithelp-2019-ai golang ./app Day16</code>執行<br><img src="/blog/2019/09/24/ithelp-2019-day16/output.jpg" alt="output"></p>
+</blockquote>
+<p>過程中第一次建立Struct並轉換成JSON、第一次使用req之類的http client，讓我對Golang的語法又更熟悉了一些。</p>
+<blockquote>
+<p>詳細github可以看這邊：<a target="_blank" rel="noopener" href="https://github.com/josephMG/ithelp-2019/tree/Day-16">https://github.com/josephMG/ithelp-2019/tree/Day-16</a><br>OK，今天就到這邊，謝謝大家的觀看。</p>
+</blockquote>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="https://josephmg.github.io/blog/2019/09/24/ithelp-2019-day16/" data-id="clr8lqkoz002ilbpxd5b17elw" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Google-AI/" rel="tag">Google AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Translate/" rel="tag">Translate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag">鐵人賽</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul>
+    
+      <li id="article-nav-newer-container">
+        <a
+          href="/blog/2019/09/25/ithelp-2019-day17/"
+          id="article-nav-newer"
+          class="article-nav-link-wrap grey-text text-darken-1"
+          title="[Day 17] Google Translation - 子系列最終章"
+        >
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title truncate">[Day 17] Google Translation - 子系列最終章</span>
+        </a>
+      </li>
+    
+
+    
+      <li id="article-nav-older-container">
+        <a
+          href="/blog/2019/09/23/ithelp-2019-day15/"
+          id="article-nav-older"
+          class="article-nav-link-wrap grey-text text-darken-1 right-align"
+          title="[Day 15] Google Translation - 2"
+        >
+          <span class="article-nav-title truncate">[Day 15] Google Translation - 2</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2024 Joseph Chou
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow noopener" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+<script src="/generated/193-48f9b14976b9a526708f.js"></script>
+
+<script src="/generated/668-d2e471b8dcd3790fc287.js"></script>
+
+<script src="/generated/app-9afd2664faae5848b457.js"></script>
+
+<script src="/generated/blog-ded2f363deb425b73a50.js"></script>
+
+
+</body>
+</html>
