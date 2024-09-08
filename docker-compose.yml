@@ -10,3 +10,13 @@ services:
       - /blog/node_modules
     ports:
       - '4001:4000'
+  astro:
+    build:
+      context: .
+      dockerfile: Dockerfile-astro
+      network: host
+    volumes:
+      - ./astro:/blog
+      - /blog/node_modules
+    ports:
+      - '4321:4321'
