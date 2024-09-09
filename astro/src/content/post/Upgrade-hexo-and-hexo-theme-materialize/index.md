@@ -2,7 +2,7 @@
 title: Upgrade hexo and hexo-theme-materialize
 tags: ["Marketing", "Hexo"]
 author: Joseph
-photos: ["banner.png"]
+image: "banner.png"
 categories: ["Joseph", "Marketing"]
 publishDate: 2023-01-23 16:47:08
 ---

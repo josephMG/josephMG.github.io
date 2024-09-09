@@ -2,7 +2,7 @@
 title: Use ChatGPT to translate new react-dev doc
 tags: ["Node.js", "Typescript", "ChatGPT", "OpenAI"]
 author: Joseph
-photos: ["banner.png"]
+image: 'banner.png'
 categories:
   - Joseph
   - AI & Machine Learning

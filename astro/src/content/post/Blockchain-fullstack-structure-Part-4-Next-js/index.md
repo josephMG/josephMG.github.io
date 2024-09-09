@@ -3,7 +3,7 @@ title: Blockchain fullstack structure - Part 4 - React.js and Next.js
 publishDate: 2022-08-16 13:08:00
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
-photos: ["logo.png"]
+image: "logo.png"
 categories: ["Joseph", "Blockchain"]
 ---
 

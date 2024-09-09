@@ -2,7 +2,7 @@
 title: How to use React hook - useImperativeHandle
 tags: ["Reactjs", "Typescript"]
 author: Joseph
-photos: ["banner.png"]
+image: "banner.png"
 categories:
   - Joseph
   - Fullstack

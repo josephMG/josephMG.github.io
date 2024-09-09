@@ -2,7 +2,6 @@
 title: I18n in NextJS 13 app dir
 tags: ["Next.js"]
 author: Joseph
-photos: []
 categories:
   - Joseph
   - Fullstack

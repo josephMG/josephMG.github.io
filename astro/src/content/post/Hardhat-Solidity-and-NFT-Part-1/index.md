@@ -3,7 +3,7 @@ title: Hardhat - Solidity and NFT - Part 1 - Prepare project
 publishDate: 2022-03-10 15:38:47
 tags: ["Blockchain", "Solidity", "Hardhat", "Docker"]
 author: Joseph
-photos: ["logo.jpg"]
+image: "logo.jpg"
 categories: ["Joseph", "Blockchain"]
 ---
 

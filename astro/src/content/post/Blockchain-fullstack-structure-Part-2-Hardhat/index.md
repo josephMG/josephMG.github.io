@@ -3,7 +3,7 @@ title: Blockchain fullstack structure - Part 2 - Hardhat
 publishDate: 2022-08-02 16:31:26
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
-photos: ["logo.png"]
+image: "logo.png"
 categories: ["Joseph", "Blockchain"]
 ---
 
