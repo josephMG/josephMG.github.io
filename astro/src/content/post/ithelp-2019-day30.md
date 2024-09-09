@@ -1,6 +1,6 @@
 ---
 title: "[Day 30] Google AI & ML Products 系列總結"
-date: 2019-10-08 07:30:26
+publishDate: 2019-10-08 07:30:26
 tags: ["Google AI", "Speech-to-Text", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

@@ -1,6 +1,6 @@
 ---
 title: "[Day 16] Google Translation - 3"
-date: 2019-09-24 07:29:50
+publishDate: 2019-09-24 07:29:50
 tags: ["Google AI", "Translate", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

@@ -4,7 +4,7 @@ tags: ["Reactjs", "Typescript"]
 author: Joseph
 categories:
   - Joseph
-date: 2024-01-02 04:05:24
+publishDate: 2024-01-02 04:05:24
 ---
 
 It is an interesting hook called `useSyncExternalStore` came from [React 18](https://github.com/reactwg/react-18/discussions/86). After I went through the [doc](https://react.dev/reference/react/useSyncExternalStore), I had totally no idea about how to use it and why it works. Luckily, I got a task I thought I can use this hook, and meanwhile I traced the source code to understand `useSyncExternalStore` implementation. In this article, I will explain how it works internally and show a demo which is differ from [the doc](https://react.dev/reference/react/useSyncExternalStore).

@@ -1,6 +1,6 @@
 ---
 title: "[Day 17] Google Translation - 子系列最終章"
-date: 2019-09-25 07:29:52
+publishDate: 2019-09-25 07:29:52
 tags: ["Google AI", "Translate", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

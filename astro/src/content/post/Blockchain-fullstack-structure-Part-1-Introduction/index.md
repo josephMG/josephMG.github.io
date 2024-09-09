@@ -1,6 +1,6 @@
 ---
 title: Blockchain fullstack structure - Part 1 - Introduction
-date: 2022-07-31 07:28:30
+publishDate: 2022-07-31 07:28:30
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
 photos: ["logo.png"]

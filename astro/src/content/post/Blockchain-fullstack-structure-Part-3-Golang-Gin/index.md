@@ -1,6 +1,6 @@
 ---
 title: Blockchain fullstack structure - Part 3 - Golang Gin
-date: 2022-08-07 12:31:29
+publishDate: 2022-08-07 12:31:29
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
 photos: ["logo.png"]

@@ -1,6 +1,6 @@
 ---
 title: "[Day 28] Google AI Hub - 1"
-date: 2019-10-06 07:30:21
+publishDate: 2019-10-06 07:30:21
 tags: ["Google AI", "AI Hub", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

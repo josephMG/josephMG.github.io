@@ -1,6 +1,6 @@
 ---
 title: "[Day 1] 說說哪裡來的靈感"
-date: 2019-09-09 07:29:15
+publishDate: 2019-09-09 07:29:15
 tags: ["Google AI", "AI & ML products", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

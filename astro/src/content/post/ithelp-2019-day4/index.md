@@ -1,6 +1,6 @@
 ---
 title: "[Day 4] Google Vision AI - 3"
-date: 2019-09-12 07:29:23
+publishDate: 2019-09-12 07:29:23
 tags: ["Google AI", "Vision AI", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

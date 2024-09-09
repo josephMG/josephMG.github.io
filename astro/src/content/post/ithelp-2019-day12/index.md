@@ -1,6 +1,6 @@
 ---
 title: "[Day 12] Google Natural Language - 3"
-date: 2019-09-20 07:29:41
+publishDate: 2019-09-20 07:29:41
 tags: ["Google AI", "Natural Language", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

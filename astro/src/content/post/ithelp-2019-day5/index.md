@@ -1,6 +1,6 @@
 ---
 title: "[Day 5] Google Vision AI - 子系列最終章"
-date: 2019-09-13 07:29:25
+publishDate: 2019-09-13 07:29:25
 tags: ["Google AI", "Vision AI", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

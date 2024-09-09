@@ -1,6 +1,6 @@
 ---
 title: "[Day 20] Google Cloud Text-to-Speech - 子系列最終章"
-date: 2019-09-28 07:29:59
+publishDate: 2019-09-28 07:29:59
 tags: ["Google AI", "Text-to-Speech", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

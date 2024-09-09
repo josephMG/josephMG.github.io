@@ -1,6 +1,6 @@
 ---
 title: "[Day 9] Google Video Intelligence AI - 子系列最終章"
-date: 2019-09-17 07:29:34
+publishDate: 2019-09-17 07:29:34
 tags: ["Google AI", "Video Intelligence AI", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

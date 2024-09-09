@@ -6,7 +6,7 @@ photos: ["banner.png"]
 categories:
   - Joseph
   - DevOps
-date: 2023-01-28 14:06:20
+publishDate: 2023-01-28 14:06:20
 ---
 
 Last year, I got a case to use [firebase](https://firebase.google.com/) and [firestore](https://firebase.google.com/docs/firestore) with Next.js. I've been fullstack many years, so I haven't tried to use firebase and firestore. There was a great chance to give it a try.

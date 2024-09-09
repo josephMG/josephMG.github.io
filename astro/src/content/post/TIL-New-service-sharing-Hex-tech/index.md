@@ -1,6 +1,6 @@
 ---
 title: "[TIL] New service sharing: Hex.tech"
-date: 2020-12-10 06:48:25
+publishDate: 2020-12-10 06:48:25
 tags: ["Today I learn"]
 author: Joseph
 categories: ["Joseph", "TIL"]

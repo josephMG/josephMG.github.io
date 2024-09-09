@@ -1,6 +1,6 @@
 ---
 title: "[Day 25] Google Dialogflow - 2"
-date: 2019-10-03 07:30:12
+publishDate: 2019-10-03 07:30:12
 tags: ["Google AI", "Dialogflow", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

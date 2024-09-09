@@ -1,6 +1,6 @@
 ---
 title: Ruby on Jets - AWS serverless framework for Ruby on Rails
-date: 2021-09-07 07:51:17
+publishDate: 2021-09-07 07:51:17
 tags: ["Ruby on Rails", "AWS", "serverless"]
 author: Joseph
 photos: ["jets-logo.png"]

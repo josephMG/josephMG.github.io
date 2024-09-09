@@ -4,7 +4,7 @@ tags: ["Marketing", "Hexo"]
 author: Joseph
 photos: ["banner.png"]
 categories: ["Joseph", "Marketing"]
-date: 2023-01-23 16:47:08
+publishDate: 2023-01-23 16:47:08
 ---
 
 終於在年節時間把這個部落格升級到Hexo 6.2了！2019年建立這個部落格那時候還是用Hexo 4，前年曾經升級到Hexo 5，並且嘗試把[hexo-theme-materialize](https://github.com/carlos-algms/hexo-theme-materialize)一起升級到v4，不料這次theme升級幅度有點大，hexo-theme-materialize v4他們把[Stylus](https://stylus-lang.com/)都給改成scss，還改成了webpack，升級沒這麼順利，所以當時就只有先把Hexo從4升級到5.2。這次九天連假，前兩天就把動畫追完，後面只好把之前欠的補一補了。

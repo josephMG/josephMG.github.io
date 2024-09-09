@@ -1,6 +1,6 @@
 ---
 title: Hardhat - Solidity and NFT - Part 2 - Deploy contract and Mint NFT
-date: 2022-03-16 08:39:37
+publishDate: 2022-03-16 08:39:37
 tags: ["Blockchain", "Solidity", "Hardhat", "Docker", "NFT"]
 author: Joseph
 photos: ["logo.jpg"]

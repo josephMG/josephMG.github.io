@@ -1,6 +1,6 @@
 ---
 title: 設定Google Analytics 4 / Google Tag Manager追蹤user id
-date: 2021-09-22 05:02:06
+publishDate: 2021-09-22 05:02:06
 tags: ["GA4", "Google Analytics 4", "GTM", "Google Tag Manager", "Marketing"]
 author: Joseph
 categories: ["Joseph", "Marketing"]

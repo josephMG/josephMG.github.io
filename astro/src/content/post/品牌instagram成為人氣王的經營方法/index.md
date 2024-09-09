@@ -1,6 +1,6 @@
 ---
 title: 品牌instagram成為人氣王的經營方法
-date: 2020-02-14 06:40:20
+publishDate: 2020-02-14 06:40:20
 tags: ["Instagram", "IG", "Marketing"]
 author: Sandy
 categories: ["Sandy", "Marketing"]

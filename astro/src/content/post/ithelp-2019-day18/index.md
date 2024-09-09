@@ -1,6 +1,6 @@
 ---
 title: "[Day 18] Google Cloud Text-to-Speech - 1"
-date: 2019-09-26 07:29:55
+publishDate: 2019-09-26 07:29:55
 tags: ["Google AI", "Text-to-Speech", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

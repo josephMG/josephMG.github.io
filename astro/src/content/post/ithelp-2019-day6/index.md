@@ -1,6 +1,6 @@
 ---
 title: "[Day 6] Google Video Intelligence AI - 1"
-date: 2019-09-14 07:29:27
+publishDate: 2019-09-14 07:29:27
 tags: ["Google AI", "Video Intelligence AI", "鐵人賽"]
 author: Joseph
 categories: ["Joseph", "AI & Machine Learning"]

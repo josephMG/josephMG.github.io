@@ -6,7 +6,7 @@ photos: []
 categories:
   - Joseph
   - Fullstack
-date: 2023-05-21 11:46:07
+publishDate: 2023-05-21 11:46:07
 ---
 
 I used to implement I18n with [next-i18next](https://github.com/i18next/next-i18next) in Next.js. However, after upgrading Next.js 13, there is no need for next-i18next. Instead, you can directly use i18next and react-i18next by [this tutorial](https://locize.com/blog/next-13-app-dir-i18n/). Meanwhile, the [official doc](https://nextjs.org/docs/app/building-your-application/routing/internationalization) shows how to use internationalization in app dir. and also provide an example of using [next-intl](https://next-intl-docs.vercel.app/docs/next-13). In this blog, I'll demostrate how to use [next-intl](https://next-intl-docs.vercel.app/docs/next-13) in Next.js 13 app dir.
