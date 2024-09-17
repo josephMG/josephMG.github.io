@@ -9,6 +9,7 @@ category: "AI & Machine Learning"
 > 忘記的人可以看[這系列第三天](./ithelp-2019-day3)的文章回想一下。
 
 在這之前我先重構一下原先的main.go，讓我加上參數去呼叫不同天的Demo api:
+<!-- more -->
 ```golang
 // Usage: `docker run -it golang ./app [DayXX]`
 func main() {
@@ -29,7 +30,6 @@ func main() {
   }
 }
 ```
-<!-- more -->
 
 day 11 我就直接呼叫時傳入Hello World的字串，然後把Demo code改成module的方式，像下面這樣
 ```golang

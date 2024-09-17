@@ -55,7 +55,7 @@ services:
 ```
 I expose **8545** port so that I can connect to hardhat by **http://docker.for.mac.localhost:8545** on my MacOS.
 
-And, as I mentioned in {% post_link Blockchain-fullstack-structure-Part-1-Introduction "previous post" %}, I use `hardhat-abi-exporter`, so I have to run `yarn` to install it.
+And, as I mentioned in [previous post](./Blockchain-fullstack-structure-Part-1-Introduction), I use `hardhat-abi-exporter`, so I have to run `yarn` to install it.
 ```bash
 docker-compose exec hardhat yarn add --dev hardhat-abi-exporter
 

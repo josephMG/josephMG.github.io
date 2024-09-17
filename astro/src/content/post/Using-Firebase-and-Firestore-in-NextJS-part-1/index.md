@@ -35,7 +35,7 @@ We just need to focus on Step 1 and Step 4 in the following image, because we st
 After creating firebase app, we have to create firestore database for our app (we use `test-mode` and locale use `asia-east1`):
 ![create-firestore](create-firestore.jpg)
 
-Cool, but in this article we won't show how to create a nextjs project and setup docker-compose, you can find it in {% link 'my previous blog' https://josephmg.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/#project-initiation true %}. Then, let's add firebase docker to docker-compose.
+Cool, but in this article we won't show how to create a nextjs project and setup docker-compose, you can find it in [my previous blog](https://josephmg.github.io/blog/2022/08/16/Blockchain-fullstack-structure-Part-4-Next-js/#project-initiation). Then, let's add firebase docker to docker-compose.
 
 ### Add firebase to docker-compose
 

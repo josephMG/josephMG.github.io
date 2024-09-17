@@ -6,6 +6,7 @@ author: Joseph
 category: "AI & Machine Learning"
 ---
 今天來Google Natural Language第三篇，我本來想按照Natural Language裡[分析情緒](https://cloud.google.com/natural-language/docs/analyzing-sentiment)這個部分實作，可是看完以後發現它code有點短，只有下面這樣：
+<!-- more -->
 ```golang
 func analyzeSentimentFromGCS(ctx context.Context, gcsURI string) (*languagepb.AnalyzeSentimentResponse, error) {
         return client.AnalyzeSentiment(ctx, &languagepb.AnalyzeSentimentRequest{
@@ -18,7 +19,6 @@ func analyzeSentimentFromGCS(ctx context.Context, gcsURI string) (*languagepb.An
         })
 }
 ```
-<!-- more -->
 遲遲找不到適合的範例，恰巧看到[Natural Language基礎知識](https://cloud.google.com/natural-language/docs/basics?hl=zh-tw)有一個`蓋茨堡宣言`的範例，gcsURI是`gs://cloud-samples-tests/natural-language/gettysburg.txt`，我把gcsURI帶入`gs://cloud-samples-tests/natural-language/gettysburg.txt`，發現跑出來結果很難閱讀
 ![output1.jpg](output1.jpg)
 
