@@ -7,7 +7,7 @@ image: "logo.png"
 category: "Web3"
 ---
 
-This is a series articles of Blockchain fullstack structure, please read {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %} first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article {% post_link Hardhat-Solidity-and-NFT-Part-1 "Hardhat Solidity NFT tutorial" %}.
+This is a series articles of Blockchain fullstack structure, please read [Part 1 Introduction](./Blockchain-fullstack-structure-Part-1-Introduction) first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article [Hardhat Solidity NFT tutorial](./Hardhat-Solidity-and-NFT-Part-1).
 <!-- more -->
 
 ### Project structure

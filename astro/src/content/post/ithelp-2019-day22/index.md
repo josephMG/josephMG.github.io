@@ -5,7 +5,7 @@ tags: ["Google AI", "Speech-to-Text", "鐵人賽"]
 author: Joseph
 category: "AI & Machine Learning"
 ---
-這個步調而言，今天就是Cloud Speech-to-Text API串接，前情提要一樣是要先建立project、Enable API、下載credential json之類的。忘了的人記得看{% post_link ithelp-2019-day3 這系列第三天 %}的文章。
+這個步調而言，今天就是Cloud Speech-to-Text API串接，前情提要一樣是要先建立project、Enable API、下載credential json之類的。忘了的人記得看[這系列第三天](./ithelp-2019-day3)的文章。
 
 好，現在要先來把test data抓下來，我們可以在google的[github](https://github.com/GoogleCloudPlatform/golang-samples/tree/master/speech/testdata)上找到很多檔案可以測試，我這邊抓的是`audio.raw`，並把它放到testdata/speech_to_text資料夾下。
 <!-- more -->

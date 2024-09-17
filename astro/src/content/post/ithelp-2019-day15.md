@@ -9,7 +9,7 @@ category: "AI & Machine Learning"
 
 ### [Translate Text](https://cloud.google.com/translate/docs/translating-text)
 > 架構一樣是在modules底下建立一個`translation.go`的module
-> 還有要記得抓credential json下來，可以參考{% post_link ithelp-2019-day3 這系列第三天 %}的文章
+> 還有要記得抓credential json下來，可以參考[這系列第三天](./ithelp-2019-day3)的文章
 
 <!-- more -->
 

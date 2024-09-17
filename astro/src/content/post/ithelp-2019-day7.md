@@ -16,7 +16,7 @@ category: "AI & Machine Learning"
 <!-- more -->
 
 現在就來開始測試看看。
-> 前情提要：記得先[Enable API](https://console.cloud.google.com/apis/library)，放置環境變數的教學可以看{% post_link ithelp-2019-day3 這系列第三天 %}的文章
+> 前情提要：記得先[Enable API](https://console.cloud.google.com/apis/library)，放置環境變數的教學可以看[這系列第三天](./ithelp-2019-day3)的文章
 > 語言一樣使用Golang，然後跑在docker裡，之後也會放上github
 
 為了一致性，我就開一個module video，然後專門放video Intelligence API的code。來看看我video.go

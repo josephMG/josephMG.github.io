@@ -1,9 +1,18 @@
 import type { PaginateFunction } from 'astro';
+import removeMd from 'remove-markdown';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post, Taxonomy } from '~/types';
 import { APP_BLOG, APP_CATEGORY, APP_TAG, APP_AUTHOR } from 'astrowind:config';
-import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import {
+  cleanSlug,
+  trimSlash,
+  BLOG_BASE,
+  POST_PERMALINK_PATTERN,
+  CATEGORY_BASE,
+  TAG_BASE,
+  AUTHOR_BASE,
+} from './permalinks';
 
 const generatePermalink = async ({
   id,
@@ -41,18 +50,18 @@ const generatePermalink = async ({
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
-  const { id, slug: rawSlug = '', data } = post;
+  const { id, slug: rawSlug = '', data, body } = post;
   const { Content, remarkPluginFrontmatter } = await post.render();
 
   const {
     publishDate: rawPublishDate = new Date(),
     updateDate: rawUpdateDate,
     title,
-    excerpt,
+    excerpt: rawExcerpt,
     image,
     tags: rawTags = [],
     category: rawCategory,
-    author,
+    author: rawAuthor,
     draft = false,
     metadata = {},
   } = data;
@@ -72,6 +81,14 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     slug: cleanSlug(tag),
     title: tag,
   }));
+
+  const author = rawAuthor
+    ? {
+        slug: cleanSlug(rawAuthor),
+        title: rawAuthor,
+      }
+    : undefined;
+  const excerpt = rawExcerpt ?? removeMd(body.replace('<!-- toc -->', '').split('<!-- more -->')?.[0] ?? '');
 
   return {
     id: id,
@@ -253,6 +270,29 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 };
 
 /** */
+export const getStaticPathsBlogAuthor = async ({ paginate }: { paginate: PaginateFunction }) => {
+  if (!isBlogAuthorRouteEnabled) return [];
+
+  const posts = await fetchPosts();
+  const authors = {} as Record<string, any>;
+  posts.map((post) => {
+    if (post.author?.slug) {
+      authors[post.author?.slug] = post.author;
+    }
+  });
+
+  return Array.from(Object.keys(authors)).flatMap((authorSlug) =>
+    paginate(
+      posts.filter((post) => post.author?.slug && authorSlug === post.author?.slug),
+      {
+        params: { author: authorSlug, blog: AUTHOR_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { author: authors[authorSlug] },
+      }
+    )
+  );
+};
+/** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
   const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []);
@@ -289,7 +329,6 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
   return selectedPosts;
 }
 
-
 /** */
 export const findTags = async (): Promise<Array<Taxonomy>> => {
   const posts = await fetchPosts();
@@ -298,7 +337,7 @@ export const findTags = async (): Promise<Array<Taxonomy>> => {
     if (post.tags && Array.isArray(post.tags)) {
       // Remove duplicate tags by filtering slug, as title may different by letter case.
       post.tags.forEach((tag) => {
-        !(acc.some((existing) => existing.slug === tag.slug)) && acc.push(tag);
+        !acc.some((existing) => existing.slug === tag.slug) && acc.push(tag);
       });
     }
     return acc;
@@ -311,9 +350,22 @@ export const findCategories = async (): Promise<Array<Taxonomy>> => {
   const posts = await fetchPosts();
   const categories = posts.reduce((acc, post: Post) => {
     if (post.category) {
-      return !(acc.some((existing) => existing.slug === post.category?.slug)) ? [...acc, post.category]: [...acc];
+      return !acc.some((existing) => existing.slug === post.category?.slug) ? [...acc, post.category] : [...acc];
     }
     return acc;
   }, [] as Taxonomy[]);
   return [...new Set(categories)];
+};
+
+/** */
+export const findAuthors = async (): Promise<Array<Taxonomy>> => {
+  const posts = await fetchPosts();
+  const authors = posts.reduce((acc, post: Post) => {
+    if (post.author) {
+      return !acc.some((existing) => existing.slug === post.author?.slug) ? [...acc, post.author] : [...acc];
+    }
+    return acc;
+  }, [] as Taxonomy[]);
+
+  return [...new Set(authors)];
 };

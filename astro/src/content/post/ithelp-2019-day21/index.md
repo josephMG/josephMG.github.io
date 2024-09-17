@@ -19,7 +19,7 @@ category: "AI & Machine Learning"
 > 這邊奇怪的是我的麥克風輸入一直失敗，無法辨識也沒回應
 
 我選擇檔案上傳，並設定為中文，然後就上傳剛剛錄好的音檔。很快的下面就會看到結果`錄音程式測試一下`的字句(隊就是我說的)。
-> 其實我們也可以用昨天{% post_link ithelp-2019-day20 第二十天 %}、跟前天{% post_link ithelp-2019-day19 第十九天 %}產生的output再把他丟回去分析，看看會不會有同樣的文字輸出
+> 其實我們也可以用昨天[第二十天](./ithelp-2019-day20)、跟前天[第十九天](./ithelp-2019-day19)產生的output再把他丟回去分析，看看會不會有同樣的文字輸出
 
 如果無法錄音、也無法跑程式的各位，不用怕，[這邊](https://github.com/GoogleCloudPlatform/golang-samples/tree/master/speech/testdata)有幫大家找到測試檔案。我選擇英文並把連結內的`Google_Gnome.wav`載下來丟上去，結果就是下面這樣：
 

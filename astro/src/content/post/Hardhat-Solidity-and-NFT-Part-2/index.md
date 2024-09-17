@@ -7,7 +7,7 @@ image: "logo.jpg"
 category: "Web3"
 ---
 
-我們{% post_link Hardhat-Solidity-and-NFT-Part-1 上一篇 %}已經設定好docker及hardhat專案，這一篇就從NFT開始。
+我們[上一篇](./Hardhat-Solidity-and-NFT-Part-1)已經設定好docker及hardhat專案，這一篇就從NFT開始。
 
 ### Generate NFT metadata
 先建立一個`images`資料夾後，把你想要的圖片放進去，並存成1, 2, 3....之類的檔名，然後用`ipfs-car`指令打包在一起。

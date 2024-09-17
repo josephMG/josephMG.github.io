@@ -5,7 +5,7 @@ tags: ["Google AI", "Vision AI", "鐵人賽"]
 author: Joseph
 category: "AI & Machine Learning"
 ---
-今天還是繼續多玩幾個Vision AI API好了，初步教學可以看{% post_link ithelp-2019-day3 前一篇 %}
+今天還是繼續多玩幾個Vision AI API好了，初步教學可以看[前一篇](./ithelp-2019-day3)
 
 ## [Detech text in images](https://cloud.google.com/vision/docs/ocr?authuser=1#vision_text_detection_gcs-go)
 我這邊用的圖片是Google搜尋到的拉斯維加斯:

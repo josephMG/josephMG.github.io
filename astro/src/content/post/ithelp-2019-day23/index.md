@@ -10,7 +10,7 @@ category: "AI & Machine Learning"
 在doc文件裡的[這篇](https://cloud.google.com/speech-to-text/docs/streaming-recognize?authuser=1)是介紹如何使用Mic直接stream翻譯成文字，但我docker環境沒特別access host的mic，所以沒有測試這段。
 
 #### 中文Speech-to-Text
-仔細測了一下，{% post_link ithelp-2019-day22 昨天 %}的範例無法直接串接中文語音轉文字，原來是因為昨天使用的版本是`v1`，但中文相關的分析必須使用`v1p1beta1`，另一個原因是之前的檔案`try.m4a`一直測試都無法讀取，我把他轉為`try.mp3`以後，才可以順利解析。
+仔細測了一下，[昨天](./ithelp-2019-day22)的範例無法直接串接中文語音轉文字，原來是因為昨天使用的版本是`v1`，但中文相關的分析必須使用`v1p1beta1`，另一個原因是之前的檔案`try.m4a`一直測試都無法讀取，我把他轉為`try.mp3`以後，才可以順利解析。
 <!-- more -->
 
 有了這些解釋以後，我們來看看這次的code：

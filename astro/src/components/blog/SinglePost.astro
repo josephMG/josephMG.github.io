@@ -30,7 +30,9 @@ const { post, url } = Astro.props;
               <>
                 {' '}
                 · <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-                <span class="inline-block">{post.author}</span>
+                <a class="hover:underline inline-block" href={getPermalink(post.author.slug, 'author')}>
+                  <span class="inline-block">{post.author.title}</span>
+                </a>
               </>
             )
           }
@@ -63,7 +65,7 @@ const { post, url } = Astro.props;
       <p
         class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify"
       >
-        {post.excerpt}
+        {/*post.excerpt*/}
       </p>
 
       {

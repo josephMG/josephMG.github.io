@@ -8,7 +8,8 @@ category: "AI & Machine Learning"
 今天要來串接AutoML Table的API了，在串接之前一樣要先把Model deploy。
 ![deployed](deployed.jpg)
 
-> 大家可以先拿{% post_link ithelp-2019-day26 昨天 %}的資料在UI介面上online predict一下。
+> 大家可以先拿[昨天](./ithelp-2019-day26)的資料在UI介面上online predict一下。
+
 <!-- more -->
 
 記得昨天的UI介面嗎？最下面有個`REST API`點下去就會把上方feature column的值變成json，並給你一個URL讓你呼叫。
@@ -17,7 +18,7 @@ category: "AI & Machine Learning"
 不過我這邊CURL的方式一直會出現403，看來不是用我的service account去呼叫，而是使用我的google user去呼叫，所以一直驗證失敗。
 ![CURL](CURL.jpg)
 
-這讓我想到{% post_link ithelp-2019-day16 Day16 %}我用了REST API呼叫Translation API，就照本宣科來一次AutoML Table。先按照JSON格式來定義`struct`，他需要`Payload`裡面有個`Row`，`Row`內有`Values` & `ColumnSpecIds`。
+這讓我想到[Day16](./ithelp-2019-day16)我用了REST API呼叫Translation API，就照本宣科來一次AutoML Table。先按照JSON格式來定義`struct`，他需要`Payload`裡面有個`Row`，`Row`內有`Values` & `ColumnSpecIds`。
 ```golang
 type Body struct {
   Payload Payload `json:"payload"`

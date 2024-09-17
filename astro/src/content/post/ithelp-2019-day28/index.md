@@ -5,7 +5,7 @@ tags: ["Google AI", "AI Hub", "鐵人賽"]
 author: Joseph
 category: "AI & Machine Learning"
 ---
-> 話說照{% post_link ithelp-2019-day1 第一天 %}的規劃，今天本來要寫[Recommendation AI](https://cloud.google.com/recommendations)，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。
+> 話說照[第一天](./ithelp-2019-day1)的規劃，今天本來要寫[Recommendation AI](https://cloud.google.com/recommendations)，不過我測了很久始終無法使用Recommendation AI、無法Enable它，所以只好就此作罷。
 
 ### AI Hub
 今天找其他的玩具來玩，翻到了**AI Hub**，Hub會讓人直接連想到集線器，**AI Hub**就是把很多AI、ML集中在一起的平台，你可以在上面使用大家的AI model，也可以分享自己的AI上去給大家用。

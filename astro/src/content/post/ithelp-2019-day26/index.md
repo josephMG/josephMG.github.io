@@ -5,7 +5,7 @@ tags: ["Google AI", "AutoML Table", "鐵人賽"]
 author: Joseph
 category: "AI & Machine Learning"
 ---
-因為篇幅關係，昨天的{% post_link ithelp-2019-day25 Dialogflow %}沒有寫到最終章，就要先跳來AutoML Table了。
+因為篇幅關係，昨天的[Dialogflow](./ithelp-2019-day25)沒有寫到最終章，就要先跳來AutoML Table了。
 
 ### 來點簡介再開始
 AutoML Table是一種**supervised learning**，並透過表格資料訓練模型。用表格中的`target`欄位進行預測，還有一些用來學習的`features`特徵欄位。而在訓練之前我們該做的是：蒐集、準備資料、訓練、評估、測試、最後是預測。

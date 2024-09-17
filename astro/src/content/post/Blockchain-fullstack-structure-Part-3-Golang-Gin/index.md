@@ -7,7 +7,7 @@ image: "logo.png"
 category: "Web3"
 ---
 
-It's time to Blockchain with Golang. If you haven't seen my previous post {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %} and {% post_link Blockchain-fullstack-structure-Part-2-Hardhat "Part 2 Hardhat" %}, please read them first.
+It's time to Blockchain with Golang. If you haven't seen my previous post [Part 1 Introduction](./Blockchain-fullstack-structure-Part-1-Introduction) and [Part 2 Hardhat](./Blockchain-fullstack-structure-Part-2-Hardhat), please read them first.
 
 Again, does Dapp need a Backend? 
 > [reddit](https://www.reddit.com/r/ethdev/comments/nxvk43/do_dapps_really_need_backend/)

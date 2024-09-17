@@ -7,7 +7,7 @@ image: "logo.png"
 category: "Web3"
 ---
 
-Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven't seen my previous posts {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %}, {% post_link Blockchain-fullstack-structure-Part-2-Hardhat "Part 2 Hardhat" %}, and {% post_link Blockchain-fullstack-structure-Part-3-Golang-Gin "Part 3 Golang Gin" %}, please read them first.
+Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven't seen my previous posts [Part 1 Introduction](./Blockchain-fullstack-structure-Part-1-Introduction), [Part 2 Hardhat](./Blockchain-fullstack-structure-Part-2-Hardhat), and [Part 3 Golang Gin](./Blockchain-fullstack-structure-Part-3-Golang-Gin), please read them first.
 
 In this article, I demonstrate how to use React.js (Next.js) to interact with smart contract by Golang Gin API and hardhat RPC URL, and implement a simple Sign-in with Ethereum (SIWE) authentication and `setGreeting` to Solidity.
 
@@ -119,7 +119,7 @@ I set `NEXT_PUBLIC_RPC_URL` to hardhat RPC URL, and create a client with a `Inje
 
 ### Authentication - NextAuth + SIWE
 
-In previous article {% post_link Blockchain-fullstack-structure-Part-3-Golang-Gin "Part 3 Golang Gin" %}, I mentioned that I use the [SIWE](https://docs.login.xyz/) to verify sign-in messages. You can also follow [this tutorial](https://docs.login.xyz/integrations/nextauth.js) to integrate **wagmi** and **siwe**.
+In previous article [Part 3 Golang Gin](./Blockchain-fullstack-structure-Part-3-Golang-Gin), I mentioned that I use the [SIWE](https://docs.login.xyz/) to verify sign-in messages. You can also follow [this tutorial](https://docs.login.xyz/integrations/nextauth.js) to integrate **wagmi** and **siwe**.
 
 Don't worry. There are only three mainly files: `nextauth api endpoint`, `ConnectWallet component`, and `protected page`.
  Okay! First, I create an api endpoint in **pages/api/auth**.

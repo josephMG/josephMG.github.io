@@ -7,7 +7,7 @@ category: DevOps
 publishDate: 2023-02-28 13:51:04
 ---
 
-On our {% post_link Using-Firebase-and-Firestore-in-NextJS-part-1 "previous post" %} shows how to integrate firebase with docker. This article we will integrate Next.js with firebase, and then deploy app with Github actions.  In this webapp, we can input cryptocurrency name, and upload logo, and therefore we use `firestore` to save `Tokens` collection and `Cloud Storage` to save logo images.
+On our [previous post](./Using-Firebase-and-Firestore-in-NextJS-part-1) shows how to integrate firebase with docker. This article we will integrate Next.js with firebase, and then deploy app with Github actions.  In this webapp, we can input cryptocurrency name, and upload logo, and therefore we use `firestore` to save `Tokens` collection and `Cloud Storage` to save logo images.
 
 <!-- more -->
 

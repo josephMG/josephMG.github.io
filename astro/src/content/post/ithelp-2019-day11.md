@@ -6,7 +6,7 @@ author: Joseph
 category: "AI & Machine Learning"
 ---
 今天開始使用[Natural3Language API](https://cloud.google.com/natural-language/docs/quickstart-client-libraries)，一樣要先Enable API跟下載credential json。
-> 忘記的人可以看{% post_link ithelp-2019-day3 這系列第三天 %}的文章回想一下。
+> 忘記的人可以看[這系列第三天](./ithelp-2019-day3)的文章回想一下。
 
 在這之前我先重構一下原先的main.go，讓我加上參數去呼叫不同天的Demo api:
 ```golang

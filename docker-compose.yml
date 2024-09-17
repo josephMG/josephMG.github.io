@@ -1,5 +1,8 @@
 version: '3.7'
 
+volumes:
+    astro:
+
 services:
   hexo:
     build:
@@ -17,6 +20,6 @@ services:
       network: host
     volumes:
       - ./astro:/blog
-      - /blog/node_modules
+      - ./astro/node_modules:/blog/node_modules
     ports:
       - '4321:4321'

@@ -7,7 +7,7 @@ category: "AI & Machine Learning"
 ---
 昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門[Cloud Text-to-Speech API](https://cloud.google.com/text-to-speech/docs/?hl=zh-tw)吧。
 
-> 前情提要：記得先[Enable API](https://console.cloud.google.com/apis/library)，放置環境變數的教學可以看{% post_link ithelp-2019-day3 這系列第三天 %}的文章
+> 前情提要：記得先[Enable API](https://console.cloud.google.com/apis/library)，放置環境變數的教學可以看[這系列第三天](./ithelp-2019-day3)的文章
 > 語言一樣使用Golang，然後跑在docker裡，之後也會放上github
 <!-- more -->
 

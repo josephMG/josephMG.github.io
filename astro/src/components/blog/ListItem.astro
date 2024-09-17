@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Icon } from 'astro-icon/components';
+import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
 import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 
@@ -71,7 +72,9 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
               <>
                 {' '}
                 · <Icon name="tabler:user" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
-                <span>{post.author.replaceAll('-', ' ')}</span>
+                  <a class="hover:underline" href={getPermalink(post.author.slug, 'author')}>
+                    <span>{post.author.title.replaceAll('-', ' ')}</span>
+                  </a>
               </>
             )
           }
@@ -104,7 +107,13 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
       </h2>
     </header>
 
-    {post.excerpt && <p class="flex-grow text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
+    <p class="flex-grow text-muted dark:text-slate-400 text-lg">
+      <PostExcerpt
+        post={{body: post.excerpt}}
+        words={50}
+        maxLength={100}
+        addEllipsis />
+    </p>
     {
       post.tags && Array.isArray(post.tags) ? (
         <footer class="mt-5">
