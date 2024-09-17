@@ -3,7 +3,7 @@ title: 天母搞什麼鬼-萬聖節活動
 publishDate: 2019-11-13 05:44:09
 tags: ["Marketing", "halloween", "tianmu", "萬聖節", "天母"]
 author: Sandy
-categories: ["Sandy", "Marketing"]
+category: "Marketing"
 ---
 
 天母可以說是台北最有異國情調的地區，因為有美國學校、歐洲學校、日本學校及外國使館集中在這裡，成為外國人Longstay會考慮的地點，漸漸的聚集許多外國家庭，有著濃濃異國氣息也讓萬聖節在天母成了另一種文化。

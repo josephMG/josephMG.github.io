@@ -4,7 +4,7 @@ publishDate: 2022-08-16 13:08:00
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
 image: "logo.png"
-categories: ["Joseph", "Blockchain"]
+category: "Web3"
 ---
 
 Alright, the series of articles goes to frontend part. I post an article related to Blockchain with React.js and Next.js. If you haven't seen my previous posts {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %}, {% post_link Blockchain-fullstack-structure-Part-2-Hardhat "Part 2 Hardhat" %}, and {% post_link Blockchain-fullstack-structure-Part-3-Golang-Gin "Part 3 Golang Gin" %}, please read them first.

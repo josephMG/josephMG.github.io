@@ -3,7 +3,7 @@ title: "[TIL] New service sharing: Hex.tech"
 publishDate: 2020-12-10 06:48:25
 tags: ["Today I learn"]
 author: Joseph
-categories: ["Joseph", "TIL"]
+category: "Today I Learn"
 ---
 
 Podcast source: [Hex: Data Project Sharing with Caitlin Colgrove and Barry McCardel](https://softwareengineeringdaily.com/2020/12/03/hex-data-project-sharing-with-caitlin-colgrove-and-barry-mccardel/)

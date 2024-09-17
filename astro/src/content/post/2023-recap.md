@@ -2,9 +2,7 @@
 title: 2023 回顧
 tags: ["reviews"]
 author: Joseph
-categories:
-  - Joseph
-  - Reviews
+category: Reviews
 publishDate: 2024-01-01 00:03:26
 ---
 

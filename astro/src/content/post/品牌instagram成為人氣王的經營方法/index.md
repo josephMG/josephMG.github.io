@@ -3,7 +3,7 @@ title: 品牌instagram成為人氣王的經營方法
 publishDate: 2020-02-14 06:40:20
 tags: ["Instagram", "IG", "Marketing"]
 author: Sandy
-categories: ["Sandy", "Marketing"]
+category: "Marketing"
 ---
 
 ### 品牌Instagram增加曝光度、累積人氣的經營方法

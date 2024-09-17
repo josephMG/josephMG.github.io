@@ -4,7 +4,7 @@ publishDate: 2019-11-14 14:29:34
 tags: ["Google Cloud Platform", "GCP", "Load balancer", "Docker"]
 author: Joseph
 image: "architecture.jpg"
-categories: ["Joseph", "DevOps"]
+category: DevOps
 ---
 
 

@@ -4,7 +4,7 @@ publishDate: 2022-07-31 07:28:30
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
 image: "logo.png"
-categories: ["Joseph", "Blockchain"]
+category: "Web3"
 ---
 
 Recently, I ogranized a template of my blockchain fullstack project, including a Hardhat Solidity, Golang backend, and React js frontend. Does it need golang backend? Actually, I'm not sure. But there is a [post](https://soliditydeveloper.com/solidity-overview-2020) said:

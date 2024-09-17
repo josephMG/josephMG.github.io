@@ -3,7 +3,7 @@ title: "[Day 24] Google Dialogflow - 1"
 publishDate: 2019-10-02 07:30:09
 tags: ["Google AI", "Dialogflow", "鐵人賽"]
 author: Joseph
-categories: ["Joseph", "AI & Machine Learning"]
+category: "AI & Machine Learning"
 ---
 今天要介紹新的服務：[Dialogflow](https://cloud.google.com/dialogflow/)。這部分說明文件繞來繞去，最後導到新的網址：https://cloud.google.com/dialogflow/docs/how
 

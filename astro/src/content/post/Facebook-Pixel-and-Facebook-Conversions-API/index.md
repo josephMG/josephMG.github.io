@@ -3,7 +3,7 @@ title: Facebook Pixel and Facebook Conversions API
 publishDate: 2021-10-01 08:26:28
 tags: ["Facebook Pixel", "Facebook Conversions API", "Marketing", "serverless"]
 author: Joseph
-categories: ["Joseph", "Marketing"]
+category: "Marketing"
 ---
 
 Recently I got a Trello ticket to add [Facebook Pixel](https://www.facebook.com/business/learn/facebook-ads-pixel) tracking code, and they gave me a token to use. As a frontend engineer on that project, it's confusing to me, because the token is for [Facebook Conversions API](https://developers.facebook.com/docs/marketing-api/conversions-api/). The biggest difference between [Facebook Conversions API](https://developers.facebook.com/docs/marketing-api/conversions-api/) and [Facebook Pixel](https://www.facebook.com/business/learn/facebook-ads-pixel) is Facebook conversions API is invoked on the server, and Facebook Pixel is on the client. Besides, Facebook Conversions API is to solve [IOS 14 updates](https://blog.hootsuite.com/facebook-conversion-api/). Now, let me write the usage of Facebook Conversions API down.

@@ -2,8 +2,7 @@
 title: A powerful react hook - useSyncExternalStore
 tags: ["Reactjs", "Typescript"]
 author: Joseph
-categories:
-  - Joseph
+category: Frontend
 publishDate: 2024-01-02 04:05:24
 ---
 

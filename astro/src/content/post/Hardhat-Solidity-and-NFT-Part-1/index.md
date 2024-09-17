@@ -4,7 +4,7 @@ publishDate: 2022-03-10 15:38:47
 tags: ["Blockchain", "Solidity", "Hardhat", "Docker"]
 author: Joseph
 image: "logo.jpg"
-categories: ["Joseph", "Blockchain"]
+category: "Web3"
 ---
 
 農曆年前結束了一個博弈業的案子，開啟了虛擬貨幣及區塊鏈的契機。年後，整個2月都在研究區塊鏈的各種應用，NFT、opensea、solidity、hardhat、ipfs、testnet，今天這篇文章來記錄一下我用Solidity / Hardhat上架NFT的過程，以免以後金魚腦忘光。

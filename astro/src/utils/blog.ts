@@ -1,8 +1,8 @@
 import type { PaginateFunction } from 'astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Post } from '~/types';
-import { APP_BLOG } from 'astrowind:config';
+import type { Post, Taxonomy } from '~/types';
+import { APP_BLOG, APP_CATEGORY, APP_TAG, APP_AUTHOR } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
 const generatePermalink = async ({
@@ -116,15 +116,24 @@ let _posts: Array<Post>;
 /** */
 export const isBlogEnabled = APP_BLOG.isEnabled;
 export const isRelatedPostsEnabled = APP_BLOG.isRelatedPostsEnabled;
+
 export const isBlogListRouteEnabled = APP_BLOG.list.isEnabled;
 export const isBlogPostRouteEnabled = APP_BLOG.post.isEnabled;
-export const isBlogCategoryRouteEnabled = APP_BLOG.category.isEnabled;
-export const isBlogTagRouteEnabled = APP_BLOG.tag.isEnabled;
+export const isBlogCategoryListRouteEnabled = APP_CATEGORY.list.isEnabled;
+export const isBlogCategoryRouteEnabled = APP_CATEGORY.category.isEnabled;
+export const isBlogTagListRouteEnabled = APP_TAG.list.isEnabled;
+export const isBlogTagRouteEnabled = APP_TAG.tag.isEnabled;
+export const isBlogAuthorListRouteEnabled = APP_AUTHOR.list.isEnabled;
+export const isBlogAuthorRouteEnabled = APP_AUTHOR.author.isEnabled;
 
 export const blogListRobots = APP_BLOG.list.robots;
 export const blogPostRobots = APP_BLOG.post.robots;
-export const blogCategoryRobots = APP_BLOG.category.robots;
-export const blogTagRobots = APP_BLOG.tag.robots;
+export const blogCategoryRobots = APP_CATEGORY.category.robots;
+export const blogCategoryListRobots = APP_CATEGORY.list.robots;
+export const blogTagRobots = APP_TAG.tag.robots;
+export const blogTagListRobots = APP_TAG.list.robots;
+export const blogAuthorRobots = APP_AUTHOR.author.robots;
+export const blogAuthorListRobots = APP_AUTHOR.list.robots;
 
 export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 
@@ -195,7 +204,7 @@ export const getStaticPathsBlogPost = async () => {
 
 /** */
 export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
-  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
+  if (!isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
   const categories = {} as Record<string, any>;
@@ -219,7 +228,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 
 /** */
 export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }) => {
-  if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
+  if (!isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
   const tags = {} as Record<string, any>;
@@ -279,3 +288,32 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
 
   return selectedPosts;
 }
+
+
+/** */
+export const findTags = async (): Promise<Array<Taxonomy>> => {
+  const posts = await fetchPosts();
+
+  const tags = posts.reduce((acc: Array<Taxonomy>, post: Post) => {
+    if (post.tags && Array.isArray(post.tags)) {
+      // Remove duplicate tags by filtering slug, as title may different by letter case.
+      post.tags.forEach((tag) => {
+        !(acc.some((existing) => existing.slug === tag.slug)) && acc.push(tag);
+      });
+    }
+    return acc;
+  }, []);
+  return [...new Set(tags)];
+};
+
+/** */
+export const findCategories = async (): Promise<Array<Taxonomy>> => {
+  const posts = await fetchPosts();
+  const categories = posts.reduce((acc, post: Post) => {
+    if (post.category) {
+      return [...acc, post.category];
+    }
+    return acc;
+  }, []);
+  return [...new Set(categories)];
+};

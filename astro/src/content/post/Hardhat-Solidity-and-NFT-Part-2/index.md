@@ -4,7 +4,7 @@ publishDate: 2022-03-16 08:39:37
 tags: ["Blockchain", "Solidity", "Hardhat", "Docker", "NFT"]
 author: Joseph
 image: "logo.jpg"
-categories: ["Joseph", "Blockchain"]
+category: "Web3"
 ---
 
 我們{% post_link Hardhat-Solidity-and-NFT-Part-1 上一篇 %}已經設定好docker及hardhat專案，這一篇就從NFT開始。

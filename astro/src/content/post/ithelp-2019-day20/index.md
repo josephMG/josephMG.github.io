@@ -3,7 +3,7 @@ title: "[Day 20] Google Cloud Text-to-Speech - 子系列最終章"
 publishDate: 2019-09-28 07:29:59
 tags: ["Google AI", "Text-to-Speech", "鐵人賽"]
 author: Joseph
-categories: ["Joseph", "AI & Machine Learning"]
+category: "AI & Machine Learning"
 ---
 今天是這子系列的最後一篇，因為Text-to-Speech沒有AutoML UI介面可以操作，無奈只好讓這邊結束這回合。
 

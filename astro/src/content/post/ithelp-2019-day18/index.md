@@ -3,7 +3,7 @@ title: "[Day 18] Google Cloud Text-to-Speech - 1"
 publishDate: 2019-09-26 07:29:55
 tags: ["Google AI", "Text-to-Speech", "鐵人賽"]
 author: Joseph
-categories: ["Joseph", "AI & Machine Learning"]
+category: "AI & Machine Learning"
 ---
 今天來介紹Google另一個AI服務：文字轉語音(Text-To-Search)。把一段文字丟入以後，他可以唸出來給你。這套服務目前還沒有AutoML的UI介面可以操作，我們就只能看看API跟demo的操作。
 

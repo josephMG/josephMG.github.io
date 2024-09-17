@@ -2,7 +2,7 @@
 title: Take a break and review this year
 publishDate: 2020-09-14 09:34:40
 author: Joseph
-categories: ["Joseph", "Reviews"]
+category: Reviews
 ---
 
 /* English below */

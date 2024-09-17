@@ -3,7 +3,7 @@ title: "[Side project] KinectV2 applications migrates to OpenPose"
 publishDate: 2020-12-17 04:22:31
 tags: ["OpenPose", "KinectV2"]
 author: Joseph
-categories: ["Joseph", "Side projects"]
+category: "Side projects"
 ---
 
 ![OpenPose](https://raw.githubusercontent.com/CMU-Perceptual-Computing-Lab/openpose/master/.github/Logo_main_black.png)

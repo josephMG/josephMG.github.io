@@ -4,7 +4,7 @@ publishDate: 2021-09-07 07:51:17
 tags: ["Ruby on Rails", "AWS", "serverless"]
 author: Joseph
 image: "jets-logo.png"
-categories: ["Joseph", "Serverless"]
+category: "DevOps"
 ---
 
 Ruby on Rails (RoR) is my favorite web framework, and today I will share an AWS serverless framework of RoR: [Ruby on Jets](https://rubyonjets.com/). I’m not an AWS expert and even have no AWS certifications, and besides, this is my first time to use AWS Lambda, API gateway, dynamodb, and other serverless services.

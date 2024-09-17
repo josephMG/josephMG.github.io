@@ -4,7 +4,7 @@ publishDate: 2022-08-07 12:31:29
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
 image: "logo.png"
-categories: ["Joseph", "Blockchain"]
+category: "Web3"
 ---
 
 It's time to Blockchain with Golang. If you haven't seen my previous post {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %} and {% post_link Blockchain-fullstack-structure-Part-2-Hardhat "Part 2 Hardhat" %}, please read them first.

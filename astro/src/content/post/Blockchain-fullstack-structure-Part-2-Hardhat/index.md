@@ -4,7 +4,7 @@ publishDate: 2022-08-02 16:31:26
 tags: ["Blockchain", "Fullstack", "Solidity", "Hardhat", "Golang", "Reactjs", "Next.js"]
 author: Joseph
 image: "logo.png"
-categories: ["Joseph", "Blockchain"]
+category: "Web3"
 ---
 
 This is a series articles of Blockchain fullstack structure, please read {% post_link Blockchain-fullstack-structure-Part-1-Introduction "Part 1 Introduction" %} first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article {% post_link Hardhat-Solidity-and-NFT-Part-1 "Hardhat Solidity NFT tutorial" %}.

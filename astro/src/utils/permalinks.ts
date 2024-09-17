@@ -24,6 +24,7 @@ export const cleanSlug = (text = '') =>
 export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
 export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
 export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
+export const AUTHOR_BASE = cleanSlug(APP_BLOG?.author?.pathname) || 'author';
 
 export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 
@@ -71,6 +72,10 @@ export const getPermalink = (slug = '', type = 'page'): string => {
 
     case 'tag':
       permalink = createPath(TAG_BASE, trimSlash(slug));
+      break;
+
+    case 'author':
+      permalink = createPath(AUTHOR_BASE, trimSlash(slug));
       break;
 
     case 'post':

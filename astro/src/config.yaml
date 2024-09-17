@@ -32,6 +32,8 @@ apps:
   blog:
     isEnabled: true
     postsPerPage: 6
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
 
     post:
       isEnabled: true
@@ -45,20 +47,61 @@ apps:
       robots:
         index: true
 
+  category:
+    isEnabled: true
+    postsPerPage: 6
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
     category:
       isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
 
-    tag:
+    list:
       isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      pathname: 'category' # Category main path, you can change this to "articles" (/articles)
       robots:
-        index: false
+        index: true
 
+
+  author:
+    postsPerPage: 6
+    isEnabled: true
     isRelatedPostsEnabled: true
     relatedPostsCount: 4
+
+    author:
+      isEnabled: true
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'author' # Author main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
+
+
+  tag:
+    postsPerPage: 6
+    isEnabled: true
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+    tag:
+      isEnabled: true
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'tag' # Tag main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
 
 analytics:
   vendors:

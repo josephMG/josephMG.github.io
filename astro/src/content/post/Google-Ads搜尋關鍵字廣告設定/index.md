@@ -2,8 +2,7 @@
 title: Google Ads搜尋關鍵字廣告設定
 tags: ["Google Ads", "Marketing"]
 author: Sandy
-categories:
-  - Sandy
+category: Marketing
 publishDate: 2024-01-11 02:30:37
 ---
 

@@ -3,7 +3,7 @@ title: "[Day 19] Google Cloud Text-to-Speech - 2"
 publishDate: 2019-09-27 07:29:57
 tags: ["Google AI", "Text-to-Speech", "鐵人賽"]
 author: Joseph
-categories: ["Joseph", "AI & Machine Learning"]
+category: "AI & Machine Learning"
 ---
 昨天玩完Cloud Text-to-Speech demo以後，大概知道他可以把文字轉成語音念給你聽。今天就來入門[Cloud Text-to-Speech API](https://cloud.google.com/text-to-speech/docs/?hl=zh-tw)吧。
 

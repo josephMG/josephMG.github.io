@@ -3,7 +3,7 @@ title: "[Day 2] Google Vision AI - 1"
 publishDate: 2019-09-10 07:29:18
 tags: ["Google AI", "Vision AI", "鐵人賽"]
 author: Joseph
-categories: ["Joseph", "AI & Machine Learning"]
+category: "AI & Machine Learning"
 ---
 [Google Vision AI](https://cloud.google.com/vision/)分成兩個服務：AutoML Vision、Vision API，我們今天先講Vision API。
 

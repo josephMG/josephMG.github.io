@@ -2,9 +2,7 @@
 title: I18n in NextJS 13 app dir
 tags: ["Next.js"]
 author: Joseph
-categories:
-  - Joseph
-  - Fullstack
+category: "Frontend"
 publishDate: 2023-05-21 11:46:07
 ---
 

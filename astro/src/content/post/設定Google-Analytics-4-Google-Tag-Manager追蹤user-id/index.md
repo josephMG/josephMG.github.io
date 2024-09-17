@@ -3,7 +3,7 @@ title: 設定Google Analytics 4 / Google Tag Manager追蹤user id
 publishDate: 2021-09-22 05:02:06
 tags: ["GA4", "Google Analytics 4", "GTM", "Google Tag Manager", "Marketing"]
 author: Joseph
-categories: ["Joseph", "Marketing"]
+category: "Marketing"
 ---
 
 這篇文章我決定用中文寫，主要原因是中文的資料太少，而且也很多不是[Google Analytics 4](https://support.google.com/analytics/answer/10089681?hl=zh-Hant) + [Google Tag Manager](https://tagmanager.google.com/) (GA4+GTM) 的設定，所以我覺得用中文記錄一下，好讓大家要搜尋的可以搜得到。

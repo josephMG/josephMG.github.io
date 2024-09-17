@@ -3,7 +3,7 @@ title: "[Day 16] Google Translation - 3"
 publishDate: 2019-09-24 07:29:50
 tags: ["Google AI", "Translate", "鐵人賽"]
 author: Joseph
-categories: ["Joseph", "AI & Machine Learning"]
+category: "AI & Machine Learning"
 ---
 還記得[昨天](https://ithelp.ithome.com.tw/articles/10219304)在串API的時候，有特別提到Google Translate API在Go client library沒有`v3beta1`的版本。秉持著練習golang的精神，看到`v3beta1`有RESTful API，就花了點時間來串一下。
 

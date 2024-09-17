@@ -8,6 +8,9 @@ export type Config = {
   i18n?: I18NConfig;
   apps?: {
     blog?: AppBlogConfig;
+    tag?: AppTagConfig;
+    category?: AppCategoryConfig;
+    author?: AppAuthorConfig;
   };
   ui?: unknown;
   analytics?: unknown;
@@ -52,7 +55,22 @@ export interface AppBlogConfig {
       follow: boolean;
     };
   };
-  category: {
+}
+export interface AppTagConfig {
+  isEnabled: boolean;
+  postsPerPage: number;
+  isRelatedPostsEnabled: boolean;
+  relatedPostsCount: number;
+  tag: {
+    isEnabled: boolean;
+    pathname: string;
+    permalink: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  list: {
     isEnabled: boolean;
     pathname: string;
     robots: {
@@ -60,7 +78,45 @@ export interface AppBlogConfig {
       follow: boolean;
     };
   };
-  tag: {
+}
+export interface AppCategoryConfig {
+  isEnabled: boolean;
+  postsPerPage: number;
+  isRelatedPostsEnabled: boolean;
+  relatedPostsCount: number;
+  category: {
+    isEnabled: boolean;
+    pathname: string;
+    permalink: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  list: {
+    isEnabled: boolean;
+    pathname: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+}
+export interface AppAuthorConfig {
+  isEnabled: boolean;
+  postsPerPage: number;
+  isRelatedPostsEnabled: boolean;
+  relatedPostsCount: number;
+  author: {
+    isEnabled: boolean;
+    pathname: string;
+    permalink: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  list: {
     isEnabled: boolean;
     pathname: string;
     robots: {
@@ -151,7 +207,52 @@ const getAppBlog = (config: Config) => {
         follow: true,
       },
     },
+    
+  };
+
+  return merge({}, _default, config?.apps?.blog ?? {}) as AppBlogConfig;
+};
+const getAppTag = (config: Config) => {
+  const _default = {
+    isEnabled: false,
+    postsPerPage: 6,
+    isRelatedPostsEnabled: false,
+    relatedPostsCount: 4,
+    tag: {
+      isEnabled: true,
+      permalink: '/tag/%slug%',
+      robots: {
+        index: true,
+        follow: true,
+      },
+    },
+    list: {
+      isEnabled: true,
+      pathname: 'tag',
+      robots: {
+        index: true,
+        follow: true,
+      },
+    },
+  };
+
+  return merge({}, _default, config?.apps?.tag ?? {}) as AppTagConfig;
+};
+const getAppCategory = (config: Config) => {
+  const _default = {
+    isEnabled: false,
+    postsPerPage: 6,
+    isRelatedPostsEnabled: false,
+    relatedPostsCount: 4,
     category: {
+      isEnabled: true,
+      permalink: '/category/%slug%',
+      robots: {
+        index: true,
+        follow: true,
+      },
+    },
+    list: {
       isEnabled: true,
       pathname: 'category',
       robots: {
@@ -159,19 +260,36 @@ const getAppBlog = (config: Config) => {
         follow: true,
       },
     },
-    tag: {
+  };
+
+  return merge({}, _default, config?.apps?.category ?? {}) as AppCategoryConfig;
+};
+const getAppAuthor = (config: Config) => {
+  const _default = {
+    isEnabled: false,
+    postsPerPage: 6,
+    isRelatedPostsEnabled: false,
+    relatedPostsCount: 4,
+    author: {
       isEnabled: true,
-      pathname: 'tag',
+      permalink: '/author/%slug%',
       robots: {
-        index: false,
+        index: true,
+        follow: true,
+      },
+    },
+    list: {
+      isEnabled: true,
+      pathname: 'author',
+      robots: {
+        index: true,
         follow: true,
       },
     },
   };
 
-  return merge({}, _default, config?.apps?.blog ?? {}) as AppBlogConfig;
+  return merge({}, _default, config?.apps?.author ?? {}) as AppAuthorConfig;
 };
-
 const getUI = (config: Config) => {
   const _default = {
     theme: 'system',
@@ -198,6 +316,9 @@ export default (config: Config) => ({
   I18N: getI18N(config),
   METADATA: getMetadata(config),
   APP_BLOG: getAppBlog(config),
+  APP_TAG: getAppTag(config),
+  APP_CATEGORY: getAppCategory(config),
+  APP_AUTHOR: getAppAuthor(config),
   UI: getUI(config),
   ANALYTICS: getAnalytics(config),
 });

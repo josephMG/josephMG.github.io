@@ -3,7 +3,7 @@ title: "Install Docker / Docker-compose on CentOS 8"
 publishDate: 2020-02-13 07:30:15
 tags: ["DevOps", "Docker"]
 author: Joseph
-categories: ["Joseph", "DevOps"]
+category: DevOps
 ---
 新的一篇文章來講講最近踩的雷，起因手邊有個案子開了一台CentOS 8機器給我，讓我在上面設定docker跟跑起服務。實在跟CentOS很不熟的我決定寫篇備忘錄。
 

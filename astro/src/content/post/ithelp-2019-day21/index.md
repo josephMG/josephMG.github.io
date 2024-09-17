@@ -3,7 +3,7 @@ title: "[Day 21] Google Cloud Speech-to-Text - 1"
 publishDate: 2019-09-29 07:30:02
 tags: ["Google AI", "Speech-to-Text", "鐵人賽"]
 author: Joseph
-categories: ["Joseph", "AI & Machine Learning"]
+category: "AI & Machine Learning"
 ---
 今天來講第六個服務，寫到第21天終於第六個了。這個服務跟前幾天的<a href="/blog/tags/Text-to-Speech/">Text-to-Speech</a>剛好相反，是把聲音轉成文字。這服務號稱可以辨識120種語言跟其變化，更開心的是它可以辨識**中文**，還有廣東話、日文之類的語言也都可以。
 

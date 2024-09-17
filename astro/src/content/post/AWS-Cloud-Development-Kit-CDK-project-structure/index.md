@@ -4,7 +4,7 @@ publishDate: 2021-10-12 06:46:49
 tags: ["AWS", "CDK", "Cloud Development Kit", "serverless"]
 author: Joseph
 image: "logo.png"
-categories: ["Joseph", "Serverless"]
+category: "DevOps"
 ---
 
 [Previously blog](https://josephmg.github.io/blog/2021/10/01/Facebook-Pixel-and-Facebook-Conversions-API/) I used NodeJs/Typescript as a backend and deployed with [AWS Cloud Development Kit](https://aws.amazon.com/tw/cdk/) (AWS CDK). The same framework, but more complex than the sample, is used on our [Firstage](https://firstage.io). So this post I will show how we structure our AWS CDK project codebase.
