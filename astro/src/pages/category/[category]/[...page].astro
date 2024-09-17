@@ -11,7 +11,6 @@ import PostTags from "~/components/blog/Tags.astro";
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-console.log(await getStaticPathsBlogCategory({ paginate }))
   return await getStaticPathsBlogCategory({ paginate });
 }) satisfies GetStaticPaths;
 
@@ -21,7 +20,6 @@ const { page, category } = Astro.props as Props;
 
 const currentPage = page.currentPage ?? 1;
 const allCategorys = await findCategories();
-  console.log(allCategorys)
 
 const metadata = {
   title: `Posts by category '${category.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,

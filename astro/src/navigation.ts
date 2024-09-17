@@ -8,15 +8,15 @@ export const headerData = {
     },
     {
       text: 'Author',
-      href: getPermalink('joseph', 'author'),
+      href: getPermalink('', 'author'),
     },
     {
       text: 'Category',
-      href: getPermalink('tutorials', 'category'),
+      href: getPermalink('', 'category'),
     },
     {
       text: 'Tag',
-      href: getPermalink('astro', 'tag'),
+      href: getPermalink('', 'tag'),
     },
   ]
 };

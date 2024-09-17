@@ -1,6 +1,6 @@
 import slugify from 'limax';
 
-import { SITE, APP_BLOG } from 'astrowind:config';
+import { SITE, APP_BLOG, APP_TAG, APP_CATEGORY, APP_AUTHOR } from 'astrowind:config';
 
 import { trim } from '~/utils/utils';
 
@@ -22,9 +22,9 @@ export const cleanSlug = (text = '') =>
     .join('/');
 
 export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
-export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
-export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
-export const AUTHOR_BASE = cleanSlug(APP_BLOG?.author?.pathname) || 'author';
+export const CATEGORY_BASE = cleanSlug(APP_CATEGORY?.category?.pathname) || 'category';
+export const TAG_BASE = cleanSlug(APP_TAG?.tag?.pathname) || 'tag';
+export const AUTHOR_BASE = cleanSlug(APP_AUTHOR?.author?.pathname) || 'author';
 
 export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 

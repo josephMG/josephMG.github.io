@@ -311,9 +311,9 @@ export const findCategories = async (): Promise<Array<Taxonomy>> => {
   const posts = await fetchPosts();
   const categories = posts.reduce((acc, post: Post) => {
     if (post.category) {
-      return [...acc, post.category];
+      return !(acc.some((existing) => existing.slug === post.category?.slug)) ? [...acc, post.category]: [...acc];
     }
     return acc;
-  }, []);
+  }, [] as Taxonomy[]);
   return [...new Set(categories)];
 };
