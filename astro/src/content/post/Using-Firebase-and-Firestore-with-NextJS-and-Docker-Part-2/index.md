@@ -1,9 +1,9 @@
 ---
 title: Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js
 tags: ["firebase", "firestore", "clude storage", "Docker", "serverless", "DevOps", "Next.js"]
-author: Joseph
+author: "Joseph"
 image: "banner.png"
-category: DevOps
+category: "DevOps"
 publishDate: 2023-02-28 13:51:04
 ---
 
@@ -295,7 +295,7 @@ By the way, we set `production` environment and environment variables on Github 
 ![Github environment](github-env.png)
 
 It's time to commit, push, deploy, and go to your firebase url to see result.
-![result](result.gif)
+
 
 > If you got an deploy 403 error, please add some `IAM permissions` by checking:
 > 1. https://stackoverflow.com/questions/69105552/http-error-403-permission-denied-to-enable-service-cloudfunctions-googleapis
