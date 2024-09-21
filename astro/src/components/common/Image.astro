@@ -21,10 +21,6 @@ if (props.alt === undefined || props.alt === null) {
   throw new Error();
 }
 
-if (typeof props.width === 'string') {
-  props.width = parseInt(props.width);
-}
-
 if (typeof props.height === 'string') {
   props.height = parseInt(props.height);
 }
