@@ -3,15 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Image from '~/components/common/Image.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -24,18 +17,18 @@ const metadata = {
 
   <Hero>
   <Fragment slot="bg">
-<Image
-                  class="w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width="100vw"
-                  height={576}
-                  src='~/assets/images/hero-image.png'
-                  alt="hero-image"
-                />
+  <Image
+    class="w-full"
+    widths={[400, 768, 1024, 2040]}
+    sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+    loading="eager"
+    width="100vw"
+    height={576}
+    src='~/assets/images/hero-image.png'
+    alt="hero-image"
+    />
   </Fragment>
-    <Fragment slot="title">
+  <Fragment slot="title">
       Free template for <span class="hidden xl:inline">creating websites with</span>
       <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
     </Fragment>
@@ -54,47 +47,179 @@ const metadata = {
   <!-- Features Widget *************** -->
 
   <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    id="skills"
+    tagline="Skills"
+    title=""
+    subtitle=""
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+        title: 'Front-end',
+        subItems: [{
+          title: 'React',
+          subItems: [{
+            title: 'Course Platforms',
+            subItems: [{
+              title: 'NextJS - server side rendering'
+            },{
+              title: 'MaterialUI'
+            },{
+              title: 'GA4 / GTM'
+            },{
+              title: 'Heroku (staging)'
+            },{
+              title: 'Video / Audio player'
+            },{
+              title: 'Online Payment'
+            },{
+              title: 'User Rating and Comments'
+            }]
+          }, {
+            title: "Cancer Patients' Sharing Blog",
+            subItems: [{
+              title: 'TypeScript'
+            }, {
+              title: 'NextJS'
+            }, {
+              title: 'Eslint'
+            }, {
+              title: 'Facebook/Google Login'
+            }, {
+              title: 'Social sharing'
+            }]
+          }, {
+            title: 'Badminton Web App',
+            subItems: [
+              {title: 'Redux'}, 
+              {title: 'SocketIO'}, 
+              {title: 'GoogleMap'}, 
+              {title: 'Facebook/Google Login'}, 
+              {title: 'Location-based service'},
+              {title: 'Social sharing'}
+            ]
+          },{
+            title: 'Rehabilitation management platfor',
+            subItems: [
+              {title: 'Patient Health dashboard'}, 
+              {title: 'Reservation system'}, 
+              {title: 'D3.js'}, 
+              {title: 'Mobile backend as a service (Kii-Cloud)'}
+            ]
+          }]
+        }],
       },
       {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
+        title: 'Back-end',
+        subItems: [{
+          title: 'Python',
+          subItems: [{
+            title: 'AI tool platforms',
+            subItems: [{
+              title: 'fastapi'
+            },{
+              title: 'socket io'
+            },{
+              title: 'PostgreSQL'
+            },{
+              title: 'user management'
+            }]
+          }]
+        },{
+          title: 'Ruby on rails',
+          subItems: [{
+            title: 'Serverless side project',
+            subItems: [{
+              title: 'Ruby on Jets'
+            },{
+              title: 'AWS serverless'
+            },{
+              title: 'Emailing'
+            },{
+              title: 'Dynamodb'
+            }]
+          }, {
+            title: 'Online course Platform',
+            subItems: [{
+              title: 'Bootstrap'
+            },{
+              title: 'Pundit authorization'
+            },{
+              title: 'Rspec testing'
+            },{
+              title: 'Sidekiq'
+            },{
+              title: 'Mailgun'
+            },{
+              title: 'User mention system'
+            },{
+              title: 'Notification system'
+            },{
+              title: 'Course management'
+            }]
+          }]
+        },{
+          title: 'NodeJS',
+          subItems: [{
+            title: 'All-in-one Blog API',
+            subItems: [{
+              title: 'CDK'
+            },{
+              title: 'AWS Serverless'
+            },{
+              title: 'ElaticSearch'
+            },{
+              title: 'Dynamodb'
+            },{
+              title: 'Stripe - Online payment processing'
+            }, {
+              title: 'LINE Chatbot API',
+              subItems: [{
+                title: 'LINE@ RichMenu management'
+              },{
+                title: 'LINE Message API'
+              }]
+            }, {
+              title: 'API-based Gambling system',
+              subItems: [{
+                title: 'ExpressJS'
+              },{
+                title: 'User registration'
+              },{
+                title: 'Cryptocurrency sending / receiving'
+              },{
+                title: 'Refactor Controller / ORM'
+              }]
+            }, {
+              title: 'Events registration system',
+              subItems: [{
+                title: 'SailsJS'
+              },{
+                title: 'Mandrill mail sender'
+              },{
+                title: 'Third-Party Payment'
+              },{
+                title: 'Third-Party Payment'
+              }]
+            }]
+          }]
+        }]
+      }, {
+        title: 'AI / Automation',
+        subItems: [ 
+          { title: 'n8n' },
+          { title: 'chatgpt' },
+          { title: 'groq' },
+          { title: 'open web ui' },
+        ],
+      }, {
+        title: 'Marketing',
+        subItems: [
+          { title: 'SEO / SEM' },
+          { title: 'Google Analytics / Google Adwords' },
+          { title: 'Facebook Pixel / Facebook Ads / Facebook Pages' },
+          { title: 'LINE Sticker' },
+          { title: 'Social marketing' }
+        ]
+      }
     ]}
   />
   <BlogLatestPosts

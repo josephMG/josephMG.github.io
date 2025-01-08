@@ -1,0 +1,112 @@
+---
+import type { ItemGrid as Props } from '~/types';
+import { twMerge } from 'tailwind-merge';
+import Button from './Button.astro';
+import { Icon } from 'astro-icon/components';
+
+const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
+
+const {
+  container: containerClass = '',
+  panel: panelClass = '',
+  title: titleClass = '',
+  description: descriptionClass = '',
+  icon: defaultIconClass = 'text-primary',
+  action: actionClass = '',
+} = classes;
+---
+
+{
+  items && (
+    <div
+      class={twMerge(
+        `grid mx-auto gap-8 md:gap-y-12 ${
+          columns === 4
+            ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
+            : columns === 3
+              ? 'lg:grid-cols-3 sm:grid-cols-2'
+              : columns === 2
+                ? 'sm:grid-cols-2 '
+                : ''
+        }`,
+        containerClass
+      )}
+    >
+    {items.map(({ title, subItems, icon, callToAction, classes: itemClasses = {} }) => {
+      const hasNestedSubItems = (subItems ?? [])?.some(item => !!item.subItems)
+      return (
+        <div>
+          <div class={twMerge('flex flex-row max-w-md', panelClass, itemClasses?.panel)}>
+            <div class="mt-0.5 flex-auto">
+              {title && <h3 class={twMerge('text-xl font-bold mb-2', titleClass, itemClasses?.title)}>{title}</h3>}
+              {subItems && (subItems ?? []).length && subItems.map((item, index) => (
+                <ul class={twMerge(hasNestedSubItems ? 'border' : 'border-b border-b-slate-700 last:border-b-0')}>
+                  <li>
+                    <h6 id={`skill-${title}-${index}`} class={twMerge('skill-name p-4', hasNestedSubItems && 'cursor-pointer border-slate-400 border-b-slate-700')}>{item.title}</h6>
+                    {item.subItems && (
+                      <ul id={`skill-${title}-${index}-project`} class="project-list last:mb-4 transition-[max-height] ease-in-out invisible hidden max-h-0 overflow-hidden">
+                        {item.subItems.map((innerItem) => (
+                          <li class="project-title-layer pl-8 mt-4">{innerItem.title}</li>
+                          <ul class="pl-16">
+                          {innerItem.subItems && innerItem.subItems.map((deepInnerItem) => (
+                            <li class="tool-title-layer mt-2">{deepInnerItem.title}</li>
+                          ))}
+                          </ul>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                </ul>
+              ))}
+            </div>
+          </div>
+        </div>
+      )
+    })}
+    <script>
+      const skills = document.getElementsByClassName("skill-name");
+      const clickHandler = (event) => {
+        const projectElement = document.querySelector('.project-list.visible');
+        if (projectElement?.id === `${event.target.id}-project`) return
+
+        const hideStartHandler = () => {
+          projectElement.removeEventListener('transitionstart', hideStartHandler)
+        }
+        const hideEndHandler = () => {
+          projectElement.classList.remove('visible', 'max-h-[400px]', '!max-h-0')
+          projectElement.classList.add('invisible', 'hidden', 'max-h-0')
+          projectElement.removeEventListener('transitionend', hideEndHandler)
+        }
+        projectElement?.classList.add('max-h-[400px]')
+        setTimeout(() => {
+          projectElement?.classList.add('!max-h-0')
+        }, 100)
+        projectElement?.addEventListener('transitionstart', hideStartHandler)
+        projectElement?.addEventListener('transitionend', hideEndHandler)
+        
+        const showProjectElement = document.getElementById(`${event.target.id}-project`);
+        const showStartHandler = () => {
+          // showProjectElement.classList.remove('invisible')
+          showProjectElement.removeEventListener('transitionstart', showStartHandler)
+        }
+        const showEndHandler = () => {
+          showProjectElement.classList.remove('max-h-[400px]', 'max-h-0')
+          showProjectElement?.classList.add('visible')
+          showProjectElement.removeEventListener('transitionstart', showEndHandler)
+        }
+        showProjectElement?.addEventListener('transitionstart', showStartHandler)
+        showProjectElement?.addEventListener('transitionend', showEndHandler)
+        showProjectElement.classList.remove('hidden', 'invisible')
+        setTimeout(() => {
+          showProjectElement?.classList.add('max-h-[400px]', 'visible')
+        }, 100)
+      }
+
+      for (var i = 0; i < skills.length; i++) {
+        skills[i].addEventListener('click', clickHandler, false);
+      }
+    </script>
+    </div>
+  )
+
+}
