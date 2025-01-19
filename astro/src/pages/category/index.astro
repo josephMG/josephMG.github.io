@@ -1,0 +1,24 @@
+---
+import { SITE } from 'astrowind:config';
+import { blogCategoryRobots, findCategories } from '~/utils/blog';
+
+import Layout from '~/layouts/PageLayout.astro';
+import PostTags from "~/components/blog/Tags.astro";
+
+export const prerender = true;
+const allCategories = await findCategories();
+
+const metadata = {
+  title: `Posts by category | '${SITE?.name}'`,
+  robots: {
+    index: blogCategoryRobots?.index,
+    follow: blogCategoryRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <PostTags tags={allCategories}  title="Search by Categories:" isCategory />
+  </section>
+</Layout>

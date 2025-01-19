@@ -1,5 +1,8 @@
 version: '3.7'
 
+volumes:
+    astro:
+
 services:
   hexo:
     build:
@@ -10,3 +13,13 @@ services:
       - /blog/node_modules
     ports:
       - '4001:4000'
+  astro:
+    build:
+      context: .
+      dockerfile: Dockerfile-astro
+      network: host
+    volumes:
+      - ./astro:/blog
+      - ./astro/node_modules:/blog/node_modules
+    ports:
+      - '4321:4321'

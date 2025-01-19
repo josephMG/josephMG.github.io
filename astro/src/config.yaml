@@ -1,0 +1,112 @@
+site:
+  name: Joseph & Sandy
+  site: 'https://josephmg.github.io'
+  base: '/'
+  trailingSlash: false
+
+  googleSiteVerificationId: null
+  #googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+
+# Default SEO metadata
+metadata:
+  title:
+    default: Joseph & Sandy
+    template: '%s — Joseph & Sandy'
+  description: "\U0001F680 Fullstack Engineer / Digital Marketing"
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: Joseph & Sandy
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+
+i18n:
+  language: zh-tw
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: true
+    postsPerPage: 6
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+    post:
+      isEnabled: true
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
+
+  category:
+    isEnabled: true
+    postsPerPage: 6
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+    category:
+      isEnabled: true
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'category' # Category main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
+
+
+  author:
+    postsPerPage: 6
+    isEnabled: true
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+    author:
+      isEnabled: true
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'author' # Author main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
+
+
+  tag:
+    postsPerPage: 6
+    isEnabled: true
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+    tag:
+      isEnabled: true
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'tag' # Tag main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: "G-SC1JF1MZDV"
+
+ui:
+  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
