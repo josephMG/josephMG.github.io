@@ -63,48 +63,56 @@ const {
         </div>
       )
     })}
-    <script>
-      const skills = document.getElementsByClassName("skill-name");
-      const clickHandler = (event) => {
-        const projectElement = document.querySelector('.project-list.visible');
-        if (projectElement?.id === `${event.target.id}-project`) return
-
-        const hideStartHandler = () => {
-          projectElement.removeEventListener('transitionstart', hideStartHandler)
+    <script is:inline>
+      function init() {
+        const skills = document.getElementsByClassName("skill-name");
+        const clickHandler = (event) => {
+          const projectElement = document.querySelector('.project-list.visible');
+          if (projectElement?.id === `${event.target.id}-project`) return
+       
+          const hideStartHandler = () => {
+            projectElement.removeEventListener('transitionstart', hideStartHandler)
+          }
+          const hideEndHandler = () => {
+            projectElement.classList.remove('visible', 'max-h-[400px]', '!max-h-0')
+            projectElement.classList.add('invisible', 'hidden', 'max-h-0')
+            projectElement.removeEventListener('transitionend', hideEndHandler)
+          }
+          projectElement?.classList.add('max-h-[400px]')
+          setTimeout(() => {
+            projectElement?.classList.add('!max-h-0')
+          }, 100)
+          projectElement?.addEventListener('transitionstart', hideStartHandler)
+          projectElement?.addEventListener('transitionend', hideEndHandler)
+          
+          const showProjectElement = document.getElementById(`${event.target.id}-project`);
+          const showStartHandler = () => {
+            // showProjectElement.classList.remove('invisible')
+            showProjectElement.removeEventListener('transitionstart', showStartHandler)
+          }
+          const showEndHandler = () => {
+            showProjectElement.classList.remove('max-h-[400px]', 'max-h-0')
+            showProjectElement?.classList.add('visible')
+            showProjectElement.removeEventListener('transitionstart', showEndHandler)
+          }
+          showProjectElement?.addEventListener('transitionstart', showStartHandler)
+          showProjectElement?.addEventListener('transitionend', showEndHandler)
+          showProjectElement.classList.remove('hidden', 'invisible')
+          setTimeout(() => {
+            showProjectElement?.classList.add('max-h-[400px]', 'visible')
+          }, 100)
         }
-        const hideEndHandler = () => {
-          projectElement.classList.remove('visible', 'max-h-[400px]', '!max-h-0')
-          projectElement.classList.add('invisible', 'hidden', 'max-h-0')
-          projectElement.removeEventListener('transitionend', hideEndHandler)
+       
+        for (var i = 0; i < skills.length; i++) {
+          skills[i].addEventListener('click', clickHandler, false);
         }
-        projectElement?.classList.add('max-h-[400px]')
-        setTimeout(() => {
-          projectElement?.classList.add('!max-h-0')
-        }, 100)
-        projectElement?.addEventListener('transitionstart', hideStartHandler)
-        projectElement?.addEventListener('transitionend', hideEndHandler)
-        
-        const showProjectElement = document.getElementById(`${event.target.id}-project`);
-        const showStartHandler = () => {
-          // showProjectElement.classList.remove('invisible')
-          showProjectElement.removeEventListener('transitionstart', showStartHandler)
-        }
-        const showEndHandler = () => {
-          showProjectElement.classList.remove('max-h-[400px]', 'max-h-0')
-          showProjectElement?.classList.add('visible')
-          showProjectElement.removeEventListener('transitionstart', showEndHandler)
-        }
-        showProjectElement?.addEventListener('transitionstart', showStartHandler)
-        showProjectElement?.addEventListener('transitionend', showEndHandler)
-        showProjectElement.classList.remove('hidden', 'invisible')
-        setTimeout(() => {
-          showProjectElement?.classList.add('max-h-[400px]', 'visible')
-        }, 100)
       }
+      
+      // Initialize on first load
+      init()
 
-      for (var i = 0; i < skills.length; i++) {
-        skills[i].addEventListener('click', clickHandler, false);
-      }
+      // Re-initialize after swapping pages
+      document.addEventListener("astro:after-swap", init)
     </script>
     </div>
   )
