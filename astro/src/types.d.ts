@@ -135,7 +135,7 @@ export interface Stat {
 export interface Item {
   title?: string;
   description?: string;
-  subItems: Array<Item>;
+  subItems?: Array<Item>;
   icon?: string;
   classes?: Record<string, string>;
   callToAction?: CallToAction;
