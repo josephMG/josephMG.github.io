@@ -1,6 +1,6 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import ItemGrid from '~/components/ui/ItemGrid3.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
 import Headline from '~/components/ui/Headline.astro';
 import type { Features as Props } from '~/types';
 
@@ -10,8 +10,6 @@ const {
   tagline = await Astro.slots.render('tagline'),
   items = [],
   columns = 2,
-
-  defaultIcon,
 
   id,
   isDark = false,
@@ -25,7 +23,6 @@ const {
   <ItemGrid
     items={items}
     columns={columns}
-    defaultIcon={defaultIcon}
     classes={{
       container: '',
       title: 'md:text-[1.3rem]',

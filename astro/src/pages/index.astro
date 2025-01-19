@@ -4,6 +4,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Image from '~/components/common/Image.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
@@ -222,6 +223,50 @@ const metadata = {
       }
     ]}
   />
+
+  <!-- Features Widget *************** -->
+  <Features2
+    id="publications"
+    tagline=""
+    title="Recently shares"
+    subtitle=""
+    items={[
+      {
+        callToAction: {
+          variant: 'link',
+          type: 'button',
+          text: 'Learning Notes: Overview of Machine Learning Products',
+          href: 'https://ithelp.ithome.com.tw/users/20103835/ironman/2652',
+          class: 'text-blue-400'
+        }
+      }, {
+        callToAction: {
+          variant: 'link',
+          type: 'button',
+          text: 'Learning Notes: 跟著Google學ML',
+          href: 'https://ithelp.ithome.com.tw/users/20103835/ironman/1806',
+          class: 'text-blue-400'
+        }
+      }, {
+        callToAction: {
+          variant: 'link',
+          type: 'button',
+          text: 'Learning Notes: RRRR的世界 (Ruby on Rails + React + Redux)',
+          href: 'https://ithelp.ithome.com.tw/users/20103835/ironman/1206',
+          class: 'text-blue-400'
+        }
+      }, {
+        callToAction: {
+          variant: 'link',
+          type: 'button',
+          text: 'LINE Sticker: Speechless Couple',
+          href: 'https://store.line.me/stickershop/product/1395142/en',
+          class: 'text-blue-400'
+        }
+      },
+    ]}
+  />
+
   <!-- Features Widget *************** -->
   <BlogLatestPosts
     title="Find out more content in our Blog"
