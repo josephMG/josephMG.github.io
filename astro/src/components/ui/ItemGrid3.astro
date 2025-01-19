@@ -35,7 +35,7 @@ const {
     {items.map(({ title, subItems, icon, callToAction, classes: itemClasses = {} }) => {
       const hasNestedSubItems = (subItems ?? [])?.some(item => !!item.subItems)
       return (
-        <div>
+        <div class="intersect-once opacity-0 intersect:opacity-100 motion-safe:md:intersect:animate-fade">
           <div class={twMerge('flex flex-row max-w-md', panelClass, itemClasses?.panel)}>
             <div class="mt-0.5 flex-auto">
               {title && <h3 class={twMerge('text-xl font-bold mb-2', titleClass, itemClasses?.title)}>{title}</h3>}

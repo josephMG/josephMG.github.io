@@ -48,8 +48,8 @@ const metadata = {
 
   <Features
     id="skills"
-    tagline="Skills"
-    title=""
+    tagline=""
+    title="Skills"
     subtitle=""
     items={[
       {
@@ -222,7 +222,11 @@ const metadata = {
       }
     ]}
   />
+  <!-- Features Widget *************** -->
   <BlogLatestPosts
     title="Find out more content in our Blog"
+    classes={{
+      container: 'intersect-once opacity-0 intersect:opacity-100 motion-safe:md:intersect:animate-fade'
+    }}
   />
 </Layout>
