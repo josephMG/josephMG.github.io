@@ -336,9 +336,7 @@ export const findTags = async (): Promise<Array<Taxonomy>> => {
   const tags = posts.reduce((acc: Array<Taxonomy>, post: Post) => {
     if (post.tags && Array.isArray(post.tags)) {
       // Remove duplicate tags by filtering slug, as title may different by letter case.
-      post.tags.forEach((tag) => {
-        !acc.some((existing) => existing.slug === tag.slug) && acc.push(tag);
-      });
+      post.tags.forEach((tag) => !acc.some((existing) => existing.slug === tag.slug) && acc.push(tag));
     }
     return acc;
   }, []);

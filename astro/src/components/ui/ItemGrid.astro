@@ -1,8 +1,6 @@
 ---
 import type { ItemGrid as Props } from '~/types';
 import { twMerge } from 'tailwind-merge';
-import Button from './Button.astro';
-import { Icon } from 'astro-icon/components';
 
 const { items = [], columns,  classes = {} } = Astro.props;
 
@@ -10,9 +8,9 @@ const {
   container: containerClass = '',
   panel: panelClass = '',
   title: titleClass = '',
-  description: descriptionClass = '',
-  icon: defaultIconClass = 'text-primary',
-  action: actionClass = '',
+  // description: descriptionClass = '',
+  // icon: defaultIconClass = 'text-primary',
+  // action: actionClass = '',
 } = classes;
 ---
 
@@ -32,7 +30,7 @@ const {
         containerClass
       )}
     >
-    {items.map(({ title, subItems, icon, callToAction, classes: itemClasses = {} }) => {
+    {items.map(({ title, subItems, classes: itemClasses = {} }) => {
       const hasNestedSubItems = (subItems ?? [])?.some(item => !!item.subItems)
       return (
         <div class="intersect-once opacity-0 intersect:opacity-100 motion-safe:md:intersect:animate-fade">
@@ -103,7 +101,7 @@ const {
           }, 100)
         }
        
-        for (var i = 0; i < skills.length; i++) {
+        for (let i = 0; i < skills.length; i++) {
           skills[i].addEventListener('click', clickHandler, false);
         }
       }
