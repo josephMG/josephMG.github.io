@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { Image } from 'astro:assets';
 import { findImage } from '~/utils/images';
 import {
   getImagesOptimized,
@@ -55,6 +56,6 @@ if (typeof _image === 'string') {
   !image ? (
     <Fragment />
   ) : (
-    <img src={image.src} crossorigin="anonymous" referrerpolicy="no-referrer" {...image.attributes} />
+    <Image src={image.src} crossorigin="anonymous" referrerpolicy="no-referrer" {...image.attributes} />
   )
 }

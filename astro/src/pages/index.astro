@@ -6,6 +6,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import heroImg from '~/assets/images/hero-image.png'
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -19,12 +20,10 @@ const metadata = {
   <Hero>
   <Fragment slot="bg">
   <Image
-    class="w-full"
+    class="w-full h-[576px]"
     widths={[400, 768, 1024, 2040]}
     sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
     loading="eager"
-    width="100vw"
-    height={576}
     src='~/assets/images/hero-image.png'
     alt="hero-image"
     />

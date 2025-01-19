@@ -305,7 +305,8 @@ export async function getImagesOptimized(
     .join(', ');
 
   return {
-    src: typeof image === 'string' ? image : image.src,
+    // src: typeof image === 'string' ? image : image.src,
+    src: image,
     attributes: {
       width: width,
       height: height,
