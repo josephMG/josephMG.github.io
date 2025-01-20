@@ -26,11 +26,15 @@ export default [
         extraFileExtensions: ['.astro'],
       },
     },
+    rules: {
+      'prettier/prettier': 'off',
+    },
   },
   {
     files: ['**/*.{js,jsx,astro}'],
     rules: {
       'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
+      'prettier/prettier': 'off',
     },
   },
   {
