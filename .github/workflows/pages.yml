@@ -25,14 +25,16 @@ jobs:
         working-directory: ./astro
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 21
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: 22
           cache: npm
           cache-dependency-path: '**/package-lock.json'
-      - run: npm ci --force
-      - run: npm run check
+      - name: npm install, check
+        run: |
+          npm ci --force
+          npm run check
   build:
     runs-on: ubuntu-latest
     defaults:
@@ -44,10 +46,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: recursive
-      - name: Use Node.js 21
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: 22
           cache: npm
           cache-dependency-path: '**/package-lock.json'
       - run: npm ci --force
@@ -55,7 +57,7 @@ jobs:
         uses: withastro/action@v3
         with:
           path: ./astro # The root location of your Astro project inside the repository. (optional)
-          node-version: 21 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
+          node-version: 22 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
           package-manager: npm@latest
 
   deploy:
