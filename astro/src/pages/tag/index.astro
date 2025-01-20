@@ -3,7 +3,7 @@ import { SITE } from 'astrowind:config';
 import { blogTagRobots, findTags } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
-import PostTags from "~/components/blog/Tags.astro";
+import PostTags from '~/components/blog/Tags.astro';
 
 export const prerender = true;
 const allTags = await findTags();
@@ -19,6 +19,6 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <PostTags tags={allTags}  title="Search by Tags:" />
+    <PostTags tags={allTags} title="Search by Tags:" />
   </section>
 </Layout>

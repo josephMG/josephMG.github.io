@@ -36,7 +36,7 @@ if (!props.decoding) {
 
 const _image = await findImage(props.src);
 
-let image: ImageType  | undefined = undefined;
+let image: ImageType | undefined = undefined;
 
 if (typeof _image === 'string') {
   if ((_image.startsWith('http://') || _image.startsWith('https://')) && isUnpicCompatible(_image)) {

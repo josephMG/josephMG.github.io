@@ -11,8 +11,8 @@ import coverImg from '~/assets/images/hero-image.png';
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
-  };
-const bgUrl = `url(${coverImg.src})`
+};
+const bgUrl = `url(${coverImg.src})`;
 ---
 
 <Layout metadata={metadata}>
@@ -20,7 +20,11 @@ const bgUrl = `url(${coverImg.src})`
 
   <Hero>
     <Fragment slot="bg">
-    <div style={{ backgroundImage: `${bgUrl}`}} class="abasolute z-[-1] bg-no-repeat bg-fixed bg-[0px_-350px] w-full h-[500px] md:h-[700px]" />
+      <div
+        style={{ backgroundImage: `${bgUrl}` }}
+        class="abasolute z-[-1] bg-no-repeat bg-fixed bg-[0px_-350px] w-full h-[500px] md:h-[700px]"
+      >
+      </div>
     </Fragment>
     <Fragment slot="title">
       <div class="flex gap-10 justify-center pt-10">
@@ -30,7 +34,7 @@ const bgUrl = `url(${coverImg.src})`
             aspectRatio={1}
             width={173}
             loading="eager"
-            src='~/assets/images/joseph-avatar.jpg'
+            src="~/assets/images/joseph-avatar.jpg"
             alt="joseph-avatar"
           />
           <div class="text-white text-4xl md:text-5xl font-normal">Joseph</div>
@@ -41,19 +45,21 @@ const bgUrl = `url(${coverImg.src})`
             aspectRatio={1}
             width={173}
             loading="eager"
-            src='~/assets/images/sandy-avatar.jpg'
+            src="~/assets/images/sandy-avatar.jpg"
             alt="sandy-avatar"
           />
           <div class="text-white text-4xl md:text-5xl font-normal">Sandy</div>
         </div>
       </div>
     </Fragment>
-    {/*
+    {
+      /*
     <Fragment slot="title">
       Free template for <span class="hidden xl:inline">creating websites with</span>
       <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
     </Fragment>
-    */}
+    */
+    }
     <Fragment slot="subtitle">
       <h3 class="text-[#00c853] dark:text-white highlight text-4xl font-bold mb-2">Hi, we are freelancers.</h3>
       <p class="text-white highlight text-xl">I'm a fullstack engineer, and Sandy a digital marketer.</p>
@@ -70,172 +76,242 @@ const bgUrl = `url(${coverImg.src})`
     items={[
       {
         title: 'Front-end',
-        subItems: [{
-          title: 'React',
-          subItems: [{
-            title: 'Course Platforms',
-            subItems: [{
-              title: 'NextJS - server side rendering'
-            },{
-              title: 'MaterialUI'
-            },{
-              title: 'GA4 / GTM'
-            },{
-              title: 'Heroku (staging)'
-            },{
-              title: 'Video / Audio player'
-            },{
-              title: 'Online Payment'
-            },{
-              title: 'User Rating and Comments'
-            }]
-          }, {
-            title: "Cancer Patients' Sharing Blog",
-            subItems: [{
-              title: 'TypeScript'
-            }, {
-              title: 'NextJS'
-            }, {
-              title: 'Eslint'
-            }, {
-              title: 'Facebook/Google Login'
-            }, {
-              title: 'Social sharing'
-            }]
-          }, {
-            title: 'Badminton Web App',
+        subItems: [
+          {
+            title: 'React',
             subItems: [
-              {title: 'Redux'}, 
-              {title: 'SocketIO'}, 
-              {title: 'GoogleMap'}, 
-              {title: 'Facebook/Google Login'}, 
-              {title: 'Location-based service'},
-              {title: 'Social sharing'}
-            ]
-          },{
-            title: 'Rehabilitation management platfor',
-            subItems: [
-              {title: 'Patient Health dashboard'}, 
-              {title: 'Reservation system'}, 
-              {title: 'D3.js'}, 
-              {title: 'Mobile backend as a service (Kii-Cloud)'}
-            ]
-          }]
-        }],
+              {
+                title: 'Course Platforms',
+                subItems: [
+                  {
+                    title: 'NextJS - server side rendering',
+                  },
+                  {
+                    title: 'MaterialUI',
+                  },
+                  {
+                    title: 'GA4 / GTM',
+                  },
+                  {
+                    title: 'Heroku (staging)',
+                  },
+                  {
+                    title: 'Video / Audio player',
+                  },
+                  {
+                    title: 'Online Payment',
+                  },
+                  {
+                    title: 'User Rating and Comments',
+                  },
+                ],
+              },
+              {
+                title: "Cancer Patients' Sharing Blog",
+                subItems: [
+                  {
+                    title: 'TypeScript',
+                  },
+                  {
+                    title: 'NextJS',
+                  },
+                  {
+                    title: 'Eslint',
+                  },
+                  {
+                    title: 'Facebook/Google Login',
+                  },
+                  {
+                    title: 'Social sharing',
+                  },
+                ],
+              },
+              {
+                title: 'Badminton Web App',
+                subItems: [
+                  { title: 'Redux' },
+                  { title: 'SocketIO' },
+                  { title: 'GoogleMap' },
+                  { title: 'Facebook/Google Login' },
+                  { title: 'Location-based service' },
+                  { title: 'Social sharing' },
+                ],
+              },
+              {
+                title: 'Rehabilitation management platfor',
+                subItems: [
+                  { title: 'Patient Health dashboard' },
+                  { title: 'Reservation system' },
+                  { title: 'D3.js' },
+                  { title: 'Mobile backend as a service (Kii-Cloud)' },
+                ],
+              },
+            ],
+          },
+        ],
       },
       {
         title: 'Back-end',
-        subItems: [{
-          title: 'Python',
-          subItems: [{
-            title: 'AI tool platforms',
-            subItems: [{
-              title: 'fastapi'
-            },{
-              title: 'socket io'
-            },{
-              title: 'PostgreSQL'
-            },{
-              title: 'user management'
-            }]
-          }]
-        },{
-          title: 'Ruby on rails',
-          subItems: [{
-            title: 'Serverless side project',
-            subItems: [{
-              title: 'Ruby on Jets'
-            },{
-              title: 'AWS serverless'
-            },{
-              title: 'Emailing'
-            },{
-              title: 'Dynamodb'
-            }]
-          }, {
-            title: 'Online course Platform',
-            subItems: [{
-              title: 'Bootstrap'
-            },{
-              title: 'Pundit authorization'
-            },{
-              title: 'Rspec testing'
-            },{
-              title: 'Sidekiq'
-            },{
-              title: 'Mailgun'
-            },{
-              title: 'User mention system'
-            },{
-              title: 'Notification system'
-            },{
-              title: 'Course management'
-            }]
-          }]
-        },{
-          title: 'NodeJS',
-          subItems: [{
-            title: 'All-in-one Blog API',
-            subItems: [{
-              title: 'CDK'
-            },{
-              title: 'AWS Serverless'
-            },{
-              title: 'ElaticSearch'
-            },{
-              title: 'Dynamodb'
-            },{
-              title: 'Stripe - Online payment processing'
-            }, {
-              title: 'LINE Chatbot API',
-              subItems: [{
-                title: 'LINE@ RichMenu management'
-              },{
-                title: 'LINE Message API'
-              }]
-            }, {
-              title: 'API-based Gambling system',
-              subItems: [{
-                title: 'ExpressJS'
-              },{
-                title: 'User registration'
-              },{
-                title: 'Cryptocurrency sending / receiving'
-              },{
-                title: 'Refactor Controller / ORM'
-              }]
-            }, {
-              title: 'Events registration system',
-              subItems: [{
-                title: 'SailsJS'
-              },{
-                title: 'Mandrill mail sender'
-              },{
-                title: 'Third-Party Payment'
-              },{
-                title: 'Third-Party Payment'
-              }]
-            }]
-          }]
-        }]
-      }, {
-        title: 'AI / Automation',
-        subItems: [ 
-          { title: 'n8n' },
-          { title: 'chatgpt' },
-          { title: 'groq' },
-          { title: 'open web ui' },
+        subItems: [
+          {
+            title: 'Python',
+            subItems: [
+              {
+                title: 'AI tool platforms',
+                subItems: [
+                  {
+                    title: 'fastapi',
+                  },
+                  {
+                    title: 'socket io',
+                  },
+                  {
+                    title: 'PostgreSQL',
+                  },
+                  {
+                    title: 'user management',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            title: 'Ruby on rails',
+            subItems: [
+              {
+                title: 'Serverless side project',
+                subItems: [
+                  {
+                    title: 'Ruby on Jets',
+                  },
+                  {
+                    title: 'AWS serverless',
+                  },
+                  {
+                    title: 'Emailing',
+                  },
+                  {
+                    title: 'Dynamodb',
+                  },
+                ],
+              },
+              {
+                title: 'Online course Platform',
+                subItems: [
+                  {
+                    title: 'Bootstrap',
+                  },
+                  {
+                    title: 'Pundit authorization',
+                  },
+                  {
+                    title: 'Rspec testing',
+                  },
+                  {
+                    title: 'Sidekiq',
+                  },
+                  {
+                    title: 'Mailgun',
+                  },
+                  {
+                    title: 'User mention system',
+                  },
+                  {
+                    title: 'Notification system',
+                  },
+                  {
+                    title: 'Course management',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            title: 'NodeJS',
+            subItems: [
+              {
+                title: 'All-in-one Blog API',
+                subItems: [
+                  {
+                    title: 'CDK',
+                  },
+                  {
+                    title: 'AWS Serverless',
+                  },
+                  {
+                    title: 'ElaticSearch',
+                  },
+                  {
+                    title: 'Dynamodb',
+                  },
+                  {
+                    title: 'Stripe - Online payment processing',
+                  },
+                  {
+                    title: 'LINE Chatbot API',
+                    subItems: [
+                      {
+                        title: 'LINE@ RichMenu management',
+                      },
+                      {
+                        title: 'LINE Message API',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'API-based Gambling system',
+                    subItems: [
+                      {
+                        title: 'ExpressJS',
+                      },
+                      {
+                        title: 'User registration',
+                      },
+                      {
+                        title: 'Cryptocurrency sending / receiving',
+                      },
+                      {
+                        title: 'Refactor Controller / ORM',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Events registration system',
+                    subItems: [
+                      {
+                        title: 'SailsJS',
+                      },
+                      {
+                        title: 'Mandrill mail sender',
+                      },
+                      {
+                        title: 'Third-Party Payment',
+                      },
+                      {
+                        title: 'Third-Party Payment',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
         ],
-      }, {
+      },
+      {
+        title: 'AI / Automation',
+        subItems: [{ title: 'n8n' }, { title: 'chatgpt' }, { title: 'groq' }, { title: 'open web ui' }],
+      },
+      {
         title: 'Marketing',
         subItems: [
           { title: 'SEO / SEM' },
           { title: 'Google Analytics / Google Adwords' },
           { title: 'Facebook Pixel / Facebook Ads / Facebook Pages' },
           { title: 'LINE Sticker' },
-          { title: 'Social marketing' }
-        ]
-      }
+          { title: 'Social marketing' },
+        ],
+      },
     ]}
   />
 
@@ -252,32 +328,35 @@ const bgUrl = `url(${coverImg.src})`
           type: 'button',
           text: 'Learning Notes: Overview of Machine Learning Products',
           href: 'https://ithelp.ithome.com.tw/users/20103835/ironman/2652',
-          class: 'text-blue-400'
-        }
-      }, {
+          class: 'text-blue-400',
+        },
+      },
+      {
         callToAction: {
           variant: 'link',
           type: 'button',
           text: 'Learning Notes: 跟著Google學ML',
           href: 'https://ithelp.ithome.com.tw/users/20103835/ironman/1806',
-          class: 'text-blue-400'
-        }
-      }, {
+          class: 'text-blue-400',
+        },
+      },
+      {
         callToAction: {
           variant: 'link',
           type: 'button',
           text: 'Learning Notes: RRRR的世界 (Ruby on Rails + React + Redux)',
           href: 'https://ithelp.ithome.com.tw/users/20103835/ironman/1206',
-          class: 'text-blue-400'
-        }
-      }, {
+          class: 'text-blue-400',
+        },
+      },
+      {
         callToAction: {
           variant: 'link',
           type: 'button',
           text: 'LINE Sticker: Speechless Couple',
           href: 'https://store.line.me/stickershop/product/1395142/en',
-          class: 'text-blue-400'
-        }
+          class: 'text-blue-400',
+        },
       },
     ]}
   />
@@ -286,7 +365,7 @@ const bgUrl = `url(${coverImg.src})`
   <BlogLatestPosts
     title="Find out more content in our Blog"
     classes={{
-      container: 'intersect-once opacity-0 intersect:opacity-100 motion-safe:md:intersect:animate-fade'
+      container: 'intersect-once opacity-0 intersect:opacity-100 motion-safe:md:intersect:animate-fade',
     }}
   />
 </Layout>
