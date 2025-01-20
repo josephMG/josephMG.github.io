@@ -12,9 +12,10 @@ Alright, the series of articles goes to frontend part. I post an article related
 In this article, I demonstrate how to use React.js (Next.js) to interact with smart contract by Golang Gin API and hardhat RPC URL, and implement a simple Sign-in with Ethereum (SIWE) authentication and `setGreeting` to Solidity.
 
 Okay, let's start it.
-<!-- more -->
-<!-- toc -->
 
+### TOC
+
+<!-- more -->
 ### Prerequisite
 
 - [Metamask](https://metamask.io/): It's a crypto wallet, and you can install it's [Google chrome extension](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn).

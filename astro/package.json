@@ -33,6 +33,7 @@
     "astro-rehype-relative-markdown-links": "^0.18.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "remark-toc": "^9.0.0",
     "remove-markdown": "^0.5.5",
     "typescript": "^5.5.4",
     "unpic": "^3.18.0"

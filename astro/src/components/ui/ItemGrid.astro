@@ -44,12 +44,14 @@ const {
                     {item.subItems && (
                       <ul id={`skill-${title}-${index}-project`} class="project-list last:mb-4 transition-[max-height] ease-in-out invisible hidden max-h-0 overflow-hidden">
                         {item.subItems.map((innerItem) => (
-                          <li class="project-title-layer pl-8 mt-4">{innerItem.title}</li>
-                          <ul class="pl-16">
-                          {innerItem.subItems && innerItem.subItems.map((deepInnerItem) => (
-                            <li class="tool-title-layer mt-2">{deepInnerItem.title}</li>
-                          ))}
-                          </ul>
+                          <>
+                            <li class="project-title-layer pl-8 mt-4">{innerItem.title}</li>
+                            <ul class="pl-16">
+                            {innerItem.subItems && innerItem.subItems.map((deepInnerItem) => (
+                              <li class="tool-title-layer mt-2">{deepInnerItem.title}</li>
+                            ))}
+                            </ul>
+                          </>
                         ))}
                       </ul>
                     )}

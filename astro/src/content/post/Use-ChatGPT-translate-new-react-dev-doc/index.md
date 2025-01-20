@@ -9,8 +9,7 @@ publishDate: 2023-03-20 08:13:06
 
 [react.dev](https://react.dev/) was released on [March 17](https://github.com/reactjs/react.dev/issues/3308#issuecomment-1472708675). I've read the beta version for a while. I love the [Escape Hatches](https://react.dev/learn/escape-hatches) section which has many correct and recommended usages about react hooks. After new [react.dev](https://react.dev/) released, I noticed that there's no translation. I haven'n played [OpenAI API](https://platform.openai.com/overview) yet, so I think this is a good opportunity to play [ChatGPT](https://chat.openai.com/chat) with its translation feature for [react.dev](https://react.dev/).
 
-TOC
-<!-- toc -->
+### TOC
 
 <!-- more -->
 > Repo: https://github.com/josephMG/chatGPT-translate-docs

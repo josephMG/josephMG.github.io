@@ -12,8 +12,7 @@ Last year, I got a case to use [firebase](https://firebase.google.com/) and [fir
 In this article I'll show how to use firebase and firestore in [Docker](https://www.docker.com/) and [Next.js](https://nextjs.org/). If you don't have backend support, or you don't want to build whole backend, database, and infrastructure, you would probably think this is a useful way.
 <!-- more -->
 
-# TOC
-<!-- toc -->
+### TOC
 
 ### Create a firebase project
 

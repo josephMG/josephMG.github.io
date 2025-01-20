@@ -9,6 +9,7 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
+import remarkToc from 'remark-toc';
 import type { AstroIntegration } from 'astro';
 import rehypeAstroRelativeMarkdownLinks from 'astro-rehype-relative-markdown-links';
 
@@ -23,8 +24,8 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: 'https://astronaut.github.io',
-  base: 'my-repo',
+  site: 'https://josephmg.github.io',
+  // base: '',
   output: 'static',
 
   integrations: [
@@ -79,7 +80,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
+    remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }]],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin, rehypeAstroRelativeMarkdownLinks],
   },
 
