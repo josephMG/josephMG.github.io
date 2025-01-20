@@ -4,19 +4,10 @@ volumes:
     astro:
 
 services:
-  hexo:
-    build:
-      context: .
-      network: host
-    volumes:
-      - ./hexo:/blog
-      - /blog/node_modules
-    ports:
-      - '4001:4000'
   astro:
     build:
       context: .
-      dockerfile: Dockerfile-astro
+      dockerfile: Dockerfile
       network: host
     volumes:
       - ./astro:/blog

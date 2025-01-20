@@ -1,16 +1,13 @@
-FROM node:18-alpine
+FROM node:21-alpine
 
-COPY hexo /blog
+COPY astro /blog
 WORKDIR /blog
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN npm install -g astro \
+    && npm install
 
-RUN apk add --update --no-cache git
-RUN npm install hexo-cli -g \
-  && npm install
 
-EXPOSE 4000
-
-# RUN cd /blog/themes/materialize && npm install && npm run build
-
-ENTRYPOINT ["hexo", "server"]
+ENV HOST=0.0.0.0
+ENV PORT=4321
+EXPOSE 4321
+CMD ["npm", "run", "dev", "-- --host 0.0.0.0"]
