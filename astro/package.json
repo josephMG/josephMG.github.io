@@ -15,7 +15,7 @@
     "check": "npm run check:astro && npm run check:eslint && npm run check:prettier",
     "check:astro": "astro check",
     "check:eslint": "eslint . --quiet",
-    "check:prettier": "prettier --check src/**/*.{js,astro}",
+    "check:prettier": "prettier --check src/**/*.{js,astro} --log-level error",
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "eslint --fix .",
     "fix:prettier": "prettier -w ."
