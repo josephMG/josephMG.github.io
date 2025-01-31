@@ -8,7 +8,7 @@ export interface Props {
   tags: Post['tags'];
   class?: string;
   title?: string | undefined;
-  isCategory?: boolean;
+  type?: string;
 }
 
 const { tags, class: className = 'text-sm', title = undefined, type = 'tags'} = Astro.props;
