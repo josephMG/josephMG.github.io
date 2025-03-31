@@ -18,7 +18,8 @@
     "check:prettier": "prettier src/**/*.{js,astro} --list-different",
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "eslint --fix .",
-    "fix:prettier": "prettier -w src/**/*.{js,astro}"
+    "fix:prettier": "prettier -w src/**/*.{js,astro}",
+    "generate:post": "node scripts/generate-post.js"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.11",
