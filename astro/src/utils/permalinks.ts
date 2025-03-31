@@ -109,7 +109,9 @@ export const getAsset = (path: string): string =>
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
 
 /** */
-export const applyGetPermalinks = (menu: Record<string, any> | Record<string, any>[] = {}): Record<string, any> | Record<string, any>[] => {
+export const applyGetPermalinks = (
+  menu: Record<string, any> | Record<string, any>[] = {}
+): Record<string, any> | Record<string, any>[] => {
   if (Array.isArray(menu)) {
     return menu.map((item) => applyGetPermalinks(item));
   } else if (typeof menu === 'object' && menu !== null) {
