@@ -2,7 +2,7 @@
 title: 2024 year in review
 tags: ['astro', 'year in review']
 author: Joseph
-category: reviews
+category: Reviews
 publishDate: 2025-01-30 04:05:24
 ---
 
