@@ -13,6 +13,10 @@ This made me wonder: If I don’t choose GitHub Copilot for code reviews, can I 
 
 I haven’t written a blog in a long time—it’s time to start again!
 
+<!-- more -->
+
+### TOC
+
 ## Prerequirement
 
 1. [n8n](https://www.n8n.io/)
