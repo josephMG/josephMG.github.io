@@ -6,6 +6,16 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+function formatDate(d) {
+  let year = d.getFullYear();
+  let month = ('0' + (d.getMonth() + 1)).slice(-2); // Month is zero-based
+  let day = ('0' + d.getDate()).slice(-2);
+  let hour = ('0' + d.getHours()).slice(-2);
+  let minute = ('0' + d.getMinutes()).slice(-2);
+  let second = ('0' + d.getSeconds()).slice(-2);
+  return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+}
+
 // Get the post title from command line argument
 const title = process.argv[2];
 if (!title) {
@@ -15,11 +25,8 @@ if (!title) {
 
 // Format the title for the filename (e.g., "My New Post" -> "my-new-post")
 const slug = title.toLowerCase().replace(/\s+/g, '-');
-const date = new Date(),
-  dformat =
-    [date.getMonth() + 1, date.getDate(), date.getFullYear()].join('/') +
-    ' ' +
-    [date.getHours(), date.getMinutes(), date.getSeconds()].join(':');
+const date = new Date();
+const dformat = formatDate(date);
 
 // Define the content folder (adjust if needed)
 const postsDir = path.join(__dirname, `../src/content/post/${slug}`);
