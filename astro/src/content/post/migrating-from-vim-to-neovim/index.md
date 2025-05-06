@@ -73,3 +73,61 @@ For now, I've used Neovim for three months, and got to know Neovim. In my experi
 - [AI in Neovim](https://www.joshmedeski.com/posts/ai-in-neovim-neovimconf-2024/)
 - [How to set up Neovim for coding React](https://www.youtube.com/watch?v=ajmK0ZNcM4Q)
 - [ZazenCodes Neovim](https://www.youtube.com/watch?v=z9IgFRAVV9w&list=PLTPHo6vRHQ8qmDjONxkQl0ZQb4Otwc34V)
+
+----- Rewrite by Avante + Ollama gemma3:4b ------
+
+For a long time, I relied on Vim for my coding. However, after Bram Moolenaar’s passing in August 2023 – a significant influence in the Vim community – I decided it was time for a change. I began exploring alternative editors, ultimately settling on Neovim. This journey wasn’t just about switching editors; it was about integrating AI into my workflow and redefining my coding experience.
+
+**Key Differences: Tabs vs. Buffers**
+
+One of the first things I noticed was the shift from tabs to buffers in Neovim. In Vim, I frequently used `vsp` or `tabnew` to open or edit files, navigating between tabs with the `Tab` key and `Tabprevious` command. Neovim, however, utilizes buffers, offering a more streamlined approach. I configured `BufferLineCyclePrev` with `Shift + h` for seamless buffer switching, alongside `nvim-tree/nvim-web-devicons` and `akinsho/bufferline.nvim`.
+
+**Leveraging Language Servers with `coc` and `nvim-lspconfig`**
+
+I configured many `coc` settings to support TypeScript and JavaScript language servers, including linting and Prettier on save, go-to definition or reference, and codelens. Recognizing the power of language servers, I then converted all of these settings to `nvim-lspconfig` and `mason.nvim`, streamlining my development environment.
+
+**Lua Configuration for Readability**
+
+Although I’m relatively new to Lua, it allows me to write more readable configuration files using modules, functions, and tables (objects) for Neovim. Here’s a snippet of my configuration:
+
+```lua
+return {
+  "akinsho/bufferline.nvim",
+  version = "*",
+  dependencies = "nvim-tree/nvim-web-devicons",
+  opts = {
+    options = {
+      sort_by = "insert_at_end",
+      numbers = "both",
+      diagnostics_indicator = function (count, level, diagnostics_dict, context)
+        local s = " "
+        for e, n in pairs(diagnostics_dict) do
+          local sym = e == "error" and " " or (e == "warning" and " " or " ")
+          s = s .. n .. sym
+        end
+        return s
+      end
+    }
+  },
+  config = function (_, opts)
+    vim.opt.termguicolors = true
+    require("bufferline").setup(opts)
+  end
+}
+```
+
+**AI-Powered Productivity with `avante.nvim`, `CodeCompanion`, and `gp.nvim`**
+
+To truly elevate my coding experience, I integrated several AI plugins. I selected:
+
+- **`avante.nvim`**: This plugin transforms Neovim into a Cursor AI IDE, undergoing rapid iterations and adding exciting new features daily.
+- **`CodeCompanion`**: This plugin allows for customizable workflows and prompts, with a particularly useful `Action Palette`.
+- **`gp.nvim`**: (GPT Prompt) – This plugin helps me write prompts through Neovim’s command line interface, leveraging `folke/noice.nvim`. Because of supporting [Ollama LLM](https://ollama.com/), all of these plugins can be used offline.
+
+I’m still experimenting with how to best utilize these plugins – a “vibe-way” to coding!
+
+**Resources for Further Exploration**
+
+- [AI in Neovim](https://www.joshmedeski.com/posts/ai-in-neovim-neovimconf-2024/)
+- [How to set up Neovim for coding React](https://www.youtube.com/watch?v=ajmK0ZNcM4Q)
+- [ZazenCodes Neovim](https://www.youtube.com/watch?v=z9IgFRAVV9w&list=PLTPHo6vRHQ8qmDjONxkQl0ZQb4Otwc34V)
