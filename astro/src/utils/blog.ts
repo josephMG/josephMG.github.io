@@ -88,7 +88,16 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
         title: rawAuthor,
       }
     : undefined;
-  const excerpt = rawExcerpt ?? removeMd(body.replace('<!-- toc -->', '').split('<!-- more -->')?.[0] ?? '');
+
+  const excerpt =
+    rawExcerpt ??
+    removeMd(
+      body
+        .replace(/```[\s\S]*?```/g, '')
+        .replace('<!-- toc -->', '')
+        .replace('```', '')
+        .split('<!-- more -->')?.[0] ?? ''
+    );
 
   return {
     id: id,

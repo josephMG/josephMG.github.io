@@ -90,3 +90,7 @@
 .dd *:first-child {
   margin-top: 0;
 }
+
+blockquote {
+  word-wrap: break-word;
+}
