@@ -2,7 +2,7 @@
 title: Switching from vim to Neovim!
 tags: ['fullstack', 'devops']
 author: Joseph
-category: review
+category: devops
 image: 'banner.png'
 publishDate: 2025-05-05 09:34:58
 ---
