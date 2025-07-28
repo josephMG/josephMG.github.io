@@ -9,37 +9,37 @@ image: 'banner.png'
 
 ### Introduction
 
-[Gemini CLI](https://github.com/google-gemini/gemini-cli) has been the most popular AI agents in the first half of 2025. It's just like [claude code](https://docs.anthropic.com/zh-TW/docs/claude-code/overview) that brings the power directly into your terminal. Although there are terminal AI agents, the pricing plans are totally different. Gemini CLI provides a [free tier](https://ai.google.dev/gemini-api/docs/rate-limits#free-tier) with 100 requests per day using Gemini 2.5 Pro, and you can unlock the [tier 1](https://ai.google.dev/gemini-api/docs/rate-limits#tier-1) by upgrading to paid plan.
+[Gemini CLI](https://github.com/google-gemini/gemini-cli) has been one of the most popular AI agents in the first half of 2025. It's similar to [Claude Code](https://docs.anthropic.com/zh-TW/docs/claude-code/overview), bringing its power directly into your terminal. Although other terminal AI agents exist, their pricing plans are quite different. Gemini CLI provides a [free tier](https://ai.google.dev/gemini-api/docs/rate-limits#free-tier) with 100 requests per day using Gemini 2.5 Pro, and you can unlock [Tier 1](https://ai.google.dev/gemini-api/docs/rate-limits#tier-1) by upgrading to a paid plan.
 
 ### Prerequisites
 
-I'm going to use `npm` to install Gemini with Node js version is `v24.4.1` and npm version is `11.4.2`.
+I'm going to use `npm` to install Gemini. My Node.js version is `v24.4.1`, and my npm version is `11.4.2`.
 
 > Gemini needs Node.js version 20 or higher installed.
 
-If you're using MacOS you can also choose `Homebrew` to install Gemini CLI.
+If you're using macOS, you can also choose `Homebrew` to install the Gemini CLI.
 
 ### Installation
 
-Now, let me install by `npm`. After installation you can run `gemini` in your terminal directly.
+Now, let's install it using `npm`. After installation, you can run `gemini` directly in your terminal.
 
 > npm install -g @google/gemini-cli
 
 ![installation](./installation.png)
 
-I'm using `Use Gemini API key` as authentication method, so I need to [Generate a key from](https://aistudio.google.com/apikey) from Google AI Studio and set it into `.zshrc` (or `.bashrc`) by adding this line:
+I'm using the `Use Gemini API key` authentication method, so I need to [generate a key](https://aistudio.google.com/apikey) from Google AI Studio and set it in `.zshrc` (or `.bashrc`) by adding this line:
 
 ```
 export GEMINI_API_KEY=YOUR_API_KEY
 ```
 
-And then you can try gemini now!
+And then you can try Gemini now!
 
 ### Run some examples
 
 ![example](./example.png)
 
-Prompt: `give me suggestion for the socket functionalty of this project?`
+Prompt: `give me suggestions for the socket functionality of this project?`
 
 Response:
 
@@ -85,4 +85,4 @@ Would you like me to elaborate on any of these suggestions or perhaps draft a sm
 
 ### Conclusion:
 
-Gemini Installation is very simple. Although I am using neovim with [avante](https://github.com/yetone/avante.nvim), Gemini give me more power to use terminal. Next time I will try how to use Gemini with MCP server and integrate the workflow into my daily work.
+The Gemini installation is very simple. Although I am using Neovim with [Avante](https://github.com/yetone/avante.nvim), Gemini gives me more power to use the terminal. Next, I will explore how to use Gemini with an MCP server and integrate the workflow into my daily tasks.
