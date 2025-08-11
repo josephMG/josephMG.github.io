@@ -2,7 +2,7 @@
 title: Install Gemini CLI
 tags: ['astro', 'AI']
 author: Joseph
-category: review
+category: 'AI & Machine Learning'
 publishDate: 2025-07-28 17:51:42
 image: 'banner.png'
 ---
