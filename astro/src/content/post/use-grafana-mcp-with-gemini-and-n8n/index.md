@@ -7,9 +7,9 @@ publishDate: 2025-08-11 21:08:13
 image: 'banner.png'
 ---
 
-Model Context Protocol (MCP) is extremely useful. AI assistant helps you decide when to use and how to use those connected tools, thus, we just need to configure them. After I integrated some MCP logging management systems on my several projects, it's greatly saved time for me.
+The Model Context Protocol (MCP) is extremely useful. An AI assistant helps you decide when and how to use connected tools, so you only need to configure them. After integrating MCP logging management systems into several of my projects, it has saved me a significant amount of time.
 
-In this article, I'm gonna to integrate [Grafana](https://github.com/grafana/mcp-grafana) with [Gemini CLI](https://github.com/google-gemini/gemini-cli) and [n8n](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/), chat on `Gemini CLI` and `n8n`, and let them invoke `Grafana MCP server`.
+In this article, I'm going to integrate [Grafana](https://github.com/grafana/mcp-grafana) with the [Gemini CLI](https://github.com/google-gemini/gemini-cli) and [n8n](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/). I will chat with the `Gemini CLI` and `n8n` and have them invoke the `Grafana MCP server`.
 
 ![structure](structure.png)
 
@@ -19,7 +19,7 @@ In this article, I'm gonna to integrate [Grafana](https://github.com/grafana/mcp
 
 ### Prerequisites
 
-I'll use these tools, so you prehaps need to install them first.
+I'll be using these tools, so you may need to install them first.
 
 - [docker, docker compose](https://www.docker.com/get-started/)
 - [Gemini CLI](https://www.docker.com/get-started/)
@@ -27,27 +27,27 @@ I'll use these tools, so you prehaps need to install them first.
 - [n8n docker compose](https://github.com/n8n-io/n8n-hosting/tree/main)
 - [Grafana](https://grafana.com/)
 
-There are many ways to setup Grafana MCP, so I'm gonna to connect Grafana MCP server by docker in Gemini CLI, and connect by binary file in n8n. However, I ran Grafana in docker on my localhost (http://host.docker.internal:9120), you can set to your Grafana service anyway.
+There are many ways to set up the Grafana MCP. I'm going to connect to the Grafana MCP server using Docker in the Gemini CLI and using a binary file in n8n. I ran Grafana in Docker on my localhost (http://host.docker.internal:9120), but you can point to your own Grafana service.
 
 ### Grafana Service Account
 
-Service account has a `token` can let MCP client connect and authenticate with Grafana, therefore we need to create a service account and generate a token for it. Let's get them step-by-step:
+A service account `token` allows an MCP client to connect and authenticate with Grafana. Therefore, we need to create a service account and generate a token for it. Let's go through the steps:
 
-1. Click the menu on your left-hand,
+1. Click the menu on the left,
 2. Click `Administration`,
-3. Click `Service accounts` under the `Users and access`,
-4. Create a service account by `Add service account`,
-5. Generate a token by `Add service account token`.
+3. Click `Service accounts` under `Users and access`,
+4. Create a service account by clicking `Add service account`,
+5. Generate a token by clicking `Add service account token`.
 6. Copy your token!
 
 ![grafana1](./grafana1.jpg)
 ![grafana2](./grafana2.jpg)
 
-Since you get the token and Grafana url, you can set them into Grafana MCP server environment vars now.
+Once you have the token and Grafana URL, you can set them as environment variables for the Grafana MCP server.
 
 ### Gemini CLI using Grafana MCP
 
-Don't worry. It is quite simple if you remember my article about [Figma MCP](../use-figma-mcp-server-with-gemini-cli). I'll follow [this usage](use-figma-mcp-server-with-gemini-cli/) to use docker to connect `Gemini` and `Grafana`.
+Don't worry; it's quite simple if you remember my article about the [Figma MCP](../use-figma-mcp-server-with-gemini-cli). I'll follow [that guide](use-figma-mcp-server-with-gemini-cli/) to use Docker to connect `Gemini` and `Grafana`.
 
 ```json
 "mcpServers": {
@@ -73,46 +73,46 @@ Don't worry. It is quite simple if you remember my article about [Figma MCP](../
 }
 ```
 
-When I type `/mcp` on Gemini CLI, it shall list all tools. Besides, I can ask Gemini to `Summarize grafana board`, `"Docker Prometheus Monitoring" board summary`, or `query_prometheus rate(node_cpu_seconds_total{mode="system"}[5m])`.
+When I type `/mcp` in the Gemini CLI, it will list all available tools. I can also ask Gemini to do things like `Summarize grafana board`, get the `"Docker Prometheus Monitoring" board summary`, or `query_prometheus rate(node_cpu_seconds_total{mode="system"}[5m])`.
 ![grafana-gemini](./grafana-gemini.jpg)
 
-Now let's see how to use `Grafana` with `n8n`.
+Now, let's see how to use `Grafana` with `n8n`.
 
 ### N8n using Grafana mcp
 
-I did not install docker into n8n container, so I deside to run `mcp-grafana` binary file directly.
+I did not install Docker in the n8n container, so I decided to run the `mcp-grafana` binary file directly.
 
 > Download here: https://github.com/grafana/mcp-grafana/releases
 
-Just run these command inside your container to install it.
+Just run these commands inside your container to install it.
 
 ```shell
 $ wget https://github.com/grafana/mcp-grafana/releases/download/v0.6.2/mcp-grafana_Linux_x86_64.tar.gz
 $ tar -xvzf mcp-grafana_Linux_x86_64.tar.gz
 ```
 
-After that, n8n nodes should be able to run grafana by `/home/node/mcp-grafana` command. Before we try the command, we have to add `n8n-nodes-mcp` community node into n8n and setup ai-agent workflow. Let's take a look.
+After that, n8n nodes should be able to run Grafana using the `/home/node/mcp-grafana` command. Before we try the command, we have to add the `n8n-nodes-mcp` community node to n8n and set up an AI agent workflow. Let's take a look.
 ![community-node](./community-node.jpg)
 ![workflow](./workflow.jpg)
 
-- AI Agent node:
-  I set a system prompt `You are a helpful Grafana MCP assistant `, and then trigger by the `connected chat trigger node`.
+- AI Agent Node:
+  I set the system prompt to `You are a helpful Grafana MCP assistant`, and then triggered it with the `Connected Chat Trigger` node.
 - Google Gemini Chat Model:
-  The important thing is the host of `Credential Google Gemini(PaLM) Api` should be `https://generativelanguage.googleapis.com`, and paste your [Gemini API key](https://aistudio.google.com/apikey) into `API Key` field.
+  The important thing is that the host for the `Credential Google Gemini(PaLM) Api` should be `https://generativelanguage.googleapis.com`. Then, paste your [Gemini API key](https://aistudio.google.com/apikey) into the `API Key` field.
 - Simple Memory:
-  `Context Window Length` is set to `10` because we need to communicate many times with assistant.
-- MCP Client tool - listTools:
-  Remember to use the `MCP client tool` we just downloaded from community. This node I set `Operation` to `List Tools`.
+  The `Context Window Length` is set to `10` because we need to communicate with the assistant multiple times.
+- MCP Client Tool - listTools:
+  Remember to use the `MCP client tool` we just downloaded from the community. For this node, I set the `Operation` to `List Tools`.
   ![mcp-client](./mcp-client.jpg)
   ![list-tools](./list-tools.jpg)
-- MCP Client tool - executeTool:
-  This node I set `Operation` to `Execute Tool`, and `Tool Name` to `{{ $fromAI('tool') }}`. You may attention to the green area that says `Let the model defines this parameter`, just click it!
+- MCP Client Tool - executeTool:
+  For this node, I set `Operation` to `Execute Tool` and `Tool Name` to `{{ $fromAI('tool') }}`. Pay attention to the green area that says `Let the model define this parameter`—just click it!
   ![execute-tool](./execute-tool.jpg)
 - Grafana MCP Credential:
-  This credential is connected using `Command Line (STDIO)`, set command to `/home/node/mcp-grafana`, and set environment `GRAFANA_URL` and `GRAFANA_API_KEY`.
+  This credential connects using `Command Line (STDIO)`. Set the command to `/home/node/mcp-grafana` and set the `GRAFANA_URL` and `GRAFANA_API_KEY` environment variables.
   ![mcp-credential](./mcp-credential.png)
 
-Okay! Just try some prompts for this MCP:
+Okay! Let's try some prompts for this MCP:
 
 > { "tool": "query_prometheus", "Tool_Parameters": { "datasourceUid": "PBFA97CFB590B2093", "expr": "rate(node_cpu_seconds_total{mode="system"}[5m])", "queryType": "range", "startTime": "now-1h", "endTime": "now", "stepSeconds": 60 } }
 
@@ -162,6 +162,6 @@ This data indicates the proportion of time each CPU core spent in "system" mode 
 
 ### Conclusion
 
-Cool! Model Context Protocol (MCP) is extremely useful because we can connect it with many AI agents at once. We don't write any codes to connect http-request or Grafana API,however, only few steps is needed and the service is connected by MCP clients!
+And there you have it! The Model Context Protocol (MCP) is a game-changer, allowing you to connect services like Grafana to multiple AI agents with incredible ease. Forget writing boilerplate code for HTTP requests or wrestling with APIs. With MCP, a few configuration steps are all you need to get your services talking to each other, making powerful integrations more accessible than ever.
 
-If you like this post, please connect with me on LinkedIn and give me some encouragement. Thanks.
+> `If you liked this post, please connect with me on LinkedIn and give me some encouragement. Thanks.`
