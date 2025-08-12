@@ -2,7 +2,7 @@
 title: Use Figma MCP server with Gemini CLI
 tags: ['Gemini', 'MCP server', 'AI', 'Figma']
 author: Joseph
-category: review
+category: 'AI & Machine Learning'
 publishDate: 2025-07-31 05:49:43
 image: 'banner.png'
 ---
@@ -90,3 +90,4 @@ All done. You can now use Gemini with the Figma MCP server, and you can let Gemi
 6. prompt Gemini.
 
 If you like this post, please connect with me on LinkedIn and give me some encouragement. Thanks.
+

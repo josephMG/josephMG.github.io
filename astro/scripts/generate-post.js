@@ -42,13 +42,17 @@ const content = `---
 title: ${title}
 tags: ["astro", "blog"]
 author: Joseph
-category: review
+category: 'AI & Machine Learning'
 publishDate: ${dformat}
+image: 'banner.png'
 ---
-
-# ${title}
-
 Write your content here!
+
+### TOC
+
+<!-- more -->
+
+If you like this post, please connect with me on LinkedIn and give me some encouragement. Thanks.
 `;
 
 fs.writeFileSync(postPath, content);
