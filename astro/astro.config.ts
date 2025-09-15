@@ -16,6 +16,7 @@ import rehypeAstroRelativeMarkdownLinks from 'astro-rehype-relative-markdown-lin
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
+import rehypeMermaid from 'rehype-mermaid';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -80,8 +81,17 @@ export default defineConfig({
   },
 
   markdown: {
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid'],
+    },
     remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }]],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin, rehypeAstroRelativeMarkdownLinks],
+    rehypePlugins: [
+      rehypeMermaid,
+      responsiveTablesRehypePlugin,
+      lazyImagesRehypePlugin,
+      rehypeAstroRelativeMarkdownLinks,
+    ],
   },
 
   vite: {
