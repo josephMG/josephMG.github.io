@@ -81,12 +81,16 @@ export default defineConfig({
   },
 
   markdown: {
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid'],
+    },
     remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }]],
     rehypePlugins: [
+      rehypeMermaid,
       responsiveTablesRehypePlugin,
       lazyImagesRehypePlugin,
       rehypeAstroRelativeMarkdownLinks,
-      rehypeMermaid,
     ],
   },
 
