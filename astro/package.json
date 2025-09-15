@@ -35,6 +35,7 @@
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "markdown-it": "^14.1.0",
+    "rehype-mermaid": "^3.0.0",
     "remark-toc": "^9.0.0",
     "remove-markdown": "^0.5.5",
     "typescript": "^5.5.4",
