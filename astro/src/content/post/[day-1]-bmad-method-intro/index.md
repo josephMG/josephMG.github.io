@@ -1,6 +1,6 @@
 ---
-title: BMAD-Method intro
-tags: ['ai', 'GenAI', 'ai agents']
+title: '[Day 1] BMAD-Method intro'
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-09-15 08:54:39
@@ -77,7 +77,7 @@ graph TD
 
 到這邊介紹完基本的BMAD-Method了，期待明天開始安裝跟上機演練。
 
-### References:
+### References
 
 - BMAD-Method: https://github.com/bmad-code-org/BMAD-METHOD/tree/Machine
 - Subagent: https://docs.anthropic.com/en/docs/claude-code/sub-agents
