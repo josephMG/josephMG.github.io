@@ -31,7 +31,7 @@ $ cd ~/project/bmad-method/project-1 
 ![bmad-method-step-1](./bmad-method-step-1.png)
 很快迎來我的第一個問題：**我們要安裝什麼擴充包 expansion packs？**
 
-> 所有的pack可以雌考：
+> 所有的pack可以參考：
 >
 > 1. https://github.com/bmad-code-org/BMAD-METHOD/tree/main/expansion-packs
 > 2. https://github.com/bmad-code-org/BMAD-METHOD/blob/main/docs/expansion-packs
