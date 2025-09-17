@@ -96,6 +96,8 @@ PM 一上來也是一堆問題，我選7, 10，產生個PRD出來。
 跑完所有的story以後，我們就得到一個計算機了！
 ![step-5-calc](step-5-calc.png)
 
+> 想看project的可以來這邊：https://github.com/josephMG/bmad-method-projects
+
 ### Conclusion
 
 雖然跳過了些步驟，但還是滿好玩的。每個步驟的問題都很明確，要確認的時候也會跟你說。除了有時候會需要介入開發、給他明確檔案外，就沒什麼太大的問題了。
