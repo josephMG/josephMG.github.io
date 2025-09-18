@@ -26,9 +26,11 @@ export const GET = async () => {
       pubDate: post.publishDate,
     })),
     customData: [
-      '<language>en-us</language>',
-      `<atom:link href="${new URL('rss.xml', import.meta.env.SITE)}" rel="self" type="application/rss+xml" />`
+      `<atom:link href="${new URL('rss.xml', import.meta.env.SITE)}" rel="self" type="application/rss+xml" />`,
     ].join(''),
+    xmlns: {
+      atom: 'http://www.w3.org/2005/Atom',
+    },
     trailingSlash: SITE.trailingSlash,
   });
 
