@@ -61,7 +61,11 @@ image: 'banner.png'
 **匯率轉換**
 ![exchange](./exchange-v1.png)
 
+> 想看project的可以來這邊：https://github.com/josephMG/bmad-method-projects
+
 ### Conclusion
 
 這次不用從頭跑一堆廢話，token就花得比較少，可以介入的時候要先介入看一下，不然怎麼錯的、該怎麼改真的會手足無措。而且他老是把mui Grid 看成舊版，我總是要塞新版Grid文件給他，每次參數都塞錯，都可以預判他會怎麼錯了。
 這次開發速度算快，比昨天順多了。不過這個專案應該就先到這邊為止，明天再來開發其他idea。
+
+今天到這邊就結束囉，喜歡我文章的再幫忙推廣一下喔！
