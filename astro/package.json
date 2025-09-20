@@ -38,6 +38,7 @@
     "lodash.merge": "^4.6.2",
     "markdown-it": "^14.1.0",
     "npm": "^11.6.0",
+    "photoswipe": "^5.4.4",
     "playwright": "^1.55.0",
     "rehype-mermaid": "^3.0.0",
     "remark-toc": "^9.0.0",

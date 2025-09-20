@@ -50,5 +50,16 @@ const { language, textDirection } = I18N;
         content-visibility: auto;
       }
     </style>
+
+    <script>
+      import PhotoSwipeLightbox from 'photoswipe/lightbox';
+      import 'photoswipe/style.css';
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: 'body', // 或指定容器
+        children: 'a[data-pswp-width]',
+        pswpModule: () => import('photoswipe'),
+      });
+      lightbox.init();
+    </script>
   </body>
 </html>
