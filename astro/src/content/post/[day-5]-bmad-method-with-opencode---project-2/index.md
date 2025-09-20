@@ -7,21 +7,23 @@ publishDate: 2025-09-19 13:57:36
 image: 'banner.png'
 ---
 
-Gemini玩膩了，今天來用[opencode](https://opencode.ai/)吧！但今天也是先做一個計算機，只是改做成iPhone app。我也是先用ChatGPT生成一段prompt，準備餵給opencode。
-
-> 我要做一個iPhone用的iOS計算機，然後要給BMAD-Method AI agent framework做。 請幫我生成一段prompt 讓我給BMAD-Method agents使用
-
-準備好了就來開始！
-
-### TOC
-
-<!-- more -->
+Gemini玩膩了，今天來用[opencode](https://opencode.ai/)吧！但今天也是先做一個計算機，只是改做成iPhone app。
 
 ![opencode](./opencode.png)
 
 這邊比較有意思的是opencode把agent用 `@` 當作prefix (e.g., `@bmad-analyst`)、而command一樣用 `/`開頭(e.g., `/bmad:tasks:create-next-story`)。使用上要注意一下。
 
-### Step 1: analyst
+我也是先用ChatGPT生成一段prompt，準備餵給opencode。
+
+> 我要做一個iPhone用的iOS計算機，然後要給BMAD-Method AI agent framework做。 請幫我生成一段prompt 讓我給BMAD-Method agents使用
+
+準備好了就來開始！
+
+<!-- more -->
+
+### TOC
+
+### Step 1: Analyst
 
 先看看我們準備的prompt吧：
 
@@ -100,7 +102,7 @@ Begin **Agentic Planning**.
 
 ### Step 2: Architect
 
-![step-2-architect-start](./step-2-architect-start.png)
+![step-2-architect-start](step-2-architect-start.png)
 第二步驟到了架構師，他會規劃好App的架構，要用`MVVM`還是`VIPER`，
 
 最後跑完Analyst跟Architect之後 產生了 `brief.md`跟`architecture.md`。
@@ -114,7 +116,7 @@ docs
 
 跑完生成玩`architecture.md`後就差不多要進入Scrum master了
 
-![step-2-finish](./step-2-architect-finish.png)
+![step-2-finish](step-2-architect-finish.png)
 
 ### Step 3: Scrum Master
 
@@ -160,7 +162,7 @@ CalculatorUITests
 
 因為今天還沒有想submit到Apple store，就直接請他summary這個project了。
 
-![summary](./summary.png)
+![summary](summary.png)
 
 我今天才剛開始裝XCode，還有好幾個`GB`在安裝，就等明天裝完打開看看執行結果。
 
