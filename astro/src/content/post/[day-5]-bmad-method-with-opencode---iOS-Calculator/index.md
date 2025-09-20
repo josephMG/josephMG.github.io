@@ -1,5 +1,5 @@
 ---
-title: '[Day 5] BMAD-Method with opencode - project 2'
+title: '[Day 5] BMAD-Method with opencode - ios calculator'
 tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'

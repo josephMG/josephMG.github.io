@@ -1,5 +1,5 @@
 ---
-title: '[Day 4] BMAD-Method project-1 calculator v2'
+title: '[Day 4] BMAD-Method - react calculator v2'
 tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
