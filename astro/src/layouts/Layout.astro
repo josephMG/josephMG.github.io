@@ -12,7 +12,6 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
-
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
 
@@ -52,16 +51,15 @@ const { language, textDirection } = I18N;
       }
     </style>
 
-
-<script>
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import 'photoswipe/style.css';
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: 'body', // 或指定容器
-      children: 'a[data-pswp-width]',
-      pswpModule: () => import('photoswipe')
-    });
-    lightbox.init();
-  </script>
+    <script>
+      import PhotoSwipeLightbox from 'photoswipe/lightbox';
+      import 'photoswipe/style.css';
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: 'body', // 或指定容器
+        children: 'a[data-pswp-width]',
+        pswpModule: () => import('photoswipe'),
+      });
+      lightbox.init();
+    </script>
   </body>
 </html>

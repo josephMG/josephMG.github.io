@@ -29,18 +29,18 @@ const { metadata } = Astro.props;
     <Footer {...footerData} />
   </slot>
 
-<script is:inline>
-  document.querySelectorAll('a.photoswipe-wrapper').forEach(anchor => {
-    const img = anchor.querySelector('img');
-    if (!img) return; // 沒有圖片就跳過
-        const url    = new URL(img.src, location.href);
-    const params = new URLSearchParams(url.search);
+  <script is:inline>
+    document.querySelectorAll('a.photoswipe-wrapper').forEach((anchor) => {
+      const img = anchor.querySelector('img');
+      if (!img) return; // 沒有圖片就跳過
+      const url = new URL(img.src, location.href);
+      const params = new URLSearchParams(url.search);
 
-    const width  = params.get('origWidth')  || img.naturalWidth;
-    const height = params.get('origHeight') || img.naturalHeight;
+      const width = params.get('origWidth') || img.naturalWidth;
+      const height = params.get('origHeight') || img.naturalHeight;
 
-    anchor.dataset.pswpWidth  = width;
-    anchor.dataset.pswpHeight = height;
-  });
-</script>
+      anchor.dataset.pswpWidth = width;
+      anchor.dataset.pswpHeight = height;
+    });
+  </script>
 </Layout>
