@@ -37,10 +37,9 @@ const { metadata } = Astro.props;
         const url = new URL(img.src, location.href);
         const params = new URLSearchParams(url.search);
 
-        const width = params.get('origWidth') || img.naturalWidth || img.width;
-        const height = params.get('origHeight') || img.naturalHeight || img.height;
+        const width = params.get('origWidth') || img.naturalWidth || Number(img.getAttribute('width')) || img.width;
+        const height = params.get('origHeight') || img.naturalHeight || Number(img.getAttribute('height')) || img.height;
 
-        console.log(img.width, img.naturalWidth);
         anchor.href = img.src;
         anchor.dataset.pswpWidth = width;
         anchor.dataset.pswpHeight = height;
