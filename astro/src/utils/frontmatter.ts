@@ -74,6 +74,7 @@ export const rehypePhotoswipe: RehypePlugin = (options: { width?: number; height
             type: 'element',
             tagName: 'a',
             properties: {
+              class: 'photoswipe-wrapper',
               href: `_image?href=${fileFullPath}`,
               'data-pswp-width': width,
               // 'data-pswp-height': height,
