@@ -96,6 +96,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
         .replace(/```[\s\S]*?```/g, '')
         .replace('<!-- toc -->', '')
         .replace('```', '')
+        .replace('{/*<!-- more -->*/}', '<!-- more -->')
         .split('<!-- more -->')?.[0] ?? ''
     );
 
