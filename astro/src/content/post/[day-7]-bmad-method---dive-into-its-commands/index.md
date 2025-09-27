@@ -1,6 +1,6 @@
 ---
 title: '[Day 7] BMAD-Method - dive into its commands'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-09-21 14:06:20
