@@ -7,8 +7,6 @@ publishDate: 2025-09-24 15:52:47
 image: 'banner.png'
 ---
 
-Write your content here!
-
 我們來開個前端的專案，然後嘗試把前兩天的後端API串進來，當然這一切都讓PM去發起，這功能就有點大，所以來建立個epic先。
 
 > create a story, I want to integrate a frontend by Nextjs with RTK Query, Redux toolkit, axois, and material-ui. The frontend needs api's come from @user-management-service, so there must be register, update, get user, fetch JWT, change password and delete user. It must be UI/UX friendly and very pretty. PLEASE SETUP and RUN EVERYTHING INSIDE DOCKER AND DOCKER-COMPOSE AS THE SAME AS @user-management-service BACKEND PROJECT.
