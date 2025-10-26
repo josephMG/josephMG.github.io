@@ -18,8 +18,6 @@ https://github.com/bmad-code-org/BMAD-Method
 
 <!-- more -->
 
-### TOC
-
 ```shell
 我要用BMad-method開發一個全新的Flutter專案，可以跨ios/android雙平台，專案是家庭用的記帳APP，目前有圖中這些分類，日後可以新增刪除修改，然後會把記帳內容存入google sheet，方便共同存取。以下是我初步規劃的專案功能：
 1. 記帳APP 要用Flutter支援 ios/android雙平台
