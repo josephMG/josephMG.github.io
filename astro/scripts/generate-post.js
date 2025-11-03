@@ -39,7 +39,7 @@ if (!fs.existsSync(postsDir)) {
 
 // Markdown content template
 const content = `---
-title: ${title}
+title: '${title}'
 tags: ["astro", "blog"]
 author: Joseph
 category: 'AI & Machine Learning'
@@ -48,9 +48,9 @@ image: 'banner.png'
 ---
 Write your content here!
 
-### TOC
-
 <!-- more -->
+
+### TOC
 
 If you like this post, please connect with me on LinkedIn and give me some encouragement. Thanks.
 `;
