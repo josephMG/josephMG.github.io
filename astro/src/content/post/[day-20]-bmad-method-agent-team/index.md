@@ -1,6 +1,6 @@
 ---
 title: '[Day 20] BMAD-Method Agent Team'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-10-04 09:16:38

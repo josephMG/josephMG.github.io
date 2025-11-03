@@ -1,6 +1,6 @@
 ---
 title: '[Day 21] BMAD-Method Task'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-10-05 07:33:36

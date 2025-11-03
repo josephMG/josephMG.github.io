@@ -1,6 +1,6 @@
 ---
 title: '[Day 25] BMAD-Method Data'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-10-09 10:09:43

@@ -1,6 +1,6 @@
 ---
 title: '[Day 23] BMAD-Method Checklist'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-10-07 03:33:21
