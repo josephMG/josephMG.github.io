@@ -1,5 +1,5 @@
 ---
-title: '[Day 27] BMAD-Method v6 - part 2'
+title: '[Day 27] BMAD-Method v6 - part 2 - BMM'
 tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
