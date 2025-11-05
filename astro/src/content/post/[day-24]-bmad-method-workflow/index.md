@@ -1,6 +1,6 @@
 ---
 title: '[Day 24] BMAD-Method Workflow'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-10-08 13:21:43

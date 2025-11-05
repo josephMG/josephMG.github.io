@@ -1,6 +1,6 @@
 ---
 title: '[Day 22] BMAD-Method Template'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-10-06 11:31:40
