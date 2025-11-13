@@ -29,7 +29,7 @@
     "@fontsource-variable/inter": "^5.0.20",
     "@igor.dvlpr/astro-post-excerpt": "^3.0.4",
     "@tailwindcss/vite": "^4.1.13",
-    "astro": "^5.14.4",
+    "astro": "^5.15.6",
     "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.1",
     "astro-rehype-relative-markdown-links": "^0.18.0",
