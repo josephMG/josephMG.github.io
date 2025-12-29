@@ -1,6 +1,6 @@
 ---
 title: 讓sessionStorge結合useSyncExternalStore，一更新其他components都知道
-tags: ['react', 'nextjs']
+tags: ['reactjs', 'nextjs']
 author: Joseph
 category: frontend
 publishDate: 2025-06-19 08:00:14

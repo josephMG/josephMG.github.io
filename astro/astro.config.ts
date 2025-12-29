@@ -12,6 +12,9 @@ import compress from 'astro-compress';
 import remarkToc from 'remark-toc';
 import type { AstroIntegration } from 'astro';
 import rehypeAstroRelativeMarkdownLinks from 'astro-rehype-relative-markdown-links';
+import rehypeExternalLinks from 'rehype-external-links'
+
+
 
 import astrowind from './vendor/integration';
 
@@ -99,6 +102,7 @@ export default defineConfig({
       responsiveTablesRehypePlugin,
       lazyImagesRehypePlugin,
       rehypeAstroRelativeMarkdownLinks,
+      [rehypeExternalLinks, { target: '_blank' }],
     ],
   },
 
