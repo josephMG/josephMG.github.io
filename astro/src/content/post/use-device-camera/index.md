@@ -96,3 +96,85 @@ import { useCamera, useMediaTrack, useImageCapture } from 'use-device-camera';
 
 手機、電腦都可以跑看看，也可以用不同廠牌的手機執行，就可以控制、觀察每個裝置對camera的支援程度了。
 這也終於有機會做個自己的npm package，從規劃、設計demo、部署、發佈，開了一個自己的open source，真的滿新鮮的。
+
+
+-- English
+
+I've been working with JavaScript to integrate webcams for over a year. Finally, I've created my `use-device-camera` npm package.
+
+When you start using a camera on your web application, you might consult AI agents or explore various npm packages and GitHub repositories. In the process, you'll likely find yourself browsing tutorials like these:
+1. [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices)
+2. [WebRTC](https://webrtc.github.io/samples/)
+3. [web.dev](https://web.dev/articles/camera-pan-tilt-zoom?hl=zh-tw#mediastream_api)
+
+Over the past year, I've developed features such as zoom-in/zoom-out, activating the camera torch, and recording video or taking photos. I always wondered why these examples weren't consolidated, and why it was so difficult to quickly test different constraints across various devices. This led to the creation of `use-device-camera` and [its demo](https://josephmg.github.io/use-device-camera/)!
+
+Now, let me introduce this [npm package](https://www.npmjs.com/package/use-device-camera).
+
+#### Installation
+
+The permission popup appears on mobile every time `navigator.mediaDevices.getUserMedia` is invoked. To avoid this, simply install `use-device-camera` and wrap your application's camera-related flow within `CameraProvider`; you'll then be able to use camera resources smoothly after requesting permission once.
+
+> npm install use-device-camera
+
+
+```jsx
+import { CameraProvider } from 'use-device-camera';
+
+function App() {
+  return (
+    <CameraProvider
+      initOnMount={true}
+      defaultConstraints={{ video: true, audio: false }}
+      onPermissionError={(err) => console.error('Permission failed:', err)}
+    >
+      <MyCameraComponent />
+    </CameraProvider>
+  );
+}
+```
+
+Now, you can access `useCamera`, `useMediaTrack`, and `useImageCapture` directly inside `MyCameraComponent`.
+
+#### useCamera
+`import { useCamera } from 'use-device-camera';`
+
+This hook accesses `CameraContext` values such as `stream` and `devices` information.
+
+| Property/Function | Type/Return Type |
+| :--- | :--- |
+| `stream` | `MediaStream \| null` |
+| `devices` | `MediaDeviceInfo[]` |
+| `requestPermission(constraints?)` | `Promise<MediaStream \| null>` |
+| `loadDevices()` | `Promise<MediaDeviceInfo[]>` |
+| `cameraPermissionState` | `PermissionState` |
+| `audioPermissionState` | `PermissionState` |
+
+#### useMediaTrack
+You can use this hook to apply constraints (`applyConstraints`) and retrieve settings and capabilities by manipulating the `MediaStreamTrack trackManager`.
+| Property/Function | Type/Return Type |
+| :--- | :--- |
+| `trackManager` | `MediaStreamTrack \| undefined` |
+| `applyConstraints(constraints)` | `Promise<void>` |
+| `settings` | `MediaTrackSettings` |
+| `capabilities` | `MediaTrackCapabilities` |
+
+#### useImageCapture
+If you need to take photos with flash or capture frames, you should consider using `ImageCapture` via this hook.
+| Property/Function | Type/Return Type |
+| :--- | :--- |
+| `imageCaptureManager` | `ImageCapture \| undefined` |
+| `takePhoto(settings?)` | `Promise<Blob \| null>` |
+| `photoSettings` | `PhotoSettings` |
+| `photoCapabilities` | `PhotoCapabilities` |
+
+
+
+#### Demo
+> Demo: https://josephmg.github.io/use-device-camera/
+
+> npm: https://www.npmjs.com/package/use-device-camera
+
+> github: https://github.com/josephMG/use-device-camera
+
+Simply run this demo on your browser and mobile device. Furthermore, you can refer to the [demo source code](https://github.com/josephMG/use-device-camera/tree/main/demo/src/components/controls) to extend the control components as needed.
