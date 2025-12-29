@@ -1,6 +1,6 @@
 ---
 title: 2023 回顧
-tags: ["reviews"]
+tags: ["year in review"]
 author: Joseph
 category: Reviews
 publishDate: 2024-01-01 00:03:26

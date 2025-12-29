@@ -1,6 +1,6 @@
 ---
 title: '[Day 16] BMAD-Method - Creative Writing'
-tags: ['astro', 'blog']
+tags: ['AI', 'GenAI', 'AI agents']
 author: Joseph
 category: 'AI & Machine Learning'
 publishDate: 2025-09-30 23:53:25

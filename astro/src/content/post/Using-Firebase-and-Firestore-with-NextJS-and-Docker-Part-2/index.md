@@ -1,6 +1,6 @@
 ---
 title: Using Firebase and Firestore with NextJS and Docker - Part 2 - Setup firebase in Next.js
-tags: ["firebase", "firestore", "clude storage", "Docker", "serverless", "DevOps", "Next.js"]
+tags: ["firebase", "firestore", "cloud storage", "Docker", "serverless", "DevOps", "Next.js"]
 author: "Joseph"
 image: "banner.png"
 category: "DevOps"
