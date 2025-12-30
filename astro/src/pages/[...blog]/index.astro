@@ -43,8 +43,7 @@ const metadata = merge(
     },
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
-  ) as MetaData;
-
+) as MetaData;
 ---
 
 <Layout metadata={metadata}>
