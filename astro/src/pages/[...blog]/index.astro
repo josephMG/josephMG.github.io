@@ -57,7 +57,7 @@ const metadata = merge(
       <RelatedPosts post={post} />
     </div>
     <div class="hidden lg:block lg:w-1/4 pt-[calc(55px+5rem)]">
-      <TableOfContents chapters={post.tableOfContents} />
+      {post.tableOfContents && <TableOfContents chapters={post.tableOfContents} />}
     </div>
   </div>
 </Layout>

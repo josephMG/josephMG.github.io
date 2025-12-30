@@ -1,16 +1,18 @@
+/**
+ * Reference: https://hunormarton.com/blog/astro-table-of-contents/
+ */
+
 import { visit } from 'unist-util-visit';
 import type { Node, Parent } from 'unist';
 import type { VFile } from 'vfile';
 import type { Heading, PhrasingContent } from 'mdast';
 
-// Define the shape of a Table of Contents entry
 interface TocEntry {
   depth: number;
   title: string;
   href: string;
 }
 
-// Define the shape of the data Astro adds to the VFile
 interface AstroVFile extends VFile {
   data: {
     astro: {
@@ -22,9 +24,6 @@ interface AstroVFile extends VFile {
   };
 }
 
-/**
- * Recursively gets the text value from a unist node.
- */
 function getNodeValue(node: Parent | PhrasingContent): string {
   if ('value' in node && typeof node.value === 'string') {
     return node.value;
@@ -37,15 +36,12 @@ function getNodeValue(node: Parent | PhrasingContent): string {
   return '';
 }
 
-/**
- * A remark plugin to generate a table of contents and add it to the file's frontmatter.
- */
 export default function remarkTableOfContents() {
   return (tree: Node, file: VFile) => {
     const toc: TocEntry[] = [];
     const astroFile = file as AstroVFile;
 
-    visit(tree, 'heading', (node: Heading, index: number | undefined, parent: Parent | undefined) => {
+    visit(tree, 'heading', (node: Heading, _index: number | undefined, parent: Parent | undefined) => {
       // Only consider top-level headings
       if (parent?.type !== 'root') return;
 
