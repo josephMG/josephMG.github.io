@@ -42,6 +42,7 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+  tableOfContents?: {depth: number, title: string, href: string}[];
 }
 
 export interface Taxonomy {

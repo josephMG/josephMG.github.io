@@ -13,9 +13,6 @@ import remarkToc from 'remark-toc';
 import type { AstroIntegration } from 'astro';
 import rehypeAstroRelativeMarkdownLinks from 'astro-rehype-relative-markdown-links';
 import rehypeExternalLinks from 'rehype-external-links'
-
-
-
 import astrowind from './vendor/integration';
 
 import {
@@ -25,6 +22,7 @@ import {
   rehypePhotoswipe,
 } from './src/utils/frontmatter';
 import rehypeMermaid from 'rehype-mermaid';
+import remarkTableOfContents from './src/utils/table-of-content-plugin';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -95,7 +93,7 @@ export default defineConfig({
       type: 'shiki',
       excludeLangs: ['mermaid'],
     },
-    remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }]],
+    remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }], remarkTableOfContents],
     rehypePlugins: [
       rehypePhotoswipe,
       rehypeMermaid,
