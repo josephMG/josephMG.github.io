@@ -1,3 +1,4 @@
+import slugify from 'limax';
 import { getCollection } from 'astro:content';
 
 export async function getSortedCollectionPosts({ collection }: { collection: 'post' }) {
@@ -25,7 +26,8 @@ export async function generateSitemapXml({
     </url>
     ${posts
       .map((post) => {
-        const loc = new URL(`/${post.slug}`, site.url).href;
+        console.log(post.id, slugify(post.slug));
+        const loc = new URL(`/${slugify(post.slug)}`, site.url).href;
         return `
             <url>
                 <loc>${loc}</loc>
