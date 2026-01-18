@@ -34,6 +34,7 @@ export default defineConfig({
   site: 'https://josephmg.github.io',
   // base: '',
   output: 'static',
+  trailingSlash: 'never',
   // build: {
   //   redirects: false,
   // },
