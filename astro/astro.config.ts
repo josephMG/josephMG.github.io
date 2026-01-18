@@ -34,7 +34,9 @@ export default defineConfig({
   site: 'https://josephmg.github.io',
   // base: '',
   output: 'static',
-
+  redirects: {
+    '/blog': '/blog/1',
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
