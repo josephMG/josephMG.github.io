@@ -26,7 +26,7 @@ export async function generateSitemapXml({
     </url>
     ${posts
       .map((post) => {
-        const loc = new URL(`/${slugify(post.slug)}`, site.url).href;
+        const loc = new URL(`/blog/${slugify(post.slug)}`, site.url).href;
         return `
             <url>
                 <loc>${loc}</loc>
