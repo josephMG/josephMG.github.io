@@ -34,6 +34,9 @@ export default defineConfig({
   site: 'https://josephmg.github.io',
   // base: '',
   output: 'static',
+  build: {
+    redirects: false,
+  },
   redirects: {
     '/blog': {
       status: 301,
