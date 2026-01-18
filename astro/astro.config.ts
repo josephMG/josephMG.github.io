@@ -35,7 +35,10 @@ export default defineConfig({
   // base: '',
   output: 'static',
   redirects: {
-    '/blog': '/blog/1',
+    '/blog': {
+      status: 302,
+      destination: '/blog/1',
+    },
   },
   integrations: [
     tailwind({
