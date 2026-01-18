@@ -34,19 +34,19 @@ export default defineConfig({
   site: 'https://josephmg.github.io',
   // base: '',
   output: 'static',
-  build: {
-    redirects: false,
-  },
-  redirects: {
-    '/blog': {
-      status: 301,
-      destination: '/blog/1/',
-    },
-    '/blog/': {
-      status: 301,
-      destination: '/blog/1/',
-    },
-  },
+  // build: {
+  //   redirects: false,
+  // },
+  // redirects: {
+  //   '/blog': {
+  //     status: 301,
+  //     destination: '/blog/1/',
+  //   },
+  //   '/blog/': {
+  //     status: 301,
+  //     destination: '/blog/1/',
+  //   },
+  // },
   integrations: [
     tailwind({
       applyBaseStyles: false,
