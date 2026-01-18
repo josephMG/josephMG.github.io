@@ -36,8 +36,12 @@ export default defineConfig({
   output: 'static',
   redirects: {
     '/blog': {
-      status: 302,
-      destination: '/blog/1',
+      status: 301,
+      destination: '/blog/1/',
+    },
+    '/blog/': {
+      status: 301,
+      destination: '/blog/1/',
     },
   },
   integrations: [
