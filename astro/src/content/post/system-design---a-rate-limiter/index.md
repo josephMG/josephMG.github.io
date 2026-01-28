@@ -10,6 +10,8 @@ image: 'banner.png'
 這篇要介紹的是**Rate Limiter**，是ByteByteGo System design裡面第一個design環節。現在很多後端主流框架都有內建或有對應套件，但對應的演算法卻被封裝起來，知其然不知其所以然。
 今天這篇靠AI生成點簡單的示意圖，讓一張圖道盡千言萬語。
 
+<!-- more -->
+
 ### TOC
 
 ### Token bucket algorithm
