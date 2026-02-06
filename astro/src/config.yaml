@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Joseph & Sandy
-    template: '%s — Joseph & Sandy'
+    default: Joseph
+    template: '%s — Joseph'
   description: "\U0001F680 Fullstack Engineer / Digital Marketing"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Joseph & Sandy
+    site_name: Joseph
     images:
       - url: '~/assets/images/default.png'
         width: 1200
