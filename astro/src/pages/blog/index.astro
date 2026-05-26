@@ -1,4 +1,35 @@
 ---
+import Layout from '~/layouts/PageLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+
+import { blogListRobots, blogPostsPerPage, fetchPosts } from '~/utils/blog';
+import { getCanonical } from '~/utils/permalinks';
+
 export const prerender = true;
-return Astro.redirect('/blog/1', 301);
+
+const allPosts = await fetchPosts();
+const posts = allPosts.slice(0, blogPostsPerPage);
+const hasNext = allPosts.length > blogPostsPerPage;
+
+const metadata = {
+  title: 'Blog',
+  canonical: String(getCanonical('/blog/1')),
+  robots: {
+    index: blogListRobots?.index,
+    follow: blogListRobots?.follow,
+  },
+  openGraph: {
+    type: 'blog',
+  },
+};
 ---
+
+<Layout metadata={metadata}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline subtitle="Fullstack / DevOps / AI / Marketing / Side projects"> The Blog </Headline>
+    <BlogList posts={posts} />
+    <Pagination nextUrl={hasNext ? '/blog/2' : undefined} />
+  </section>
+</Layout>
