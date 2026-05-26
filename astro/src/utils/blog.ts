@@ -50,7 +50,8 @@ const generatePermalink = async ({
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
-  const { id, slug: rawSlug = '', data, body } = post;
+  const { id, data, body } = post;
+  const rawSlug = id.replace(/\/index$/, '');
   const { Content, remarkPluginFrontmatter } = await render(post);
 
   const {
@@ -92,7 +93,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   const excerpt =
     rawExcerpt ??
     removeMd(
-      body
+      (body ?? '')
         .replace(/```[\s\S]*?```/g, '')
         .replace('<!-- toc -->', '')
         .replace('```', '')

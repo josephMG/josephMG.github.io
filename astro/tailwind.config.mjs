@@ -2,7 +2,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
 import typographyPlugin from '@tailwindcss/typography';
 
-module.exports = {
+export default {
   darkMode: 'class',
   content: ['./src/**/*.{astro,html,js,jsx,json,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
@@ -28,15 +28,13 @@ module.exports = {
             'blockquote p:first-of-type::before': false,
             'blockquote p:first-of-type::after': false,
             'code::before': {
-              content: 'none', // don’t generate the pseudo-element
-              //                content: '""', // this is an alternative: generate pseudo element using an empty string
+              content: 'none',
             },
             'code::after': {
               content: 'none',
             },
             code: {
               color: theme('colors.red.500'),
-              // color: theme('colors.slate.500'),
               backgroundColor: theme('colors.stone.100'),
               borderRadius: theme('borderRadius.DEFAULT'),
               paddingLeft: theme('spacing[1.5]'),
@@ -46,7 +44,6 @@ module.exports = {
             },
           },
         },
-        // add a "dark" variant
         invert: {
           css: {
             code: {
