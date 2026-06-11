@@ -3,7 +3,7 @@ name: Pages
 on:
   push:
     branches:
-      - master # default branch
+      - main # default branch
       - develop # default branch
   workflow_dispatch:
 
@@ -68,7 +68,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     defaults:
       run:
         shell: bash
