@@ -15,7 +15,8 @@ const hasNext = allPosts.length > blogPostsPerPage;
 
 const metadata = {
   title: 'Blog',
-  description: "Joseph's blog. Sharing insights, guides, and learning notes on Fullstack development, DevOps, AI, and digital marketing.",
+  description:
+    "Joseph's blog. Sharing insights, guides, and learning notes on Fullstack development, DevOps, AI, and digital marketing.",
   canonical: String(getCanonical('/blog')),
   robots: {
     index: blogListRobots?.index,
