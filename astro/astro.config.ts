@@ -34,7 +34,7 @@ export default defineConfig({
   site: 'https://josephmg.github.io',
   // base: '',
   output: 'static',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   // build: {
   //   redirects: false,
   // },
@@ -50,7 +50,34 @@ export default defineConfig({
   // },
   integrations: [
     sitemap({
-      lastmod: new Date(),
+      filter: (page) => {
+        const url = new URL(page);
+        const pathname = url.pathname;
+        
+        // Exclude pagination URLs like /blog/2/, /blog/3/ etc.
+        if (pathname.match(/\/blog\/\d+\/?$/)) {
+          return false;
+        }
+        
+        // Exclude tag, category, author aggregate and pagination pages
+        if (pathname.startsWith('/tag') || pathname.startsWith('/category') || pathname.startsWith('/author')) {
+          return false;
+        }
+        
+        // Exclude template pages
+        const isTemplate = pathname.startsWith('/homes') || 
+                           pathname.startsWith('/landing') ||
+                           pathname.startsWith('/contact') ||
+                           pathname.startsWith('/pricing') ||
+                           pathname.startsWith('/services') ||
+                           pathname.startsWith('/terms') ||
+                           pathname.startsWith('/privacy');
+        if (isTemplate) {
+          return false;
+        }
+        
+        return true;
+      }
     }),
     mdx(),
     icon({

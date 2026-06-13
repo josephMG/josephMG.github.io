@@ -11,6 +11,8 @@ image: 'banner.png'
 
 [Gemini CLI](https://github.com/google-gemini/gemini-cli) has been one of the most popular AI agents in the first half of 2025. It's similar to [Claude Code](https://docs.anthropic.com/zh-TW/docs/claude-code/overview), bringing its power directly into your terminal. Although other terminal AI agents exist, their pricing plans are quite different. Gemini CLI provides a [free tier](https://ai.google.dev/gemini-api/docs/rate-limits#free-tier) with 100 requests per day using Gemini 2.5 Pro, and you can unlock [Tier 1](https://ai.google.dev/gemini-api/docs/rate-limits#tier-1) by upgrading to a paid plan.
 
+<!-- more -->
+
 ### Prerequisites
 
 I'm going to use `npm` to install Gemini. My Node.js version is `v24.4.1`, and my npm version is `11.4.2`.

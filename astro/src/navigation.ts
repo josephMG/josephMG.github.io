@@ -4,7 +4,7 @@ export const headerData = {
   links: [
     {
       text: 'Blog',
-      href: getPermalink('/blog/1'),
+      href: getPermalink('/blog'),
     },
     {
       text: 'Author',
@@ -80,6 +80,6 @@ export const footerData = {
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/josephMG' },
   ],
   footNote: `
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> Joseph</a> .
+    Made by <a class="text-blue-600 underline dark:text-muted" href="https://github.com/josephMG"> Joseph</a> .
   `,
 };

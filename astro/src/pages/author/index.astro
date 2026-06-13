@@ -10,6 +10,7 @@ const allAuthors = await findAuthors();
 
 const metadata = {
   title: `Posts by author | '${SITE?.name}'`,
+  description: `Browse articles on ${SITE?.name} sorted by author.`,
   robots: {
     index: blogAuthorRobots?.index,
     follow: blogAuthorRobots?.follow,

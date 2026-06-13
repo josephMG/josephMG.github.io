@@ -10,6 +10,7 @@ const allTags = await findTags();
 
 const metadata = {
   title: `Posts by tag | '${SITE?.name}'`,
+  description: `Browse articles on ${SITE?.name} sorted by tag.`,
   robots: {
     index: blogTagRobots?.index,
     follow: blogTagRobots?.follow,

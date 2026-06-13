@@ -2,7 +2,7 @@ site:
   name: Joseph & Sandy
   site: 'https://josephmg.github.io'
   base: '/'
-  trailingSlash: false
+  trailingSlash: true
 
   googleSiteVerificationId: ni-qyy4QA34Q-PgZn8NIKr0DaXtF1zNYsUkLqmYdEX0
 

@@ -8,6 +8,7 @@ import Pagination from '~/components/blog/Pagination.astro';
 // import PostTags from "~/components/blog/Tags.astro";
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { getCanonical } from '~/utils/permalinks';
 
 export const prerender = true;
 
@@ -25,6 +26,8 @@ const currentPage = page.currentPage ?? 1;
 
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  description: `Joseph's blog. Sharing insights, guides, and learning notes on Fullstack development, DevOps, AI, and digital marketing.${currentPage > 1 ? ` (Page ${currentPage})` : ''}`,
+  canonical: String(getCanonical(currentPage === 1 ? '/blog' : `/blog/${currentPage}`)),
   robots: {
     index: blogListRobots?.index && currentPage === 1,
     follow: blogListRobots?.follow,

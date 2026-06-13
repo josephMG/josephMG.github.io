@@ -1,6 +1,10 @@
 ---
 title: 'Privacy Policy'
 layout: '~/layouts/MarkdownLayout.astro'
+metadata:
+  robots:
+    index: false
+    follow: false
 ---
 
 _Last updated_: January 06, 2023

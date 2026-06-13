@@ -9,6 +9,8 @@ publishDate: 2025-05-05 09:34:58
 
 I've been using Vim for a long time and finally switched to Neovim. The initial thought of switching came after [the author of VIM passed away](https://en.wikipedia.org/wiki/Bram_Moolenaar#Illness_and_death) in August 2023, as I didn’t have the time to try other editors. After a year, “vibe coding” grew up, so I started thinking how to integrate AI into my editor and surveying how to use AI in Vim, which led to this journey.
 
+<!-- more -->
+
 ### TOC
 
 ### Main differences
