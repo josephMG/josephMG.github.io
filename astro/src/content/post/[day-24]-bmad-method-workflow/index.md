@@ -7,7 +7,7 @@ publishDate: 2025-10-08 13:21:43
 image: 'banner.png'
 ---
 
-Workflow的部分跟先前[Template](./)一樣結構很一致，整理起來也相對輕鬆，這邊就直接靠Gemini產生內容。
+Workflow的部分跟先前[Template](../day-22-bmad-method-template/)一樣結構很一致，整理起來也相對輕鬆，這邊就直接靠Gemini產生內容。
 
 > Prompt: 幫我詳細講解 @.bmad-core/templates/ 裡的結構 用法
 

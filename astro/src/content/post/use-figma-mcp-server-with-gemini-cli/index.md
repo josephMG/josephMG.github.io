@@ -26,7 +26,7 @@ After installation, you can try the link `http://127.0.0.1:3845/sse`, which shou
 
 Now that we've successfully installed the Figma MCP server, I'll go ahead and set it up with Gemini.
 
-> How to install Gemini? Just check this article: [Install Gemini CLI](../install-gemini-cli)
+> How to install Gemini? Just check this article: [Install Gemini CLI](../install-gemini-cli/)
 
 ### Setup Gemini and Figma MCP server
 

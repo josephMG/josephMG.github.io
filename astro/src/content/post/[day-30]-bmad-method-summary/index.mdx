@@ -9,7 +9,7 @@ image: 'banner.png'
 
 import { YouTube } from 'astro-embed';
 
-花了好幾天的token，昨天做完[Flutter記帳軟體](./day-29-bmad-method-accounting-app-flutter-3)以後，終於來到第30篇文章，最後一篇了，來總結一下我們的BMad-Method文吧。
+花了好幾天的token，昨天做完[Flutter記帳軟體](../day-29-bmad-method-accounting-app-flutter-3/)以後，終於來到第30篇文章，最後一篇了，來總結一下我們的BMad-Method文吧。
 
 {/*<!-- more -->*/}
 
@@ -17,14 +17,14 @@ import { YouTube } from 'astro-embed';
 
 ### 專案踩到的坑
 
-- ios計算機: [Day-5](./day-5-bmad-method-with-opencode-ios-calculator/), [Day-6](./day-6-bmad-method-with-opencode-ios-calculator-v2/)
+- ios計算機: [Day-5](../day-5-bmad-method-with-opencode-ios-calculator/), [Day-6](../day-6-bmad-method-with-opencode-ios-calculator-v2/)
   這是我第一次安裝XCode，第一次開始寫Swift，也是我第一次開始使用BMad-Method開始做東西。剛開始碰會對流程非常不熟悉，即便文件有讀、影片有看，但真的套進來還是很多地方跟Demo上的不一樣，AI Model與AI Agents工具也有一定的影響，在這初次的實作裡建立對工具的熟悉感就特別重要。剛開始碰我覺得下面三件事情很重要：
 
 1. 用既有的產品開始讓BMAD-Method做，他也比較有東西可以參考、我們也學比較快
 2. 開始去熟悉BMAD-Method的流程、專注他的status變化，然後盡可能用Prompt完成
 3. 練習幫助Agent去Debug的方法，複製錯誤訊息跟截圖貼給AI Agent看，會遠比打一堆prompt還要有用
 
-- 前後端分離專案：[Day-8](./day-8-bmad-method-fastapi-backend-and-user-management/), [Day-9](./day-9-bmad-method-fastapi-backend-v2/), [Day-10](./day-10-bmad-method-integrate-frontend/), [Day-11](./day-11-bmad-method-integrate-frontend-part-2/)
+- 前後端分離專案：[Day-8](../day-8-bmad-method-fastapi-backend-and-user-management/), [Day-9](../day-9-bmad-method-fastapi-backend-v2/), [Day-10](../day-10-bmad-method-integrate-frontend/), [Day-11](../day-11-bmad-method-integrate-frontend-part-2/)
   這是後端用Python FastAPI, 前端用ReactJS完成的full stack 個人資料管理Dashboard，基本的會員管理功能這邊都有。這案子比較有趣的是先讓他規劃後端Story （Greenfield），然後才整合前端story （Brownfield），也是跌得很慘。唯一慶幸跟前面`ios計算機`有個很大不同的點，在這案子裡我FastAPI + ReactJS都滿熟悉的。這邊我的建議有下面幾個：
 
 1. 前後端分離的案子一定要同個feature前後端一起進開發（註冊前後端、登入前後端...），如果隔了太遠，少了context上下文的智慧，很容易整個feature就歪掉了
@@ -33,7 +33,7 @@ import { YouTube } from 'astro-embed';
 
 然後再按照前一個案子的經驗去debug，就可以順利修完bug、做完features了。
 
-- Flutter雙平台記帳工具：[Day-17](./day-17-bmad-method-accounting-app-flutter-1/), [Day-18](./day-18-bmad-method-accounting-app-flutter-2/), [Day-29](./day-29-bmad-method-accounting-app-flutter-3/)
+- Flutter雙平台記帳工具：[Day-17](../day-17-bmad-method-accounting-app-flutter-1/), [Day-18](../day-18-bmad-method-accounting-app-flutter-2/), [Day-29](../day-29-bmad-method-accounting-app-flutter-3/)
   這開按到實作完成，做了有夠久，然後還沒有上架（！）
   這也是我第一次玩Flutter，從第一天安裝、第二天生文件、很多天燒token開發，學到的東西真的很多。讓我娓娓道來：
 

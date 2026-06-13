@@ -23,7 +23,7 @@ I'll be using these tools, so you may need to install them first.
 
 - [docker, docker compose](https://www.docker.com/get-started/)
 - [Gemini CLI](https://www.docker.com/get-started/)
-  - previous [post](../install-gemini-cli)
+  - previous [post](../install-gemini-cli/)
 - [n8n docker compose](https://github.com/n8n-io/n8n-hosting/tree/main)
 - [Grafana](https://grafana.com/)
 
@@ -47,7 +47,7 @@ Once you have the token and Grafana URL, you can set them as environment variabl
 
 ### Gemini CLI using Grafana MCP
 
-Don't worry; it's quite simple if you remember my article about the [Figma MCP](../use-figma-mcp-server-with-gemini-cli). I'll follow [that guide](use-figma-mcp-server-with-gemini-cli/) to use Docker to connect `Gemini` and `Grafana`.
+Don't worry; it's quite simple if you remember my article about the [Figma MCP](../use-figma-mcp-server-with-gemini-cli/). I'll follow [that guide](../use-figma-mcp-server-with-gemini-cli/) to use Docker to connect `Gemini` and `Grafana`.
 
 ```json
 "mcpServers": {

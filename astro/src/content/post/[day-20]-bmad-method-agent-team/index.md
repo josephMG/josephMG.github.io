@@ -7,7 +7,7 @@ publishDate: 2025-10-04 09:16:38
 image: 'banner.jpg'
 ---
 
-[昨天](./day-19-bmad-method-agent)介紹了Agent，今天來介紹Team：一群Agent組合起來的團隊！
+[昨天](../day-19-bmad-method-agent/)介紹了Agent，今天來介紹Team：一群Agent組合起來的團隊！
 這內容不多，所以今天的篇幅會有點少。
 
 <!-- more -->

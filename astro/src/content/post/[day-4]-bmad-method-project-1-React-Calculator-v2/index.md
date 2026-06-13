@@ -7,7 +7,7 @@ publishDate: 2025-09-18 14:06:02
 image: 'banner.png'
 ---
 
-今天來把[昨天](../[day-3]-bmad-method-project-1-calculator)的計算機專案做一點需求擴充。
+今天來把[昨天](../day-3-bmad-method-project-1-react-calculator/)的計算機專案做一點需求擴充。
 
 1. 讓他可以變成科學用計算機
 2. 多一個匯率轉換計算機
