@@ -21,8 +21,9 @@ const currentPage = page.currentPage ?? 1;
 
 const metadata = {
   title: `Posts by tag '${tag.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  description: `Articles tagged with '${tag.title}' covering various technical and marketing topics.${currentPage > 1 ? ` (Page ${currentPage})` : ''}`,
   robots: {
-    index: blogTagRobots?.index,
+    index: blogTagRobots?.index && currentPage === 1,
     follow: blogTagRobots?.follow,
   },
 };

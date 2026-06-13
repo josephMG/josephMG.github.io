@@ -7,7 +7,7 @@ publishDate: 2025-09-28 19:22:22
 image: 'banner.png'
 ---
 
-另外一個meta agent: Orchestrator **指揮家**，他不像[昨天](./day-13-bmad-method-master)的Master什麼都會做，但他什麼都會**叫人家做**。
+另外一個meta agent: Orchestrator **指揮家**，他不像[昨天](../day-13-bmad-method-master/)的Master什麼都會做，但他什麼都會**叫人家做**。
 
 從`opencode`問他 `summary what you can do` 他也很坦率地回答我：
 

@@ -7,7 +7,7 @@ publishDate: 2025-10-03 08:44:27
 image: 'banner.jpg'
 ---
 
-今天本來應該要收尾[昨天](./day-18-bmad-method-accounting-app-flutter-2)的flutter專案，但後來發現一天根本開發不完，而且story後續又有增加，所以稍微調整一下內容，收尾的部分就等真的做完再來發佈。
+今天本來應該要收尾[昨天](../day-18-bmad-method-accounting-app-flutter-2/)的flutter專案，但後來發現一天根本開發不完，而且story後續又有增加，所以稍微調整一下內容，收尾的部分就等真的做完再來發佈。
 
 今天來一點單純不燒腦的內容，我們把BMAD-Method的Agent檔案內容的架構順過一次。如果後續要新增Agent也可以知道要怎麼調整。
 

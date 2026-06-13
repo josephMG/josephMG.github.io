@@ -7,7 +7,7 @@ publishDate: 2025-09-23 15:43:10
 image: 'banner.png'
 ---
 
-今天一上來就把[昨天](./day-8-bmad-method-fastapi-backend-and-user-management)的後端功能再補齊全一點，發現昨天只有跑起來，但一執行就Internal error，然後也只有個`register`跟`me`，就沒其他東西了，v2就來補上testing跟剩下的story。
+今天一上來就把[昨天](../day-8-bmad-method-fastapi-backend-and-user-management/)的後端功能再補齊全一點，發現昨天只有跑起來，但一執行就Internal error，然後也只有個`register`跟`me`，就沒其他東西了，v2就來補上testing跟剩下的story。
 
 <!-- more -->
 

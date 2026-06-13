@@ -10,6 +10,7 @@ const allCategories = await findCategories();
 
 const metadata = {
   title: `Posts by category | '${SITE?.name}'`,
+  description: `Browse articles on ${SITE?.name} sorted by category.`,
   robots: {
     index: blogCategoryRobots?.index,
     follow: blogCategoryRobots?.follow,

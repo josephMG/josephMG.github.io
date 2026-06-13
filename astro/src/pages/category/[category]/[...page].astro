@@ -23,8 +23,9 @@ const allCategorys = await findCategories();
 
 const metadata = {
   title: `Posts by category '${category.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  description: `Articles in category '${category.title}' covering ${category.title} related topics.${currentPage > 1 ? ` (Page ${currentPage})` : ''}`,
   robots: {
-    index: blogCategoryRobots?.index,
+    index: blogCategoryRobots?.index && currentPage === 1,
     follow: blogCategoryRobots?.follow,
   },
 };

@@ -7,7 +7,7 @@ image: "logo.png"
 category: "Web3"
 ---
 
-This is a series articles of Blockchain fullstack structure, please read [Part 1 Introduction](./Blockchain-fullstack-structure-Part-1-Introduction) first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article [Hardhat Solidity NFT tutorial](./Hardhat-Solidity-and-NFT-Part-1).
+This is a series articles of Blockchain fullstack structure, please read [Part 1 Introduction](../blockchain-fullstack-structure-part-1-introduction/) first. In this part, I will show how to set docker to Hardhat, but this is simpler than my previous article [Hardhat Solidity NFT tutorial](../hardhat-solidity-and-nft-part-1/).
 <!-- more -->
 
 ### Project structure
@@ -55,7 +55,7 @@ services:
 ```
 I expose **8545** port so that I can connect to hardhat by **http://docker.for.mac.localhost:8545** on my MacOS.
 
-And, as I mentioned in [previous post](./Blockchain-fullstack-structure-Part-1-Introduction), I use `hardhat-abi-exporter`, so I have to run `yarn` to install it.
+And, as I mentioned in [previous post](../blockchain-fullstack-structure-part-1-introduction/), I use `hardhat-abi-exporter`, so I have to run `yarn` to install it.
 ```bash
 docker-compose exec hardhat yarn add --dev hardhat-abi-exporter
 

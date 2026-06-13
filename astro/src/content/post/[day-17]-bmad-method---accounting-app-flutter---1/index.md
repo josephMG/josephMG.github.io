@@ -42,7 +42,7 @@ export PATH="$HOME/development/flutter/bin:$PATH"
 為了跑起Android Emulator或者在實體Android裝置上執行APP，我們要先安裝Android Studio，只要下載[Android Studio](https://developer.android.com/studio)就好。
 
 但接下來要安裝Android SDK跟tools，這邊就會跑比較久，也比較麻煩。
-[SDK-manager](./Android-SDK-Manager.png)
+![SDK-manager](./Android-SDK-Manager.png)
 打開Android Studio的起始畫面，旁邊有三個點點，點下去可以打開`SDK Manager`，然後去Languages & Frameworks -> Android SDK 找到對應的工具安裝：
 
 - SDK Platform
@@ -61,7 +61,7 @@ $ flutter doctor --android-licenses
 
 都Accept以後就完成這步驟了。
 
-[SDK-manager](./Android-SDK-Manager.png)
+![SDK-manager](./Android-SDK-Manager.png)
 接下來我們再回來這個畫面，這次選`Virtual Device Manager`，我開了一個Medium Phone，選`Google APIs ARM 64 v8a System Image`，最後在`Additional settings`裡的`Emulated Performance`選擇`Hardware`硬體加速。
 
 這樣子模擬器就建立完成了。再跑一次 doctor看有Android的部分有沒有問題
@@ -79,7 +79,7 @@ $ flutter doctor
 
 > ref: https://docs.flutter.dev/platform-integration/ios/setup
 
-接下來安裝Xcode，但我們[Day-5](./day-5-bmad-method-with-opencode-ios-calculator)跟[Day-6](./day-6-bmad-method-with-opencode-ios-calculator-v2)有跑過iOS案子，所以這邊不用特別安裝，不然也只是按照指令安裝而已。
+接下來安裝Xcode，但我們[Day-5](../day-5-bmad-method-with-opencode-ios-calculator/)跟[Day-6](../day-6-bmad-method-with-opencode-ios-calculator-v2/)有跑過iOS案子，所以這邊不用特別安裝，不然也只是按照指令安裝而已。
 不過這邊最後提到 `Install CocoaPods` 的步驟，我是用 [asdf](https://asdf-vm.com/) 跑Version Manager，所以裝ruby跟cocoapod是透過下面指令
 
 ```shell

@@ -56,5 +56,5 @@ Template裡的結構都一樣，今天的介紹就比較單純一點。下面是
 
 ### Conclusion
 
-可以看到在section裡有一欄 `elicit: true`，就是在產生時要多與使用者互動，明確讓使用者根據列出的選項做選擇。這部分前面[tasks](./day-21-bmad-method-task)也有提到不少。Template格式單純很多，需要的話也可以建立自己的template。
+可以看到在section裡有一欄 `elicit: true`，就是在產生時要多與使用者互動，明確讓使用者根據列出的選項做選擇。這部分前面[tasks](../day-21-bmad-method-task/)也有提到不少。Template格式單純很多，需要的話也可以建立自己的template。
 今天到這邊就結束囉，喜歡我文章的再幫忙推廣一下喔！

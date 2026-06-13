@@ -51,7 +51,7 @@ ByteByteGo這裡參考了Amazon Dynamo, Apache Cassandra, and Google BigTable這
 
 - Data partition
 
-資料分區主要用先前介紹過的[一致性hashing](./system-design-consistent-hashing)裡面hashing ring設計，透過下面的做法達成：
+資料分區主要用先前介紹過的[一致性hashing](../system-design-consistent-hashing/)裡面hashing ring設計，透過下面的做法達成：
 
 > - 將伺服器放在 Hash Ring 上
 > - Key 經雜湊後映射到 Ring

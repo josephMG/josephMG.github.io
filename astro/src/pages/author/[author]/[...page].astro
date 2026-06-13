@@ -1,6 +1,6 @@
 ---
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
-import { blogCategoryRobots, getStaticPathsBlogAuthor } from '~/utils/blog';
+import { blogAuthorRobots, getStaticPathsBlogAuthor } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
@@ -21,9 +21,10 @@ const currentPage = page.currentPage ?? 1;
 
 const metadata = {
   title: `Posts by author '${author.title}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  description: `Articles written by ${author.title} on Fullstack, DevOps, AI, Marketing, and Side projects.${currentPage > 1 ? ` (Page ${currentPage})` : ''}`,
   robots: {
-    index: blogCategoryRobots?.index,
-    follow: blogCategoryRobots?.follow,
+    index: blogAuthorRobots?.index && currentPage === 1,
+    follow: blogAuthorRobots?.follow,
   },
 };
 ---

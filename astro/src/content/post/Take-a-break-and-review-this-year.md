@@ -8,6 +8,9 @@ category: Reviews
 /* English below */
 
 終於有個案子空檔，又接了一年的案子，就像是期中檢討那樣，來說說這一年吧：
+
+<!-- more -->
+
 1. 今年的GitHub Arctic Code Vault有幸透過修復幾個Bug沾上光，成為Arctic Code Vault Contributor，確實讓人興奮不已。
 2. 接手並持續維護著一間電商公司的VueJS開口合約，其中還包含他們內部用到的AngularJS，不過AngularJS似乎2021年就LTS end，就只能繼續看下去了。
 3. 接了一個(我想也是最後一個)用VueJS開發的案子，做一個一頁式簡單的互動行銷網頁，有了上面案子的經驗，說實在非常好上手，不過最後業主接回去，即便如此也是個很好的歷練。
