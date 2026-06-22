@@ -46,7 +46,8 @@ const { language, textDirection } = I18N;
     <BasicScripts />
 
     <style is:global>
-      img {
+      /* 只對內文(prose)圖片做 content-visibility,避免延遲 LCP hero 圖的繪製 */
+      .prose img {
         content-visibility: auto;
       }
     </style>

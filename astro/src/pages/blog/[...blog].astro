@@ -28,6 +28,16 @@ const { post } = props;
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
 
+// 標準 Open Graph article 標籤(@astrolib/seo 會把 openGraph.article 加上非標準的 og: 前綴,
+// 故改用 additionalMetaTags 輸出正規的 article:* property)
+const articleMetaTags = [
+  { property: 'article:published_time', content: post.publishDate?.toISOString() },
+  { property: 'article:modified_time', content: (post.updateDate ?? post.publishDate)?.toISOString() },
+  post.author?.title ? { property: 'article:author', content: post.author.title } : undefined,
+  post.category?.title ? { property: 'article:section', content: post.category.title } : undefined,
+  ...(post.tags ?? []).map((t) => ({ property: 'article:tag', content: t.title })),
+].filter((tag): tag is { property: string; content: string } => Boolean(tag && tag.content));
+
 const metadata = merge(
   {
     title: post.title,
@@ -36,6 +46,7 @@ const metadata = merge(
       index: blogPostRobots?.index,
       follow: blogPostRobots?.follow,
     },
+    additionalMetaTags: articleMetaTags,
     openGraph: {
       type: 'article',
       ...(image

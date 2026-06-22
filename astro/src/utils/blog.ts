@@ -90,16 +90,29 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
       }
     : undefined;
 
-  const excerpt =
-    rawExcerpt ??
-    removeMd(
-      (body ?? '')
-        .replace(/```[\s\S]*?```/g, '')
-        .replace('<!-- toc -->', '')
-        .replace('```', '')
-        .replace('{/*<!-- more -->*/}', '<!-- more -->')
-        .split('<!-- more -->')?.[0] ?? ''
-    );
+  // 只取 <!-- more --> 之前的內容
+  const beforeMore =
+    (body ?? '').replace('{/*<!-- more -->*/}', '<!-- more -->').split('<!-- more -->')?.[0] ?? '';
+
+  // 剝掉 MDX/JSX 語法與程式碼,避免 description 洩漏 `import ... from '...'` 等原始碼
+  const derivedExcerpt = removeMd(
+    beforeMore
+      .replace(/```[\s\S]*?```/g, '') // 圍欄程式碼區塊
+      .replace(/`[^`]*`/g, '') // 行內程式碼
+      .replace(/^\s*(import|export)\s.+$/gm, '') // MDX import/export 行
+      .replace(/\{\/\*[\s\S]*?\*\/\}/g, '') // JSX 註解 {/* */}
+      .replace(/<!--[\s\S]*?-->/g, '') // HTML 註解(含 <!-- toc -->)
+      .replace(/<\/?[A-Za-z][^>]*>/g, '') // JSX / HTML 標籤
+  )
+    .replace(/\s+/g, ' ') // 壓平換行與多餘空白
+    .trim();
+
+  // 截斷到適合 meta description 的長度(~160 字)
+  const MAX_EXCERPT = 160;
+  const truncatedExcerpt =
+    derivedExcerpt.length > MAX_EXCERPT ? `${derivedExcerpt.slice(0, MAX_EXCERPT - 1).trimEnd()}…` : derivedExcerpt;
+
+  const excerpt = rawExcerpt ?? truncatedExcerpt;
 
   return {
     id: id,
