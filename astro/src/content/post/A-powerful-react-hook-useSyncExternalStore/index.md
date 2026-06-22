@@ -1,5 +1,6 @@
 ---
 title: A powerful react hook - useSyncExternalStore
+image: 'banner.png'
 tags: ["Reactjs", "Typescript"]
 author: Joseph
 category: Frontend

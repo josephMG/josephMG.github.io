@@ -1,5 +1,6 @@
 ---
 title: Google Ads搜尋關鍵字廣告設定
+image: 'banner.png'
 tags: ["Google Ads", "Marketing"]
 author: Sandy
 category: Marketing

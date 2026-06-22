@@ -1,5 +1,6 @@
 ---
 title: "[Day 13] Google Natural Language - 子系列最終章"
+image: 'banner.png'
 publishDate: 2019-09-21 07:29:43
 tags: ["Google AI", "Natural Language", "鐵人賽"]
 author: Joseph

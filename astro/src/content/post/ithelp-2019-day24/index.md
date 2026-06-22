@@ -1,5 +1,6 @@
 ---
 title: "[Day 24] Google Dialogflow - 1"
+image: 'banner.png'
 publishDate: 2019-10-02 07:30:09
 tags: ["Google AI", "Dialogflow", "鐵人賽"]
 author: Joseph

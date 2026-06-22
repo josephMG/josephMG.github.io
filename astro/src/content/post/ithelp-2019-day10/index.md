@@ -1,5 +1,6 @@
 ---
 title: "[Day 10] Google Natural Language - 1"
+image: 'banner.png'
 publishDate: 2019-09-18 07:29:36
 tags: ["Google AI", "Natural Language", "鐵人賽"]
 author: Joseph

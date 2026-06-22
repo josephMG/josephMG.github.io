@@ -1,5 +1,6 @@
 ---
 title: "認識Shopee關鍵字廣告及設定"
+image: 'banner.png'
 publishDate: 2019-09-19 07:33:20
 tags: ["Shopee", "Marketing"]
 author: Sandy

@@ -1,5 +1,6 @@
 ---
 title: "[Day 23] Google Cloud Speech-to-Text - 子系列最終章"
+image: 'banner.png'
 publishDate: 2019-10-01 07:30:07
 tags: ["Google AI", "Speech-to-Text", "鐵人賽"]
 author: Joseph

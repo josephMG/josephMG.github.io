@@ -1,5 +1,6 @@
 ---
 title: 2024 year in review
+image: 'banner.png'
 tags: ["year in review"]
 author: Joseph
 category: Reviews

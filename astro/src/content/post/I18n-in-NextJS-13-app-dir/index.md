@@ -1,5 +1,6 @@
 ---
 title: I18n in NextJS 13 app dir
+image: 'banner.png'
 tags: ["Next.js"]
 author: Joseph
 category: "Frontend"

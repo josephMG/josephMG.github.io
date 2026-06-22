@@ -1,5 +1,6 @@
 ---
 title: Facebook Pixel and Facebook Conversions API
+image: 'banner.png'
 publishDate: 2021-10-01 08:26:28
 tags: ["Facebook Pixel", "Facebook Conversions API", "Marketing", "serverless"]
 author: Joseph

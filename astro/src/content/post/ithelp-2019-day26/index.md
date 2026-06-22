@@ -1,5 +1,6 @@
 ---
 title: "[Day 26] Google AutoML Table - 1"
+image: 'banner.png'
 publishDate: 2019-10-04 07:30:15
 tags: ["Google AI", "AutoML Table", "鐵人賽"]
 author: Joseph

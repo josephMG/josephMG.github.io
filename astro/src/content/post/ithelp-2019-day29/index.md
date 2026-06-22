@@ -1,5 +1,6 @@
 ---
 title: "[Day 29] Google AI Hub - 2"
+image: 'banner.png'
 publishDate: 2019-10-07 07:30:24
 tags: ["Google AI", "AI Hub", "鐵人賽"]
 author: Joseph
