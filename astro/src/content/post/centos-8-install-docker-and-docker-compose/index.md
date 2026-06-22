@@ -1,5 +1,6 @@
 ---
 title: "Install Docker / Docker-compose on CentOS 8"
+image: 'banner.png'
 publishDate: 2020-02-13 07:30:15
 tags: ["DevOps", "Docker"]
 author: Joseph

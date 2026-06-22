@@ -1,5 +1,6 @@
 ---
 title: Google Ads account setting
+image: 'banner.png'
 tags: ["Google Ads", "Marketing"]
 author: Sandy
 category: "Marketing"

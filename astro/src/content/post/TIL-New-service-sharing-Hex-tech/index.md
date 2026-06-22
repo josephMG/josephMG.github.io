@@ -1,5 +1,6 @@
 ---
 title: "[TIL] New service sharing: Hex.tech"
+image: 'banner.png'
 publishDate: 2020-12-10 06:48:25
 tags: ["Today I learn"]
 author: Joseph

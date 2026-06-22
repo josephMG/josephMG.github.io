@@ -1,5 +1,6 @@
 ---
 title: 天母搞什麼鬼-萬聖節活動
+image: 'banner.png'
 publishDate: 2019-11-13 05:44:09
 tags: ["Marketing", "halloween", "tianmu", "萬聖節", "天母"]
 author: Sandy

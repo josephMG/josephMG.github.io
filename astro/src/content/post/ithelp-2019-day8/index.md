@@ -1,5 +1,6 @@
 ---
 title: "[Day 8] Google Video Intelligence AI - 3"
+image: 'banner.png'
 publishDate: 2019-09-16 07:29:32
 tags: ["Google AI", "Video Intelligence AI", "鐵人賽"]
 author: Joseph

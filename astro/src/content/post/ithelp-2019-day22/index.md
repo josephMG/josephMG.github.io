@@ -1,5 +1,6 @@
 ---
 title: "[Day 22] Google Cloud Speech-to-Text - 2"
+image: 'banner.png'
 publishDate: 2019-09-30 07:30:04
 tags: ["Google AI", "Speech-to-Text", "鐵人賽"]
 author: Joseph

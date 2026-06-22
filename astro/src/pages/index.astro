@@ -7,16 +7,20 @@ import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import coverImg from '~/assets/images/hero-image.png';
+import { jsonLdGraph, websiteNode, organizationNode } from '~/utils/jsonld';
 
 const metadata = {
   ignoreTitleTemplate: true,
+  title: 'Joseph — Fullstack Engineer & Digital Marketing',
   description:
     "Joseph's personal website. Fullstack Developer passionate about System Design, DevOps, and AI. Sharing insights on algorithms, GenAI, and tech building.",
 };
 const bgUrl = `url(${coverImg.src})`;
+
+const jsonLd = jsonLdGraph(websiteNode(), organizationNode());
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} jsonLd={jsonLd}>
   <!-- Hero Widget ******************* -->
 
   <Hero>

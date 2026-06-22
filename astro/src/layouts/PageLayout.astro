@@ -10,12 +10,13 @@ import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const { metadata } = Astro.props;
+const { metadata, jsonLd } = Astro.props;
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} jsonLd={jsonLd}>
   <slot name="announcement">
     <Announcement />
   </slot>

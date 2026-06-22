@@ -1,5 +1,6 @@
 ---
 title: "[Side project] KinectV2 applications migrates to OpenPose"
+image: 'banner.png'
 publishDate: 2020-12-17 04:22:31
 tags: ["OpenPose", "KinectV2"]
 author: Joseph

@@ -1,0 +1,5 @@
+# 不要把 host 的安裝結果/產出帶進 image(改由 npm ci 在 image 內重建)
+astro/node_modules
+astro/dist
+astro/.astro
+**/.git

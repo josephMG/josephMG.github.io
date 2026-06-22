@@ -1,5 +1,6 @@
 ---
 title: Set godaddy domain and build hugo on gitlab pages
+image: 'banner.png'
 publishDate: 2020-04-09 08:08:05
 tags: ["DevOps", "gitlab"]
 author: Joseph
