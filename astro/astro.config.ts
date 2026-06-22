@@ -1,6 +1,9 @@
+import fs from 'node:fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import matter from 'gray-matter';
+import slugify from 'limax';
 import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
@@ -25,6 +28,27 @@ import rehypeMermaid from 'rehype-mermaid';
 import remarkTableOfContents from './src/utils/table-of-content-plugin';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// 讀取各文章 frontmatter 的發佈/更新日期,供 sitemap 的 <lastmod> 使用。
+// (astro.config 無法存取 astro:content,故直接讀 markdown frontmatter;
+//  slug 用與站台相同的 limax 規則,對應文章網址 /blog/<slug>/)
+const postLastmod = new Map<string, string>();
+try {
+  const postsDir = path.join(__dirname, 'src/content/post');
+  for (const entry of fs.readdirSync(postsDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const mdPath = path.join(postsDir, entry.name, 'index.md');
+    if (!fs.existsSync(mdPath)) continue;
+    const { data } = matter(fs.readFileSync(mdPath, 'utf-8'));
+    const raw = data.updateDate ?? data.publishDate;
+    if (!raw) continue;
+    const date = raw instanceof Date ? raw : new Date(raw);
+    if (Number.isNaN(date.getTime())) continue;
+    postLastmod.set(slugify(entry.name), date.toISOString());
+  }
+} catch {
+  /* 讀取失敗就略過 lastmod */
+}
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
@@ -77,7 +101,15 @@ export default defineConfig({
         }
         
         return true;
-      }
+      },
+      serialize(item) {
+        const match = new URL(item.url).pathname.match(/\/blog\/([^/]+)\/?$/);
+        if (match) {
+          const lastmod = postLastmod.get(match[1]);
+          if (lastmod) item.lastmod = lastmod;
+        }
+        return item;
+      },
     }),
     mdx(),
     icon({

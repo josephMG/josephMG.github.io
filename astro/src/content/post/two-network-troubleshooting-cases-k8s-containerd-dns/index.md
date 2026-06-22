@@ -18,7 +18,7 @@ image: 'banner.png'
 
 <!-- more -->
 
-<!-- toc -->
+### TOC
 
 ---
 
@@ -26,7 +26,7 @@ image: 'banner.png'
 
 ## 背景
 
-TigerAI Open-AI-Stack 是一套跑在 K3s 上的 AI 服務堆疊，包含 OpenWebUI、LiteLLM、n8n、Docling、Lemonade 等十幾個服務。大部分 container image 託管在 GitHub Container Registry（GHCR），需要認證才能拉取。
+AI-Stack 是一套跑在 K3s 上的 AI 服務堆疊，包含 OpenWebUI、LiteLLM、n8n、Docling、Lemonade 等十幾個服務。大部分 container image 託管在 GitHub Container Registry（GHCR），需要認證才能拉取。
 
 某天把 k3s 升級到 v1.35，重新跑一鍵安裝腳本，就開始了「明明設定了認證，image 就是拉不下來」的偵錯。
 
@@ -288,7 +288,7 @@ print(time.time() - t)   # 4.02s
 ```
 Global
   DNS Servers: 192.168.1.111
-  DNS Domain:  ~tigerai.opengenie
+  DNS Domain:  ~example.com
 ```
 
 來源是這份 drop-in 設定：
@@ -297,7 +297,7 @@ Global
 # /etc/systemd/resolved.conf.d/tiger-dns.conf
 [Resolve]
 DNS=192.168.1.111
-Domains=~tigerai.opengenie
+Domains=~example.com
 DNSStubListener=no
 ```
 
