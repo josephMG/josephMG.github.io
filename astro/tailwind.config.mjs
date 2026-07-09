@@ -7,9 +7,6 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,json,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
-      screens: {
-        'dark-mode': { raw: '(prefers-color-scheme: dark)' },
-      },
       colors: {
         primary: 'var(--aw-color-primary)',
         secondary: 'var(--aw-color-secondary)',

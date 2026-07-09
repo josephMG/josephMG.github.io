@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 import slugify from 'limax';
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -59,6 +60,8 @@ export default defineConfig({
   // base: '',
   output: 'static',
   trailingSlash: 'always',
+  // Astro 7 預設 compressHTML 改為 'jsx',會改變行內元素間的空白處理,故維持 v6 行為
+  compressHTML: true,
   // build: {
   //   redirects: false,
   // },
@@ -158,19 +161,22 @@ export default defineConfig({
   },
 
   markdown: {
+    // Astro 7 預設改用 Sätteri processor,不相容既有的 remark/rehype 外掛,故改回 unified()
+    processor: unified({
+      remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }], remarkTableOfContents],
+      rehypePlugins: [
+        rehypePhotoswipe,
+        rehypeMermaid,
+        responsiveTablesRehypePlugin,
+        lazyImagesRehypePlugin,
+        rehypeAstroRelativeMarkdownLinks,
+        [rehypeExternalLinks, { target: '_blank' }],
+      ],
+    }),
     syntaxHighlight: {
       type: 'shiki',
       excludeLangs: ['mermaid'],
     },
-    remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }], remarkTableOfContents],
-    rehypePlugins: [
-      rehypePhotoswipe,
-      rehypeMermaid,
-      responsiveTablesRehypePlugin,
-      lazyImagesRehypePlugin,
-      rehypeAstroRelativeMarkdownLinks,
-      [rehypeExternalLinks, { target: '_blank' }],
-    ],
   },
 
   vite: {
