@@ -12,5 +12,6 @@ services:
     volumes:
       - ./astro:/blog
       - ./astro/node_modules:/blog/node_modules
+      - /blog/.astro
     ports:
       - '4321:4321'
