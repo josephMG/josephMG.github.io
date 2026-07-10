@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @config '../../../tailwind.config.mjs';
+@source '../../**/*.{astro,html,js,jsx,json,md,mdx,svelte,ts,tsx,vue}';
+@source '../../../vendor/**/*.{astro,html,js,jsx,ts,tsx}';
 
 @utility bg-page {
   background-color: var(--aw-color-bg-page);
