@@ -8,3 +8,4 @@ public/
 deploy.sh
 *.swp
 hexo/package-lock.json
+.agents/

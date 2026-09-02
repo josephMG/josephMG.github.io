@@ -44,7 +44,7 @@ flowchart LR
 
 ## 為什麼需要 LiteLLM？
 
-**Claude Code** 的底層是硬編碼（Hardcoded）只認 Anthropic API 格式（即 `/v1/messages` 端點），並預期接收 Anthropic 特有的資料結構。而本地的 LLM 服務（如 Ollama、Lemonade）通常只提供自己專屬的 API 或 OpenAI 相容格式，兩者的資料格式無法直接對接。
+**Claude Code** 的底層是寫死（Hardcoded）只認 Anthropic API 格式（即 `/v1/messages` 端點），並預期接收 Anthropic 特有的資料結構。而本地的 LLM 服務（如 Ollama、Lemonade）通常只提供自己專屬的 API 或 OpenAI 相容格式，兩者的資料格式無法直接對接。
 
 此時，**LiteLLM** 便扮演了關鍵的「協議轉譯代理（Proxy）」角色：
 
