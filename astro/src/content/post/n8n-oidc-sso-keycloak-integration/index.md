@@ -1,5 +1,5 @@
 ---
-title: '替 n8n 接上 OIDC SSO —— 那些不會叫的失敗'
+title: '替 n8n 接上 OIDC SSO'
 tags: ['n8n', 'Keycloak', 'SSO', 'OIDC', 'Kubernetes', 'Helm', 'DevOps']
 author: Joseph
 category: DevOps
@@ -35,16 +35,16 @@ only requests to HTTPS are allowed
 **一開始我跟 AI 討論時直覺猜測**：大概是某個 secure cookie 或 protocol flag 沒開，找個開關關掉就好。
 
 **真正的原因**：n8n 的 OIDC 底層是 `openid-client` → `oauth4webapi`。
-`oauth4webapi` 的 `checkProtocol()` **只看 scheme、不看 host** —— discovery URL 不是 `https:` 就直接拒絕。 **沒有 localhost 例外，也沒有放寬開關。**
+`oauth4webapi` 的 `checkProtocol()` **只看 scheme、不看 host**，discovery URL 不是 `https:` 就直接拒絕。 **沒有 localhost 例外，也沒有放寬開關。**
 
-那條你以為存在的退路 —— 「反正是叢集內部，走 ClusterIP 用 http 打 IdP」—— 同樣不成立：
+那條你以為存在的退路（「反正是叢集內部，走 ClusterIP 用 http 打 IdP」）同樣不成立：
 `tlsOnly` 掛在整個 Configuration 上，discovery 文件裡 **每一個 endpoint 都吃同一條規則**。
 所以 IdP 自己對外宣告的 issuer 也必須是 `https://`，否則就算 discovery 過了，token 交換照樣被擋。
 
 > **「要 n8n SSO」直接蘊含「要 HTTPS」，中間沒有折衷。**
 
 值得記下的一點：同一個 IdP、同一份 discovery URL，換一個 client 函式庫的嚴格度可以完全不同。
-這是 **函式庫差異，不是設定差異** —— 別拿「隔壁那個服務用 http 就能跑 OIDC」來推論 n8n 也能跑。
+這是 **函式庫差異，不是設定差異**；別拿「隔壁那個服務用 http 就能跑 OIDC」來推論 n8n 也能跑。
 
 ### 前提 2：Enterprise 授權
 
@@ -63,7 +63,7 @@ curl -s http://localhost:5678/rest/settings | grep -o '"oidc":[a-z]*'
 discovery 是 **n8n 後端** 去打的（backchannel），不是瀏覽器打。
 DNS 解析與網路可達性都要從 n8n 那一側算，不是從你的筆電算。
 
-叢集內部尤其容易搞混 —— 瀏覽器打得到不代表 pod 打得到。
+叢集內部尤其容易搞混：瀏覽器打得到不代表 pod 打得到。
 
 ---
 
@@ -87,7 +87,7 @@ n8n **只吃 discovery**，沒有手動指定 authorization / token / jwks endpo
 | `N8N_SSO_MANAGED_BY_ENV` | `true` | env 成為唯一權威、UI 設定頁變唯讀 |
 | `N8N_SSO_USER_ROLE_PROVISIONING` | `disabled` | 不做角色同步就一定要設，理由見第三節 |
 
-`MANAGED_BY_ENV=true` 看起來只是「不讓人在 UI 亂改」，實際上它是授權出事時的 **唯一逃生出口** —— 這點第五節會回頭講。
+`MANAGED_BY_ENV=true` 看起來只是「不讓人在 UI 亂改」，實際上它是授權出事時的 **唯一逃生出口**（這點第五節會回頭講）。
 
 ### redirect URI 是算出來的
 
@@ -113,7 +113,7 @@ Keycloak 26 的 `KEYCLOAK_ADMIN` / `KEYCLOAK_ADMIN_PASSWORD` 建的是 **臨時 
 
 正式環境要在 master realm 另建永久 admin，再把臨時的刪掉。
 
-### 「角色沒同步」—— 其實是登入整個失敗
+### 「角色沒同步」其實是登入整個失敗
 
 這條線上有三重靜默，一層比一層難查：
 
@@ -121,17 +121,17 @@ Keycloak 26 的 `KEYCLOAK_ADMIN` / `KEYCLOAK_ADMIN_PASSWORD` 建的是 **臨時 
 
 2. **`N8N_SSO_USER_ROLE_PROVISIONING` 只要不是 `disabled`**，n8n 就會多要一個 scope（名稱來自 `N8N_SSO_SCOPES_NAME`，預設 `n8n`）。IdP 沒有同名 client scope → 回 `invalid_scope`。
 
- ⚠️ 注意症狀： **不是「角色沒同步」，是整個登入失敗。** 這是最容易誤判的一條 —— 你以為在 debug 角色對應，其實 OAuth 流程在更早的地方就被拒了。
+ ⚠️ 注意症狀： **不是「角色沒同步」，是整個登入失敗。** 這是最容易誤判的一條：你以為在 debug 角色對應，其實 OAuth 流程在更早的地方就被拒了。
 
 3. 就算前兩層都對了，Keycloak mapper 的 User Attribute 欄位 **多一個前導空白**，Keycloak 會 **靜默不輸出 claim**：不報錯，UI 上只有一個紅框。要打 Admin API 列出 mapper config 才看得到那個空白。
 
- 而 n8n 這頭 claim 缺席時，provisioning **整段不執行** —— 不是 fallback 成某個預設角色。
+ 而 n8n 這頭 claim 缺席時，provisioning **整段不執行**，而不是 fallback 成某個預設角色。
 
 **建議：除非真的需要，把 `USER_ROLE_PROVISIONING` 設成 `disabled`，在 n8n 內部指派角色。** 不是因為做不到，是代價與收益不成比例。
 
 ### 版本冷知識
 
-n8n 2.x 把角色搬到關聯表了。user 表上的欄位是 `roleSlug`（外鍵指向 role 表），值長得像 `global:owner` —— **不是舊版的 `role`**。照舊文件下 SQL 會查無此欄。
+n8n 2.x 把角色搬到關聯表了。user 表上的欄位是 `roleSlug`（外鍵指向 role 表），值長得像 `global:owner`， **不是舊版的 `role`**。照舊文件下 SQL 會查無此欄。
 
 ---
 
@@ -145,7 +145,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 問題出在 **很多人（包含一開始 AI 產出的範例）會習慣性在路由上手動加一層 Header 覆寫**。
 
-大多數 gateway（APISIX、nginx…）本來就無條件以 `$scheme` / `$server_port` 注入這兩個 header，在路由到處寫死只會 **把原本正確的值蓋掉**。在 HTTPS 前端下硬送 `http`，IdP 會以為請求是明文的，然後用 `http` 去組 issuer 與 redirect URL —— 而那正是 OIDC 流程裡最不能錯的兩個值。
+大多數 gateway（APISIX、nginx…）本來就無條件以 `$scheme` / `$server_port` 注入這兩個 header，在路由到處寫死只會 **把原本正確的值蓋掉**。在 HTTPS 前端下硬送 `http`，IdP 會以為請求是明文的，然後用 `http` 去組 issuer 與 redirect URL，而那正是 OIDC 流程裡最不能錯的兩個值。
 
 **症狀是登入永遠不成功，而且沒有錯誤訊息。** 檢查 route 上有沒有多餘的 header 覆寫，有就拿掉。
 
@@ -153,18 +153,18 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 **症狀**：UI 顯示 `Lost connection to the server`，但 workflow **其實執行成功了**，只是結果推不回 UI。
 
-**真因**：反向代理的 route 沒開 WebSocket。之所以容易潛伏很久，是因為 `/rest/push` 是整個 n8n 唯一用到 WebSocket 的場景 —— 登入、看設定、讀 API 全都正常，只有執行結果推不回來。
+**真因**：反向代理的 route 沒開 WebSocket。之所以容易潛伏很久，是因為 `/rest/push` 是整個 n8n 唯一用到 WebSocket 的場景：登入、看設定、讀 API 全都正常，只有執行結果推不回來。
 
 ```yaml
 # 路由 (例如 ApisixRoute / Ingress) 補上 websocket: true
 - name: n8n
-  match:
-    hosts: ['n8n.example.com']
-    paths: ['/*']
-  websocket: true # ← 必須明確宣告，否則 101 Switching Protocols 無法穿透
-  backends:
-    - serviceName: n8n-main
-      servicePort: http
+ match:
+ hosts: ['n8n.example.com']
+ paths: ['/*']
+ websocket: true # ← 必須明確宣告，否則 101 Switching Protocols 無法穿透
+ backends:
+ - serviceName: n8n-main
+ servicePort: http
 ```
 
 判準很簡單： **後端有沒有真的用 WebSocket**。SSE 不算（走的是普通 HTTP），別無腦全加。
@@ -172,23 +172,23 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 驗證看 Network 面板那條請求有沒有回 `101 Switching Protocols`，比看 UI 有沒有報錯精確得多。
 ⚠️ 要 **重開分頁**，光按重整不會重建連線。
 
-### 坑 3：內部 CA —— 兩種完全相反的語意
+### 坑 3：內部 CA 的兩種相反語意
 
 只有在 IdP 用自簽或企業內部 CA 時才需要這一段。
 
-**`NODE_EXTRA_CA_CERTS` 是「附加」語意** —— 加一張可信 CA，系統原有信任庫照常有效。這是對的做法。
+**`NODE_EXTRA_CA_CERTS` 是「附加」語意**：加一張可信 CA，系統原有信任庫照常有效。這是對的做法。
 
 對照組：某些 Python 服務用的 `SSL_CERT_FILE` 是 **「取代」語意**，只指向自簽 CA 會把整份公開 CA bundle 換掉。同一件事，兩種語意，混用就出事。
 
 由此推出兩條硬規則：
 
-- 🔴 **CA 不可掛到 `/etc/ssl/certs`。** 那會 **遮蔽系統信任庫**，結果是連 `license.n8n.io` 這種公開 CA 簽的站台都連不上 —— 自簽憑證修好了，Enterprise 授權掛了。掛專屬目錄，再用 `NODE_EXTRA_CA_CERTS` 指過去。
+- 🔴 **CA 不可掛到 `/etc/ssl/certs`。** 那會 **遮蔽系統信任庫**，結果是連 `license.n8n.io` 這種公開 CA 簽的站台都連不上：自簽憑證修好了，Enterprise 授權掛了。掛專屬目錄，再用 `NODE_EXTRA_CA_CERTS` 指過去。
 
-- 🔴 **絕對不要改用 `NODE_TLS_REJECT_UNAUTHORIZED=0`。** 那是關掉整個 Node 程序的憑證驗證，不是「信任這張憑證」—— 連授權伺服器的連線也一併不驗。而且它 **治不了** `only requests to HTTPS are allowed`，那是 scheme 檢查，與憑證無關。
+- 🔴 **絕對不要改用 `NODE_TLS_REJECT_UNAUTHORIZED=0`。** 那是關掉整個 Node 程序的憑證驗證，不是「信任這張憑證」，連授權伺服器的連線也一併不驗。而且它 **治不了** `only requests to HTTPS are allowed`，那是 scheme 檢查，與憑證無關。
 
 **而這裡有本文第一個正面遇見的安靜失敗**：`NODE_EXTRA_CA_CERTS` 路徑寫錯的時候，Node 只印 **一行 warning**，rc=0，照常啟動。pod `Running`、健檢綠、什麼都看不出來。錯要等到有人按下 SSO 登入的那一刻才現形，訊息是 `UNABLE_TO_VERIFY_LEAF_SIGNATURE`。
 
-而且它 **只在啟動時讀一次** —— 改了路徑或換了 CA 都要重啟。
+而且它 **只在啟動時讀一次**：改了路徑或換了 CA 都要重啟。
 
 如果 CA 是用 ConfigMap 掛進去的，`optional: true` 是一個明碼標價的取捨：
 沒開 TLS 的環境上 ConfigMap 不存在，不加會卡在 `ContainerCreating`（大聲失敗）；加了，代價是 **把大聲的失敗換成安靜的失敗**。兩者都不完美，選之前要知道自己選了什麼。
@@ -201,7 +201,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 **症狀**：`helm template` rc=0， **stderr 零位元組**，沒有任何警告。表面上看起來完全成功。
 
-**真因**：n8n 官方 Chart（1.11.0） **沒有任何原生 SSO 欄位**，所有自訂環境變數只能塞進 `config.extraEnv` —— 而它在 YAML 裡是一個 **List**， **Helm 對 List 的合併行為是「整份取代」，而不是像 Map 那樣做 Deep Merge**。
+**真因**：n8n 官方 Chart（1.11.0） **沒有任何原生 SSO 欄位**，所有自訂環境變數只能塞進 `config.extraEnv`，而它在 YAML 裡是一個 **List**， **Helm 對 List 的合併行為是「整份取代」，而不是像 Map 那樣做 Deep Merge**。
 
 我和 AI 實際在測試容器中驗證（`alpine/helm:3.21.0`，`--kube-version v1.36.2`）：僅僅 **四行** overlay（`config` / `extraEnv` / `- name` / `value`），就直接讓 base 裡原本設定好的 **25 筆 extraEnv 瞬間被蓋到只剩 1 筆**！
 
@@ -220,16 +220,16 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 ```yaml
 - name: N8N_SSO_OIDC_LOGIN_ENABLED
-  valueFrom:
-    configMapKeyRef:
-      name: n8n-sso-env
-      key: N8N_SSO_OIDC_LOGIN_ENABLED
-      optional: true
+ valueFrom:
+ configMapKeyRef:
+ name: n8n-sso-env
+ key: N8N_SSO_OIDC_LOGIN_ENABLED
+ optional: true
 ```
 
 支點是一句語意： **`configMapKeyRef` + `optional` 的語意是「變數不存在」，不是「空字串」。**
 
-官方文件只寫 _will be empty_，答不出這個問題。最後是去讀 kubelet 原始碼（`pkg/kubelet/kubelet_pods.go` 的 `makeEnvironmentVariables()`）確認 `continue` 發生在 `append` **之前** —— 變數根本不進 container environment。
+官方文件只寫 _will be empty_，答不出這個問題。最後是去讀 kubelet 原始碼（`pkg/kubelet/kubelet_pods.go` 的 `makeEnvironmentVariables()`）確認 `continue` 發生在 `append` **之前**，變數根本不進 container environment。
 
 ⚠️ 但要注意邊界： **「ConfigMap 在、key 在、值是空字串」走的是另一條路徑，會正常被設成空字串。** 「key 不存在」與「值為空」語意不同。
 
@@ -241,7 +241,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 當初跟 AI 深入研究這條線時，發現它的授權機制比想像中更不適合離線環境。
 
-**線上 activation key 換到的不是永久授權，是一張效期很短的 cert**，n8n 會在到期前自行去換新的。實際效期與續約提前量依授權方案而異，別假設數字 —— 用 `n8n license:info` 看 `expiresAt` 才準。
+**線上 activation key 換到的不是永久授權，是一張效期很短的 cert**，n8n 會在到期前自行去換新的。實際效期與續約提前量依授權方案而異，別假設數字，用 `n8n license:info` 看 `expiresAt` 才準。
 
 重點不在那個數字是多少，而在它的量級： **以天計，不是以年計**。
 
@@ -256,7 +256,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 **唯一的逃生出口是 `N8N_SSO_MANAGED_BY_ENV=true`。** 它為 `true` 時 env 在每次啟動覆蓋資料庫設定，所以你還能從外面把 `N8N_SSO_OIDC_LOGIN_ENABLED` 改成 `false` 再重啟，把密碼登入救回來。
 
-留 `false` 而在 UI 開了 SSO，就沒有這條路了 —— 只能進 DB 改。 **這就是為什麼第二節建議把它設成 `true`。**
+留 `false` 而在 UI 開了 SSO，就沒有這條路了，只能進 DB 改。 **這就是為什麼第二節建議把它設成 `true`。**
 
 如果環境本來就會長期離線，別走線上啟用，改用離線 cert（`N8N_LICENSE_CERT`）。
 
@@ -267,7 +267,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 | log 訊息 | 意思 |
 | --- | --- |
 | `cert could not be initialized … too short` | 把短的 activation key 塞進 `N8N_LICENSE_CERT` 了（那個欄位要長字串 cert） |
-| `reservation ID is no longer valid` | key 失效 —— 但 **反過來證明外網是通的** |
+| `reservation ID is no longer valid` | key 失效，但 **反過來證明外網是通的** |
 
 第二條特別有價值：它同時排除了「連不出去」這個假設。
 
@@ -285,7 +285,7 @@ env 管理的 OIDC 需 **≥ 2.18.0**，env 管理的 log streaming 需 **≥ 2.
 
 把這一路的坑排開，共同特徵不是「難修」，是「 **不會叫** 」。
 
-pod `Running`、健檢綠、`helm` rc=0、log 無 error —— **全都長得像成功**。
+pod `Running`、健檢綠、`helm` rc=0、log 無 error， **全都長得像成功**。
 
 | 你看到的症狀 | 你會先猜的原因 | 真正的原因 |
 | --- | --- | --- |
@@ -304,7 +304,7 @@ pod `Running`、健檢綠、`helm` rc=0、log 無 error —— **全都長得像
 面對這種系統，有兩件事比「照文件設定」更值得投資：
 
 1. **把判斷收斂成單一來源。** 同一個判斷散在三個地方複製兩份，遲早漂移，而且漂移不會報錯。
-2. **把危險語意壓成一行註解。** 判準是「這行拿掉之後，會不會有人把它修壞」—— 會就留一行，不會就別寫。
+2. **把危險語意壓成一行註解。** 判準是「這行拿掉之後，會不會有人把它修壞」：會就留一行，不會就別寫。
 
 真正花時間的從來不是寫設定，是 **確認每一個「看起來成功」的東西到底有沒有真的成功**。
 
