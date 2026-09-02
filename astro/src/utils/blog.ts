@@ -52,7 +52,7 @@ const generatePermalink = async ({
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
   const { id, data, body } = post;
   const rawSlug = id.replace(/\/index$/, '');
-  const { Content, remarkPluginFrontmatter } = await render(post);
+  const { Content, headings, remarkPluginFrontmatter } = await render(post);
 
   const {
     publishDate: rawPublishDate = new Date(),
@@ -138,7 +138,21 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     // or 'content' in case you consume from API
 
     readingTime: remarkPluginFrontmatter?.readingTime,
-    tableOfContents: remarkPluginFrontmatter?.tableOfContents,
+    tableOfContents:
+      headings && headings.length > 0
+        ? headings
+            .filter(
+              (h) =>
+                h.depth >= 2 &&
+                h.depth <= 3 &&
+                !['toc', 'table of contents', '目錄'].includes(h.text.trim().toLowerCase())
+            )
+            .map((h) => ({
+              depth: h.depth,
+              title: h.text,
+              href: `#${h.slug}`,
+            }))
+        : remarkPluginFrontmatter?.tableOfContents,
   };
 };
 

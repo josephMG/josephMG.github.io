@@ -3,9 +3,11 @@
  */
 
 import { visit } from 'unist-util-visit';
-import type { Node, Parent } from 'unist';
+import type { Node } from 'unist';
 import type { VFile } from 'vfile';
-import type { Heading, PhrasingContent } from 'mdast';
+import type { Heading } from 'mdast';
+import { toString } from 'mdast-util-to-string';
+import GithubSlugger from 'github-slugger';
 
 interface TocEntry {
   depth: number;
@@ -24,47 +26,32 @@ interface AstroVFile extends VFile {
   };
 }
 
-function getNodeValue(node: Parent | PhrasingContent): string {
-  if ('value' in node && typeof node.value === 'string') {
-    return node.value;
-  }
-
-  if ('children' in node && Array.isArray(node.children)) {
-    return (node.children as PhrasingContent[]).map(getNodeValue).join('');
-  }
-
-  return '';
-}
-
 export default function remarkTableOfContents() {
   return (tree: Node, file: VFile) => {
     const toc: TocEntry[] = [];
     const astroFile = file as AstroVFile;
+    const slugger = new GithubSlugger();
 
-    visit(tree, 'heading', (node: Heading, _index: number | undefined, parent: Parent | undefined) => {
-      // Only consider top-level headings
-      if (parent?.type !== 'root') return;
+    visit(tree, 'heading', (node: Heading) => {
+      const title = toString(node);
+      const slug = slugger.slug(title);
 
-      const depth = node.depth;
-      const title = getNodeValue(node);
-      
-      // Ignore headings deeper than level 3
-      if (depth > 3) return;
+      // Ignore h1 (page title) and headings deeper than level 3
+      if (node.depth < 2 || node.depth > 3) return;
 
-      // Create a URL-friendly slug
-      const href = title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '') // Remove non-word characters
-        .trim()
-        .replace(/\s+/g, '-'); // Replace spaces with hyphens
+      // Ignore TOC placeholder headings
+      const cleanTitle = title.trim().toLowerCase();
+      if (cleanTitle === 'toc' || cleanTitle === 'table of contents' || cleanTitle === '目錄') {
+        return;
+      }
 
-      toc.push({ depth, title, href: `#${href}` });
+      toc.push({ depth: node.depth, title, href: `#${slug}` });
     });
 
     // Ensure the frontmatter object exists
     astroFile.data.astro = astroFile.data.astro || { frontmatter: {} };
     astroFile.data.astro.frontmatter = astroFile.data.astro.frontmatter || {};
-    
+
     // Add the TOC to the frontmatter
     astroFile.data.astro.frontmatter.tableOfContents = toc;
   };

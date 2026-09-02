@@ -139,3 +139,107 @@
 blockquote {
   word-wrap: break-word;
 }
+
+/* Global Selection styling */
+::selection {
+  background-color: rgb(191 219 254);
+  color: rgb(30 58 138);
+}
+.dark ::selection,
+.dark::selection {
+  background-color: rgb(37 99 235 / 75%) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Mermaid Diagrams Dark & Light Mode Styling
+   ========================================================================== */
+svg[id^="mermaid-"] {
+  display: block;
+  margin: 1.75rem auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure foreignObject never clips and typography margins do not displace text */
+svg[id^="mermaid-"] foreignObject {
+  overflow: visible !important;
+}
+
+/* Reset typography plugin styling (margins, line-height) inside all Mermaid SVGs */
+svg[id^="mermaid-"] foreignObject p,
+svg[id^="mermaid-"] foreignObject div,
+svg[id^="mermaid-"] foreignObject span {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  font-family: inherit !important;
+}
+
+/* Vertically and horizontally center text inside nodes */
+svg[id^="mermaid-"] .node foreignObject div {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+svg[id^="mermaid-"] .node foreignObject p,
+svg[id^="mermaid-"] .node foreignObject span,
+svg[id^="mermaid-"] .node .nodeLabel {
+  font-size: 13.5px !important;
+  line-height: 1.35 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+/* Edge Labels */
+svg[id^="mermaid-"] .edgeLabel,
+svg[id^="mermaid-"] .labelBkg,
+svg[id^="mermaid-"] .edgeLabel rect {
+  background-color: transparent !important;
+  background: transparent !important;
+  fill: transparent !important;
+  border: none !important;
+}
+
+svg[id^="mermaid-"] .edgeLabel p,
+svg[id^="mermaid-"] .edgeLabel span {
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  color: #1e293b !important;
+  text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff !important;
+}
+
+/* Dark mode Mermaid SVG paths & lines */
+.dark svg[id^="mermaid-"] .edgePaths path,
+.dark svg[id^="mermaid-"] path.flowchart-link,
+.dark svg[id^="mermaid-"] path.path,
+.dark svg[id^="mermaid-"] .edge-pattern-solid {
+  stroke: #60a5fa !important;
+  stroke-width: 2px !important;
+}
+
+/* Dark mode Mermaid arrow markers */
+.dark svg[id^="mermaid-"] .marker,
+.dark svg[id^="mermaid-"] marker path,
+.dark svg[id^="mermaid-"] .arrowMarkerPath,
+.dark svg[id^="mermaid-"] #flowchart-pointEnd,
+.dark svg[id^="mermaid-"] #flowchart-pointStart {
+  fill: #60a5fa !important;
+  stroke: #60a5fa !important;
+}
+
+/* Dark mode Mermaid edge label text (crystal clear halo on dark bg) */
+.dark svg[id^="mermaid-"] .edgeLabel p,
+.dark svg[id^="mermaid-"] .edgeLabel span {
+  color: #f1f5f9 !important;
+  text-shadow: 0 0 6px #030620, 0 0 12px #030620, 0 1px 2px #000000 !important;
+}
+
+
+
