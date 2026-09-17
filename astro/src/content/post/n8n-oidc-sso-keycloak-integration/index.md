@@ -18,9 +18,9 @@ Pod 正常 `Running`、Kubernetes 健檢全綠、`helm` 指令回傳 0、Log 裡
 
 ### TOC
 
-## 一、動手之前：三個不能繞的前提
+## 一、動手之前的必備前提
 
-### 前提 1：discovery endpoint 必須是 HTTPS
+### 1. discovery endpoint 必須是 HTTPS
 
 這是最容易低估的一條。先看症狀：
 
@@ -46,7 +46,7 @@ only requests to HTTPS are allowed
 值得記下的一點：同一個 IdP、同一份 discovery URL，換一個 client 函式庫的嚴格度可以完全不同。
 這是 **函式庫差異，不是設定差異**；別拿「隔壁那個服務用 http 就能跑 OIDC」來推論 n8n 也能跑。
 
-### 前提 2：Enterprise 授權
+### 2. Enterprise 授權需求
 
 OIDC SSO 是 n8n 的 Enterprise 功能。授權沒生效時，SSO 環境變數設什麼都不會有登入按鈕。
 
@@ -58,7 +58,7 @@ curl -s http://localhost:5678/rest/settings | grep -o '"oidc":[a-z]*'
 
 拿到 `"oidc":false` 就別往下設了，先處理授權（見第五節，那條線有自己的陷阱）。
 
-### 前提 3：n8n 後端連得到 IdP
+### 3. n8n 後端網路連通性
 
 discovery 是 **n8n 後端** 去打的（backchannel），不是瀏覽器打。
 DNS 解析與網路可達性都要從 n8n 那一側算，不是從你的筆電算。
@@ -89,7 +89,7 @@ n8n **只吃 discovery**，沒有手動指定 authorization / token / jwks endpo
 
 `MANAGED_BY_ENV=true` 看起來只是「不讓人在 UI 亂改」，實際上它是授權出事時的 **唯一逃生出口**（這點第五節會回頭講）。
 
-### redirect URI 是算出來的
+### redirect URI 的計算方式
 
 n8n 沒有「redirect URI」這個設定項。它由 `N8N_EDITOR_BASE_URL` 推導：
 
@@ -105,15 +105,15 @@ n8n 沒有「redirect URI」這個設定項。它由 `N8N_EDITOR_BASE_URL` 推�
 
 ---
 
-## 三、IdP 側的三個陷阱（以 Keycloak 為例）
+## 三、IdP 側的常見陷阱
 
-### 「我改了 secret 也重啟了，admin 密碼就是改不掉」
+### 1. Keycloak 管理員密碼無法透過環境變數覆寫
 
 Keycloak 26 的 `KEYCLOAK_ADMIN` / `KEYCLOAK_ADMIN_PASSWORD` 建的是 **臨時 bootstrap admin**， **只在 DB 是空的時候生效**。DB 一旦有資料，這兩個變數就是裝飾品。
 
 正式環境要在 master realm 另建永久 admin，再把臨時的刪掉。
 
-### 「角色沒同步」其實是登入整個失敗
+### 2. 角色同步設定導致登入失敗
 
 這條線上有三重靜默，一層比一層難查：
 
@@ -129,17 +129,17 @@ Keycloak 26 的 `KEYCLOAK_ADMIN` / `KEYCLOAK_ADMIN_PASSWORD` 建的是 **臨時 
 
 **建議：除非真的需要，把 `USER_ROLE_PROVISIONING` 設成 `disabled`，在 n8n 內部指派角色。** 不是因為做不到，是代價與收益不成比例。
 
-### 版本冷知識
+### 3. n8n 版本角色欄位差異
 
 n8n 2.x 把角色搬到關聯表了。user 表上的欄位是 `roleSlug`（外鍵指向 role 表），值長得像 `global:owner`， **不是舊版的 `role`**。照舊文件下 SQL 會查無此欄。
 
 ---
 
-## 四、部署層的四個坑
+## 四、部署層的配置問題
 
 這一節與 IdP 無關，是把設定送進 n8n 的過程中會遇到的。
 
-### 坑 1：反向代理不要寫死（Hardcode）`X-Forwarded-Proto`
+### 1. 反向代理不要寫死 X-Forwarded-Proto
 
 TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這時 IdP 要靠 `X-Forwarded-*` 才知道外面是 https（Keycloak 是 `KC_PROXY_HEADERS=xforwarded`）。
 
@@ -149,7 +149,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 **症狀是登入永遠不成功，而且沒有錯誤訊息。** 檢查 route 上有沒有多餘的 header 覆寫，有就拿掉。
 
-### 坑 2：WebSocket
+### 2. 反向代理遺漏 WebSocket 轉發
 
 **症狀**：UI 顯示 `Lost connection to the server`，但 workflow **其實執行成功了**，只是結果推不回 UI。
 
@@ -172,7 +172,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 驗證看 Network 面板那條請求有沒有回 `101 Switching Protocols`，比看 UI 有沒有報錯精確得多。
 ⚠️ 要 **重開分頁**，光按重整不會重建連線。
 
-### 坑 3：內部 CA 的兩種相反語意
+### 3. 內部 CA 憑證掛載語意差異
 
 只有在 IdP 用自簽或企業內部 CA 時才需要這一段。
 
@@ -186,14 +186,14 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 - 🔴 **絕對不要改用 `NODE_TLS_REJECT_UNAUTHORIZED=0`。** 那是關掉整個 Node 程序的憑證驗證，不是「信任這張憑證」，連授權伺服器的連線也一併不驗。而且它 **治不了** `only requests to HTTPS are allowed`，那是 scheme 檢查，與憑證無關。
 
-**而這裡有本文第一個正面遇見的安靜失敗**：`NODE_EXTRA_CA_CERTS` 路徑寫錯的時候，Node 只印 **一行 warning**，rc=0，照常啟動。pod `Running`、健檢綠、什麼都看不出來。錯要等到有人按下 SSO 登入的那一刻才現形，訊息是 `UNABLE_TO_VERIFY_LEAF_SIGNATURE`。
+**而這裡有本文第一個正面遇見的安靜失敗**：`NODE_EXTRA_CA_CERTS` 路徑寫錯的時候，Node 只印 **一條 warning**，rc=0，照常啟動。pod `Running`、健檢綠、什麼都看不出來。錯要等到有人按下 SSO 登入的那一刻才現形，訊息是 `UNABLE_TO_VERIFY_LEAF_SIGNATURE`。
 
 而且它 **只在啟動時讀一次**：改了路徑或換了 CA 都要重啟。
 
 如果 CA 是用 ConfigMap 掛進去的，`optional: true` 是一個明碼標價的取捨：
 沒開 TLS 的環境上 ConfigMap 不存在，不加會卡在 `ContainerCreating`（大聲失敗）；加了，代價是 **把大聲的失敗換成安靜的失敗**。兩者都不完美，選之前要知道自己選了什麼。
 
-### 坑 4：Helm overlay 會整份洗掉環境變數
+### 4. Helm overlay 覆蓋環境變數清單
 
 這是我跟 AI 一起測試 Helm 模板時抓到的最大地雷，任何用 Helm 部署 n8n 的人都一定會撞到。
 
@@ -203,7 +203,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 **真因**：n8n 官方 Chart（1.11.0） **沒有任何原生 SSO 欄位**，所有自訂環境變數只能塞進 `config.extraEnv`，而它在 YAML 裡是一個 **List**， **Helm 對 List 的合併行為是「整份取代」，而不是像 Map 那樣做 Deep Merge**。
 
-我和 AI 實際在測試容器中驗證（`alpine/helm:3.21.0`，`--kube-version v1.36.2`）：僅僅 **四行** overlay（`config` / `extraEnv` / `- name` / `value`），就直接讓 base 裡原本設定好的 **25 筆 extraEnv 瞬間被蓋到只剩 1 筆**！
+我和 AI 實際在測試容器中驗證（`alpine/helm:3.21.0`，`--kube-version v1.36.2`）：僅僅配置了簡短的 overlay（`config.extraEnv` 清單），就直接讓 base 裡原本設定好的 **25 筆 extraEnv 瞬間被蓋到只剩 1 筆**！
 
 被歸零的包括：
 
@@ -237,7 +237,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 ---
 
-## 五、Enterprise 授權：一根隨時在燒的隱形引信
+## 五、Enterprise 授權機制與陷阱
 
 當初跟 AI 深入研究這條線時，發現它的授權機制比想像中更不適合離線環境。
 
@@ -260,7 +260,7 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 如果環境本來就會長期離線，別走線上啟用，改用離線 cert（`N8N_LICENSE_CERT`）。
 
-### 兩個明確的 log 訊號
+### 授權狀態相關 Log 訊號
 
 辨識授權狀態不用猜：
 
@@ -271,17 +271,17 @@ TLS 在 gateway 終止、n8n 與 IdP 跑純 HTTP，是很常見的架構。這�
 
 第二條特別有價值：它同時排除了「連不出去」這個假設。
 
-### 換金鑰換不掉？
+### 授權金鑰無法更換的處理方式
 
 instance **已經啟用過授權時，`N8N_LICENSE_ACTIVATION_KEY` 這個 env 完全不生效**。要先 `n8n license:clear` 再重啟。
 
-### 版本門檻
+### 功能支援版本門檻
 
 env 管理的 OIDC 需 **≥ 2.18.0**，env 管理的 log streaming 需 **≥ 2.19.0**。
 
 ---
 
-## 六、貫穿主題：安靜的失敗
+## 六、安靜失敗案例總結
 
 把這一路的坑排開，共同特徵不是「難修」，是「 **不會叫** 」。
 
@@ -304,13 +304,13 @@ pod `Running`、健檢綠、`helm` rc=0、log 無 error， **全都長得像成�
 面對這種系統，有兩件事比「照文件設定」更值得投資：
 
 1. **把判斷收斂成單一來源。** 同一個判斷散在三個地方複製兩份，遲早漂移，而且漂移不會報錯。
-2. **把危險語意壓成一行註解。** 判準是「這行拿掉之後，會不會有人把它修壞」：會就留一行，不會就別寫。
+2. **把危險語意寫成明確註解。** 判準是「這行拿掉之後，會不會有人把它修壞」：會就留下註解，不會就別寫。
 
 真正花時間的從來不是寫設定，是 **確認每一個「看起來成功」的東西到底有沒有真的成功**。
 
 ---
 
-## 附錄：驗證清單
+## 驗證清單
 
 設定完照這個順序驗，每一步都能獨立證偽：
 
@@ -330,7 +330,7 @@ n8n license:info
 
 queue mode 下記得 **main 與 worker 都要** 拿到同一組值。
 
-## 附錄：版本
+## 測試環境版本
 
 | 元件 | 版本 |
 | --- | --- |
