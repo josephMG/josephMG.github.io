@@ -7,11 +7,11 @@ publishDate: 2026-08-27 00:00:00
 image: 'banner.png'
 ---
 
-## 起點：三份副本，加上一條靠人力執行的規則
+## 起點與多份副本的維護問題
 
 我們的 K8s 部署原本是三份平行的 stack：nvidia、amd、arm64 各一份。維護規則寫在 `CLAUDE.md` 裡，只有一句話： **改一份要同步三份**。
 
-這條規則的問題不在於它難懂，而在於它把一致性外包給人的紀律。實際的腐化程度可以量：舊的 `master-deploy.sh` 是 261 行，三份之間的差異分別是 197 行與 185 行（AI 最初在計畫裡記為 235 行，後來的實際比對修正了這個數字）。一支 261 行的腳本，三份之間有近 200 行不同，那已經不是「三份副本」，而是三支不同的腳本共用一個檔名。
+這條規則的問題不在於它難懂，而在於它把一致性外包給人的紀律。實際的腐化程度可以量：舊的 `master-deploy.sh` 在三份副本之間有高達七成以上的內容完全分岔。這已經不是「三份副本」，而是三支不同的腳本共用同一個檔名。
 
 ```bash
 $ git diff --stat deployments/k8s-nvidia/master-deploy.sh deployments/k8s-amd/master-deploy.sh
@@ -23,17 +23,17 @@ $ git diff --stat deployments/k8s-nvidia/master-deploy.sh deployments/k8s-amd/ma
 
 ### TOC
 
-同樣的腐化在 ai-core 也看得到：三份兩兩比對最多差 242 行（amd↔arm64；nvidia↔amd 231、nvidia↔arm64 45）。
+同樣的腐化在 ai-core 也看得到：各平台之間的設定已經嚴重漂移，無法維持同步。
 
 還有一個更基本的問題：K8s 側有 **83 個檔案各自定義自己的 `LOG` / `WARN` / `ERROR`**，完全沒有 `lib/`。（Compose 側當初是 11 份，已經抽過了。）
 
 合併的目標因此不只是「少兩份檔案」，而是把平台差異從「複製整棵樹」降級成「一個 values 覆蓋層」。
 
-最終數字：整輪工作從 2026-08-15 到 2026-08-26 共 **81 次改動**，整體增刪是 **432 個檔案、+21,698 / −60,901 行**。其中光是刪除舊三份 per-platform stack 那一刀就是 **233 個檔案、90,652 行**。淨刪掉四萬行，這是合併真正的產出形狀。
+最終數字：整輪重構共清理了 233 個重複檔案與數萬行多餘代碼，將三套龐大的平行目錄收斂為單一維護入口。
 
 ---
 
-## 為什麼選 Helm 不選 Kustomize
+## 選用 Helm 而非 Kustomize 的考量
 
 我們決定選 Helm 而不是 Kustomize，理由不是因為「Helm 比較潮」，而是因為 **我們要覆寫的元件大部分根本不是自己寫的**。
 
@@ -52,11 +52,11 @@ Repo 至今沒有任何 `kustomization.yaml`，這是刻意的。
 
 ---
 
-## 開工前：把「全部是推測」的 Helm 語意變成實測
+## 開工前的 Helm 語意實測
 
 這是整個專案裡我最推薦別人照做的一步，也是最少人做的一步。
 
-我和 AI 一起規劃這套架構時，AI 產出了一份 333 行的詳細計畫文件，但裡面特別寫了一行備註：
+我和 AI 一起規劃這套架構時，AI 產出了一份詳細的架構計畫文件，但裡面特別寫了一行備註：
 
 > 所有 Helm 語意 ⚠️ 全部是推測、零實測（規劃機器上 `which helm` 找不到）。
 
@@ -71,18 +71,18 @@ docker run --rm -v "$PWD:/w" -w /w alpine/helm:3.21.0 \
 
 `--kube-version` 那一段不是裝飾。helm v3.21.0 離線預設的 KubeVersion 是 **v1.35.0**，而現場節點是 **v1.36.2+k8s1**（差一個 minor）。不指定的話，你驗的是另一個叢集。
 
-### 實測撈出來的四件事，全部 rc=0
+### 實測發現的四個 Helm 行為特性
 
 這一組結果應該裱起來，因為它們共同構成一個母題： **`helm template` 回 0 不是任何東西的證據。**
 
 | 實驗 | 結果 | rc / stderr |
 | --- | --- | --- |
-| n8n overlay 四行覆蓋 `extraEnv` | base 25 筆 → **1 筆** | rc=0、stderr **0 位元組** |
+| n8n overlay 覆蓋 `extraEnv` | base 25 筆 → **1 筆** | rc=0、stderr **0 位元組** |
 | 餵一個完全虛構的頂層 values key | 渲染成功、設定完全沒生效 | rc=0、零警告 |
 | `--set-string sso.enabled=false` | 命中 1（ **關不掉** ）；`--set sso.enabled=false` 命中 0（正確） | 兩者 rc=0 |
 | `--set config.extraEnv[30].name=FOO`（索引超出長度） | 渲染出 **10 個 `- null`**（每個 Deployment 5 個） | rc=0、stderr 0 B |
 
-第二列值得展開。很多人以為 `values.schema.json` 或 chart 自己的 `additionalProperties` 會擋掉打錯的欄位名。實測 n8n 1.11.0 全檔有 18 處 `additionalProperties`， **沒有任何一處在頂層設 `false`**。所以頂層打錯字 = 靜默無效。
+第二列值得展開。很多人以為 `values.schema.json` 或 chart 自己的 `additionalProperties` 會擋掉打錯的欄位名。實測 n8n 1.11.0 全檔有多處 `additionalProperties`， **沒有任何一處在頂層設 `false`**。所以頂層打錯字 = 靜默無效。
 
 第三列的判準常被寫成教條（「一律用 `--set-string` 比較安全」）。實際判準是 **目標欄位的型別**：字串 `"false"` 在 Go template 裡是 truthy，用 `--set-string` 去關一個布林開關，開關會關不掉，而且 helm 不會抱怨。
 
@@ -90,13 +90,13 @@ docker run --rm -v "$PWD:/w" -w /w alpine/helm:3.21.0 \
 
 ---
 
-## 幾個關鍵架構決定（重點在取捨，不在結論）
+## 關鍵架構決策與取捨
 
-### 一、每模組一 chart、一 release
+### 1. 每個模組獨立 Chart 與 Release
 
 好處是爆炸半徑小、可以單獨 rollback。代價是 **跨模組的順序依賴變成 deploy.sh 的責任**，Helm 幫不上忙。這個代價我們認了，因為模組之間本來就有 shell 層的 preflight。
 
-### 二、官方 chart 一律直呼，不做 dependency
+### 2. 直接引用官方 Chart 不做 Dependency
 
 理由是一條 Helm 的刪除語意： **Helm 不會升級、也不會刪除 chart `crds/` 目錄裡的 CRD**。結果是 controller 換了新版、CRD 還停在舊版，新欄位被 API server **靜默丟棄**，又是一個沒有任何地方看起來不對的失敗。
 
@@ -104,7 +104,7 @@ docker run --rm -v "$PWD:/w" -w /w alpine/helm:3.21.0 \
 
 唯一有實測的相關案例是 gpu-operator：它用 pre-upgrade hook 繞過這個限制，代價是升級必須加 `--disable-openapi-validation`。
 
-### 三、哪些東西刻意不進 chart
+### 3. 刻意排除進 Chart 的元件
 
 判準寫成一句話是「產生 K8s API 物件才進 chart」，但每一項排除的 **真正理由都不同**，這才是有價值的部分：
 
@@ -121,7 +121,7 @@ docker run --rm -v "$PWD:/w" -w /w alpine/helm:3.21.0 \
 1. 同一模組 **兩種部署機制並存**（chart + shell），rollback 不同步。
 2. `k8s-stack-config` 進了 chart，等於給整個 stack 加了單點： **7 個模組、8 個檔案、32 處 `configMapKeyRef`，幾乎都沒有 `optional: true`**（唯一例外是 `CACHE_INDEX_PORTAL`）。因此它掛了 `helm.sh/resource-policy: keep`。
 
-### 四、保名清單
+### 4. 保留 Release Name 避免改名衝突
 
 **release name 改名等於資源改名。** 這個專案有前科，而且那次的修法是「要先 `helm uninstall` 舊 release 才裝得上」，當時的紀錄自己帶著 NOTE: `requires helm uninstall cache-service first (else Helm ownership conflict)`。
 
@@ -129,7 +129,7 @@ docker run --rm -v "$PWD:/w" -w /w alpine/helm:3.21.0 \
 
 同樣的風險在 cache chart 上又被防了一次： **selector 在 K8s 是 immutable**。`selectorLabels` 如果取 `.Release.Name`，改名那天 `helm upgrade` 會直接失敗。所以改成字面值（且渲染輸出不變）。注意 `fullnameOverride` 救不了這個：它只鎖 `metadata.name`，鎖不住 selector。
 
-### 五、`resource-policy: keep` 有兩個相反的正確答案
+### 5. resource-policy keep 的套用準則
 
 這是我覺得最值得留下來的判斷，因為它推翻了「加上去總比較安全」的直覺：
 
@@ -142,7 +142,7 @@ docker run --rm -v "$PWD:/w" -w /w alpine/helm:3.21.0 \
 
 ---
 
-## 踩到的坑：list 是整份取代
+## Helm List 合併覆蓋問題
 
 Helm 的 values 合併規則只有一句話，但後果不成比例：
 
@@ -150,7 +150,7 @@ Helm 的 values 合併規則只有一句話，但後果不成比例：
 
 計畫把它點名為「本次最容易造成靜默行為變更」的一條。而它其實已經潛伏很久了。
 
-### 案例一：SSO overlay 把 Open WebUI 的 DATABASE_URL 洗掉
+### 1. Open WebUI 資料庫變數被覆蓋
 
 原本的 SSO overlay 用自己的 `extraEnvVars` list 疊在主 values 上。list 整份取代的結果：主檔的 **11 個 env 全部消失，包含 `DATABASE_URL`**。
 
@@ -158,7 +158,7 @@ Helm 的 values 合併規則只有一句話，但後果不成比例：
 
 修法是改走 chart 16.0.0 的原生 `sso.*` map。map 深合併，碰不到 `extraEnvVars`。驗證結果： **零消失，只新增 6 個 OIDC 變數。**
 
-### 案例二：同一個問題，n8n 的答案不一樣
+### 2. n8n 缺乏原生欄位的處理方式
 
 n8n 上游 chart 沒有原生 SSO 欄位。實測 n8n 1.11.0：`sso` / `extraObjects` / `extraDeploy` / `extraManifests` / `extraResources` **全部零命中**。
 
@@ -175,7 +175,7 @@ n8n 上游 chart 沒有原生 SSO 欄位。實測 n8n 1.11.0：`sso` / `extraObj
  + base values 寫死 configMapKeyRef + optional: true → n8n
 ```
 
-### 案例三：ConfigMap 存的是指標，不是值
+### 3. ConfigMap 更新不會觸發 Rollout
 
 有一批設定反而 **從 ConfigMap 搬回 chart**（例如 7 個 `OLLAMA_*` 參數改為 chart 的 `envPlain`）。
 
@@ -185,11 +185,11 @@ n8n 上游 chart 沒有原生 SSO 欄位。實測 n8n 1.11.0：`sso` / `extraObj
 
 ---
 
-## 計畫沒說對的地方：AI 的雷
+## 實際落地與 AI 規劃的落差
 
 這一節是全篇最有價值的部分，所以不美化。當初 AI 產出的那份計畫，自我評語是「方向正確，地基不穩」；事後看，這句話完全命中。AI 能給出工整漂亮的架構藍圖，但它看不到真實生產環境的泥濘。
 
-### 一、Chart 佈局，方向整個相反
+### 1. Chart 目錄結構調整
 
 AI 最初擬定的目標結構是集中式的 `k8s-stack/charts/<module>/`，並言之鑿鑿地把 **「模組目錄下不得出現 `charts/` 子目錄」** 列為三條不可協商的規約之一。
 
@@ -197,7 +197,7 @@ AI 最初擬定的目標結構是集中式的 `k8s-stack/charts/<module>/`，並
 
 而且改得不夠早。observability 與 portal-service 是先前已經完成的模組，事後才回頭拆成六個與兩個 chart。AI 在計畫裡其實早就預警過這件事：「定案前搬第一個模組，第二輪就收不回來。」預警了，但我們還是撞上了。
 
-### 二、AI 定義的三條不可協商規約，現實中全部陣亡
+### 2. 原定規約與實務衝突
 
 | AI 原本規約 | 實際 |
 | --- | --- |
@@ -207,9 +207,9 @@ AI 最初擬定的目標結構是集中式的 `k8s-stack/charts/<module>/`，並
 
 三份齊全的只有 bootstrap、core-engine、parser-service、vector-db、llm-gateway；ai-core 與 node-exporter 只有 `values-amd.yaml`；其餘 10 個只有 `values.yaml`。
 
-### 三、AI 構想的 golden 驗證工具沒有活下來
+### 3. 驗證工具維護成本考量
 
-AI 在計畫裡花了整整一章在講「怎麼寫一支龐大的工具證明合併沒有改變行為」，整章的唯一交付物是 `docs/verify-k8s-render.sh`。
+AI 在計畫裡花了很大篇幅規劃自動化驗證工具 `docs/verify-k8s-render.sh`。
 
 但這套共用驗證工具 **最後沒有真正留下來**。在推進過程中我意識到：AI 傾向於設計包山包海的自動化工具，但維護這套驗證腳本的成本比重構本身還高。與其花大量時間維護一套龐大的測試框架，不如確立「以 Git commit SHA 作為不可變 baseline」，並在每次重構後對輸出做一次性嚴格比對。
 
@@ -218,11 +218,11 @@ AI 在計畫裡花了整整一章在講「怎麼寫一支龐大的工具證明�
 - observability 三平台 **23 / 21 / 23 documents 逐字相同**
 - portal-service **十個 documents IDENTICAL**
 - GPU values 搬位置後 **18 份渲染零差異**、9 條告警規則 uid 逐字未變
-- ai-core 的 AMD 渲染與基準比對 **零差異（378 行逐字相同）**
+- ai-core 的 AMD 渲染與基準比對 **零差異（完全一致）**
 
 所以合併沒有改變行為這件事是有證據的。但下一個人要重跑這些驗證，得自己重寫工具。
 
-### 四、最嚴重的一條：AI 樂觀預設的重建路徑，實測完全走不通
+### 4. 備份還原機制缺失與修復
 
 整套 Helm 化原本建立在一個 AI 提出的樂觀假設之上（「叢集現場資料隨時可重建」），所以可以大膽拆掉重裝。
 
@@ -235,7 +235,7 @@ AI 在計畫裡花了整整一章在講「怎麼寫一支龐大的工具證明�
 
 AI 的這個出發點看似合理，但前提是「備份與還原必須百分之百可靠」。這就是為什麼在前期階段我們把全部心力花在驗證與修復備份，一行 chart 都還沒動。
 
-#### 備份那個故事
+**備份腳本失效的根因**
 
 備份腳本 **20 天來每天準時跑、吃掉 60 GB，裡面一個資料庫都沒有。** 單次備份目錄的內容是：3.0 GB 的 `pvc-data.tar.gz`、 **兩個 0 bytes 的 YAML**、 **0 個 `.sql.gz`**。
 
@@ -252,9 +252,9 @@ cron 的 KUBECONFIG=/root/.kube/config 指向一個會回 HTML 的壞檔
 
 更好笑的是：唯一有被備份的那個 DB，正好是規則上 **明訂不給任何應用程式用** 的 `k8s-stack`（db-operator 的 bootstrap DB）。包括 `n8n`、`open-webui`、`keycloak`、`pgadmin` 等應用資料庫全數漏掉！
 
-為什麼健檢沒抓到？因為健檢用 `pg_isready -U adm`（ **不做認證** ），而 `pg_dump -U adm` 一直被 db-operator 的 peer 認證擋掉（db-operator 的 `pg_hba.conf` 固定第一行是 `local all all peer` 而且無法從外部 values 覆寫）。 **健檢全 PASS，而備份是壞的。**
+為什麼健檢沒抓到？因為健檢用 `pg_isready -U adm`（ **不做認證** ），而 `pg_dump -U adm` 一直被 db-operator 的 peer 認證擋掉（db-operator 的 `pg_hba.conf` 固定配置為 `local all all peer` 而且無法從外部 values 覆寫）。 **健檢全 PASS，而備份是壞的。**
 
-#### 餘韻：修好外層之後，內層地雷才有機會引爆
+**連鎖錯誤與修復過程**
 
 修好 KUBECONFIG 的那一刻，備份與還原會從「靜默空轉」變成「直接失敗」；底下還埋著兩顆尾綴 `&&` 地雷，在 **健康** 叢集上必定觸發：
 
@@ -270,13 +270,13 @@ cron 的 KUBECONFIG=/root/.kube/config 指向一個會回 HTML 的壞檔
 
 還原路徑本身也必然對不上，而且是 **會印 ✅ 成功** 的那一種失敗：local-path 的目錄名內含 PV UID（同專案的 `reinstall-all.sh` 就在 glob `pvc-*_k8s-stack_*`），重建後全是新 UID。修法是備份 key 只用 `<ns>_<pvc>`，解析不到就 **ERROR 中止、不再印假成功**。
 
-#### 然後才做端到端演練
+**端到端演練與驗收**
 
 在正式切換前，我們在節點上真的跑了一次完整的備份 → teardown → 清孤兒 → 重建 → 還原 → 驗收：
 
 | 驗收項 | 結果 |
 | --- | --- |
-| 六個應用 DB 比對 | **305 / 305 行**，8 處差異全是服務啟動後自寫的記帳資料 |
+| 六個應用 DB 比對 | **完全一致**（僅有的少數差異為服務啟動後自寫的記帳資料） |
 | 向量資料庫 point | **234 個 point** 全數回來（唯一無法從全新安裝重建的資料） |
 | Secret | **23 個 key sha1 逐一相同**（含 `WORKFLOW_ENCRYPTION_KEY`） |
 | 健檢 | **21 PASS / 0 FAIL / 2 SKIP**，與演練前逐字相同 |
@@ -285,11 +285,11 @@ cron 的 KUBECONFIG=/root/.kube/config 指向一個會回 HTML 的壞檔
 
 「現場隨時可重建」這句話，直到我們親手修好備份、跑完一輪完整還原演練後，才真正有了底氣。
 
-### 五、升級路徑：最容易被忽略的 439 行 MIGRATION.md
+### 5. 現有叢集資源收編與平滑遷移
 
 Helm 化之後有個極其現實的問題：既有節點上的資源原本是用 `kubectl apply` 建的， **沒有 Helm 的 ownership metadata**，`helm upgrade` 會直接報錯拒絕。
 
-AI 當初在計畫裡樂觀地斷言「現場隨時可重建，因此不需要寫平滑遷移 SOP」。但當實測發現直接重建風險太高後，我決定老老實實寫出這份 **439 行的 `MIGRATION.md`**，並搭配一支只讀不寫的檢查腳本 `helm-ownership-check.sh`：
+AI 當初在計畫裡樂觀地斷言「現場隨時可重建，因此不需要寫平滑遷移 SOP」。但當實測發現直接重建風險太高後，我決定老老實實整理出詳細的 **`MIGRATION.md` 遷移指南**，並搭配一支只讀不寫的檢查腳本 `helm-ownership-check.sh`：
 
 > 本文只處理 **一件事**：舊資源的 **Helm 所有權（ownership metadata）**
 
@@ -299,7 +299,7 @@ AI 當初在計畫裡樂觀地斷言「現場隨時可重建，因此不需要�
 - **`--install` 救不了 ownership 衝突**：它解決的是「release 不存在」，現場撞到的是「資源存在但不屬於任何 release」。所以 `deploy.sh` 刻意不自動收編，只攔截錯誤碼並印出引導。
 - 結論是 **全部就地收編、沒有任何資源需要刪除重建**。TODO.md 原本寫反了，並自我更正：「本節原本寫著『正解是走完整重建』，那是錯的」（照做會刪掉 `k8s-stack-secrets`，n8n 的加解密金鑰遺失會導致所有 Workflow 永久損毀）。
 
-### 六、其他轉向與意外收穫
+### 6. 其他架構調整與收穫
 
 - **Pilot 模組不見了**：AI 最初在計畫中指定 custom-gateway 當 Pilot，最後它不是被 Helm 化，是被整個移除（原本要整合進 portal-service，整合還沒做）。
 - **收尾模組（Cleanup/Bootstrap）的收益兌現了**：Helm 化消滅了一個不可逆且吞錯的 `kubectl patch svc --remove /spec/selector`，以及「manifest 說 `replicas: 0`、腳本說 scale 1」的兩份真相。
@@ -307,9 +307,9 @@ AI 當初在計畫裡樂觀地斷言「現場隨時可重建，因此不需要�
 
 ---
 
-## 心得
+## 重構心得
 
-### 一個近事故，當作主題句
+### 隱蔽性故障的警示
 
 n8n 那套「ConfigMap + `optional: true`」的設計有一個 fallback 值剛好是 **合法值** 的問題：
 
@@ -323,7 +323,7 @@ n8n 那套「ConfigMap + `optional: true`」的設計有一個 fallback 值剛�
 
 全程 rc=0、pod 正常 Running。 **沒有任何一層會覺得不對。**
 
-### 判斷比規則有用
+### 依據情境判斷而非盲從規則
 
 這次留下來最耐用的東西，都不是規則，是判斷：
 
@@ -333,7 +333,7 @@ n8n 那套「ConfigMap + `optional: true`」的設計有一個 fallback 值剛�
 
 規則會被套用到不該套用的地方；判斷不會。
 
-### 最大的產出可能不是 chart
+### 暴露潛在問題是重構的最大價值
 
 Helm 化本身沒有想像中難。難的是它逼你面對一份清單： **你以為在跑的東西其實沒在跑**：
 
@@ -344,10 +344,10 @@ Helm 化本身沒有想像中難。難的是它逼你面對一份清單： **你
 
 這份清單上的每一項，都是在「為了做 Helm 化而必須先確認現況」的過程中掉出來的。如果不做這次合併，它們可以再安靜地待很多年。
 
-### 最後：81 次改動裡值得講的大概八個
+### 實務驗證是重構成功的關鍵
 
 其餘是搬移與修 bug。計畫自己也承認：「階段 7 才是真正的重構，1–6 都是搬移與修 bug。」
 
-所以如果你要跟 AI 一起做大型架構重構，時間分配大概是這樣的： **大部分力氣必須由工程師親自花在確認地基與實測驗證，而不是放任 AI 狂寫 chart**。AI 寫的 333 行計畫裡，`charts/` 的目錄結構洋洋灑灑列了三條不可協商的規約，備份能不能還原則只有一行帶過。
+所以如果你要跟 AI 一起做大型架構重構，時間分配大概是這樣的： **大部分力氣必須由工程師親自花在確認地基與實測驗證，而不是放任 AI 狂寫 chart**。AI 寫的架構計畫裡，`charts/` 的目錄結構洋洋灑灑列了三條不可協商的規約，備份能不能還原則只有一行帶過。
 
 事後回看： **AI 給的三條規約在現實中全部被推翻，真正保命的，只有工程師親手踩坑、修好備份的那一步。**
