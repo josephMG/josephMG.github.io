@@ -11,7 +11,7 @@ category: "AI & Machine Learning"
 
 在這之前我先重構一下原先的main.go，讓我加上參數去呼叫不同天的Demo api:
 <!-- more -->
-```golang
+```go
 // Usage: `docker run -it golang ./app [DayXX]`
 func main() {
   arg := os.Args[1]
@@ -33,7 +33,7 @@ func main() {
 ```
 
 day 11 我就直接呼叫時傳入Hello World的字串，然後把Demo code改成module的方式，像下面這樣
-```golang
+```go
 package natural_language
 
 import (

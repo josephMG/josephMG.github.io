@@ -15,7 +15,7 @@ category: "AI & Machine Learning"
 #### 1. Get Access token
 > 參考資料：https://godoc.org/golang.org/x/oauth2/google#example-JWTConfigFromJSON
 我這邊先建立一個auth模組，並把`credential json file`傳入到裡面的`ServiceAccount` func，然後回傳一個`token` struct，
-```golang
+```go
 package auth
 
 import (
@@ -57,7 +57,7 @@ https://translation.googleapis.com/v3beta1/projects/PROJECT_ID:translateText
 
 好，有這些知識以後，我們開始來寫呼叫的方法，直接寫在translation模組裡。
 
-```golang
+```go
 func TranslateTextV3Beta1(text []string) error {
   token, _ := auth.ServiceAccount("./authentication.json")
 

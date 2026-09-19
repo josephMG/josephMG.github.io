@@ -17,7 +17,7 @@ Google Video Intelligence AI API還有眾多的範例可以學習，今天再講
 
 ### [Detecting shot changes](https://cloud.google.com/video-intelligence/docs/analyze-shots?authuser=1)
 在範例裡我使用`gbikes_dinosaur.mp4`這個檔案，這是一部在Google園區拍gbike + 恐龍的影片。讓我直接把code貼上來，並改成大寫開頭讓外部呼叫。
-```golang
+```go
 func ShotChangeURI(w io.Writer, file string) error {
   ctx := context.Background()
   client, err := video.NewClient(ctx)
@@ -80,7 +80,7 @@ Shot: 28.166666s to 42.766666s
 
 第二段來看看文字識別能力，據說可以偵測出影片裡的字，這又是能辨別到什麼程度呢？趕快把code複製下來看看。
 
-```golang
+```go
 func TextDetectionGCS(w io.Writer, gcsURI string) error {
   ctx := context.Background()
 

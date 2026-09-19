@@ -216,7 +216,7 @@ git clone https://github.com/carlos-algms/hexo-theme-materialize themes/material
 ##### Add sidebar
 然後我的sidebar呢？在每個想要有sidebar的layout裡，找到正確位置新增：
 
-```ejs
+```html
 <div class="col s12 m3">
   <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
     <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
@@ -225,7 +225,7 @@ git clone https://github.com/carlos-algms/hexo-theme-materialize themes/material
 ```
 然後將sidebar.ejs partial layout加回來，
 **themes/materialize/layout/_partial/sidebar.ejs**
-```ejs
+```html
 <aside id="sidebar"<% if (theme.sidebar === 'bottom'){ %> class="outer"<% } %>>
   <% theme.widgets.forEach(function(widget){ %>
     <%- partial('_widget/' + widget) %>

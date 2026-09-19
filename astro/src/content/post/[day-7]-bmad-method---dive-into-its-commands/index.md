@@ -64,7 +64,7 @@ docs/prd
 
 > /BMad:tasks:create-next-story I've added two buttons to switch between CurrencyExchange, ScientificCalculator, and BasicCalculator. But I didn't add story, please help me finish it
 
-```git
+```text
 On branch feat/day-7
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)

@@ -19,7 +19,7 @@ category: "AI & Machine Learning"
 > `docker run -v ${PWD}/testdata:/app/testdata -it golang ./app Day19`
 
 好，現在來看看code吧：
-```golang
+```go
 package text_to_speech
 
 import (

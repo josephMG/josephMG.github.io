@@ -22,7 +22,7 @@ category: "AI & Machine Learning"
 
 為了一致性，我就開一個module video，然後專門放video Intelligence API的code。來看看我video.go
 
-```golang
+```go
 package video
 
 import (

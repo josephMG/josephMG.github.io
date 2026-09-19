@@ -13,7 +13,7 @@ category: "AI & Machine Learning"
 ![file structure](file-structure.jpg)
 
 萬事俱備就只欠東風，我們來看看demo code吧：
-```golang
+```go
 func DemoCode(filename string) {
   ctx := context.Background()
 

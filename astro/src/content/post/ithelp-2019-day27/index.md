@@ -20,7 +20,7 @@ category: "AI & Machine Learning"
 ![CURL](CURL.jpg)
 
 這讓我想到[Day16](../ithelp-2019-day16/)我用了REST API呼叫Translation API，就照本宣科來一次AutoML Table。先按照JSON格式來定義`struct`，他需要`Payload`裡面有個`Row`，`Row`內有`Values` & `ColumnSpecIds`。
-```golang
+```go
 type Body struct {
   Payload Payload `json:"payload"`
 }
@@ -37,7 +37,7 @@ type Row struct {
 > (你也可以看到其實Values, ColumnSpecIds是deprecated的狀態，可以用cells代替。
 
 接下來看看function：
-```golang
+```go
 func OnlinePredict() error {
   token, _ := auth.ServiceAccount("./authentication.json", "https://www.googleapis.com/auth/cloud-platform")
 

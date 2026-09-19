@@ -30,7 +30,7 @@ category: "AI & Machine Learning"
 
 #### [Tensorflow module](https://aihub.cloud.google.com/u/1/s?category=tensorflow-module)
 這邊聚集了很多Tensorflow module，可以透過Tensorflow hub的方式引入到自己的Code裡去。像是下面的範例就有提供Link `https://tfhub.dev/google/efficientnet/b1/classification/1`，也有提供code example，幾乎不用在從頭設計model了。
-```golang
+```go
 module = hub.Module("https://tfhub.dev/google/efficientnet/b1/classification/1")
 height, width = hub.get_expected_image_size(module)
 images = ...  # A batch of images with shape [batch_size, height, width, 3].

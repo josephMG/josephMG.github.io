@@ -8,7 +8,7 @@ category: "AI & Machine Learning"
 ---
 今天來Google Natural Language第三篇，我本來想按照Natural Language裡[分析情緒](https://cloud.google.com/natural-language/docs/analyzing-sentiment)這個部分實作，可是看完以後發現它code有點短，只有下面這樣：
 <!-- more -->
-```golang
+```go
 func analyzeSentimentFromGCS(ctx context.Context, gcsURI string) (*languagepb.AnalyzeSentimentResponse, error) {
         return client.AnalyzeSentiment(ctx, &languagepb.AnalyzeSentimentRequest{
                 Document: &languagepb.Document{
@@ -24,7 +24,7 @@ func analyzeSentimentFromGCS(ctx context.Context, gcsURI string) (*languagepb.An
 ![output1.jpg](output1.jpg)
 
 好吧，就照著之前Video跟Vision那樣，把它改寫得比較好閱讀一點：
-```golang
+```go
 func AnalyzeSentiment(gcsURI string) error {
   ctx := context.Background()
 

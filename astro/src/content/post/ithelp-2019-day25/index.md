@@ -14,7 +14,7 @@ category: "AI & Machine Learning"
 <!-- more -->
 
 我們直接先來看code：
-```golang
+```go
 func DetectIntentText(sessionID, text, languageCode string) (string, error) {
   projectID := os.Getenv("PROJECT_ID")
   ctx := context.Background()

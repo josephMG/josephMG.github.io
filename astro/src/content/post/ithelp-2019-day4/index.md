@@ -14,7 +14,7 @@ category: "AI & Machine Learning"
 <!-- more -->
 
 老實說這張圖不仔細看，還看不出來有"welcome"的字眼。code的部分一樣跑範例程式
-```golang
+```go
 package vision
 
 import (
@@ -64,7 +64,7 @@ func DetectText(w io.Writer, file string) error {
 
 這邊因為我把它寫進module的緣故，所以把**DetechText**改成了大寫開頭，主程式只要`import vision "./modules/vision"`就可以使用`vision.DetechText`了。
 
-```golang
+```go
 package main
 
 import (
@@ -91,7 +91,7 @@ func main() {
 
 > 要更多的臉這邊也有：https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/
 
-```golang
+```go
 func DetectFaces(w io.Writer, file string) error {
   ctx := context.Background()
 

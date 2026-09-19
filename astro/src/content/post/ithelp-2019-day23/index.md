@@ -15,7 +15,7 @@ category: "AI & Machine Learning"
 <!-- more -->
 
 有了這些解釋以後，我們來看看這次的code：
-```golang
+```go
 import (
   "context"
   "fmt"
