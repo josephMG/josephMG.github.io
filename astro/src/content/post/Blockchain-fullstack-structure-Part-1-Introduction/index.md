@@ -34,7 +34,7 @@ Here I have:
 
 As you see, there's nothing special at the root. Because my host is MacOS, I can use `http://docker.for.mac.localhost` to connect each docker container. I just need to think how to run each project's dockerfile at the root, thus I create `Makefile` and call `parellel` to run `docker-compose` for each child folders.
 
-```Makefile
+```makefile
 SUBDIRS = hardhat backend frontend
 CURRENT_DIR := $(shell pwd)
 

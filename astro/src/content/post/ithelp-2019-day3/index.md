@@ -38,7 +38,7 @@ category: "AI & Machine Learning"
 把furniture.jpg搬道專案底下以後，先複製了範例上的code來跑看看。
 **這是透過30天文章介紹Google Machine Learning Products的關係，原諒我無法逐行講解指令。**
 
-```golang
+```go
 // Sample vision-quickstart uses the Google Cloud Vision API to label an image.
 package main
 import (

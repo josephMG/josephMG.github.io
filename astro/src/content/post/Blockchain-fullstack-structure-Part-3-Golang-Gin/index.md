@@ -135,7 +135,7 @@ func NewAuthRoutes(
 ```
 
 **api/controllers/jwt_auth_controller.go**
-```Go
+```go
 package controllers
 
 import (

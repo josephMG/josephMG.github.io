@@ -15,7 +15,7 @@ category: "AI & Machine Learning"
 
 <!-- more -->
 
-```golang
+```go
 func ListVoices(w io.Writer) error {
   ctx := context.Background()
 
@@ -88,7 +88,7 @@ func ListVoices(w io.Writer) error {
 - `<media>` par與seq內的tag，可定義內容的時間、淡入淡出之類的屬性
 
 另外我們也可以傳入SSML讓Text-to-speech發音，像是下面的例子：
-```golang
+```go
 func SSMLToSpeech(text string) {
   var root string = "./testdata/text_to_speech"
   // Instantiates a client.
@@ -134,7 +134,7 @@ func SSMLToSpeech(text string) {
 ```
 
 呼叫時則傳入SSML:
-```golang
+```go
 text_to_speech.SSMLToSpeech("<speak>The <say-as interpret-as=\"characters\">SSML</say-as>" +
       "standard <break time=\"1s\"/>is defined by the" +
       "<sub alias=\"World Wide Web Consortium\">W3C</sub>.</speak>")

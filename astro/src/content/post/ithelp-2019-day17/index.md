@@ -17,7 +17,7 @@ category: "AI & Machine Learning"
 ![not equal](not-equal.jpg)
 
 好來看看code：
-```golang
+```go
 func procTranslateFiles() {
   var (
     root            string = "./testdata/translate"

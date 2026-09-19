@@ -21,7 +21,7 @@ category: "Web3"
 ![Init project](init-project.jpg)
 
 **docker-compose.yml**
-```YML
+```yaml
 version: '3'
 
 services:
@@ -38,7 +38,7 @@ services:
 <!-- more -->
 
 **hardhat/Dockerfile.dev**
-```Dockerfile
+```dockerfile
 FROM node:16
 
 ENV APP_ROOT /app

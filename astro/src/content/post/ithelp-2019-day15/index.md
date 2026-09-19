@@ -15,7 +15,7 @@ category: "AI & Machine Learning"
 <!-- more -->
 
 我們直接來看看`translation.go`裡面有什麼吧。
-```golang
+```go
 package translation
 
 import (
