@@ -79,7 +79,7 @@ export const rehypePhotoswipe: RehypePlugin = (options: { width?: number; height
               'data-pswp-width': width,
               // 'data-pswp-height': height,
               target: '_blank',
-              rel: 'noopener',
+              rel: ['noopener'],
             },
             children: [node],
           };
