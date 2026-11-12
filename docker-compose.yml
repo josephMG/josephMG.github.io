@@ -1,5 +1,3 @@
-version: '3.7'
-
 volumes:
     astro:
 
@@ -8,7 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      network: host
     volumes:
       - ./astro:/blog
       - ./astro/node_modules:/blog/node_modules

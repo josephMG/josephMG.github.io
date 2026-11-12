@@ -182,9 +182,21 @@ svg[id^="mermaid-"] .node foreignObject div {
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
   height: 100% !important;
   min-height: 100% !important;
   box-sizing: border-box !important;
+}
+
+/* Default node background so white text is always high-contrast even without custom classDef */
+svg[id^="mermaid-"] .node.default > rect,
+svg[id^="mermaid-"] .node.default > polygon,
+svg[id^="mermaid-"] .node.default > circle,
+svg[id^="mermaid-"] .node.default > path {
+  fill: #1e293b !important;
+  stroke: #60a5fa !important;
+  stroke-width: 2px !important;
 }
 
 svg[id^="mermaid-"] .node foreignObject p,
@@ -194,6 +206,28 @@ svg[id^="mermaid-"] .node .nodeLabel {
   line-height: 1.35 !important;
   color: #ffffff !important;
   text-align: center !important;
+}
+
+/* Subgraph / Cluster styling */
+svg[id^="mermaid-"] .cluster rect {
+  fill: rgba(241, 245, 249, 0.7) !important;
+  stroke: #94a3b8 !important;
+  stroke-width: 1.5px !important;
+}
+svg[id^="mermaid-"] .cluster-label .nodeLabel,
+svg[id^="mermaid-"] .cluster-label foreignObject p,
+svg[id^="mermaid-"] .cluster-label foreignObject span {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+.dark svg[id^="mermaid-"] .cluster rect {
+  fill: rgba(30, 41, 59, 0.55) !important;
+  stroke: #64748b !important;
+}
+.dark svg[id^="mermaid-"] .cluster-label .nodeLabel,
+.dark svg[id^="mermaid-"] .cluster-label foreignObject p,
+.dark svg[id^="mermaid-"] .cluster-label foreignObject span {
+  color: #f8fafc !important;
 }
 
 /* Edge Labels */
@@ -239,6 +273,54 @@ svg[id^="mermaid-"] .edgeLabel span {
 .dark svg[id^="mermaid-"] .edgeLabel span {
   color: #f1f5f9 !important;
   text-shadow: 0 0 6px #030620, 0 0 12px #030620, 0 1px 2px #000000 !important;
+}
+
+/* Dark mode Sequence Diagram styling */
+.dark svg[id^="mermaid-"] .messageText {
+  fill: #f8fafc !important;
+  stroke: none !important;
+  font-weight: 500 !important;
+}
+.dark svg[id^="mermaid-"] .messageLine0,
+.dark svg[id^="mermaid-"] .messageLine1,
+.dark svg[id^="mermaid-"] line.actor-line,
+.dark svg[id^="mermaid-"] .loopLine {
+  stroke: #60a5fa !important;
+}
+.dark svg[id^="mermaid-"] #arrowhead path,
+.dark svg[id^="mermaid-"] #crosshead path,
+.dark svg[id^="mermaid-"] #sequencenumber {
+  fill: #60a5fa !important;
+  stroke: #60a5fa !important;
+}
+.dark svg[id^="mermaid-"] rect.actor {
+  fill: #1e293b !important;
+  stroke: #60a5fa !important;
+  stroke-width: 2px !important;
+}
+.dark svg[id^="mermaid-"] text.actor,
+.dark svg[id^="mermaid-"] text.actor > tspan {
+  fill: #f8fafc !important;
+  font-weight: 600 !important;
+}
+.dark svg[id^="mermaid-"] rect.note {
+  fill: #1e3a8a !important;
+  stroke: #60a5fa !important;
+  stroke-width: 1.5px !important;
+}
+.dark svg[id^="mermaid-"] text.noteText,
+.dark svg[id^="mermaid-"] text.noteText > tspan {
+  fill: #f8fafc !important;
+}
+.dark svg[id^="mermaid-"] .labelBox {
+  fill: #1e293b !important;
+  stroke: #60a5fa !important;
+}
+.dark svg[id^="mermaid-"] .labelText,
+.dark svg[id^="mermaid-"] .labelText > tspan,
+.dark svg[id^="mermaid-"] .loopText,
+.dark svg[id^="mermaid-"] .loopText > tspan {
+  fill: #f8fafc !important;
 }
 
 
