@@ -249,7 +249,7 @@ WARNING:searx.network.brave: HTTP Request failed: GET https://search.brave.com/s
 | AI Gateway（除 LiteLLM 外皆為 AI 研究、尚未實測） | 遇到 `web_search_20250305` 的處理方式 | 最終現象與風險 |
 | :--- | :--- | :--- |
 | **LiteLLM** | `websearch_interception` 短路攔截，轉交自架 SearXNG | **可用 ✓**（2 秒、0 token 回傳 `text` 結果；畫面顯示 `Did 0 searches`） |
-| **agentgateway** | 轉 OpenAI Completions 時丟掉 server tool，但保留具名 `tool_choice`，`tools` 變空不送 | **回傳 400 ❌**（vLLM 報 `"When using tool_choice, tools must be set."`） |
+| **agentgateway** | 轉 OpenAI Completions 時丟掉 server tool，但保留具名 `tool_choice`，`tools` 變空不送 | **預設回傳 400 ❌**（vLLM 報 `"When using tool_choice, tools must be set."`）；可用設定自己接 SearXNG，見下方更新 |
 | **GoModel** | 閘道層直接檢查並拒絕不支援的 server tool | **回傳 400 ❌**（`"server tool type … is not supported"`） |
 | **claude-code-router** | 預設丟掉工具留 `tool_choice`；內建 Fusion 搜尋僅支援雲端 SaaS（Brave/Tavily），不支援自架 SearXNG | **回傳 400 ❌** |
 | **Kong** | OSS 不收 Anthropic 格式；EE `preserve` 直通 vLLM | **回傳 4xx ❌** |
@@ -264,6 +264,15 @@ WARNING:searx.network.brave: HTTP Request failed: GET https://search.brave.com/s
 > [!NOTE]
 > **補充觀察：`zwldarren/llm-proxy`**
 > 調查過程中我們唯一找到另一個在文件宣稱「可攔截任何 Client 的 `web_search` 轉交自架 SearXNG，並以用戶端原生格式（含 Anthropic `server_tool_use`）注入回傳」的開源專案是 `zwldarren/llm-proxy`。不過調查當下該專案剛起步（僅 3 顆星、尚未發布正式 Release，且文件僅列出 `web_search` / `web_search_preview`，未明確提及 `web_search_20250305`），我們僅閱讀其文件而未納入產線實測。
+
+> [!NOTE]
+> **更新：agentgateway 其實可以自己接 SearXNG（讀原始碼，未實測）**
+> 後來我們再讀了一次 agentgateway（v1.7.0 與當時的 main 分支），發現它預設雖然會回 400，但可以用設定繞過，不需要 LiteLLM、也不需要另外寫服務：
+>
+> 1. **條件式虛擬模型**（`virtualModels[].routing.conditional`）：CEL 條件讀得到整份請求（`llmRequest`），可以只把 `tools` 裡有 `web_search` 開頭工具的子請求挑出來。
+> 2. **callout 虛擬模型**（`routing.callout`）：callout 的目標直接設成 SearXNG，用 CEL 覆寫 `:method`、`:path` 組出 `GET /search?format=json&q=…`。再用 `transformation` 把 `callout.body.results` 拼成新的 `messages`、清掉 `tools` 與 `tool_choice`，最後交給 vLLM 讀結果寫摘要。
+>
+> 跟 LiteLLM 短路比，這條路多一次模型呼叫（多幾千 token、幾秒），但查詢前綴可以先去掉，搜尋的用量也會算進每個人的預算。畫面一樣只會顯示 `Did 0 searches`。以上全部是讀原始碼推出來的，CEL 寫法、`:method` 覆寫、`tools: null` 會不會被當成沒有工具，都還要實測。
 
 從這張表可以看出一個重要的架構警訊：**「默默把 `tool_choice` 一起清掉」的設計看似避免了 400 報錯，實際上卻最危險**——因為使用者以為搜尋功能正常，模型卻在毫無外部事實根據的情況下一本正經地胡說八道。
 
