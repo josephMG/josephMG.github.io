@@ -24,6 +24,7 @@ import {
   responsiveTablesRehypePlugin,
   lazyImagesRehypePlugin,
   rehypePhotoswipe,
+  calloutsRehypePlugin,
 } from './src/utils/frontmatter';
 import rehypeMermaid from 'rehype-mermaid';
 import remarkTableOfContents from './src/utils/table-of-content-plugin';
@@ -166,6 +167,7 @@ export default defineConfig({
       remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'toc', maxDepth: 3 }], remarkTableOfContents],
       rehypePlugins: [
         rehypePhotoswipe,
+        calloutsRehypePlugin,
         rehypeMermaid,
         responsiveTablesRehypePlugin,
         lazyImagesRehypePlugin,
