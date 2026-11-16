@@ -87,3 +87,41 @@ export const rehypePhotoswipe: RehypePlugin = (options: { width?: number; height
     });
   };
 };
+
+const CALLOUT_TITLES: Record<string, string> = {
+  note: 'Note',
+  tip: 'Tip',
+  important: 'Important',
+  warning: 'Warning',
+  caution: 'Caution',
+};
+
+// 把 GitHub 風格的 `> [!NOTE]`／`> [!WARNING]` 等引言轉成帶配色的提示框
+export const calloutsRehypePlugin: RehypePlugin = () => {
+  return function (tree) {
+    visit(tree, 'element', (node) => {
+      if (node.tagName !== 'blockquote') return;
+      const firstP = node.children.find((c) => c.type === 'element' && c.tagName === 'p');
+      if (!firstP || firstP.type !== 'element') return;
+      const firstText = firstP.children[0];
+      if (!firstText || firstText.type !== 'text') return;
+      const match = firstText.value.match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\][ \t]*\n?/i);
+      if (!match) return;
+
+      const type = match[1].toLowerCase();
+      firstText.value = firstText.value.slice(match[0].length);
+      if (!firstText.value) firstP.children.shift();
+      if (firstP.children.length === 0) {
+        node.children = node.children.filter((c) => c !== firstP);
+      }
+
+      node.properties = { ...node.properties, className: ['callout', `callout-${type}`] };
+      node.children.unshift({
+        type: 'element',
+        tagName: 'p',
+        properties: { className: ['callout-title'] },
+        children: [{ type: 'text', value: CALLOUT_TITLES[type] }],
+      });
+    });
+  };
+};

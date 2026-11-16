@@ -325,3 +325,30 @@ svg[id^="mermaid-"] .edgeLabel span {
 
 
 
+
+/* GitHub 風格提示框：> [!NOTE]、> [!TIP]、> [!IMPORTANT]、> [!WARNING]、> [!CAUTION] */
+.prose blockquote.callout {
+  --callout-color: #2563eb;
+  --callout-bg: rgb(37 99 235 / 0.06);
+  font-style: normal;
+  border-left: 4px solid var(--callout-color);
+  background-color: var(--callout-bg);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.75rem 1rem;
+}
+.prose blockquote.callout p { margin: 0.5em 0; }
+.prose blockquote.callout .callout-title {
+  margin-top: 0;
+  font-weight: 700;
+  color: var(--callout-color);
+}
+.prose blockquote.callout-note { --callout-color: #2563eb; --callout-bg: rgb(37 99 235 / 0.06); }
+.prose blockquote.callout-tip { --callout-color: #15803d; --callout-bg: rgb(21 128 61 / 0.06); }
+.prose blockquote.callout-important { --callout-color: #7c3aed; --callout-bg: rgb(124 58 237 / 0.06); }
+.prose blockquote.callout-warning { --callout-color: #b45309; --callout-bg: rgb(217 119 6 / 0.08); }
+.prose blockquote.callout-caution { --callout-color: #dc2626; --callout-bg: rgb(220 38 38 / 0.06); }
+.dark .prose blockquote.callout-note { --callout-color: #60a5fa; --callout-bg: rgb(96 165 250 / 0.1); }
+.dark .prose blockquote.callout-tip { --callout-color: #4ade80; --callout-bg: rgb(74 222 128 / 0.08); }
+.dark .prose blockquote.callout-important { --callout-color: #a78bfa; --callout-bg: rgb(167 139 250 / 0.1); }
+.dark .prose blockquote.callout-warning { --callout-color: #fbbf24; --callout-bg: rgb(251 191 36 / 0.08); }
+.dark .prose blockquote.callout-caution { --callout-color: #f87171; --callout-bg: rgb(248 113 113 / 0.1); }
