@@ -18,7 +18,7 @@ defaults:
     working-directory: ./astro
 jobs:
   check:
-    runs-on: ubuntu-24.04  # Playwright 1.60 不支援 ubuntu-latest（26.04）
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -38,7 +38,7 @@ jobs:
       - name: npm check
         run: npm run check
   build:
-    runs-on: ubuntu-24.04  # 同上
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
