@@ -10,7 +10,7 @@ image: 'banner.png'
 需求一句話講得完： **讓 n8n 支援 OIDC SSO 登入**。
 
 這看似只是改改環境變數的小需求，但當初我和 AI 一起討論並嘗試串接時，發現真正折磨人的不是語法，而是這一路上幾乎每個坑都 **不會叫**：
-Pod 正常 `Running`、Kubernetes 健檢全綠、`helm` 指令回傳 0、Log 裡沒有半點 Error，但使用者就是登不進去。
+Pod 正常 `Running`、Kubernetes 健檢全綠、`helm` 指令回傳 0、Log 裡沒有半點 Error，但我就是登不進去。
 
 這篇以 Keycloak 為例做完整的技術分享與實戰踩坑紀錄，但絕大部分經驗適用於任何 OIDC Provider（例如 Auth0、Okta、Google Workspace 等）。凡是 Keycloak 專屬的細節我也都會特別標註出來。
 
